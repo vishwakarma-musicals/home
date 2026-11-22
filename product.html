@@ -84,13 +84,14 @@
         <a href="contact.html">संपर्क व दुकान</a>
       </nav>
       <div class="header-actions">
-        <a href="cart.html" class="cart-trigger-btn" id="header-cart-link" aria-label="कार्ट पेज खोलें">
+        <a href="cart.html" class="cart-trigger-btn" id="header-cart-link" aria-label="कार्ट">
           <span>🛒 कार्ट</span>
           <span class="cart-badge" id="header-cart-count">0</span>
         </a>
       </div>
     </div>
   </header>
+<main id="main-content">
 
   <section class="sec-light" id="product-detail-section">
     <div class="container">
@@ -110,7 +111,8 @@
   </section>
 
   <div class="sec-footer-light-wrap">
-    <footer class="page-footer-nav-dark">
+    </main>
+<footer class="page-footer-nav-dark">
       <div class="pfn-links">
         <a href="index.html">होम</a>
         <a href="instruments.html">वाद्य यंत्र</a>
@@ -186,7 +188,7 @@
 
       var priceText = product.price > 0 ? "₹" + Number(product.price).toLocaleString("en-IN") : "संपर्क करें";
       var imgHtml = product.mainImage
-        ? '<img src="' + product.mainImage.replace(/"/g, "&quot;") + '" alt="' + cleanName.replace(/"/g, "&quot;") + '" onerror="this.style.display=\'none\'">'
+        ? '<img src="' + product.mainImage.replace(/"/g, "&quot;") + '" alt="' + cleanName.replace(/"/g, "&quot;") + '" onerror="this.style.display=\'none\'" loading="lazy">'
         : '<span style="color:#4a3424;font-weight:700;">' + sanitizeVMText(product.sku) + '</span>';
       var featuresHtml = (product.features || []).map(function (f) {
         return "<li>" + sanitizeVMText(f) + "</li>";
