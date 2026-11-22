@@ -1,4 +1,4 @@
-function sanitizeVMText(str) {
+﻿function sanitizeVMText(str) {
   var value = String(str || "");
   value = value.replace(/\bsafari\b/gi, "Safri");
   return value;
@@ -11,7 +11,7 @@ function ensureVMToast() {
   toast.id = "vm-cart-toast";
   toast.setAttribute("role", "status");
   toast.setAttribute("aria-live", "polite");
-  toast.style.cssText = "position:fixed;bottom:86px;right:20px;z-index:260;background:#1a0e06;color:#ffffff;border:2px solid #e6b84d;border-radius:16px;padding:12px 16px;box-shadow:0 16px 36px rgba(0,0,0,0.55);display:flex;align-items:center;gap:12px;max-width:min(380px,calc(100vw - 32px));opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity 0.25s ease,transform 0.25s ease;";
+  toast.style.cssText = "position:fixed;top:50%;left:50%;z-index:260;background:#1a0e06;color:#ffffff;border:2px solid #e6b84d;border-radius:16px;padding:14px 18px;box-shadow:0 18px 40px rgba(0,0,0,0.65);display:flex;align-items:center;gap:12px;max-width:min(420px,calc(100vw - 32px));opacity:0;transform:translate(-50%,-50%) scale(0.96);pointer-events:none;transition:opacity 0.25s ease,transform 0.25s ease;";
   var msg = document.createElement("span");
   msg.id = "vm-cart-toast-msg";
   msg.style.cssText = "flex:1;font-size:0.9rem;line-height:1.45;";
@@ -32,12 +32,12 @@ function showVMToast(itemName) {
   if (!msg) return;
   msg.textContent = "✓ " + sanitizeVMText(itemName) + " कार्ट में जोड़ा गया।";
   toast.style.opacity = "1";
-  toast.style.transform = "translateY(0)";
+  toast.style.transform = "translate(-50%,-50%) scale(1)";
   toast.style.pointerEvents = "auto";
   if (vmToastTimer) clearTimeout(vmToastTimer);
   vmToastTimer = setTimeout(function () {
     toast.style.opacity = "0";
-    toast.style.transform = "translateY(16px)";
+    toast.style.transform = "translate(-50%,-50%) scale(0.96)";
     toast.style.pointerEvents = "none";
   }, 3600);
 }
