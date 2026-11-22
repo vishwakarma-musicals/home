@@ -1,4 +1,4 @@
-﻿function sanitizeVMText(str) {
+function sanitizeVMText(str) {
   var value = String(str || "");
   value = value.replace(/\bsafari\b/gi, "Safri");
   return value;
