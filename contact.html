@@ -1,483 +1,25 @@
 <!DOCTYPE html>
-<html lang="hi" class="scroll-smooth">
+<html lang="hi">
 <head>
-  <link rel="icon" type="image/webp" href="favicon.webp">
-  <link rel="icon" type="image/png" href="favicon.png" sizes="48x48">
+  <link rel="icon" type="image/webp" href="assets/images/brand/favicon.webp">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>संपर्क, दुकान का पता व मार्ग-निर्देश | विश्वकर्मा म्यूज़िकल्स अमानगंज</title>
-  <meta name="description" content="विश्वकर्मा म्यूज़िकल्स अमानगंज (पन्ना) का संपर्क विवरण, दुकान का पता, कार्य समय (सुबह 9 से रात 9), गूगल मैप्स दिशा-निर्देश व अक्सर पूछे जाने वाले सवाल।">
+  <title>संपर्क, स्टेटस जाँच व दुकान का पता | विश्वकर्मा म्यूज़िकल्स अमानगंज</title>
+  <meta name="description" content="विश्वकर्मा म्यूज़िकल्स (स्था. 1990), मकान नं. 109, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना (म.प्र.) - 488441। फ़ोन: +91 97550 88022, ईमेल: info@vishwakarmamusicals.in।">
   <link rel="canonical" href="https://vishwakarmamusicals.in/contact.html">
-
-  <!-- Schema.org Structured Data (ContactPage + MusicStore) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": "संपर्क व दुकान पधारिए",
-    "url": "https://vishwakarmamusicals.in/contact.html",
-    "description": "विश्वकर्मा म्यूज़िकल्स अमानगंज का संपर्क विवरण, दुकान का सटीक पता, गूगल मैप्स नेविगेशन व कार्य समय।",
-    "mainEntity": {
-      "@type": "MusicStore",
-      "name": "विश्वकर्मा म्यूज़िकल्स",
-      "url": "https://vishwakarmamusicals.in/",
-      "logo": "https://vishwakarmamusicals.in/favicon.webp",
-      "founder": {
-        "@type": "Person",
-        "name": "तुलसी दास विश्वकर्मा",
-        "jobTitle": "संस्थापक एवं मुख्य काष्ठ व सुर शिल्पी"
-      },
-      "foundingDate": "1990",
-      "telephone": "+919755088022",
-      "email": "info@vishwakarmamusicals.in",
-      "priceRange": "₹₹",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के बगल में, शाला मोहल्ला",
-        "addressLocality": "अमानगंज",
-        "addressRegion": "मध्य प्रदेश",
-        "postalCode": "488441",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 24.4278711,
-        "longitude": 80.0425885
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
-        ],
-        "opens": "09:00",
-        "closes": "21:00"
-      },
-      "sameAs": [
-        "https://www.youtube.com/@vishwakarmamusicals",
-        "https://www.facebook.com/vishwakarmamusicalsamanganj/",
-        "https://www.instagram.com/vishwakarmamusicals/"
-      ]
-    }
-  }
-  </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
   <style>
-    :root {
-      --bg-light: #fbf7f0;
-      --surface-light: #ffffff;
-      --surface-light-card: #fffcf7;
-      --text-dark: #1f1107;
-      --text-muted-dark: #4a3424;
-      --border-inverse-light: #2c160a;
-      --bg-dark: #190c05;
-      --surface-dark: #27140a;
-      --surface-dark-card: #281409;
-      --text-light: #ffffff;
-      --text-muted-light: #f5ede0;
-      --border-inverse-dark: #fbf6ee;
-      --gold: #d4a340;
-      --gold-bright: #fcd777;
-      --gold-deep: #94651a;
-      --gold-border: #e6b84d;
-      --maroon: #73230a;
-      --maroon-title: #8a2a0c;
-      --star: #f59e0b;
-      --radius: 18px;
-      --depth-shadow: 0 16px 30px rgba(35, 17, 5, 0.18), 0 5px 12px rgba(35, 17, 5, 0.11);
-      --depth-shadow-hover: 0 24px 42px rgba(35, 17, 5, 0.25), 0 8px 16px rgba(35, 17, 5, 0.13);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html {
-      scroll-behavior: smooth;
-      zoom: 80%;
-    }
-    @media (max-width: 768px), print {
-      html {
-        zoom: 100%;
-      }
-    }
-    body {
-      font-family: 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-dark);
-      line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
-      padding-top: 64px;
-      padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px));
-      overflow-x: hidden;
-    }
-    @media (min-width: 769px) { body { padding-bottom: 0; } }
-
-    h1, h2, h3, h4, .serif {
-      font-family: 'Tiro Devanagari Hindi', serif;
-      font-weight: normal;
-      line-height: 1.35;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; height: auto; display: block; }
-    .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
-    section { padding: clamp(54px, 8vw, 88px) 0; position: relative; isolation: isolate; }
-
-    .gold-section-divider {
-      height: 3px;
-      width: 100%;
-      background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
-      margin: 0;
-      border: none;
-    }
-
-    /* UNIFIED TOP NAVIGATION BAR */
-    .site-header {
-      background: #160a04;
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 150;
-      border-bottom: 1.5px solid rgba(230, 184, 77, 0.32);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
-    }
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 64px;
-      gap: 16px;
-    }
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-shrink: 0;
-    }
-    .brand-logo img {
-      height: 44px;
-      width: auto;
-      object-fit: contain;
-    }
-    .brand-name {
-      font-family: 'Tiro Devanagari Hindi', serif;
-      color: var(--gold-bright);
-      font-size: clamp(1.1rem, 1.6vw, 1.4rem);
-      white-space: nowrap;
-    }
-    .main-nav {
-      display: flex;
-      align-items: center;
-      gap: clamp(14px, 2vw, 26px);
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-    .main-nav::-webkit-scrollbar { display: none; }
-    .main-nav a {
-      color: #f7eee4;
-      font-weight: 600;
-      font-size: 0.94rem;
-      white-space: nowrap;
-      padding: 6px 4px;
-      border-bottom: 2px solid transparent;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .main-nav a:hover, .main-nav a.active {
-      color: var(--gold-bright);
-      border-bottom-color: var(--gold-bright);
-    }
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-    .cart-trigger-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: linear-gradient(180deg, #3d2314 0%, #201109 100%);
-      color: var(--gold-bright);
-      border: 1.5px solid var(--gold-border);
-      padding: 7px 15px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 0.88rem;
-      cursor: pointer;
-    }
-    .cart-badge {
-      background: var(--gold-bright);
-      color: #1a0e04;
-      border-radius: 999px;
-      padding: 1px 7px;
-      font-size: 0.78rem;
-      font-weight: 800;
-    }
-
-    /* BADGES, HEADINGS & BUTTONS */
-    .badge-tag {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      padding: 6px 22px;
-      border-radius: 999px;
-      margin-bottom: 16px;
-      text-align: center;
-      letter-spacing: 0.5px;
-      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .badge-tag:hover { transform: scale(1.04) translateY(-2px); }
-
-    .sec-dark .badge-tag, .hero .badge-tag {
-      color: #ffffff;
-      background: linear-gradient(180deg, #3d2314 0%, #201109 100%);
-      border: 1.5px solid var(--gold-border);
-      box-shadow: inset 0 1px 2px rgba(255, 235, 190, 0.45), inset 0 -2px 3px rgba(0, 0, 0, 0.8), 0 6px 14px rgba(0, 0, 0, 0.5);
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
-    }
-    .sec-light .badge-tag {
-      color: #2b170c;
-      background: linear-gradient(180deg, #fcedd8 0%, #ebd4b5 100%);
-      border: 2px solid var(--gold-border);
-      box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.9), inset 0 -2px 3px rgba(138, 86, 27, 0.3), 0 5px 12px rgba(44, 22, 10, 0.18);
-    }
-
-    .sec-head { text-align: center; max-width: 760px; margin: 0 auto 48px; }
-    .sec-light .sec-head h2 {
-      font-size: clamp(2rem, 4.5vw, 2.75rem);
-      color: var(--maroon-title);
-      margin-bottom: 12px;
-      text-shadow: 0 2px 0 rgba(0,0,0,.12), 0 7px 16px rgba(0,0,0,.16);
-    }
-    .sec-light .sec-head p { font-size: 1.05rem; color: var(--text-muted-dark); }
-    .sec-dark .sec-head h2 {
-      font-size: clamp(2rem, 4.5vw, 2.75rem);
-      color: #ffffff;
-      margin-bottom: 12px;
-      text-shadow: 0 2px 0 rgba(0,0,0,.3), 0 7px 18px rgba(0,0,0,.62);
-    }
-    .sec-dark .sec-head p { font-size: 1.05rem; color: var(--text-muted-light); }
-
-    .sec-light {
-      background-color: var(--bg-light);
-      background-image: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.9), transparent 66%),
-                        linear-gradient(145deg, #fbf7f0 0%, #f2e7d4 100%);
-      color: var(--text-dark);
-    }
-    .sec-dark {
-      background-color: var(--bg-dark);
-      background-image: radial-gradient(ellipse at 50% 0%, rgba(125,78,30,.18), transparent 62%),
-                        linear-gradient(145deg, #211006 0%, #120802 100%);
-      color: var(--text-light);
-    }
-
-    .btn-wrap, .btn-wrap-center {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px 18px;
-      align-items: center;
-      justify-content: center;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: auto !important;
-      max-width: max-content !important;
-      white-space: nowrap;
-      min-height: 48px;
-      padding: 10px 26px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 0.98rem;
-      cursor: pointer;
-      text-align: center;
-      user-select: none;
-      position: relative;
-      flex: 0 0 auto;
-      border: none;
-      font-family: inherit;
-      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, filter 0.35s ease;
-    }
-    .btn:focus-visible { outline: 3px solid var(--gold-bright); outline-offset: 3px; }
-    .btn-gold {
-      background: linear-gradient(180deg, #fce09b 0%, #d89f31 55%, #b1791a 100%);
-      color: #1a0e04 !important;
-      border: 1px solid #734c0a;
-      box-shadow: 0 5px 0 #734c0a, 0 8px 18px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.8);
-      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    }
-    .btn-gold:hover {
-      background: linear-gradient(180deg, #fff0ba 0%, #e8ad38 55%, #c8891f 100%);
-      box-shadow: 0 6px 0 #734c0a, 0 10px 22px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.9);
-      transform: translateY(-2px);
-    }
-    .btn-gold:active {
-      transform: translateY(4px);
-      box-shadow: 0 1px 0 #734c0a, 0 3px 6px rgba(0, 0, 0, 0.35);
-    }
-    .sec-light .btn-outline {
-      background: linear-gradient(180deg, #ffffff 0%, #f4e9db 100%);
-      color: #2b170c !important;
-      border: 2px solid var(--gold-border);
-      box-shadow: 0 4px 0 #1e0e05, 0 6px 14px rgba(0, 0, 0, 0.16), inset 0 1px 0 #ffffff;
-    }
-    .sec-light .btn-outline:hover {
-      background: #ffffff;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 0 #1e0e05, 0 8px 18px rgba(0, 0, 0, 0.22);
-    }
-    .sec-dark .btn-outline, .hero .btn-outline {
-      background: linear-gradient(180deg, #3d2315 0%, #201109 100%);
-      color: #fbf6ee !important;
-      border: 2px solid var(--gold-border);
-      box-shadow: 0 4px 0 #000000, 0 6px 16px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-    }
-    .sec-dark .btn-outline:hover, .hero .btn-outline:hover {
-      color: #ffffff !important;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 0 #000000, 0 10px 22px rgba(0, 0, 0, 0.7);
-    }
-
-    /* 1. HERO SECTION */
-    .hero {
-      position: relative;
-      padding: clamp(68px, 10vw, 115px) 0 clamp(58px, 8vw, 95px);
-      background-color: #1a0e06;
-      background-image: radial-gradient(circle at center, rgba(212, 163, 64, 0.22) 0%, rgba(18, 9, 4, 0.90) 76%);
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      border-bottom: 2px solid var(--gold-deep);
-      overflow: hidden;
-    }
-    .hero-center-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      margin: 0 auto;
-      max-width: 920px;
-    }
-    .hero-title {
-      font-family: 'Tiro Devanagari Hindi', serif;
-      font-size: clamp(2.4rem, 5.8vw, 4.1rem);
-      color: #ffffff;
-      line-height: 1.25;
-      margin-bottom: 12px;
-      text-shadow: 0 2px 0 rgba(0,0,0,.26), 0 7px 18px rgba(0,0,0,.65);
-      letter-spacing: 0.5px;
-    }
-    .hero-desc {
-      font-size: clamp(1.08rem, 2.3vw, 1.25rem);
-      color: #ffffff;
-      max-width: 840px;
-      margin: 0 auto 34px;
-      line-height: 1.85;
-      font-weight: 500;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 5px 22px rgba(0, 0, 0, 0.95);
-    }
-    .hero-trust-strip {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px 28px;
-      padding-top: 10px;
-      width: 100%;
-    }
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      font-size: 0.98rem;
-      font-weight: 700;
-      color: #ffffff;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95);
-    }
-    .trust-item span.icon { font-size: 1.15rem; color: var(--gold-bright); }
-
-    /* 2. CONTACT DETAILS GRID */
-    .contact-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: stretch;
-      gap: 24px;
-    }
-    .contact-grid .c-card-dark {
-      background: var(--surface-dark-card);
-      border: 2.5px solid var(--gold-border) !important;
-      border-radius: var(--radius);
-      padding: 30px 24px;
-      box-shadow: 0 14px 28px rgba(35,17,5,.20), 0 0 14px rgba(230,184,77,.2), inset 0 1px 0 rgba(255,255,255,.06);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      z-index: 0;
-      transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease;
-      flex: 1 1 270px;
-      max-width: 350px;
-    }
-    .contact-grid .c-card-dark:hover {
-      z-index: 2;
-      transform: translateY(-8px);
-      box-shadow: 0 24px 42px rgba(35,17,5,.25), 0 8px 16px rgba(35,17,5,.13), 0 0 18px rgba(230,184,77,.28);
-    }
-    .c-icon-box-light {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: #ffffff;
-      border: 2.5px solid var(--gold-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.2rem;
-      margin-bottom: 16px;
-      box-shadow: 0 5px 0 rgba(115,76,10,.18), 0 10px 20px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.9);
-      transition: transform 0.35s ease;
-    }
-    .c-card-dark:hover .c-icon-box-light { transform: translateY(-3px); }
-    .c-card-dark h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--gold-bright);
-      margin-bottom: 10px;
-      line-height: 1.35;
-    }
-    .c-card-dark p {
-      font-size: 0.95rem;
-      color: var(--text-muted-light);
-      margin-bottom: 22px;
-      flex-grow: 1;
-      line-height: 1.65;
-    }
-    .c-card-dark p strong {
-      color: #ffffff;
-      font-size: 1.08rem;
-    }
-    .c-card-act {
-      margin-top: auto;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-
-    /* SAFE CUSTOMER STATUS LOOKUP SECTION */
     .status-lookup-card {
       background: var(--surface-dark-card);
       border: 2.5px solid var(--gold-border);
       border-radius: 22px;
-      padding: clamp(24px, 4vw, 38px);
-      max-width: 880px;
+      padding: clamp(22px, 4vw, 36px);
+      max-width: 860px;
       margin: 0 auto;
-      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28), 0 0 16px rgba(230, 184, 77, 0.16);
+      box-shadow: var(--depth-shadow-dark);
       color: var(--text-light);
     }
     .status-form-grid {
@@ -490,74 +32,50 @@
       font-weight: 700;
       color: var(--gold-bright);
       margin-bottom: 6px;
-      font-size: 0.95rem;
+      font-size: 0.94rem;
     }
     .status-field input {
       width: 100%;
       padding: 11px 14px;
-      border-radius: 10px;
+      border-radius: 12px;
       border: 1.5px solid var(--gold-border);
       background: #190c05;
       color: #ffffff;
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       font-family: inherit;
     }
-    .status-field input:focus {
-      outline: 2px solid var(--gold-bright);
-      outline-offset: 2px;
-    }
-    .status-actions {
-      margin-top: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      justify-content: center;
-    }
     .status-result-box {
-      margin-top: 20px;
+      margin-top: 18px;
       display: none;
       border-radius: 14px;
-      padding: 16px 18px;
+      padding: 15px 18px;
       line-height: 1.7;
+      font-size: 0.94rem;
     }
     .status-result-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 10px 14px;
-      font-size: 0.94rem;
+      gap: 8px 14px;
       margin-top: 8px;
     }
-    .status-policy-note {
-      margin-top: 18px;
-      padding: 12px 16px;
-      border-radius: 12px;
-      background: rgba(252, 215, 119, 0.08);
-      border-left: 4px solid var(--gold-bright);
-      color: var(--text-muted-light);
-      font-size: 0.9rem;
-    }
-
-    /* 3. GOOGLE MAPS LOCATION */
     .map-card-light {
       background: #ffffff;
-      border: 2.5px solid var(--gold-border) !important;
-      border-radius: 24px;
-      padding: clamp(28px, 5vw, 44px);
-      box-shadow: 0 16px 34px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.95);
+      border: 2.5px solid var(--gold-border);
+      border-radius: 22px;
+      padding: clamp(20px, 4vw, 34px);
       max-width: 960px;
       margin: 0 auto;
+      box-shadow: var(--depth-shadow);
       text-align: center;
     }
     .map-embed-wrapper {
       width: 100%;
-      height: 420px;
+      height: 390px;
       border-radius: 16px;
       overflow: hidden;
-      border: 2.5px solid var(--gold-border);
-      margin-bottom: 28px;
-      background: #140a04;
-      box-shadow: inset 0 3px 12px rgba(0,0,0,.25), 0 8px 18px rgba(35,17,5,.14);
+      border: 2px solid var(--gold-border);
+      margin-bottom: 22px;
+      background: #190c05;
     }
     .map-embed-wrapper iframe {
       width: 100%;
@@ -565,239 +83,15 @@
       border: 0;
       display: block;
     }
-
-    /* 4. FAQ SECTION */
-    .faq-list {
-      max-width: 860px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .faq-item-dark {
-      background: var(--surface-dark-card);
-      border: 2.5px solid var(--gold-border) !important;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 12px 24px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.06);
-      transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s ease;
-    }
-    .faq-item-dark:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 34px rgba(0,0,0,.24), 0 0 16px rgba(230,184,77,.2);
-    }
-    .faq-item-dark summary {
-      padding: 20px 24px;
-      font-weight: 700;
-      font-size: 1.08rem;
-      color: var(--gold-bright);
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .faq-item-dark summary::-webkit-details-marker { display: none; }
-    .faq-item-dark summary::after {
-      content: "+";
-      font-size: 1.6rem;
-      line-height: 1;
-      color: var(--gold-bright);
-    }
-    .faq-item-dark[open] summary::after {
-      content: "−";
-      color: #ffffff;
-    }
-    .faq-body-light {
-      padding: 14px 24px 20px;
-      color: var(--text-muted-light);
-      font-size: 0.98rem;
-      border-top: 1px dashed rgba(251, 246, 238, 0.25);
-      line-height: 1.7;
-    }
-
-    /* 5. UNIFIED FOOTER WITH SOCIAL ICONS (WHATSAPP INCLUDED WITH SOCIAL BUTTONS) */
-    .sec-footer-light-wrap {
-      background-color: var(--bg-light);
-      padding: 40px 0 24px;
-      border-top: none;
-    }
-    .page-footer-nav-dark {
-      padding: 38px 24px 32px;
-      border: 2.5px solid var(--gold-border);
-      background: #0d0703 !important;
-      border-radius: var(--radius);
-      text-align: center;
-      box-shadow: 0 0 20px rgba(230,184,77,.4), 0 10px 28px rgba(44,22,10,.22);
-      max-width: 1140px;
-      margin: 0 auto;
-    }
-    .pfn-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px 26px;
-      margin-bottom: 22px;
-    }
-    .page-footer-nav-dark .pfn-links a {
-      font-weight: 700;
-      color: #fcd777 !important;
-      font-size: 0.95rem;
-      transition: color 0.2s, transform 0.2s;
-      display: inline-block;
-    }
-    .page-footer-nav-dark .pfn-links a:hover,
-    .page-footer-nav-dark .pfn-links a.active {
-      color: #ffffff !important;
-      transform: translateY(-2px);
-      text-decoration: underline;
-    }
-    .social-links-footer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 22px;
-    }
-    .social-icon-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #27140a;
-      border: 1.5px solid var(--gold-border);
-      color: var(--gold-bright);
-      transition: all 0.25s ease;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
-    }
-    .social-icon-btn svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
-    }
-    .social-icon-btn:hover {
-      background: var(--gold-bright);
-      color: #1a0e04;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 14px rgba(252, 215, 119, 0.3);
-    }
-    .page-footer-nav-dark .pfn-copy {
-      font-size: 0.88rem;
-      color: #f5ede0 !important;
-      border-top: 1px dashed rgba(251,246,238,.25);
-      padding-top: 16px;
-      margin-top: 10px;
-      line-height: 1.6;
-    }
-
-    /* UNIFIED CART DRAWER */
-    .overlay-backdrop {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      width: 100%; height: 100%;
-      background: rgba(20, 9, 3, 0.78);
-      backdrop-filter: blur(4px);
-      display: none;
-      z-index: 200;
-    }
-    .overlay-backdrop.open { display: block; }
-    .cart-drawer {
-      position: fixed;
-      top: 0; bottom: 0; right: -420px;
-      width: 100%; max-width: 390px;
-      background: var(--surface-light);
-      z-index: 250;
-      display: flex;
-      flex-direction: column;
-      transition: right 0.3s ease;
-      box-shadow: -8px 0 28px rgba(0,0,0,0.5);
-      overflow: hidden;
-    }
-    .cart-drawer.open { right: 0; }
-    .drawer-header {
-      padding: 18px 20px;
-      background: var(--bg-dark);
-      color: var(--gold-bright);
-      border-bottom: 2px solid var(--gold-border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .drawer-body { padding: 18px 20px; flex: 1; overflow-y: auto; }
-    .cart-item-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(230, 184, 77, 0.35);
-    }
-    .drawer-footer { padding: 18px 20px; border-top: 2px solid var(--gold-border); background: #f4e9db; }
-
-    /* MOBILE STICKY CTA BAR */
-    .mobile-sticky-bar {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 180;
-      background: rgba(26, 14, 6, 0.96);
-      backdrop-filter: blur(8px);
-      border-top: 1.5px solid var(--gold-deep);
-      padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.45);
-    }
-    .mobile-sticky-bar a {
-      flex: 1;
-      padding: 10px 14px;
-      font-size: 0.92rem;
-      min-height: 44px;
-      max-width: 100% !important;
-      box-shadow: 0 3px 0 rgba(0, 0, 0, 0.4);
-      border-radius: 999px;
-      text-align: center;
-      justify-content: center;
-    }
-    @media (min-width: 769px) { .mobile-sticky-bar { display: none !important; } }
-
-    @media (max-width: 860px) {
-      .header-inner { gap: 10px; }
-      .main-nav { min-width: 0; gap: 12px; }
-      .main-nav a { font-size: 0.84rem; }
-      .brand-logo { gap: 8px; }
-      .brand-logo img { height: 40px; }
-    }
-    @media (max-width: 600px) {
-      .btn { width: auto !important; max-width: 90% !important; }
-      .hero-trust-strip { flex-direction: column; align-items: center; gap: 14px; }
-      .c-card-dark { max-width: 100%; }
-      .contact-grid .c-card-dark:hover { transform: translateY(-5px); }
-      .map-embed-wrapper { height: 320px; }
-      .header-inner { gap: 8px; }
-      .main-nav { min-width: 0; gap: 10px; }
-      .main-nav a { font-size: 0.8rem; }
-      .brand-logo img { height: 36px; }
-      .brand-name { font-size: 1rem; }
-      .cart-trigger-btn { padding: 6px 9px; font-size: 0.78rem; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
-    }
   </style>
 </head>
 <body>
-
-  <!-- UNIFIED TOP NAVIGATION BAR -->
-  <header class="site-header">
+  <header class="site-header" id="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand-logo" aria-label="विश्वकर्मा म्यूज़िकल्स — होम">
-        <img src="favicon.webp" id="site-logo-img" alt="विश्वकर्मा म्यूज़िकल्स लोगो" width="400" height="400">
+      <a class="brand-logo" href="index.html">
+        <img src="assets/images/brand/logo.webp" alt="विश्वकर्मा म्यूज़िकल्स लोगो" onerror="this.style.display='none'">
         <span class="brand-name">विश्वकर्मा म्यूज़िकल्स</span>
       </a>
-
       <nav class="main-nav" aria-label="मुख्य नेविगेशन">
         <a href="index.html">होम</a>
         <a href="instruments.html">वाद्य यंत्र</a>
@@ -806,107 +100,51 @@
         <a href="about.html">हमारे बारे में</a>
         <a href="contact.html" class="active">संपर्क व दुकान</a>
       </nav>
-
       <div class="header-actions">
-        <button type="button" class="cart-trigger-btn" id="open-cart-btn">
+        <a href="cart.html" class="cart-trigger-btn" id="header-cart-link" aria-label="कार्ट पेज खोलें">
           <span>🛒 कार्ट</span>
           <span class="cart-badge" id="header-cart-count">0</span>
-        </button>
+        </a>
       </div>
     </div>
   </header>
 
-  <!-- 1. HERO SECTION -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-center-box">
-        <span class="badge-tag">꧁ दुकान पर पधारिए • अमानगंज ꧂</span>
-        <h1 class="hero-title">संपर्क, दुकान का पता व मार्ग-निर्देश</h1>
-        <p class="hero-desc">
-          नया वाद्य परखने, पुराने हारमोनियम, ढोलक व तबले की मरम्मत करवाने या किसी भी संगीत सलाह के लिए बेझिझक संपर्क करें। हमारी वर्कशॉप पर आपका सदैव स्वागत है।
-        </p>
-
-        <div class="btn-wrap-center" style="margin-bottom: 30px;">
-          <a class="btn btn-gold" href="tel:+919755088022">📞 +91 97550 88022 पर कॉल करें</a>
-          <a class="btn btn-outline" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener noreferrer">🗺️ Maps नेविगेशन खोलें</a>
-          <a class="btn btn-outline" href="#customer-status-lookup">🔎 स्टेटस जाँचें</a>
-        </div>
-
-        <div class="hero-trust-strip">
-          <div class="trust-item"><span class="icon" aria-hidden="true">✓</span> सातों दिन खुली (सुबह 9 से रात 9)</div>
-          <div class="trust-item"><span class="icon" aria-hidden="true">✓</span> वर्कशॉप में बैठकर परखने की सुविधा</div>
-          <div class="trust-item"><span class="icon" aria-hidden="true">✓</span> पारदर्शी दरें व सही मार्गदर्शन</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="gold-section-divider">
-
-  <!-- 2. CONTACT DETAILS GRID -->
-  <section class="sec-light">
+  <section class="sec-light" id="contact-details">
     <div class="container">
       <div class="sec-head">
-        <span class="badge-tag">❖ संपर्क विवरण ❖</span>
-        <h2>सीधा संपर्क व दुकान का पता</h2>
-        <p>दुकान आने, फ़ोन पर परामर्श लेने या समय की जानकारी हेतु मुख्य विवरण।</p>
+        <span class="badge-tag">❖ स्था. 1990 • अमानगंज, जिला पन्ना (म.प्र.) ❖</span>
+        <h1>संपर्क व दुकान का पता</h1>
+        <p>वाद्य खरीद, डिलीवरी या कार्यशाला में मरम्मत की जानकारी के लिए सीधे संपर्क करें।</p>
       </div>
 
-      <div class="contact-grid">
-        <!-- 1. Address Card -->
-        <article class="c-card-dark">
-          <div class="c-icon-box-light" aria-hidden="true">📍</div>
-          <h3>दुकान व वर्कशॉप का पता</h3>
-          <p>
-            मकान नं. 109, वार्ड नं. 10,<br>
-            हरदौल मंदिर के बगल में, शाला मोहल्ला,<br>
-            अमानगंज, जिला पन्ना, मध्य प्रदेश – 488441
-          </p>
-          <div class="c-card-act">
-            <a class="btn btn-gold" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener noreferrer">🗺️ Maps पर रास्ता देखें</a>
-          </div>
-        </article>
+      <div class="visit-info-cards">
+        <div class="vcard-dark">
+          <b>दुकान व कार्यशाला का पता</b>
+          <p>मकान नं. 109, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना (म.प्र.) - 488441</p>
+        </div>
+        <div class="vcard-dark">
+          <b>फ़ोन व आधिकारिक ईमेल</b>
+          <p><a href="tel:+919755088022">+91 97550 88022</a><br><a href="mailto:info@vishwakarmamusicals.in">info@vishwakarmamusicals.in</a></p>
+        </div>
+        <div class="vcard-dark">
+          <b>समय व पंजीकरण</b>
+          <p>प्रतिदिन सुबह 9:00 बजे से रात 9:00 बजे तक<br>GSTIN: 23BSDPV5529B1ZV</p>
+        </div>
+      </div>
 
-        <!-- 2. Phone & Email Card -->
-        <article class="c-card-dark">
-          <div class="c-icon-box-light" aria-hidden="true">📞</div>
-          <h3>फ़ोन व ईमेल संपर्क</h3>
-          <p>
-            सीधी कॉल करके बात करें व वाद्य संबंधित जानकारी प्राप्त करें।<br>
-            <strong><a href="tel:+919755088022" style="color:#ffffff;">+91 97550 88022</a></strong><br>
-            <span style="font-size:0.88rem;color:var(--gold-bright);">ईमेल: <a href="mailto:info@vishwakarmamusicals.in" style="color:var(--gold-bright);text-decoration:underline;">info@vishwakarmamusicals.in</a></span>
-          </p>
-          <div class="c-card-act">
-            <a class="btn btn-gold" href="tel:+919755088022">📞 कॉल करें</a>
-          </div>
-        </article>
-
-        <!-- 3. Business Hours Card -->
-        <article class="c-card-dark">
-          <div class="c-icon-box-light" aria-hidden="true">🕒</div>
-          <h3>कार्य समय (Working Hours)</h3>
-          <p>
-            प्रतिदिन सुबह <strong>9:00 AM से रात 9:00 PM</strong> तक<br>
-            <span style="color: var(--gold-bright); font-weight: 700;">सातों दिन खुली (Open all 7 days)</span><br>
-            त्योहारी व विशेष अवसरों पर भी सेवा उपलब्ध।
-          </p>
-          <div class="c-card-act">
-            <a class="btn btn-gold" href="tel:+919755088022">समय पुष्टि हेतु कॉल करें</a>
-          </div>
-        </article>
+      <div class="btn-wrap">
+        <a class="btn btn-gold" href="tel:+919755088022">📞 अभी कॉल करें (+91 97550 88022)</a>
+        <a class="btn btn-outline" href="#customer-status-lookup">🔎 ऑर्डर / मरम्मत स्टेटस जाँचें</a>
       </div>
     </div>
   </section>
 
-  <hr class="gold-section-divider">
-
-  <!-- 2B. SAFE CUSTOMER STATUS LOOKUP SECTION -->
-  <section id="customer-status-lookup" class="sec-dark">
+  <section class="sec-dark" id="customer-status-lookup">
     <div class="container">
       <div class="sec-head">
         <span class="badge-tag">❖ सुरक्षित ऑनलाइन स्टेटस जाँच ❖</span>
-        <h2>ऑर्डर, रिटर्न, रिफंड या मरम्मत कार्य की स्थिति</h2>
-        <p>गोपनीयता के लिए अपना ऑर्डर / इनवॉइस / जॉब ID और पंजीकृत मोबाइल नंबर के अंतिम 4 अंक दर्ज करें।</p>
+        <h2>ऑर्डर या मरम्मत कार्य की स्थिति</h2>
+        <p>अपना ऑर्डर / इनवॉइस / जॉब ID और पंजीकृत मोबाइल नंबर के अंतिम 4 अंक दर्ज करें।</p>
       </div>
 
       <div class="status-lookup-card">
@@ -914,57 +152,31 @@
           <div class="status-form-grid">
             <div class="status-field">
               <label for="vm-lookup-id">ऑर्डर / इनवॉइस / जॉब ID *</label>
-              <input
-                type="text"
-                id="vm-lookup-id"
-                name="lookupId"
-                placeholder="जैसे: WR-2026-001 या ORD-2026-..."
-                required
-                autocomplete="off"
-              >
+              <input type="text" id="vm-lookup-id" placeholder="जैसे: WR-2026-001 या ORD-2026-..." required autocomplete="off">
             </div>
-
             <div class="status-field">
               <label for="vm-mobile-last4">मोबाइल नंबर के अंतिम 4 अंक *</label>
-              <input
-                type="text"
-                id="vm-mobile-last4"
-                name="mobileLast4"
-                placeholder="जैसे: 3450"
-                maxlength="4"
-                minlength="4"
-                pattern="\d{4}"
-                inputmode="numeric"
-                required
-                autocomplete="off"
-              >
+              <input type="text" id="vm-mobile-last4" placeholder="जैसे: 8022" maxlength="4" minlength="4" pattern="\d{4}" inputmode="numeric" required autocomplete="off">
             </div>
           </div>
 
-          <div class="status-actions">
-            <button type="submit" id="vm-status-submit" class="btn btn-gold">🔍 स्थिति देखें</button>
-            <a href="tel:+919755088022" class="btn btn-outline">📞 सहायता हेतु कॉल करें: +91 97550 88022</a>
+          <div class="btn-wrap" style="margin-top:20px;">
+            <button type="submit" id="vm-status-submit" class="btn btn-gold">🔎 स्थिति देखें</button>
+            <a href="tel:+919755088022" class="btn btn-outline">📞 सहायता: +91 97550 88022</a>
           </div>
 
           <div id="vm-status-result" class="status-result-box" role="region" aria-live="polite"></div>
         </form>
-
-        <div class="status-policy-note">
-          <strong>सेवा नियम:</strong> कूरियर शिपिंग केवल नए वाद्य यंत्रों पर लागू है। मरम्मत व ट्यूनिंग के लिए वाद्य लेकर अमानगंज कार्यशाला में स्वयं आना अनिवार्य है।
-        </div>
       </div>
     </div>
   </section>
 
-  <hr class="gold-section-divider">
-
-  <!-- 3. GOOGLE MAPS LOCATION -->
-  <section class="sec-light">
+  <section class="sec-light" id="shop-google-map">
     <div class="container">
       <div class="sec-head">
         <span class="badge-tag">❖ गूगल मैप्स लोकेशन ❖</span>
-        <h2>दुकान का सटीक स्थान (Google Maps)</h2>
-        <p>अमानगंज में शाला मोहल्ला के हरदौल मंदिर के बिल्कुल बगल में हमारी दुकान और वर्कशॉप स्थित है।</p>
+        <h2>दुकान का सटीक स्थान</h2>
+        <p>हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना (म.प्र.) - 488441</p>
       </div>
 
       <div class="map-card-light">
@@ -975,368 +187,119 @@
                   referrerpolicy="no-referrer-when-downgrade"
                   allowfullscreen></iframe>
         </div>
-
-        <div class="btn-wrap-center">
-          <a class="btn btn-gold" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener noreferrer">
-            🗺️ Google Maps में रास्ता देखें
-          </a>
+        <div class="btn-wrap">
+          <a class="btn btn-gold" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener noreferrer">🗺️ Google Maps में रास्ता खोलें</a>
+          <a class="btn btn-outline" href="instruments.html">वाद्य संग्रह देखें →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <hr class="gold-section-divider">
-
-  <!-- 4. FAQ SECTION -->
-  <section class="sec-dark">
-    <div class="container">
-      <div class="sec-head">
-        <span class="badge-tag">❖ अक्सर पूछे जाने वाले सवाल ❖</span>
-        <h2>दुकान आने से पहले ज़रूरी सवाल</h2>
-        <p>दुकान आने या मरम्मत के लिए संपर्क करने से पहले ग्राहकों की प्रमुख जिज्ञासाएँ।</p>
+  <div class="sec-footer-light-wrap">
+    <footer class="page-footer-nav-dark">
+      <div class="pfn-links">
+        <a href="index.html">होम</a>
+        <a href="instruments.html">वाद्य यंत्र</a>
+        <a href="cart.html">कार्ट</a>
+        <a href="checkout.html">चेकआउट</a>
+        <a href="workshop.html">वर्कशॉप व मरम्मत</a>
+        <a href="downloads.html">डाउनलोड</a>
+        <a href="about.html">हमारे बारे में</a>
+        <a href="contact.html">संपर्क व दुकान</a>
+        <a href="privacy-policy.html">गोपनीयता नीति</a>
+        <a href="terms-and-conditions.html">नियम व शर्तें</a>
+        <a href="disclaimer.html">अस्वीकरण</a>
       </div>
-
-      <div class="faq-list">
-        <details class="faq-item-dark">
-          <summary>दुकान कब खुली रहती है?</summary>
-          <div class="faq-body-light">
-            दुकान प्रतिदिन सुबह 9:00 बजे से रात 9:00 बजे तक, सातों दिन खुली रहती है। यदि आप दूर से आ रहे हैं तो आने से पहले +91 97550 88022 पर फ़ोन कर सकते हैं।
-          </div>
-        </details>
-
-        <details class="faq-item-dark">
-          <summary>क्या वाद्य खरीदने से पहले बजाकर देख सकते हैं?</summary>
-          <div class="faq-body-light">
-            जी हाँ, बिल्कुल! आप हमारी वर्कशॉप में बैठकर हारमोनियम, सफ़री हारमोनियम, ढोलक, तबला, झीका या बांसुरी स्वयं बजाकर देख सकते हैं और जब पूरी तसल्ली हो जाए, तभी वाद्य चुन सकते हैं।
-          </div>
-        </details>
-
-        <details class="faq-item-dark">
-          <summary>वाद्य यंत्रों की सही जानकारी और ऑनलाइन ऑर्डर कैसे पता करें?</summary>
-          <div class="faq-body-light">
-            जानकारी जानने के लिए आप वेबसाइट के 'वाद्य यंत्र' पेज पर लाइव विवरण देख सकते हैं, दुकान पर पधार सकते हैं या +91 97550 88022 पर कॉल कर सकते हैं। वर्कशॉप का सही और प्रामाणिक विवरण पहले ही स्पष्ट बता दिया जाता है।
-          </div>
-        </details>
-
-        <details class="faq-item-dark">
-          <summary>मरम्मत में कितना समय और खर्च लगता है?</summary>
-          <div class="faq-body-light">
-            काम के अनुसार 2 घंटे से 48 घंटे में वाद्य तैयार हो जाता है (जैसे ढोलक मसाला 2–4 घंटे, धोंकनी सीलिंग, सुर मिलान या तबला रिपेयरिंग 24–48 घंटे)। काम शुरू होने से पहले वास्तविक खर्च की साफ़ जानकारी दी जाती है।
-          </div>
-        </details>
-
-        <details class="faq-item-dark">
-          <summary>कौन-कौन से क्षेत्रों के लिए आपकी सेवा उपलब्ध है?</summary>
-          <div class="faq-body-light">
-            अमानगंज, पन्ना, पवई, सिमरिया, गुनौर, कटनी, सतना व संपूर्ण बुंदेलखंड क्षेत्र के संगीत साधकों व मानस मंडलियों के लिए हमारी वर्कशॉप सेवा और पूरे भारत के लिए सुरक्षित कूरियर होम डिलीवरी उपलब्ध है।
-          </div>
-        </details>
-
-        <details class="faq-item-dark">
-          <summary>दुकान तक पहुँचने का सबसे आसान रास्ता क्या है?</summary>
-          <div class="faq-body-light">
-            अमानगंज बस स्टैंड से शाला मोहल्ला स्थित प्रसिद्ध हरदौल मंदिर की ओर आएं। मंदिर के ठीक बगल में मकान नं. 109 (वार्ड नं. 10) पर विश्वकर्मा म्यूज़िकल्स स्थित है।
-          </div>
-        </details>
+      <div class="social-links-footer" aria-label="सोशल मीडिया व व्हाट्सएप लिंक">
+        <a class="social-icon-btn" href="https://www.youtube.com/@vishwakarmamusicals" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a class="social-icon-btn" href="https://www.facebook.com/vishwakarmamusicalsamanganj/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        </a>
+        <a class="social-icon-btn" href="https://www.instagram.com/vishwakarmamusicals/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a class="social-icon-btn" href="https://wa.me/919755088022" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.82 14.02c-.24.68-1.4 1.3-1.92 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.61-2.91-1.26-4.81-4.19-4.96-4.38-.15-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.01-2.42.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.24.57.82 2 .89 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12 1 2.07 1.31 2.36 1.46.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.39-.24.65-.14.27.1 1.69.8 1.98.94.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
+        </a>
       </div>
-    </div>
-  </section>
-
-  <!-- 5. UNIFIED FOOTER WITH SOCIAL ICONS (WHATSAPP INCLUDED WITH SOCIAL BUTTONS) -->
-  <footer class="sec-footer-light-wrap">
-    <div class="container">
-      <div class="page-footer-nav-dark">
-        <div class="pfn-links">
-          <a href="index.html">होम</a>
-          <a href="instruments.html">वाद्य यंत्र</a>
-          <a href="downloads.html">डाउनलोड</a>
-          <a href="workshop.html">वर्कशॉप व मरम्मत</a>
-          <a href="about.html">हमारे बारे में</a>
-          <a href="contact.html" class="active">संपर्क व दुकान</a>
-          <a href="privacy-policy.html">गोपनीयता नीति</a>
-          <a href="terms-and-conditions.html">नियम व शर्तें</a>
-          <a href="disclaimer.html">अस्वीकरण</a>
-        </div>
-
-        <div class="social-links-footer">
-          <a class="social-icon-btn" href="https://www.youtube.com/@vishwakarmamusicals" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
-            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          </a>
-          <a class="social-icon-btn" href="https://www.facebook.com/vishwakarmamusicalsamanganj/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/></svg>
-          </a>
-          <a class="social-icon-btn" href="https://www.instagram.com/vishwakarmamusicals/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <a class="social-icon-btn" href="https://wa.me/919755088022" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
-            <svg viewBox="0 0 448 512" aria-hidden="true"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32 101.5 32 2 131.5 2 253.9c0 39.1 10.2 77.3 29.6 111L0 480l118.3-31c32.6 17.8 69.4 27.2 105.4 27.2h.1c122.3 0 222.1-99.5 222.2-221.9 0-59.3-23.1-115.1-65.1-157.2zM223.9 438.7c-33 0-65.4-8.9-93.6-25.7l-6.7-4-70.2 18.4 18.7-68.4-4.4-7C49.1 322.2 39.9 288.4 39.9 253.9 39.9 152.7 122.7 69.8 223.9 69.8c49 0 95.1 19.1 129.8 53.9 34.6 34.7 53.7 80.8 53.7 129.8-.1 101.2-82.9 184.1-183.5 184.1zm101.1-138.2c-5.5-2.8-32.8-16.1-37.9-17.9-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.5-14.3 17.9-17.6 21.6-3.2 3.7-6.5 4.2-12 1.4-32.5-16.2-53.8-29-75.2-65.7-5.7-9.8 5.7-9.1 16.2-30.4 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.5-19.4 19-19.4 46.3 0 27.3 19.9 53.6 22.6 57.3 2.8 3.7 39.1 59.7 94.6 83.7 35.1 15.2 48.8 16.5 66.3 13.9 10.7-1.6 32.8-13.4 37.4-26.3 4.6-12.9 4.6-24 3.2-26.3-1.3-2.3-5-3.7-11.1-6.5z"/></svg>
-          </a>
-        </div>
-
-        <p class="pfn-copy">
-          © 2026 विश्वकर्मा म्यूज़िकल्स, मकान नं. 109, शाला मोहल्ला, अमानगंज, जिला पन्ना (म.प्र.) - 488441 | फ़ोन: <a href="tel:+919755088022" style="color:#f5ede0;">+91 97550 88022</a> | ईमेल: <a href="mailto:info@vishwakarmamusicals.in" style="color:#f5ede0;">info@vishwakarmamusicals.in</a>
+      <p class="pfn-copy">
+          <span class="pfn-copy-main">© 2026 विश्वकर्मा म्यूज़िकल्स | फ़ोन: <a href="tel:+919755088022">+91 97550 88022</a> | ईमेल: <a href="mailto:info@vishwakarmamusicals.in">info@vishwakarmamusicals.in</a></span>
+          <span class="pfn-gst-line">GSTIN: 23BSDPV5529B1ZV</span>
         </p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- UNIFIED CART DRAWER -->
-  <div class="overlay-backdrop" id="cart-backdrop"></div>
-  <aside class="cart-drawer" id="cart-drawer">
-    <div class="drawer-header">
-      <h3 class="serif">आपका शॉपिंग कार्ट</h3>
-      <button type="button" id="close-cart-btn" style="background:none;border:none;color:var(--gold-bright);font-size:1.4rem;cursor:pointer;">✕</button>
-    </div>
-    <div class="drawer-body" id="cart-items-box"></div>
-    <div class="drawer-footer">
-      <div style="display:flex;justify-content:space-between;font-weight:800;font-size:1.15rem;color:var(--maroon-title);margin-bottom:12px;">
-        <span>कुल वाद्य मूल्य:</span>
-        <span id="cart-total-display">₹0</span>
-      </div>
-      <a href="product.html?checkout=cart" id="drawer-checkout-link" class="btn btn-gold" style="width:100%;max-width:100% !important;">कार्ट के सभी वाद्य ऑर्डर करें →</a>
-    </div>
-  </aside>
-
-  <!-- MOBILE STICKY CTA BAR -->
-  <div class="mobile-sticky-bar">
-    <a class="btn btn-gold" href="tel:+919755088022">📞 विशेषज्ञ को कॉल करें</a>
-    <a class="btn btn-outline" href="https://maps.google.com/?cid=18073538812924066253" target="_blank" rel="noopener noreferrer" style="background:linear-gradient(180deg,#3d2315 0%,#201109 100%);color:#fbf6ee !important;border:2px solid var(--gold-border);">🗺️ रास्ता देखें</a>
+    </footer>
   </div>
 
-  <!-- SAFE CUSTOMER STATUS LOOKUP ENGINE -->
+  <div class="mobile-sticky-bar">
+    <a class="btn btn-gold" href="tel:+919755088022">📞 विशेषज्ञ को कॉल करें</a>
+    <a class="btn btn-outline" href="instruments.html">🎵 वाद्य संग्रह देखें</a>
+  </div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/cart.js"></script>
   <script>
     (function () {
-      const VM_STATUS_API_URL = "https://script.google.com/macros/s/AKfycbzgrr_lrnBM_TQ9UmBgGSACRG0cSL-H0CWGIEk2-ynufNkq_mJ4IsiMGHpAVQ4PuF1g/exec";
-      const form = document.getElementById("vm-status-form");
-      const idInput = document.getElementById("vm-lookup-id");
-      const last4Input = document.getElementById("vm-mobile-last4");
-      const btn = document.getElementById("vm-status-submit");
-      const resultBox = document.getElementById("vm-status-result");
-
+      var form = document.getElementById("vm-status-form");
+      var idInput = document.getElementById("vm-lookup-id");
+      var last4Input = document.getElementById("vm-mobile-last4");
+      var btn = document.getElementById("vm-status-submit");
+      var resultBox = document.getElementById("vm-status-result");
       if (!form || !idInput || !last4Input || !btn || !resultBox) return;
 
-      function escapeText(val) {
-        return String(val == null ? "" : val)
+      function esc(v) {
+        return sanitizeVMText(String(v == null ? "" : v))
           .replace(/&/g, "&amp;")
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#39;");
+          .replace(/"/g, "&quot;");
       }
 
-      function formatRupees(val) {
-        const str = String(val == null ? "" : val).trim();
-        if (!str) return "₹0";
-        return str.indexOf("₹") === 0 ? str : "₹" + str;
-      }
-
-      function showResult(html, isError) {
+      function showBox(html, isErr) {
         resultBox.style.display = "block";
-        resultBox.style.background = isError ? "#2b0d0d" : "#0e2618";
-        resultBox.style.border = isError ? "1.5px solid #ef4444" : "1.5px solid #22c55e";
-        resultBox.style.color = isError ? "#fecaca" : "#dcfce7";
+        resultBox.style.background = isErr ? "#2b0d0d" : "#0e2618";
+        resultBox.style.border = isErr ? "1.5px solid #ef4444" : "1.5px solid #22c55e";
+        resultBox.style.color = isErr ? "#fecaca" : "#dcfce7";
         resultBox.innerHTML = html;
-      }
-
-      function renderPayload(payload) {
-        const d = payload.data || {};
-        if (payload.recordType === "repair") {
-          return `
-            <div style="font-weight:800;font-size:1.02rem;color:#fcd777;">🛠️ मरम्मत / सुधार कार्य की स्थिति</div>
-            <div class="status-result-grid">
-              <div><strong>जॉब ID:</strong> ${escapeText(d.id)}</div>
-              <div><strong>कार्य स्थिति:</strong> ${escapeText(d.workStatus)}</div>
-              <div><strong>वाद्य:</strong> ${escapeText(d.instrument)}</div>
-              <div><strong>संभावित पूर्ण तिथि:</strong> ${escapeText(d.promisedDate || "—")}</div>
-              <div><strong>वापसी तिथि:</strong> ${escapeText(d.deliveredDate || "—")}</div>
-              <div><strong>अनुमानित शुल्क:</strong> ${escapeText(formatRupees(d.estimatedCost))}</div>
-              <div><strong>एडवांस प्राप्त:</strong> ${escapeText(formatRupees(d.advancePaid))}</div>
-              <div><strong>शेष बकाया:</strong> ${escapeText(formatRupees(d.balanceDue))}</div>
-            </div>
-            ${d.policyNote ? `<div style="margin-top:10px;font-size:0.88rem;color:#f5ede0;">${escapeText(d.policyNote)}</div>` : ""}
-          `;
-        }
-
-        return `
-          <div style="font-weight:800;font-size:1.02rem;color:#fcd777;">📦 ऑर्डर / बिल / रिटर्न / रिफंड स्थिति</div>
-          <div class="status-result-grid">
-            <div><strong>रिकॉर्ड ID:</strong> ${escapeText(d.id)}</div>
-            <div><strong>भुगतान स्थिति:</strong> ${escapeText(d.paymentStatus || "—")}</div>
-            <div><strong>डिलीवरी / फुलफिलमेंट:</strong> ${escapeText(d.fulfillmentStatus || "—")}</div>
-            <div><strong>रिटर्न स्थिति:</strong> ${escapeText(d.returnStatus || "None")}</div>
-            <div><strong>रिफंड राशि:</strong> ${escapeText(formatRupees(d.refundAmount))}</div>
-            <div><strong>रिफंड संदर्भ:</strong> ${escapeText(d.refundRef || "—")}</div>
-            <div><strong>कूरियर ट्रैकिंग नं.:</strong> ${escapeText(d.courierTrackingNo || "—")}</div>
-            <div><strong>कुल राशि / शेष बकाया:</strong> ${escapeText(formatRupees(d.totalAmount))} / ${escapeText(formatRupees(d.balanceDue))}</div>
-          </div>
-          ${d.itemsSummary ? `<div style="margin-top:8px;font-size:0.9rem;"><strong>वाद्य विवरण:</strong> ${escapeText(d.itemsSummary)}</div>` : ""}
-          ${d.deliveryRemarks ? `<div style="margin-top:4px;font-size:0.88rem;"><strong>विवरण:</strong> ${escapeText(d.deliveryRemarks)}</div>` : ""}
-          ${d.policyNote ? `<div style="margin-top:8px;font-size:0.88rem;color:#f5ede0;">${escapeText(d.policyNote)}</div>` : ""}
-        `;
       }
 
       form.addEventListener("submit", async function (e) {
         e.preventDefault();
-        const lookupId = idInput.value.trim().toUpperCase();
-        const mobileLast4 = last4Input.value.replace(/\D/g, "").slice(-4);
-
+        var lookupId = idInput.value.trim().toUpperCase();
+        var mobileLast4 = last4Input.value.replace(/\D/g, "").slice(-4);
         if (!lookupId || mobileLast4.length !== 4) {
-          showResult("कृपया मान्य ऑर्डर / इनवॉइस / जॉब ID और मोबाइल नंबर के सही 4 अंक दर्ज करें।", true);
+          showBox("कृपया मान्य ऑर्डर / इनवॉइस / जॉब ID और मोबाइल नंबर के सही 4 अंक दर्ज करें।", true);
           return;
         }
 
-        const origText = btn.textContent;
+        var apiUrl = (typeof VM_CONFIG !== "undefined" && VM_CONFIG.orderApiUrl) ? VM_CONFIG.orderApiUrl : "";
+        var origText = btn.textContent;
         btn.disabled = true;
         btn.textContent = "⏳ स्थिति जाँची जा रही है...";
 
         try {
-          const endpoint = `${VM_STATUS_API_URL}?action=statusLookup&lookupId=${encodeURIComponent(lookupId)}&mobileLast4=${encodeURIComponent(mobileLast4)}`;
-          const res = await fetch(endpoint, { method: "GET", cache: "no-store" });
-          if (!res.ok) throw new Error("Network response error");
-          const data = await res.json();
-          if (data && data.found) {
-            showResult(renderPayload(data), false);
+          var endpoint = apiUrl + "?action=statusLookup&lookupId=" + encodeURIComponent(lookupId) + "&mobileLast4=" + encodeURIComponent(mobileLast4);
+          var res = await fetch(endpoint, { method: "GET", cache: "no-store" });
+          if (!res.ok) throw new Error("Network error");
+          var data = await res.json();
+          if (data && data.found && data.data) {
+            var d = data.data;
+            if (data.recordType === "repair") {
+              showBox('<strong style="color:#fcd777;">🛠️ मरम्मत कार्य की स्थिति</strong><div class="status-result-grid"><div><strong>जॉब ID:</strong> ' + esc(d.id) + '</div><div><strong>स्थिति:</strong> ' + esc(d.workStatus) + '</div><div><strong>वाद्य:</strong> ' + esc(d.instrument) + '</div><div><strong>संभावित तिथि:</strong> ' + esc(d.promisedDate || "—") + '</div></div>', false);
+            } else {
+              showBox('<strong style="color:#fcd777;">📦 ऑर्डर / बिल की स्थिति</strong><div class="status-result-grid"><div><strong>रिकॉर्ड ID:</strong> ' + esc(d.id) + '</div><div><strong>भुगतान:</strong> ' + esc(d.paymentStatus || "—") + '</div><div><strong>डिलीवरी:</strong> ' + esc(d.fulfillmentStatus || "—") + '</div><div><strong>कूरियर ट्रैकिंग:</strong> ' + esc(d.courierTrackingNo || "—") + '</div></div>', false);
+            }
           } else {
-            showResult(
-              escapeText((data && data.message) || "दिए गए ID और मोबाइल के अंतिम 4 अंकों से कोई रिकॉर्ड मेल नहीं खाया। सहायता के लिए +91 97550 88022 पर कॉल करें।"),
-              true
-            );
+            showBox(esc((data && data.message) || "दिए गए विवरण से कोई रिकॉर्ड नहीं मिला। सहायता के लिए +91 97550 88022 पर कॉल करें।"), true);
           }
         } catch (err) {
-          showResult(
-            "अभी ऑनलाइन स्थिति देखने में समस्या आ रही है। कृपया सीधे +91 97550 88022 पर कॉल करके स्थिति जानें।",
-            true
-          );
+          showBox("अभी ऑनलाइन स्थिति देखने में समस्या आ रही है। कृपया +91 97550 88022 पर सीधे कॉल करें।", true);
         } finally {
           btn.disabled = false;
           btn.textContent = origText;
         }
       });
     })();
-  </script>
-
-  <!-- SELF-CONTAINED LOGO FALLBACK & CART ENGINE -->
-  <script>
-    window.VMCartUI = {
-      storageKey: "vm_cart_items_v1",
-      readCart: function () {
-        try {
-          const raw = localStorage.getItem(this.storageKey);
-          const items = raw ? JSON.parse(raw) : [];
-          return Array.isArray(items) ? items.filter(i => i && i.sku) : [];
-        } catch (e) { return []; }
-      },
-      syncDrawer: function () {
-        const items = this.readCart();
-        const count = items.reduce((s, i) => s + (Number(i.qty) || 1), 0);
-        const total = items.reduce((s, i) => s + ((Number(i.price) || 0) * (Number(i.qty) || 1)), 0);
-        const countEl = document.getElementById("header-cart-count");
-        const totalEl = document.getElementById("cart-total-display");
-        const box = document.getElementById("cart-items-box");
-        const checkoutLink = document.getElementById("drawer-checkout-link");
-        if (countEl) countEl.textContent = String(count);
-        if (totalEl) totalEl.textContent = "₹" + Number(total || 0).toLocaleString("en-IN");
-        if (checkoutLink) {
-          if (items.length > 0) {
-            checkoutLink.href = "product.html?checkout=cart&slug=" + encodeURIComponent(String(items[0].sku).toLowerCase());
-            checkoutLink.style.opacity = "1";
-            checkoutLink.onclick = null;
-          } else {
-            checkoutLink.href = "#";
-            checkoutLink.style.opacity = "0.6";
-            checkoutLink.onclick = function (e) {
-              e.preventDefault();
-              alert("कृपया पहले कार्ट में कोई वाद्य यंत्र जोड़ें।");
-            };
-          }
-        }
-        if (!box) return;
-        if (!items.length) {
-          box.innerHTML = '<p style="text-align:center;color:#4a3424;padding:24px 0;">आपका कार्ट अभी खाली है।</p>';
-          return;
-        }
-        box.innerHTML = items.map((item, idx) => `
-          <div class="cart-item-row" style="gap:10px;">
-            <div style="flex:1;">
-              <strong style="color:#8a2a0c;display:block;line-height:1.35;">${item.name || item.sku}</strong>
-              <span style="font-size:0.84rem;color:#4a3424;display:block;margin:3px 0;">कोड: ${item.sku} | दर: ₹${Number(item.price || 0).toLocaleString("en-IN")}</span>
-              <div style="display:inline-flex;align-items:center;gap:8px;margin-top:4px;background:#fcedd8;border:1px solid #e6b84d;border-radius:999px;padding:2px 8px;">
-                <button type="button" data-qty-delta="-1" data-idx="${idx}" style="background:none;border:none;color:#8a2a0c;font-weight:800;cursor:pointer;font-size:1rem;padding:0 4px;" aria-label="मात्रा घटाएं">−</button>
-                <strong style="font-size:0.9rem;color:#1f1107;">${item.qty}</strong>
-                <button type="button" data-qty-delta="1" data-idx="${idx}" style="background:none;border:none;color:#8a2a0c;font-weight:800;cursor:pointer;font-size:1rem;padding:0 4px;" aria-label="मात्रा बढ़ाएं">+</button>
-              </div>
-            </div>
-            <button type="button" data-remove-idx="${idx}" style="background:none;border:none;color:#b91c1c;font-weight:700;cursor:pointer;font-size:1.1rem;" aria-label="हटाएं">✕</button>
-          </div>
-        `).join("");
-        box.querySelectorAll("button[data-qty-delta]").forEach(btn => {
-          btn.onclick = () => {
-            const idx = Number(btn.getAttribute("data-idx"));
-            const delta = Number(btn.getAttribute("data-qty-delta"));
-            const current = this.readCart();
-            if (idx >= 0 && idx < current.length) {
-              const nextQty = (Number(current[idx].qty) || 1) + delta;
-              if (nextQty <= 0) current.splice(idx, 1);
-              else current[idx].qty = Math.min(10000, nextQty);
-              try { localStorage.setItem(this.storageKey, JSON.stringify(current)); } catch (e) {}
-              this.syncDrawer();
-            }
-          };
-        });
-        box.querySelectorAll("button[data-remove-idx]").forEach(btn => {
-          btn.onclick = () => {
-            const idx = Number(btn.getAttribute("data-remove-idx"));
-            const current = this.readCart();
-            if (idx >= 0 && idx < current.length) {
-              current.splice(idx, 1);
-              try { localStorage.setItem(this.storageKey, JSON.stringify(current)); } catch (e) {}
-              this.syncDrawer();
-            }
-          };
-        });
-      }
-    };
-
-    const LOGO_EMBLEM_SVG = "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(
-      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 88">
-        <rect x="3" y="3" width="254" height="82" rx="14" fill="#241107" stroke="#e6b84d" stroke-width="3"/>
-        <text x="130" y="54" text-anchor="middle" fill="#fcd777" font-family="serif" font-size="28" font-weight="bold">🎵 विश्वकर्मा</text>
-      </svg>`
-    );
-
-    const logoEl = document.getElementById("site-logo-img");
-    if (logoEl) {
-      logoEl.onerror = function () {
-        this.onerror = null;
-        this.src = LOGO_EMBLEM_SVG;
-      };
-      if (logoEl.complete && logoEl.naturalWidth === 0) {
-        logoEl.src = LOGO_EMBLEM_SVG;
-      }
-    }
-
-    // Unified Cart Drawer Sync
-    function syncCartDrawer() {
-      window.VMCartUI.syncDrawer();
-    }
-    document.getElementById("open-cart-btn").onclick = () => {
-      syncCartDrawer();
-      document.getElementById("cart-drawer").classList.add("open");
-      document.getElementById("cart-backdrop").classList.add("open");
-    };
-    document.getElementById("close-cart-btn").onclick = () => {
-      document.getElementById("cart-drawer").classList.remove("open");
-      document.getElementById("cart-backdrop").classList.remove("open");
-    };
-    document.getElementById("cart-backdrop").onclick = () => {
-      document.getElementById("cart-drawer").classList.remove("open");
-      document.getElementById("cart-backdrop").classList.remove("open");
-    };
-    window.addEventListener("storage", function (event) {
-      if (event.key === window.VMCartUI.storageKey) syncCartDrawer();
-    });
-
-    document.addEventListener("DOMContentLoaded", syncCartDrawer);
   </script>
 </body>
 </html>
