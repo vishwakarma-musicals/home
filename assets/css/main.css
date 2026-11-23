@@ -1818,3 +1818,577 @@ footer,
     visibility: visible !important;
   }
 }
+
+
+/* === VM UI v9.6: UNIFORM 100% ZOOM ON ALL PAGES + SCREENSHOT ALIGNMENT FIXES === */
+html,
+body {
+  zoom: 100% !important;
+  transform: none !important;
+  background-color: #160a04 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: clip;
+}
+
+.vm-two-line-title,
+.product-title,
+.card-title-two-line,
+.item-title,
+[class*="product-title"] {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  gap: 3px !important;
+  line-height: 1.35 !important;
+  min-height: 2.8em;
+}
+.vm-name-hi {
+  display: block !important;
+  font-weight: 700 !important;
+}
+.vm-name-en {
+  display: block !important;
+  font-size: 0.88em !important;
+  opacity: 0.94 !important;
+}
+
+.category-badge,
+.cat-badge,
+.badge-category {
+  background-color: #fde68a !important;
+  color: #1f1107 !important;
+  border: 1.5px solid #94651a !important;
+  font-weight: 700 !important;
+}
+
+.mobile-sticky-bar,
+.sticky-cta-bar {
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  margin: 0 !important;
+  padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+  background: #160a04 !important;
+  border-top: none !important;
+  box-shadow: none !important;
+}
+
+.mobile-sticky-bar .btn:nth-child(2),
+.mobile-sticky-bar a:nth-child(2),
+.sticky-cta-bar .btn:nth-child(2),
+.sticky-cta-bar a:nth-child(2) {
+  background: linear-gradient(180deg, #1f5c36 0%, #133b22 100%) !important;
+  color: #ffffff !important;
+  border: 1.5px solid #5ad488 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+footer,
+.site-footer,
+.sec-footer-light-wrap,
+.site-footer-wrap {
+  margin: 0 !important;
+  padding-bottom: 58px !important;
+  background-color: #160a04 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.vm-map-frame-wrap {
+  width: 100% !important;
+  max-width: 1120px !important;
+  margin: 16px auto 0 auto !important;
+}
+.vm-map-frame-wrap iframe {
+  width: 100% !important;
+  max-width: 1120px !important;
+  height: 310px;
+  border-radius: 12px;
+  border: 1.5px solid #e6b84d;
+  display: block;
+}
+
+.vm-map-below-actions {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+.vm-map-top-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+.vm-map-bottom-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#vm-customer-trust-hub,
+.vm-trust-section,
+[data-vm-trust-section] {
+  max-width: 1120px !important;
+  margin: 28px auto !important;
+  padding: 24px !important;
+  border-radius: 16px !important;
+  border: 1.5px solid rgba(230, 184, 77, 0.45) !important;
+  background: #241107 !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22) !important;
+}
+
+#vm-customer-trust-hub h1,
+#vm-customer-trust-hub h2,
+#vm-customer-trust-hub h3,
+.vm-trust-section h1,
+.vm-trust-section h2,
+.vm-trust-section h3 {
+  color: #fcd777 !important;
+  text-align: center !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.vm-trust-bottom-cta-row {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+#vm-customer-trust-hub a,
+#vm-customer-trust-hub button,
+.vm-trust-section a,
+.vm-trust-section button {
+  transition: transform 0.22s ease, background-color 0.22s ease, color 0.22s ease, box-shadow 0.22s ease !important;
+}
+
+#vm-customer-trust-hub a:hover,
+#vm-customer-trust-hub button:hover,
+.vm-trust-section a:hover,
+.vm-trust-section button:hover {
+  transform: translateY(-2px) !important;
+}
+
+@media (max-width: 768px) {
+  .main-nav,
+  nav.main-nav,
+  .header-nav-links {
+    display: none !important;
+  }
+
+  .hero-section,
+  .hero-banner,
+  main > section:first-of-type {
+    padding-top: 76px !important;
+  }
+
+  .hero-badge,
+  .hero-top-badge,
+  .vm-hero-badge,
+  .hero-section .badge,
+  .hero-banner .badge {
+    position: relative !important;
+    z-index: 5 !important;
+    margin-top: 12px !important;
+    display: inline-flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
+
+/* === VM UI v9.7: UNIFORM 3D BUTTONS, TRUST TOP BADGE, SECTION LOOK & HOVER + 100% ZOOM === */
+html,
+body {
+  zoom: 100% !important;
+  transform: none !important;
+  background-color: #160a04 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: clip;
+}
+
+.vm-3d-btn,
+.vm-map-below-actions a.btn,
+.vm-map-below-actions a,
+#vm-customer-trust-hub a.btn,
+#vm-customer-trust-hub button.btn,
+.vm-trust-section a.btn,
+.vm-trust-section button.btn,
+.vm-trust-section a,
+.vm-trust-section button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding: 11px 20px !important;
+  border-radius: 10px !important;
+  background: linear-gradient(180deg, #f3cb69 0%, #d49b27 55%, #a87312 100%) !important;
+  color: #1f1107 !important;
+  border: 1.5px solid #ffe599 !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 0 #6e4908, 0 7px 14px rgba(0, 0, 0, 0.35) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease !important;
+}
+
+.vm-3d-btn:hover,
+.vm-map-below-actions a.btn:hover,
+.vm-map-below-actions a:hover,
+#vm-customer-trust-hub a.btn:hover,
+#vm-customer-trust-hub button.btn:hover,
+.vm-trust-section a.btn:hover,
+.vm-trust-section button.btn:hover,
+.vm-trust-section a:hover,
+.vm-trust-section button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 0 #6e4908, 0 10px 18px rgba(0, 0, 0, 0.42) !important;
+  filter: brightness(1.05) !important;
+}
+
+.vm-3d-btn:active,
+.vm-map-below-actions a.btn:active,
+.vm-map-below-actions a:active,
+#vm-customer-trust-hub a.btn:active,
+#vm-customer-trust-hub button.btn:active,
+.vm-trust-section a.btn:active,
+.vm-trust-section button.btn:active,
+.vm-trust-section a:active,
+.vm-trust-section button:active {
+  transform: translateY(2px) !important;
+  box-shadow: 0 1px 0 #6e4908, 0 3px 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+.vm-section-top-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto 12px auto !important;
+  padding: 6px 16px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(180deg, #fde68a 0%, #e6b84d 100%) !important;
+  color: #1f1107 !important;
+  border: 1.5px solid #94651a !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  box-shadow: 0 3px 0 #7a5210, 0 5px 10px rgba(0, 0, 0, 0.25) !important;
+}
+
+#vm-customer-trust-hub,
+.vm-trust-section,
+[data-vm-trust-section] {
+  max-width: 1120px !important;
+  margin: 28px auto !important;
+  padding: 28px 24px !important;
+  border-radius: 16px !important;
+  border: 1.5px solid rgba(230, 184, 77, 0.55) !important;
+  background: #241107 !important;
+  color: #fff8ee !important;
+  text-align: center !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28) !important;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease !important;
+}
+
+#vm-customer-trust-hub:hover,
+.vm-trust-section:hover,
+[data-vm-trust-section]:hover {
+  transform: translateY(-2px) !important;
+  border-color: #e6b84d !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.36) !important;
+}
+
+#vm-customer-trust-hub h1,
+#vm-customer-trust-hub h2,
+#vm-customer-trust-hub h3,
+.vm-trust-section h1,
+.vm-trust-section h2,
+.vm-trust-section h3 {
+  color: #fcd777 !important;
+  text-align: center !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  margin-top: 4px !important;
+  margin-bottom: 12px !important;
+}
+
+#vm-customer-trust-hub .card,
+#vm-customer-trust-hub [class*="card"],
+.vm-trust-section .card,
+.vm-trust-section [class*="card"] {
+  background: #1a0c05 !important;
+  color: #fff8ee !important;
+  border: 1.5px solid rgba(230, 184, 77, 0.4) !important;
+  border-radius: 12px !important;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease !important;
+}
+
+#vm-customer-trust-hub .card:hover,
+#vm-customer-trust-hub [class*="card"]:hover,
+.vm-trust-section .card:hover,
+.vm-trust-section [class*="card"]:hover {
+  transform: translateY(-3px) !important;
+  border-color: #fcd777 !important;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35) !important;
+}
+
+.vm-two-line-title,
+.product-title,
+.card-title-two-line,
+.item-title,
+[class*="product-title"] {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  gap: 3px !important;
+  line-height: 1.35 !important;
+  min-height: 2.8em;
+}
+.vm-name-hi {
+  display: block !important;
+  font-weight: 700 !important;
+}
+.vm-name-en {
+  display: block !important;
+  font-size: 0.88em !important;
+  opacity: 0.94 !important;
+}
+
+.category-badge,
+.cat-badge,
+.badge-category {
+  background-color: #fde68a !important;
+  color: #1f1107 !important;
+  border: 1.5px solid #94651a !important;
+  font-weight: 700 !important;
+}
+
+.mobile-sticky-bar,
+.sticky-cta-bar {
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  margin: 0 !important;
+  padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+  background: #160a04 !important;
+  border-top: none !important;
+  box-shadow: none !important;
+}
+
+.mobile-sticky-bar .btn:nth-child(2),
+.mobile-sticky-bar a:nth-child(2),
+.sticky-cta-bar .btn:nth-child(2),
+.sticky-cta-bar a:nth-child(2) {
+  background: linear-gradient(180deg, #f3cb69 0%, #d49b27 55%, #a87312 100%) !important;
+  color: #1f1107 !important;
+  border: 1.5px solid #ffe599 !important;
+  box-shadow: 0 3px 0 #6e4908 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+footer,
+.site-footer,
+.sec-footer-light-wrap,
+.site-footer-wrap {
+  margin: 0 !important;
+  padding-bottom: 58px !important;
+  background-color: #160a04 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.vm-map-frame-wrap {
+  width: 100% !important;
+  max-width: 1120px !important;
+  margin: 16px auto 0 auto !important;
+}
+.vm-map-frame-wrap iframe {
+  width: 100% !important;
+  max-width: 1120px !important;
+  height: 310px;
+  border-radius: 12px;
+  border: 1.5px solid #e6b84d;
+  display: block;
+}
+
+.vm-map-below-actions {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+.vm-map-top-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+.vm-map-bottom-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.vm-trust-bottom-cta-row {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .main-nav,
+  nav.main-nav,
+  .header-nav-links {
+    display: none !important;
+  }
+
+  .hero-section,
+  .hero-banner,
+  main > section:first-of-type {
+    padding-top: 76px !important;
+  }
+
+  .hero-badge,
+  .hero-top-badge,
+  .vm-hero-badge,
+  .hero-section .badge,
+  .hero-banner .badge {
+    position: relative !important;
+    z-index: 5 !important;
+    margin-top: 12px !important;
+    display: inline-flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
+
+/* === VM UI v9.8: HIGH-CONTRAST THEME CATEGORY BADGES & SQUARE-CORNER NEW BUTTONS === */
+html,
+body {
+  zoom: 100% !important;
+  transform: none !important;
+  background-color: #160a04 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: clip;
+}
+
+.category-badge,
+.cat-badge,
+.badge-category,
+[class*="category-badge"],
+[class*="cat-badge"],
+.product-card .badge,
+.instrument-card .badge {
+  background: linear-gradient(180deg, #3b180c 0%, #240e06 100%) !important;
+  color: #ffe89e !important;
+  border: 1.5px solid #e6b84d !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35) !important;
+}
+
+.vm-3d-btn,
+.vm-map-below-actions a.btn,
+.vm-map-below-actions a,
+#vm-customer-trust-hub a.btn,
+#vm-customer-trust-hub button.btn,
+.vm-trust-section a.btn,
+.vm-trust-section button.btn,
+.vm-trust-section a,
+.vm-trust-section button,
+.mobile-sticky-bar .btn:nth-child(2),
+.mobile-sticky-bar a:nth-child(2),
+.sticky-cta-bar .btn:nth-child(2),
+.sticky-cta-bar a:nth-child(2) {
+  border-radius: 0px !important;
+}
+
+.vm-section-top-badge {
+  border-radius: 0px !important;
+}
+
+
+/* === VM UI v9.9: ROUNDED NEW BUTTONS & BADGES + READABLE LIGHT TRUST CARDS + 100% ZOOM === */
+html,
+body {
+  zoom: 100% !important;
+  transform: none !important;
+  background-color: #160a04 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: clip;
+}
+
+.vm-3d-btn,
+.vm-map-below-actions a.btn,
+.vm-map-below-actions a,
+#vm-customer-trust-hub a.btn,
+#vm-customer-trust-hub button.btn,
+.vm-trust-section a.btn,
+.vm-trust-section button.btn,
+.vm-trust-section a,
+.vm-trust-section button,
+.mobile-sticky-bar .btn:nth-child(2),
+.mobile-sticky-bar a:nth-child(2),
+.sticky-cta-bar .btn:nth-child(2),
+.sticky-cta-bar a:nth-child(2) {
+  border-radius: 999px !important;
+}
+
+.vm-section-top-badge,
+.category-badge,
+.cat-badge,
+.badge-category {
+  border-radius: 999px !important;
+}
+
+#vm-customer-trust-hub .card,
+#vm-customer-trust-hub [class*="card"],
+#vm-customer-trust-hub div[style*="border"],
+.vm-trust-section .card,
+.vm-trust-section [class*="card"],
+.vm-trust-section div[style*="border"] {
+  background: #fffdf8 !important;
+  color: #1f1107 !important;
+  border: 1.5px solid #e6b84d !important;
+  border-radius: 12px !important;
+}
+
+#vm-customer-trust-hub .card *,
+#vm-customer-trust-hub [class*="card"] *,
+.vm-trust-section .card *,
+.vm-trust-section [class*="card"] * {
+  color: #1f1107 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
