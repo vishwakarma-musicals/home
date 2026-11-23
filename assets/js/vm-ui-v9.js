@@ -917,3 +917,67 @@
     setTimeout(fixRoundedAndTrustCards, 1500);
   });
 })();
+
+
+/* === VM UI v9.10 RUNTIME: SINGLE-ROW MOBILE HEADER & DYNAMIC TOP-BAR CLEARANCE === */
+(function () {
+  function alignMobileHeaderSingleRow() {
+    if (window.innerWidth > 768) return;
+    var header = document.querySelector("header.site-header, header");
+    if (!header) return;
+
+    var menuBtn = Array.from(header.querySelectorAll("button, a")).find(function (el) {
+      var txt = (el.textContent || "").trim();
+      var cls = (el.className || "").toString().toLowerCase();
+      var aria = (el.getAttribute("aria-label") || "").toLowerCase();
+      return txt === "☰" || cls.indexOf("hamburger") !== -1 || cls.indexOf("menu-toggle") !== -1 || aria.indexOf("menu") !== -1;
+    });
+
+    var cartEl = Array.from(header.querySelectorAll("a, button")).find(function (el) {
+      if (el === menuBtn) return false;
+      var txt = (el.textContent || "").trim();
+      var cls = (el.className || "").toString().toLowerCase();
+      return txt.indexOf("कार्ट") !== -1 || cls.indexOf("cart") !== -1;
+    });
+
+    var logoEl = Array.from(header.querySelectorAll("a, div, span")).find(function (el) {
+      if (el === menuBtn || el === cartEl) return false;
+      if (menuBtn && menuBtn.contains(el)) return false;
+      if (cartEl && cartEl.contains(el)) return false;
+      var txt = (el.textContent || "").trim();
+      return txt.indexOf("विश्वकर्मा म्यूज़िकल्स") !== -1 && el.querySelector("img");
+    });
+
+    var row = header.querySelector("#vm-mobile-single-row-bar");
+    if (!row) {
+      row = document.createElement("div");
+      row.id = "vm-mobile-single-row-bar";
+      row.style.display = "flex";
+      row.style.flexDirection = "row";
+      row.style.alignItems = "center";
+      row.style.justifyContent = "space-between";
+      row.style.flexWrap = "nowrap";
+      row.style.gap = "8px";
+      row.style.width = "100%";
+    }
+
+    if (menuBtn && !row.contains(menuBtn)) row.appendChild(menuBtn);
+    if (logoEl && !row.contains(logoEl)) row.appendChild(logoEl);
+    if (cartEl && !row.contains(cartEl)) row.appendChild(cartEl);
+
+    if (row.children.length > 0 && row.parentElement !== header) {
+      header.innerHTML = "";
+      header.appendChild(row);
+    }
+
+    var h = Math.ceil(header.getBoundingClientRect().height) || 58;
+    document.body.style.paddingTop = (h + 10) + "px";
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    alignMobileHeaderSingleRow();
+    setTimeout(alignMobileHeaderSingleRow, 400);
+    setTimeout(alignMobileHeaderSingleRow, 1200);
+  });
+  window.addEventListener("resize", alignMobileHeaderSingleRow);
+})();
