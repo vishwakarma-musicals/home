@@ -2946,3 +2946,303 @@ body {
   box-shadow: none !important;
   filter: none !important;
 }
+
+
+/* === VM UI v9.17: ZERO CARD HOVER MOVEMENT & DARK BROWN (#240e06) CATEGORY BADGE WITH BRIGHT CREAM/GOLD TEXT === */
+html,
+body {
+  zoom: 100% !important;
+  transform: none !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card,
+#vm-trust-rebuilt-section .vm-trust-small-card:hover,
+.vm-trust-small-card,
+.vm-trust-small-card:hover,
+.product-card,
+.product-card:hover,
+.instrument-card,
+.instrument-card:hover,
+.card,
+.card:hover {
+  transform: none !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card:hover,
+.vm-trust-small-card:hover {
+  border-color: #ffe08a !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.24) !important;
+}
+
+.category-badge,
+.cat-badge,
+.badge-category,
+[class*="category-badge"],
+[class*="cat-badge"],
+.product-card .badge,
+.instrument-card .badge {
+  background: #240e06 !important;
+  background-color: #240e06 !important;
+  color: #fff4cc !important;
+  border: 1.5px solid #e6b84d !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+}
+
+
+/* === VM UI v9.19: STRICT SINGLE-CARD TRUST HOVER, #240e06 / #fff4cc INSTRUMENT BADGE & 100% ZOOM === */
+html,
+body {
+  zoom: 100% !important;
+  transform: none !important;
+}
+
+#vm-trust-rebuilt-section,
+#vm-trust-rebuilt-section:hover,
+#vm-trust-rebuilt-section .vm-trust-cards-grid,
+#vm-trust-rebuilt-section .vm-trust-cards-grid:hover {
+  transform: none !important;
+  translate: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card {
+  position: relative !important;
+  isolation: isolate !important;
+  transform: none !important;
+  translate: none !important;
+  background: #220f06 !important;
+  background-color: #220f06 !important;
+  color: #fff8eb !important;
+  border: 1.5px solid #c9942c !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card:hover {
+  transform: none !important;
+  translate: none !important;
+  border-color: #ffe08a !important;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28) !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card:not(:hover),
+#vm-trust-rebuilt-section .vm-trust-small-card:not(:hover) * {
+  filter: none !important;
+}
+
+.category-badge,
+.cat-badge,
+.badge-category,
+[class*="category-badge"],
+[class*="cat-badge"],
+[class*="category"][class*="badge"],
+[class*="badge"][class*="category"],
+.instrument-card .badge,
+.instrument-card [class*="badge"],
+.product-card .badge,
+.product-card [class*="badge"] {
+  background: #240e06 !important;
+  background-color: #240e06 !important;
+  color: #fff4cc !important;
+  -webkit-text-fill-color: #fff4cc !important;
+  border: 1.5px solid #e6b84d !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+}
+
+.category-badge *,
+.cat-badge *,
+.badge-category *,
+[class*="category-badge"] *,
+[class*="cat-badge"] *,
+[class*="category"][class*="badge"] *,
+[class*="badge"][class*="category"] *,
+.instrument-card [class*="badge"] *,
+.product-card [class*="badge"] * {
+  color: #fff4cc !important;
+  -webkit-text-fill-color: #fff4cc !important;
+}
+
+
+/* === VM UI v9.20: REMOVE PARENT/GRID HOVER & KEEP HOVER STRICTLY ON TARGET CARD === */
+#vm-trust-rebuilt-section,
+#vm-trust-rebuilt-section:hover,
+#vm-trust-rebuilt-section .vm-trust-cards-grid,
+#vm-trust-rebuilt-section .vm-trust-cards-grid:hover,
+.vm-trust-cards-grid,
+.vm-trust-cards-grid:hover {
+  transform: none !important;
+  translate: none !important;
+  transition: none !important;
+  filter: none !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card {
+  position: relative !important;
+  isolation: isolate !important;
+  transform: none !important;
+  translate: none !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card:hover {
+  transform: none !important;
+  translate: none !important;
+  border-color: #ffe08a !important;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28) !important;
+}
+
+
+/* === VM UI v9.21: APPLY MATCHING CARD HOVER TO THE 4 TRUST CARDS WITHOUT AFFECTING OTHER CARDS === */
+#vm-trust-rebuilt-section .vm-trust-cards-grid,
+#vm-trust-rebuilt-section .vm-trust-cards-grid:hover,
+.vm-trust-cards-grid,
+.vm-trust-cards-grid:hover {
+  transform: none !important;
+  translate: none !important;
+  transition: none !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card {
+  position: relative !important;
+  isolation: isolate !important;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card:hover {
+  background: #2b1308 !important;
+  background-color: #2b1308 !important;
+  border-color: #ffe08a !important;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.30) !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card:hover h3 {
+  color: #fff4cc !important;
+}
+
+
+/* === VM UI v9.22: LIFT HOVER ON 4 TRUST CARDS & 100% HIGH CONTRAST ON INSTRUMENT CARDS === */
+#vm-trust-rebuilt-section .vm-trust-cards-grid,
+#vm-trust-rebuilt-section .vm-trust-cards-grid:hover,
+.vm-trust-cards-grid,
+.vm-trust-cards-grid:hover {
+  transform: none !important;
+  translate: none !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card {
+  position: relative !important;
+  isolation: isolate !important;
+  background: #220f06 !important;
+  background-color: #220f06 !important;
+  color: #fff8eb !important;
+  border: 1.5px solid #c9942c !important;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card:hover {
+  transform: translateY(-4px) !important;
+  background: #2b1308 !important;
+  background-color: #2b1308 !important;
+  border-color: #ffe08a !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.30) !important;
+}
+
+.instrument-card,
+.product-card {
+  opacity: 1 !important;
+}
+
+.instrument-card h3,
+.instrument-card h4,
+.instrument-card p,
+.instrument-card .price,
+.instrument-card .meta,
+.instrument-card .desc,
+.instrument-card .subtitle,
+.product-card h3,
+.product-card h4,
+.product-card p,
+.product-card .price,
+.product-card .meta,
+.product-card .desc,
+.product-card .subtitle {
+  opacity: 1 !important;
+}
+
+.instrument-card p:not([class*="badge"]):not([class*="category"]),
+.instrument-card .meta,
+.instrument-card .desc,
+.instrument-card .subtitle,
+.product-card p:not([class*="badge"]):not([class*="category"]),
+.product-card .meta,
+.product-card .desc,
+.product-card .subtitle {
+  color: #fff6e0 !important;
+  -webkit-text-fill-color: #fff6e0 !important;
+}
+
+.instrument-card h3,
+.instrument-card h4,
+.instrument-card .title,
+.product-card h3,
+.product-card h4,
+.product-card .title {
+  color: #ffe28a !important;
+  -webkit-text-fill-color: #ffe28a !important;
+  font-weight: 700 !important;
+}
+
+.instrument-card .price,
+.product-card .price {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+
+/* === VM UI v9.23: SUBTLE INVERSE TEXT-SHADOW ON BUTTONS FOR CRISP LEGIBILITY === */
+html,
+body {
+  zoom: 100% !important;
+  transform: none !important;
+}
+
+.btn,
+button,
+.vm-3d-btn,
+[class*="btn"] {
+  text-shadow: 0 1px 1px rgba(15, 6, 2, 0.55) !important;
+}
+
+.btn.btn-light,
+.btn-cream,
+.btn-gold,
+.btn-yellow,
+[class*="btn-gold"],
+[class*="btn-light"] {
+  text-shadow: 0 1px 0 rgba(255, 248, 235, 0.50) !important;
+}
+
+
+/* === VM UI v9.24: SUBTLE INVERSE TEXT-SHADOW & 100% CONTRAST ON ALL BUTTONS === */
+.btn,
+button,
+.vm-3d-btn,
+[class*="btn"] {
+  opacity: 1 !important;
+  text-shadow: 0 1px 1px rgba(15, 6, 2, 0.78) !important;
+}
+
+.btn.btn-light,
+.btn-cream,
+.btn-gold,
+.btn-yellow,
+[class*="btn-gold"],
+[class*="btn-light"] {
+  color: #1c0d05 !important;
+  -webkit-text-fill-color: #1c0d05 !important;
+  text-shadow: 0 1px 0 rgba(255, 248, 235, 0.55) !important;
+}
