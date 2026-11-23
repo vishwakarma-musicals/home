@@ -1768,3 +1768,47 @@
     setTimeout(applyPriority2Polish, 1600);
   });
 })();
+
+
+/* === VM UI v10.5 RUNTIME: CLEAN DARK SPACER ABOVE TRUST SECTION & LOCK CARE SHEET CONTRAST === */
+(function () {
+  function fixTrustGapAndCareContrast() {
+    document.querySelectorAll(".care-sheet-light, .care-sheet-light h3, .care-list, .care-list li, .care-list li strong").forEach(function (el) {
+      el.style.setProperty("opacity", "1", "important");
+      el.style.setProperty("filter", "none", "important");
+      if (el.tagName === "H3") {
+        el.style.setProperty("color", "#6e4305", "important");
+        el.style.setProperty("-webkit-text-fill-color", "#6e4305", "important");
+      } else if (el.tagName === "STRONG") {
+        el.style.setProperty("color", "#240e06", "important");
+        el.style.setProperty("-webkit-text-fill-color", "#240e06", "important");
+      } else if (!el.classList.contains("care-sheet-light")) {
+        el.style.setProperty("color", "#1c0d05", "important");
+        el.style.setProperty("-webkit-text-fill-color", "#1c0d05", "important");
+      }
+    });
+
+    var trustEl = document.getElementById("vm-trust-rebuilt-section") || document.querySelector(".vm-trust-section");
+    if (trustEl && trustEl.parentElement) {
+      var prev = trustEl.previousElementSibling;
+      while (prev) {
+        var txt = (prev.textContent || "").trim();
+        var hasContent = prev.querySelector("h1, h2, h3, h4, p, ul, ol, table, form, .card, .product-card, .instrument-card");
+        if (!txt && !hasContent) {
+          var toRemove = prev;
+          prev = prev.previousElementSibling;
+          toRemove.remove();
+          continue;
+        }
+        prev.style.setProperty("margin-bottom", "0px", "important");
+        break;
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    fixTrustGapAndCareContrast();
+    setTimeout(fixTrustGapAndCareContrast, 500);
+    setTimeout(fixTrustGapAndCareContrast, 1500);
+  });
+})();
