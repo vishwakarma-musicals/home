@@ -1326,3 +1326,231 @@
     setTimeout(applyV916CardIsolation, 1400);
   });
 })();
+
+
+/* === VM UI v9.17 RUNTIME: LOCK CARD POSITION ON HOVER & APPLY DARK BADGE + BRIGHT CREAM TEXT === */
+(function () {
+  function applyV917Fixes() {
+    document.querySelectorAll("#vm-trust-rebuilt-section .vm-trust-small-card, .vm-trust-small-card, .product-card, .instrument-card, .card").forEach(function (card) {
+      card.style.transform = "none";
+      card.addEventListener("mouseenter", function () {
+        card.style.transform = "none";
+      });
+      card.addEventListener("mouseleave", function () {
+        card.style.transform = "none";
+      });
+    });
+
+    document.querySelectorAll(".category-badge, .cat-badge, .badge-category, [class*='category-badge'], [class*='cat-badge'], .product-card .badge, .instrument-card .badge").forEach(function (badge) {
+      badge.style.background = "#240e06";
+      badge.style.backgroundColor = "#240e06";
+      badge.style.color = "#fff4cc";
+      badge.style.border = "1.5px solid #e6b84d";
+      badge.style.borderRadius = "999px";
+      badge.style.fontWeight = "700";
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    applyV917Fixes();
+    setTimeout(applyV917Fixes, 500);
+    setTimeout(applyV917Fixes, 1400);
+  });
+})();
+
+
+/* === VM UI v9.19 RUNTIME: ISOLATE SINGLE-CARD TRUST HOVER & ENFORCE #fff4cc BADGE TEXT === */
+(function () {
+  function applyV919Rules() {
+    document.documentElement.style.setProperty("zoom", "100%", "important");
+    if (document.body) {
+      document.body.style.setProperty("zoom", "100%", "important");
+    }
+
+    var trustCards = document.querySelectorAll("#vm-trust-rebuilt-section .vm-trust-small-card");
+    trustCards.forEach(function (card) {
+      card.style.setProperty("transform", "none", "important");
+      card.style.setProperty("translate", "none", "important");
+      card.style.setProperty("isolation", "isolate", "important");
+    });
+
+    var knownCategories = [
+      "हारमोनियम", "ढोलक", "तबला", "झीका", "डमरू", "बांसुरी", "मंजीरा", "खड़ताल", "झांझ",
+      "Harmonium", "Dholak", "Tabla", "Jheeka", "Damru", "Bansuri", "Manjeera", "Kartal", "Jhanjh"
+    ];
+
+    var candidates = document.querySelectorAll(
+      ".category-badge, .cat-badge, .badge-category, [class*='category-badge'], [class*='cat-badge'], [class*='category'][class*='badge'], [class*='badge'][class*='category'], .instrument-card span, .instrument-card div, .product-card span, .product-card div"
+    );
+
+    candidates.forEach(function (el) {
+      if (el.children.length > 0) return;
+      var txt = (el.textContent || "").trim();
+      if (!txt || txt.length > 32) return;
+
+      var cls = (el.className || "").toString().toLowerCase();
+      var isBadgeClass = cls.indexOf("badge") !== -1 || cls.indexOf("category") !== -1 || cls.indexOf("cat-") !== -1;
+      var isCategoryText = knownCategories.some(function (k) { return txt === k || txt.indexOf(k) === 0; });
+
+      if (isBadgeClass || isCategoryText) {
+        el.style.setProperty("background", "#240e06", "important");
+        el.style.setProperty("background-color", "#240e06", "important");
+        el.style.setProperty("color", "#fff4cc", "important");
+        el.style.setProperty("-webkit-text-fill-color", "#fff4cc", "important");
+        el.style.setProperty("border", "1.5px solid #e6b84d", "important");
+        el.style.setProperty("border-radius", "999px", "important");
+        el.style.setProperty("font-weight", "700", "important");
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    applyV919Rules();
+    setTimeout(applyV919Rules, 500);
+    setTimeout(applyV919Rules, 1500);
+    setTimeout(applyV919Rules, 3000);
+  });
+})();
+
+
+/* === VM UI v9.20 RUNTIME: LOCK GRID/PARENT HOVER & KEEP CARD HOVER ISOLATED === */
+(function () {
+  function lockGridNoHover() {
+    document.querySelectorAll("#vm-trust-rebuilt-section, #vm-trust-rebuilt-section .vm-trust-cards-grid, .vm-trust-cards-grid").forEach(function (grid) {
+      grid.style.setProperty("transform", "none", "important");
+      grid.style.setProperty("translate", "none", "important");
+      grid.style.setProperty("transition", "none", "important");
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    lockGridNoHover();
+    setTimeout(lockGridNoHover, 600);
+  });
+})();
+
+
+/* === VM UI v9.21 RUNTIME: KEEP TRUST CARD HOVER SCOPED TO HOVERED CARD ONLY === */
+(function () {
+  function ensureTrustCardHoverStyle() {
+    document.querySelectorAll("#vm-trust-rebuilt-section .vm-trust-small-card").forEach(function (card) {
+      card.style.setProperty("isolation", "isolate", "important");
+      card.style.setProperty("position", "relative", "important");
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    ensureTrustCardHoverStyle();
+    setTimeout(ensureTrustCardHoverStyle, 500);
+  });
+})();
+
+
+/* === VM UI v9.22 RUNTIME: ENSURE 100% TEXT CONTRAST ON INSTRUMENT & PRODUCT CARDS === */
+(function () {
+  function parseRgb(rgbStr) {
+    var m = (rgbStr || "").match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+    if (!m) return null;
+    return { r: parseInt(m[1], 10), g: parseInt(m[2], 10), b: parseInt(m[3], 10) };
+  }
+
+  function applyV922CardContrast() {
+    document.querySelectorAll(".instrument-card, .product-card").forEach(function (card) {
+      card.style.setProperty("opacity", "1", "important");
+      var bg = getComputedStyle(card).backgroundColor;
+      var rgb = parseRgb(bg);
+      var isLightCard = rgb ? ((rgb.r * 0.299 + rgb.g * 0.587 + rgb.b * 0.114) > 150) : false;
+
+      card.querySelectorAll("h3, h4, p, span, div").forEach(function (el) {
+        if (el.children.length > 0) return;
+        var txt = (el.textContent || "").trim();
+        if (!txt) return;
+        var cls = (el.className || "").toString().toLowerCase();
+        var isBadge = cls.indexOf("badge") !== -1 || cls.indexOf("category") !== -1 || cls.indexOf("cat-") !== -1;
+        if (isBadge) return;
+
+        el.style.setProperty("opacity", "1", "important");
+        if (isLightCard) {
+          el.style.setProperty("color", "#1c0d05", "important");
+          el.style.setProperty("-webkit-text-fill-color", "#1c0d05", "important");
+        } else {
+          var isHeading = el.tagName === "H3" || el.tagName === "H4" || cls.indexOf("title") !== -1;
+          var targetColor = isHeading ? "#ffe28a" : "#fff6e0";
+          el.style.setProperty("color", targetColor, "important");
+          el.style.setProperty("-webkit-text-fill-color", targetColor, "important");
+        }
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    applyV922CardContrast();
+    setTimeout(applyV922CardContrast, 500);
+    setTimeout(applyV922CardContrast, 1500);
+  });
+})();
+
+
+/* === VM UI v9.23 RUNTIME: APPLY SUBTLE INVERSE TEXT-SHADOW BASED ON BUTTON BACKGROUND === */
+(function () {
+  function parseRgb(rgbStr) {
+    var m = (rgbStr || "").match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+    if (!m) return null;
+    return { r: parseInt(m[1], 10), g: parseInt(m[2], 10), b: parseInt(m[3], 10) };
+  }
+
+  function applyV923ButtonTextShadow() {
+    document.querySelectorAll(".btn, button, .vm-3d-btn, [class*='btn']").forEach(function (btn) {
+      var bg = getComputedStyle(btn).backgroundColor;
+      var rgb = parseRgb(bg);
+      var isLightBtn = rgb ? ((rgb.r * 0.299 + rgb.g * 0.587 + rgb.b * 0.114) > 155) : false;
+      var shadowVal = isLightBtn
+        ? "0 1px 0 rgba(255, 248, 235, 0.55)"
+        : "0 1px 1px rgba(15, 6, 2, 0.70)";
+      btn.style.setProperty("text-shadow", shadowVal, "important");
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    applyV923ButtonTextShadow();
+    setTimeout(applyV923ButtonTextShadow, 500);
+    setTimeout(applyV923ButtonTextShadow, 1400);
+  });
+})();
+
+
+/* === VM UI v9.24 RUNTIME: APPLY SUBTLE INVERSE SHADOW FROM COMPUTED TEXT COLOR === */
+(function () {
+  function parseRgb(rgbStr) {
+    var m = (rgbStr || "").match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+    if (!m) return null;
+    return { r: parseInt(m[1], 10), g: parseInt(m[2], 10), b: parseInt(m[3], 10) };
+  }
+
+  function applyV924InverseButtonShadow() {
+    document.querySelectorAll(".btn, button, .vm-3d-btn, [class*='btn']").forEach(function (btn) {
+      var cs = getComputedStyle(btn);
+      var txtRgb = parseRgb(cs.color);
+      var invShadow = "0 1px 1px rgba(15, 6, 2, 0.78)";
+      if (txtRgb) {
+        var lum = (txtRgb.r * 0.299 + txtRgb.g * 0.587 + txtRgb.b * 0.114);
+        if (lum > 140) {
+          var invR = Math.max(0, 255 - txtRgb.r);
+          var invG = Math.max(0, 255 - txtRgb.g);
+          var invB = Math.max(0, 255 - txtRgb.b);
+          invShadow = "0 1px 1px rgba(" + Math.round(invR * 0.25) + ", " + Math.round(invG * 0.15) + ", " + Math.round(invB * 0.10) + ", 0.78)";
+        } else {
+          invShadow = "0 1px 0 rgba(255, 248, 235, 0.55)";
+        }
+      }
+      btn.style.setProperty("opacity", "1", "important");
+      btn.style.setProperty("text-shadow", invShadow, "important");
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    applyV924InverseButtonShadow();
+    setTimeout(applyV924InverseButtonShadow, 500);
+    setTimeout(applyV924InverseButtonShadow, 1400);
+  });
+})();
