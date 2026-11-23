@@ -1627,3 +1627,194 @@ footer,
     display: none !important;
   }
 }
+
+
+/* === VM UI v9.5: MOBILE HERO TOP BADGE CLEARANCE, TWO-LINE NAMES, STICKY WHATSAPP, MAP & TRUST === */
+html,
+body {
+  background-color: #160a04 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: clip;
+}
+
+.vm-two-line-title,
+.product-title,
+.card-title-two-line,
+.item-title,
+[class*="product-title"] {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  gap: 3px !important;
+  line-height: 1.35 !important;
+  min-height: 2.8em;
+}
+.vm-name-hi {
+  display: block !important;
+  font-weight: 700 !important;
+}
+.vm-name-en {
+  display: block !important;
+  font-size: 0.88em !important;
+  opacity: 0.94 !important;
+}
+
+.category-badge,
+.cat-badge,
+.badge-category {
+  background-color: #fde68a !important;
+  color: #1f1107 !important;
+  border: 1.5px solid #94651a !important;
+  font-weight: 700 !important;
+}
+
+.mobile-sticky-bar,
+.sticky-cta-bar {
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  margin: 0 !important;
+  padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+  background: #160a04 !important;
+  border-top: none !important;
+  box-shadow: none !important;
+}
+
+.mobile-sticky-bar .btn:nth-child(2),
+.mobile-sticky-bar a:nth-child(2),
+.sticky-cta-bar .btn:nth-child(2),
+.sticky-cta-bar a:nth-child(2) {
+  background: linear-gradient(180deg, #1f5c36 0%, #133b22 100%) !important;
+  color: #ffffff !important;
+  border: 1.5px solid #5ad488 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+footer,
+.site-footer,
+.sec-footer-light-wrap,
+.site-footer-wrap {
+  margin: 0 !important;
+  padding-bottom: 58px !important;
+  background-color: #160a04 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.vm-map-frame-wrap {
+  width: 100% !important;
+  max-width: 1120px !important;
+  margin: 16px auto 0 auto !important;
+}
+.vm-map-frame-wrap iframe {
+  width: 100% !important;
+  max-width: 1120px !important;
+  height: 310px;
+  border-radius: 12px;
+  border: 1.5px solid #e6b84d;
+  display: block;
+}
+
+.vm-map-below-actions {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+.vm-map-top-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+.vm-map-bottom-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#vm-customer-trust-hub,
+.vm-trust-section,
+[data-vm-trust-section] {
+  max-width: 1120px !important;
+  margin: 28px auto !important;
+  padding: 24px !important;
+  border-radius: 16px !important;
+  border: 1.5px solid rgba(230, 184, 77, 0.45) !important;
+  background: #241107 !important;
+  color: #ffffff !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22) !important;
+}
+
+#vm-customer-trust-hub h1,
+#vm-customer-trust-hub h2,
+#vm-customer-trust-hub h3,
+.vm-trust-section h1,
+.vm-trust-section h2,
+.vm-trust-section h3 {
+  color: #fcd777 !important;
+  text-align: center !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.vm-trust-bottom-cta-row {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+#vm-customer-trust-hub a,
+#vm-customer-trust-hub button,
+.vm-trust-section a,
+.vm-trust-section button {
+  transition: transform 0.22s ease, background-color 0.22s ease, color 0.22s ease, box-shadow 0.22s ease !important;
+}
+
+#vm-customer-trust-hub a:hover,
+#vm-customer-trust-hub button:hover,
+.vm-trust-section a:hover,
+.vm-trust-section button:hover {
+  transform: translateY(-2px) !important;
+}
+
+@media (max-width: 768px) {
+  .main-nav,
+  nav.main-nav,
+  .header-nav-links {
+    display: none !important;
+  }
+
+  .hero-section,
+  .hero-banner,
+  main > section:first-of-type {
+    padding-top: 76px !important;
+  }
+
+  .hero-badge,
+  .hero-top-badge,
+  .vm-hero-badge,
+  .hero-section .badge,
+  .hero-banner .badge {
+    position: relative !important;
+    z-index: 5 !important;
+    margin-top: 12px !important;
+    display: inline-flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
