@@ -3596,3 +3596,58 @@ button,
   overflow-wrap: break-word !important;
   word-break: normal !important;
 }
+
+
+/* === VM UI v10.5: FIX DOWNLOADS CARE CARD READABILITY & REMOVE UNWANTED DARK GAP ABOVE TRUST SECTION === */
+#maintenance-guide .care-sheet-light,
+.care-sheet-light {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #1c0d05 !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+#maintenance-guide .care-sheet-light h3,
+.care-sheet-light h3 {
+  color: #6e4305 !important;
+  -webkit-text-fill-color: #6e4305 !important;
+  opacity: 1 !important;
+  font-weight: 800 !important;
+}
+
+#maintenance-guide .care-list,
+#maintenance-guide .care-list li,
+.care-list,
+.care-list li {
+  color: #1c0d05 !important;
+  -webkit-text-fill-color: #1c0d05 !important;
+  opacity: 1 !important;
+  filter: none !important;
+  font-size: clamp(0.92rem, 1.05vw, 1.0rem) !important;
+  line-height: 1.75 !important;
+}
+
+#maintenance-guide .care-list li strong,
+.care-list li strong {
+  color: #240e06 !important;
+  -webkit-text-fill-color: #240e06 !important;
+  font-weight: 800 !important;
+}
+
+/* Collapse empty spacer/dark elements immediately preceding trust section */
+#vm-trust-rebuilt-section,
+.vm-trust-section {
+  margin-top: 0 !important;
+}
+
+main > section:empty,
+main > div:empty,
+.sec-light + .sec-dark:empty,
+.sec-light + div:empty {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
