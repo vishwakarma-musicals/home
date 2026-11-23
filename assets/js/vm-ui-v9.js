@@ -1672,3 +1672,99 @@
     }, 1500);
   });
 })();
+
+
+/* === VM UI v10.2 PRIORITY 1 RUNTIME: STRICT BOTTOM-ONLY MOBILE STICKY BAR & HEADER CLEANUP === */
+(function () {
+  function syncPriority1MobileBar() {
+    var bars = Array.from(document.querySelectorAll(".mobile-sticky-bar, .sticky-cta-bar"));
+    if (!bars.length) return;
+
+    // Keep only the primary sticky bar active if multiple exist
+    bars.forEach(function (b, index) {
+      if (index > 0) {
+        b.style.setProperty("display", "none", "important");
+      }
+    });
+
+    var bar = bars[0];
+    var btns = bar.querySelectorAll("a, button");
+    if (btns.length >= 1) {
+      var t0 = (btns[0].textContent || "").trim();
+      if (t0.indexOf("97550") !== -1 || t0.indexOf("कॉल") !== -1) {
+        btns[0].innerHTML = "📞 अभी कॉल करें";
+      }
+    }
+    if (btns.length >= 2) {
+      var t1 = (btns[1].textContent || "").trim();
+      if (t1.indexOf("संग्रह") !== -1 || t1.indexOf("कैटलॉग") !== -1) {
+        btns[1].innerHTML = "🎵 वाद्य संग्रह";
+      }
+    }
+
+    var lastScrollY = window.scrollY || window.pageYOffset || 0;
+
+    function evaluateBarState() {
+      if (window.innerWidth > 768) {
+        bar.classList.remove("vm-sticky-visible");
+        return;
+      }
+
+      var y = window.scrollY || window.pageYOffset || 0;
+      var docH = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+      var winH = window.innerHeight || document.documentElement.clientHeight;
+      var remainingToBottom = docH - (y + winH);
+      var movingDown = y >= lastScrollY;
+
+      // Show only when scrolled well down and within bottom zone, hide immediately on upward scroll or away from bottom
+      if (y > 260 && movingDown && remainingToBottom <= 360) {
+        bar.classList.add("vm-sticky-visible");
+      } else if (!movingDown || remainingToBottom > 460) {
+        bar.classList.remove("vm-sticky-visible");
+      }
+
+      lastScrollY = y;
+    }
+
+    window.addEventListener("scroll", evaluateBarState, { passive: true });
+    window.addEventListener("resize", evaluateBarState, { passive: true });
+    evaluateBarState();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    syncPriority1MobileBar();
+    setTimeout(syncPriority1MobileBar, 500);
+    setTimeout(syncPriority1MobileBar, 1400);
+  });
+})();
+
+
+/* === VM UI v10.3 PRIORITY 2 RUNTIME: ENFORCE CLEAN CONTACT BUTTONS & CARD CONTRAST AFTER DYNAMIC RENDER === */
+(function () {
+  function applyPriority2Polish() {
+    document.querySelectorAll("section").forEach(function (sec) {
+      var t = sec.textContent || "";
+      if (t.indexOf("सीधा संपर्क व पता") !== -1 || t.indexOf("संपर्क व दुकान का पता") !== -1 || t.indexOf("दुकान का सटीक स्थान") !== -1) {
+        sec.classList.add("vm-contact-no-shadow");
+        sec.querySelectorAll(".btn, button, a.btn, [class*='btn']").forEach(function (btn) {
+          btn.style.setProperty("text-shadow", "none", "important");
+        });
+      }
+    });
+
+    document.querySelectorAll(".category-badge, .cat-badge, .badge-category, [class*='category-badge'], [class*='cat-badge']").forEach(function (badge) {
+      badge.style.setProperty("background", "#240e06", "important");
+      badge.style.setProperty("background-color", "#240e06", "important");
+      badge.style.setProperty("color", "#fff4cc", "important");
+      badge.style.setProperty("-webkit-text-fill-color", "#fff4cc", "important");
+      badge.style.setProperty("text-shadow", "none", "important");
+      badge.style.setProperty("opacity", "1", "important");
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    applyPriority2Polish();
+    setTimeout(applyPriority2Polish, 600);
+    setTimeout(applyPriority2Polish, 1600);
+  });
+})();
