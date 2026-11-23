@@ -981,3 +981,65 @@
   });
   window.addEventListener("resize", alignMobileHeaderSingleRow);
 })();
+
+
+/* === VM UI v9.11 RUNTIME: KEEP ONLY 3 SMALL TRUST CARDS, HI/EN ROWS, SINGLE-LINE EN & DARK BADGES === */
+(function () {
+  function applyV911Runtime() {
+    document.querySelectorAll(".category-badge, .cat-badge, .badge-category, [class*='category-badge'], [class*='cat-badge'], .product-card .badge, .instrument-card .badge").forEach(function (el) {
+      el.style.background = "#240e06";
+      el.style.backgroundColor = "#240e06";
+      el.style.color = "#ffffff";
+      el.style.border = "1.5px solid #e6b84d";
+      el.style.fontWeight = "700";
+    });
+
+    document.querySelectorAll(".vm-name-en").forEach(function (enEl) {
+      enEl.style.display = "block";
+      enEl.style.whiteSpace = "nowrap";
+      enEl.style.fontSize = window.innerWidth <= 768 ? "11px" : "0.72em";
+    });
+
+    var trustSec = Array.from(document.querySelectorAll("section, div")).find(function (n) {
+      var t = n.textContent || "";
+      return t.indexOf("विश्वकर्मा म्यूज़िकल्स - ग्राहक भरोसा, गुणवत्ता व कार्यशाला प्रमाण") !== -1 && n.tagName === "SECTION";
+    });
+
+    if (trustSec && !trustSec.dataset.vmV911Done) {
+      trustSec.dataset.vmV911Done = "1";
+      var cards = Array.from(trustSec.querySelectorAll(".card, [class*='card'], div[style*='border']"));
+      var smallCards = cards.filter(function (c) {
+        var txt = (c.textContent || "").trim();
+        return txt.length > 0 && txt.length < 240 && c.querySelectorAll("a, button").length === 0;
+      }).slice(0, 3);
+
+      if (smallCards.length === 3) {
+        var row = document.createElement("div");
+        row.className = "vm-trust-small-cards-row";
+        var parentRef = smallCards[0].parentElement;
+        smallCards.forEach(function (sc) {
+          sc.classList.add("vm-trust-small-card");
+          row.appendChild(sc);
+        });
+        if (parentRef) {
+          parentRef.insertBefore(row, parentRef.firstChild);
+        }
+      }
+
+      Array.from(trustSec.querySelectorAll("div")).forEach(function (d) {
+        if (d.classList.contains("vm-trust-small-cards-row") || d.classList.contains("vm-trust-small-card") || d.classList.contains("vm-trust-bottom-cta-row") || d.classList.contains("vm-section-top-badge")) return;
+        if (d.closest(".vm-trust-small-card")) return;
+        d.style.background = "transparent";
+        d.style.border = "none";
+        d.style.boxShadow = "none";
+      });
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    applyV911Runtime();
+    setTimeout(applyV911Runtime, 500);
+    setTimeout(applyV911Runtime, 1400);
+  });
+  window.addEventListener("resize", applyV911Runtime);
+})();
