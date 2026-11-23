@@ -2392,3 +2392,84 @@ body {
   opacity: 1 !important;
   visibility: visible !important;
 }
+
+
+/* === VM UI v9.10: SINGLE-ROW MOBILE HEADER (MENU + LOGO + CART SIDE-BY-SIDE) & ZERO TOP OVERLAP === */
+@media (max-width: 768px) {
+  header,
+  header.site-header,
+  .site-header,
+  .topbar,
+  .navbar {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    min-height: 56px !important;
+    padding: 6px 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  header > *,
+  header .header-inner,
+  header .nav-container,
+  header .container {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  header .brand,
+  header .logo,
+  header .site-logo,
+  header [class*="brand"],
+  header [class*="logo"] {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    font-size: 0.92rem !important;
+  }
+
+  header .brand img,
+  header .logo img,
+  header .site-logo img,
+  header [class*="logo"] img {
+    width: 28px !important;
+    height: 28px !important;
+    flex-shrink: 0 !important;
+  }
+
+  header .cart-btn,
+  header .cart-link,
+  header [class*="cart"] {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    padding: 5px 9px !important;
+    font-size: 0.8rem !important;
+  }
+
+  body {
+    padding-top: 68px !important;
+  }
+
+  .hero-section,
+  .hero-banner,
+  main > section:first-of-type {
+    padding-top: 16px !important;
+    margin-top: 0 !important;
+  }
+}
