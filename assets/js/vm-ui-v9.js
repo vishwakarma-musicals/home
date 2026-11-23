@@ -1812,3 +1812,39 @@
     setTimeout(fixTrustGapAndCareContrast, 1500);
   });
 })();
+
+
+/* === VM UI v10.6 ALL-DEVICES RUNTIME: STACKED CENTERED BADGES & CONSISTENT UI POLISH === */
+(function () {
+  function buildStackedHeritageBadges() {
+    var targets = ["❖ स्था. 1990", "35+ वर्षों की पारंपरिक कारीगरी", "35+ वर्षों का अनुभव", "GSTIN: 23BSDPV5529B1ZV"];
+    document.querySelectorAll(".badge-tag").forEach(function (badge) {
+      if (badge.getAttribute("data-vm-stacked-done") === "1") return;
+      var rawText = (badge.textContent || "").replace(/^\s*❖\s*|\s*❖\s*$/g, "").trim();
+      var parts = rawText.split("•").map(function (s) { return s.trim(); }).filter(Boolean);
+      var matchesTarget = parts.some(function (p) {
+        return targets.some(function (t) { return p.indexOf(t.replace(/^❖\s*/, "")) !== -1; });
+      });
+      if (matchesTarget && parts.length >= 2 && badge.parentElement) {
+        var group = document.createElement("div");
+        group.className = "vm-stacked-badge-group";
+        group.setAttribute("data-vm-stacked-done", "1");
+        parts.forEach(function (part) {
+          var pill = document.createElement("span");
+          pill.className = "vm-stacked-pill";
+          pill.textContent = part;
+          group.appendChild(pill);
+        });
+        badge.setAttribute("data-vm-stacked-done", "1");
+        badge.style.display = "none";
+        badge.parentElement.insertBefore(group, badge.nextSibling);
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    buildStackedHeritageBadges();
+    setTimeout(buildStackedHeritageBadges, 500);
+    setTimeout(buildStackedHeritageBadges, 1400);
+  });
+})();
