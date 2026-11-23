@@ -3651,3 +3651,131 @@ main > div:empty,
   margin: 0 !important;
   padding: 0 !important;
 }
+
+
+/* === VM UI v10.6 ALL-DEVICES UNIFIED: STACKED CENTERED BADGES, SMART WRAP, CONTRAST, STICKY BAR & TRUST SPACING === */
+.vm-nowrap {
+  display: inline-block !important;
+  white-space: nowrap !important;
+  max-width: 100%;
+}
+
+@media (max-width: 420px) {
+  .badge-tag .vm-nowrap,
+  .vm-trust-meta-line .vm-nowrap {
+    white-space: normal !important;
+  }
+}
+
+/* Stacked centered pills for heritage / craft / GSTIN badges on both desktop & mobile */
+.vm-stacked-badge-group {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.vm-stacked-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  background: #240e06 !important;
+  color: #fff4cc !important;
+  -webkit-text-fill-color: #fff4cc !important;
+  border: 1.5px solid #e6b84d !important;
+  border-radius: 999px !important;
+  padding: 5px 16px !important;
+  font-size: clamp(0.80rem, 2.2vw, 0.94rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  text-shadow: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14) !important;
+  max-width: 100%;
+}
+
+/* Category badge contrast on both desktop & mobile */
+.category-badge,
+.cat-badge,
+.badge-category,
+[class*="category-badge"],
+[class*="cat-badge"] {
+  background: #240e06 !important;
+  background-color: #240e06 !important;
+  color: #fff4cc !important;
+  -webkit-text-fill-color: #fff4cc !important;
+  border: 1.5px solid #e6b84d !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+/* Remove unwanted text-shadow on contact/map buttons across viewports */
+.vm-contact-no-shadow .btn,
+.vm-contact-no-shadow button,
+.vm-contact-no-shadow a.btn,
+.vm-map-below-actions a,
+.vm-map-below-actions .btn,
+#contact-details .btn,
+#map-location .btn,
+#customer-status-lookup .btn {
+  text-shadow: none !important;
+}
+
+/* Downloads maintenance card readability */
+#maintenance-guide .care-sheet-light,
+.care-sheet-light {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #1c0d05 !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+#maintenance-guide .care-sheet-light h3,
+.care-sheet-light h3 {
+  color: #6e4305 !important;
+  -webkit-text-fill-color: #6e4305 !important;
+  opacity: 1 !important;
+  font-weight: 800 !important;
+}
+
+#maintenance-guide .care-list,
+#maintenance-guide .care-list li,
+.care-list,
+.care-list li {
+  color: #1c0d05 !important;
+  -webkit-text-fill-color: #1c0d05 !important;
+  opacity: 1 !important;
+  filter: none !important;
+  font-size: clamp(0.92rem, 1.05vw, 1.0rem) !important;
+  line-height: 1.75 !important;
+}
+
+#maintenance-guide .care-list li strong,
+.care-list li strong {
+  color: #240e06 !important;
+  -webkit-text-fill-color: #240e06 !important;
+  font-weight: 800 !important;
+}
+
+/* Clean spacing above trust section without unwanted dark gap */
+#vm-trust-rebuilt-section,
+.vm-trust-section {
+  margin-top: 0 !important;
+}
+
+main > section:empty,
+main > div:empty,
+.sec-light + .sec-dark:empty,
+.sec-light + div:empty {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
