@@ -2577,3 +2577,372 @@ body {
   border: 1.5px solid #e6b84d !important;
   font-weight: 700 !important;
 }
+
+
+/* === VM UI v9.12: CLEAN ORDERED TRUST SECTION (BADGE -> HEADING -> INFO -> 4 SMALL CARDS -> RATING -> BUTTONS) === */
+html,
+body {
+  zoom: 100% !important;
+  transform: none !important;
+}
+
+#vm-customer-trust-hub,
+.vm-trust-section,
+[data-vm-trust-section] {
+  max-width: 1120px !important;
+  margin: 28px auto !important;
+  padding: 24px 18px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-align: center !important;
+}
+
+.vm-trust-clean-wrap {
+  max-width: 1060px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.vm-trust-clean-wrap .vm-section-top-badge {
+  margin: 0 auto !important;
+}
+
+.vm-trust-clean-wrap .vm-trust-heading {
+  margin: 2px 0 !important;
+  color: #e6b84d !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+}
+
+.vm-trust-clean-wrap .vm-trust-meta-line {
+  margin: 0 !important;
+  color: #1f1107 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+}
+
+.vm-trust-cards-grid {
+  width: 100%;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  margin: 6px 0 !important;
+}
+
+@media (max-width: 768px) {
+  .vm-trust-cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.vm-trust-small-card {
+  background: #fffdf8 !important;
+  color: #1f1107 !important;
+  border: 1.5px solid #e6b84d !important;
+  border-radius: 12px !important;
+  padding: 14px 16px !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08) !important;
+  text-align: center !important;
+}
+
+.vm-trust-rating-plain {
+  margin: 4px 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  color: #1f1107 !important;
+  font-weight: 700 !important;
+  font-size: 0.96rem !important;
+  text-align: center !important;
+}
+
+.vm-trust-bottom-cta-row {
+  margin-top: 6px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+
+/* === VM UI v9.13: FRESH REBUILD OF TRUST SECTION AFTER FULL REMOVAL === */
+html,
+body {
+  zoom: 100% !important;
+  transform: none !important;
+}
+
+#vm-trust-rebuilt-section {
+  max-width: 1120px !important;
+  margin: 28px auto !important;
+  padding: 24px 18px !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+#vm-trust-rebuilt-section .vm-section-top-badge {
+  margin: 0 auto !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-heading {
+  margin: 2px 0 !important;
+  color: #e6b84d !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-meta-line {
+  margin: 0 !important;
+  color: #1f1107 !important;
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  text-align: center !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-cards-grid {
+  width: 100% !important;
+  max-width: 1060px !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  margin: 6px auto !important;
+}
+
+@media (max-width: 768px) {
+  #vm-trust-rebuilt-section .vm-trust-cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card {
+  background: #fffdf8 !important;
+  color: #1f1107 !important;
+  border: 1.5px solid #e6b84d !important;
+  border-radius: 12px !important;
+  padding: 14px 16px !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08) !important;
+  text-align: center !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card h3,
+#vm-trust-rebuilt-section .vm-trust-small-card p {
+  margin: 4px 0 !important;
+  color: #1f1107 !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-rating-plain {
+  margin: 4px 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  color: #1f1107 !important;
+  font-weight: 700 !important;
+  font-size: 0.96rem !important;
+  text-align: center !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-bottom-cta-row {
+  margin-top: 6px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+
+/* === VM UI v9.14: 4 DARK TRUST CARDS, NO BACK CARD, 100% HIGH CONTRAST === */
+html,
+body {
+  zoom: 100% !important;
+  transform: none !important;
+}
+
+#vm-trust-rebuilt-section,
+#vm-customer-trust-hub,
+.vm-trust-section,
+[data-vm-trust-section] {
+  max-width: 1120px !important;
+  margin: 28px auto !important;
+  padding: 24px 18px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-align: center !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-heading,
+.vm-trust-section .vm-trust-heading {
+  color: #6e4305 !important;
+  font-weight: 800 !important;
+  text-align: center !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-meta-line,
+#vm-trust-rebuilt-section .vm-trust-rating-plain,
+.vm-trust-section .vm-trust-meta-line,
+.vm-trust-section .vm-trust-rating-plain {
+  color: #1c0d05 !important;
+  font-weight: 600 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-cards-grid,
+.vm-trust-section .vm-trust-cards-grid {
+  width: 100% !important;
+  max-width: 1060px !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  margin: 8px auto !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+  #vm-trust-rebuilt-section .vm-trust-cards-grid,
+  .vm-trust-section .vm-trust-cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card,
+.vm-trust-section .vm-trust-small-card {
+  background: #220f06 !important;
+  background-color: #220f06 !important;
+  color: #fff8eb !important;
+  border: 1.5px solid #c9942c !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22) !important;
+  text-align: center !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card h3,
+.vm-trust-section .vm-trust-small-card h3 {
+  color: #ffe08a !important;
+  margin: 0 0 6px 0 !important;
+  font-weight: 700 !important;
+}
+
+#vm-trust-rebuilt-section .vm-trust-small-card p,
+.vm-trust-section .vm-trust-small-card p {
+  color: #fff8eb !important;
+  margin: 0 !important;
+  line-height: 1.55 !important;
+}
+
+
+/* === VM UI v9.15: REMOVE HOVER EFFECT ON TRANSPARENT CARDS === */
+html,
+body {
+  zoom: 100% !important;
+  transform: none !important;
+}
+
+.transparent-card,
+.transparent-card:hover,
+.card-transparent,
+.card-transparent:hover,
+[class*="transparent"][class*="card"],
+[class*="transparent"][class*="card"]:hover,
+#vm-trust-rebuilt-section,
+#vm-trust-rebuilt-section:hover,
+#vm-customer-trust-hub,
+#vm-customer-trust-hub:hover,
+.vm-trust-section,
+.vm-trust-section:hover,
+[data-vm-trust-section],
+[data-vm-trust-section]:hover {
+  transform: none !important;
+  filter: none !important;
+}
+
+.transparent-card:hover,
+.card-transparent:hover,
+[class*="transparent"][class*="card"]:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+#vm-trust-rebuilt-section:hover,
+#vm-customer-trust-hub:hover,
+.vm-trust-section:hover,
+[data-vm-trust-section]:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+
+/* === VM UI v9.16: REMOVE UNWANTED TRANSPARENT CARD BOXES & ISOLATE PER-CARD HOVER === */
+html,
+body {
+  zoom: 100% !important;
+  transform: none !important;
+}
+
+.transparent-card,
+.card-transparent,
+[class*="transparent"][class*="card"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.transparent-card:hover,
+.card-transparent:hover,
+[class*="transparent"][class*="card"]:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+.product-card,
+.instrument-card,
+.vm-trust-small-card,
+#vm-trust-rebuilt-section .vm-trust-small-card {
+  position: relative !important;
+  isolation: isolate !important;
+}
+
+.product-card:hover ~ .product-card,
+.instrument-card:hover ~ .instrument-card,
+.vm-trust-small-card:hover ~ .vm-trust-small-card {
+  transform: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
