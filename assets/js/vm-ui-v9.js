@@ -131,3 +131,109 @@
   setTimeout(applyTwoLineTitlesInDom, 800);
   setTimeout(applyTwoLineTitlesInDom, 2000);
 })();
+
+
+/* === VM UI v9.1 RUNTIME: LEFT HAMBURGER DRAWER, TWO-LINE NAMES & MAP PLACEMENT === */
+(function () {
+  function ensureLeftHamburger() {
+    var header = document.querySelector("header.site-header, header");
+    if (!header) return;
+    var inner = header.querySelector(".header-inner") || header.querySelector(".container") || header;
+    if (document.getElementById("vm-left-hamburger-btn")) return;
+
+    var btn = document.createElement("button");
+    btn.id = "vm-left-hamburger-btn";
+    btn.type = "button";
+    btn.setAttribute("aria-label", "नेविगेशन मेन्यू खोलें");
+    btn.innerHTML = "&#9776;";
+    btn.style.cssText = "display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;border:1.5px solid #e6b84d;background:#241107;color:#fcd777;font-size:1.25rem;cursor:pointer;flex-shrink:0;";
+
+    var drawer = document.createElement("aside");
+    drawer.id = "vm-left-nav-drawer";
+    drawer.setAttribute("aria-label", "मुख्य मेन्यू");
+    drawer.style.cssText = "position:fixed;top:0;left:-310px;width:290px;max-width:85vw;height:100vh;background:#160a04;color:#ffffff;border-right:2px solid #e6b84d;z-index:400;padding:20px;display:flex;flex-direction:column;gap:12px;transition:left 0.28s ease;overflow-y:auto;";
+
+    var backdrop = document.createElement("div");
+    backdrop.id = "vm-left-nav-backdrop";
+    backdrop.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,0.65);z-index:390;display:none;";
+
+    var links = [
+      ["index.html", "होम"],
+      ["instruments.html", "वाद्य यंत्र"],
+      ["workshop.html", "वर्कशॉप व मरम्मत"],
+      ["catalog.html", "कैटलॉग"],
+      ["downloads.html", "डाउनलोड"],
+      ["about.html", "हमारे बारे में"],
+      ["contact.html", "संपर्क व दुकान"],
+      ["privacy-policy.html", "गोपनीयता नीति"],
+      ["terms-and-conditions.html", "नियम व शर्तें"],
+      ["disclaimer.html", "अस्वीकरण"]
+    ];
+
+    var closeBtn = document.createElement("button");
+    closeBtn.type = "button";
+    closeBtn.textContent = "✕ बंद करें";
+    closeBtn.style.cssText = "align-self:flex-end;background:#281409;color:#fcd777;border:1px solid #e6b84d;border-radius:999px;padding:6px 14px;cursor:pointer;font-weight:700;";
+
+    drawer.appendChild(closeBtn);
+    links.forEach(function (pair) {
+      var a = document.createElement("a");
+      a.href = pair[0];
+      a.textContent = pair[1];
+      a.style.cssText = "color:#f7eee4;text-decoration:none;padding:10px 12px;border-radius:8px;font-weight:600;border-bottom:1px solid rgba(230,184,77,0.18);";
+      drawer.appendChild(a);
+    });
+
+    function openDrawer() {
+      drawer.style.left = "0";
+      backdrop.style.display = "block";
+    }
+    function closeDrawer() {
+      drawer.style.left = "-310px";
+      backdrop.style.display = "none";
+    }
+
+    btn.addEventListener("click", openDrawer);
+    closeBtn.addEventListener("click", closeDrawer);
+    backdrop.addEventListener("click", closeDrawer);
+
+    inner.insertBefore(btn, inner.firstChild);
+    document.body.appendChild(backdrop);
+    document.body.appendChild(drawer);
+  }
+
+  function formatTwoLineNames() {
+    document.querySelectorAll(".product-title, .card-title-two-line, h3.item-title").forEach(function (el) {
+      el.classList.add("vm-two-line-title");
+      var raw = (el.textContent || "").trim();
+      var match = raw.match(/^([^(]+)\(([^)]+)\)$/);
+      if (match && !el.querySelector(".vm-en-sub")) {
+        var hiPart = match[1].trim();
+        var enPart = "(" + match[2].trim() + ")";
+        el.innerHTML = "<span style='display:block;'>" + hiPart + "</span><span class='vm-en-sub' style='display:block;font-size:0.88em;opacity:0.92;'>" + enPart + "</span>";
+      }
+    });
+  }
+
+  function placeMapUnderDirectContact() {
+    var mapWrap = document.querySelector("[data-vm-map-block], #vm-google-map-box, iframe[src*='maps.google.com']");
+    if (!mapWrap) return;
+    var block = mapWrap.closest("div, section") || mapWrap;
+    var headings = Array.from(document.querySelectorAll("h1, h2, h3, h4, section, div"));
+    var target = headings.find(function (node) {
+      return (node.textContent || "").indexOf("सीधा संपर्क व पता") !== -1;
+    });
+    if (target) {
+      var container = target.closest("section") || target.parentElement;
+      if (container && !container.contains(block)) {
+        container.appendChild(block);
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    ensureLeftHamburger();
+    formatTwoLineNames();
+    placeMapUnderDirectContact();
+  });
+})();
