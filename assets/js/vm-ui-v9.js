@@ -1554,3 +1554,121 @@
     setTimeout(applyV924InverseButtonShadow, 1400);
   });
 })();
+
+
+/* === VM UI v10.0 PHASE 2 RUNTIME: SMART WRAPPING, STACKED MOBILE NAMES, CONTACT NO-SHADOW & BOTTOM-ONLY STICKY BAR === */
+(function () {
+  function applySmartWrapping() {
+    var phraseList = [
+      "❖ स्था. 1990",
+      "35+ वर्षों की पारंपरिक कारीगरी",
+      "35+ वर्षों का अनुभव",
+      "GSTIN: 23BSDPV5529B1ZV",
+      "+91 97550 88022",
+      "info@vishwakarmamusicals.in",
+      "अमानगंज, जिला पन्ना (म.प्र.) - 488441",
+      "अमानगंज, जिला पन्ना (म.प्र.) 488441"
+    ];
+
+    var targets = document.querySelectorAll(".badge-tag, .vm-trust-meta-line, .pfn-copy, .meta-bar span, .sec-head p");
+    targets.forEach(function (el) {
+      if (el.getAttribute("data-vm-wrapped") === "1") return;
+      var html = el.innerHTML;
+      var changed = false;
+      phraseList.forEach(function (phrase) {
+        if (html.indexOf(phrase) !== -1 && html.indexOf('class="vm-nowrap">' + phrase) === -1) {
+          html = html.split(phrase).join('<span class="vm-nowrap">' + phrase + '</span>');
+          changed = true;
+        }
+      });
+      if (changed) {
+        el.innerHTML = html;
+      }
+      el.setAttribute("data-vm-wrapped", "1");
+    });
+  }
+
+  function formatMobileCardTitles() {
+    document.querySelectorAll(".instrument-card h3, .product-card h3").forEach(function (h3) {
+      if (h3.querySelector(".vm-en-sub, .en-name, .en-title")) return;
+      var txt = (h3.textContent || "").trim();
+      var m = txt.match(/^(.+?)\s*\(([^()]+)\)\s*$/);
+      if (m) {
+        h3.innerHTML = '<span class="vm-hi-main">' + m[1].trim() + '</span><span class="vm-en-sub">(' + m[2].trim() + ')</span>';
+      }
+    });
+  }
+
+  function removeContactSectionButtonShadow() {
+    var sections = Array.from(document.querySelectorAll("section"));
+    sections.forEach(function (sec) {
+      if ((sec.textContent || "").indexOf("सीधा संपर्क व पता") !== -1) {
+        sec.classList.add("vm-contact-no-shadow");
+        sec.querySelectorAll(".btn, button, a.btn, [class*='btn']").forEach(function (b) {
+          b.style.setProperty("text-shadow", "none", "important");
+        });
+      }
+    });
+  }
+
+  function initBottomOnlyStickyBar() {
+    var bar = document.querySelector(".mobile-sticky-bar, .sticky-cta-bar");
+    if (!bar) return;
+
+    var btns = bar.querySelectorAll("a, button");
+    if (btns.length >= 1) {
+      var t0 = (btns[0].textContent || "").trim();
+      if (t0.indexOf("97550") !== -1 || t0.indexOf("कॉल") !== -1) {
+        btns[0].innerHTML = "📞 अभी कॉल करें";
+      }
+    }
+    if (btns.length >= 2) {
+      var t1 = (btns[1].textContent || "").trim();
+      if (t1.indexOf("संग्रह") !== -1 || t1.indexOf("कैटलॉग") !== -1) {
+        btns[1].innerHTML = "🎵 वाद्य संग्रह";
+      }
+    }
+
+    var lastY = window.scrollY || window.pageYOffset || 0;
+    function updateStickyVisibility() {
+      if (window.innerWidth > 768) {
+        bar.classList.remove("vm-sticky-visible");
+        return;
+      }
+      var currentY = window.scrollY || window.pageYOffset || 0;
+      var docHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+      var winHeight = window.innerHeight || document.documentElement.clientHeight;
+      var distFromBottom = docHeight - (currentY + winHeight);
+      var scrollingDown = currentY >= lastY;
+
+      if (distFromBottom <= 420 && scrollingDown && currentY > 220) {
+        bar.classList.add("vm-sticky-visible");
+      } else if (distFromBottom > 520 || !scrollingDown) {
+        bar.classList.remove("vm-sticky-visible");
+      }
+      lastY = currentY;
+    }
+
+    window.addEventListener("scroll", updateStickyVisibility, { passive: true });
+    window.addEventListener("resize", updateStickyVisibility, { passive: true });
+    updateStickyVisibility();
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    applySmartWrapping();
+    formatMobileCardTitles();
+    removeContactSectionButtonShadow();
+    initBottomOnlyStickyBar();
+
+    setTimeout(function () {
+      applySmartWrapping();
+      formatMobileCardTitles();
+      removeContactSectionButtonShadow();
+    }, 600);
+    setTimeout(function () {
+      applySmartWrapping();
+      formatMobileCardTitles();
+      removeContactSectionButtonShadow();
+    }, 1500);
+  });
+})();
