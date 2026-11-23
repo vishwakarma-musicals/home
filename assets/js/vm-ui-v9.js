@@ -1043,3 +1043,286 @@
   });
   window.addEventListener("resize", applyV911Runtime);
 })();
+
+
+/* === VM UI v9.12 RUNTIME: REBUILD TRUST SECTION CLEANLY IN PROPER ORDER === */
+(function () {
+  function rebuildTrustSectionCleanly() {
+    var trustSec = Array.from(document.querySelectorAll("section, div")).find(function (n) {
+      var t = n.textContent || "";
+      return t.indexOf("विश्वकर्मा म्यूज़िकल्स - ग्राहक भरोसा, गुणवत्ता व कार्यशाला प्रमाण") !== -1 && n.tagName === "SECTION";
+    });
+    if (!trustSec) return;
+
+    var allBoxes = Array.from(trustSec.querySelectorAll("div, article, li"));
+    var proofTitles = ["1990 से हस्तनिर्मित परंपरा", "सत्यापित GSTIN व MSME पंजीकरण", "सुरक्षित HDFC बैंक / UPI सत्यापन", "Delhivery One कूरियर व 6 माह वारंटी"];
+
+    var smallCards = proofTitles.map(function (pt) {
+      var matchEl = allBoxes.find(function (el) {
+        if (el === trustSec || el.classList.contains("vm-trust-clean-wrap") || el.classList.contains("vm-trust-cards-grid")) return false;
+        var txt = (el.textContent || "").trim();
+        return txt.indexOf(pt) !== -1 && txt.length < 340 && el.querySelectorAll("a, button").length === 0 && el.querySelectorAll("h2").length === 0;
+      });
+      return matchEl;
+    }).filter(Boolean);
+
+    var buttons = Array.from(trustSec.querySelectorAll("a, button")).filter(function (b) {
+      var txt = (b.textContent || "").trim();
+      return txt.indexOf("लाइव कैटलॉग देखें") !== -1 || txt.indexOf("कैटलॉग व ब्रोशर डाउनलोड करें") !== -1;
+    });
+
+    var cleanWrap = document.createElement("div");
+    cleanWrap.className = "vm-trust-clean-wrap";
+
+    var badge = document.createElement("div");
+    badge.className = "vm-section-top-badge";
+    badge.textContent = "✦ ग्राहक भरोसा व कार्यशाला प्रमाण ✦";
+    cleanWrap.appendChild(badge);
+
+    var heading = document.createElement("h2");
+    heading.className = "vm-trust-heading";
+    heading.textContent = "विश्वकर्मा म्यूज़िकल्स - ग्राहक भरोसा, गुणवत्ता व कार्यशाला प्रमाण (Est. 1990)";
+    cleanWrap.appendChild(heading);
+
+    var meta = document.createElement("p");
+    meta.className = "vm-trust-meta-line";
+    meta.innerHTML = "प्रोप्राइटर: तुलसी दास विश्वकर्मा | 35+ वर्षों का अनुभव | अमानगंज, जिला पन्ना (म.प्र.) 488441 | सीधा कॉल: <strong>+91 97550 88022</strong> | ईमेल: <strong>info@vishwakarmamusicals.in</strong>";
+    cleanWrap.appendChild(meta);
+
+    if (smallCards.length > 0) {
+      var grid = document.createElement("div");
+      grid.className = "vm-trust-cards-grid";
+      smallCards.forEach(function (sc) {
+        sc.className = "vm-trust-small-card";
+        sc.removeAttribute("style");
+        grid.appendChild(sc);
+      });
+      cleanWrap.appendChild(grid);
+    }
+
+    var rating = document.createElement("p");
+    rating.className = "vm-trust-rating-plain";
+    rating.textContent = "Google रेटिंग: 5.0 ★ (12+ सत्यापित ग्राहक समीक्षाएं)";
+    cleanWrap.appendChild(rating);
+
+    if (buttons.length > 0) {
+      var btnRow = document.createElement("div");
+      btnRow.className = "vm-trust-bottom-cta-row";
+      buttons.forEach(function (b) {
+        b.classList.add("vm-3d-btn");
+        btnRow.appendChild(b);
+      });
+      cleanWrap.appendChild(btnRow);
+    }
+
+    trustSec.innerHTML = "";
+    trustSec.appendChild(cleanWrap);
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    rebuildTrustSectionCleanly();
+    setTimeout(rebuildTrustSectionCleanly, 500);
+    setTimeout(rebuildTrustSectionCleanly, 1400);
+  });
+})();
+
+
+/* === VM UI v9.13 RUNTIME: DELETE OLD TRUST SECTION COMPLETELY & BUILD FRESH === */
+(function () {
+  function deleteAndRebuildTrustSection() {
+    var existingRebuilt = document.getElementById("vm-trust-rebuilt-section");
+    if (existingRebuilt) return;
+
+    var allSections = Array.from(document.querySelectorAll("section"));
+    var oldTrust = allSections.find(function (sec) {
+      var txt = sec.textContent || "";
+      return txt.indexOf("विश्वकर्मा म्यूज़िकल्स - ग्राहक भरोसा, गुणवत्ता व कार्यशाला प्रमाण") !== -1 || txt.indexOf("ग्राहक भरोसा व कार्यशाला प्रमाण") !== -1;
+    });
+
+    var anchorParent = oldTrust ? oldTrust.parentElement : (document.querySelector("main") || document.body);
+    var nextSibling = oldTrust ? oldTrust.nextElementSibling : null;
+    if (oldTrust && oldTrust.parentElement) {
+      oldTrust.parentElement.removeChild(oldTrust);
+    }
+
+    var sec = document.createElement("section");
+    sec.id = "vm-trust-rebuilt-section";
+    sec.className = "vm-trust-section";
+    sec.setAttribute("data-vm-trust-section", "1");
+
+    var badge = document.createElement("div");
+    badge.className = "vm-section-top-badge";
+    badge.textContent = "✦ ग्राहक भरोसा व कार्यशाला प्रमाण ✦";
+    sec.appendChild(badge);
+
+    var h2 = document.createElement("h2");
+    h2.className = "vm-trust-heading";
+    h2.textContent = "विश्वकर्मा म्यूज़िकल्स - ग्राहक भरोसा, गुणवत्ता व कार्यशाला प्रमाण (Est. 1990)";
+    sec.appendChild(h2);
+
+    var meta = document.createElement("p");
+    meta.className = "vm-trust-meta-line";
+    meta.innerHTML = "प्रोप्राइटर: तुलसी दास विश्वकर्मा | 35+ वर्षों का अनुभव | अमानगंज, जिला पन्ना (म.प्र.) 488441 | सीधा कॉल: <strong>+91 97550 88022</strong> | ईमेल: <strong>info@vishwakarmamusicals.in</strong>";
+    sec.appendChild(meta);
+
+    var cardsData = [
+      {
+        title: "1990 से हस्तनिर्मित परंपरा",
+        desc: "चीड़, सागौन, शीशम व आम की लकड़ी, बकरे के चमड़े के जांचे हुए पुड़े और 440Hz सुर मिलान के साथ विश्वसनीय कारीगरी।"
+      },
+      {
+        title: "सत्यापित GSTIN व MSME पंजीकरण",
+        desc: "GSTIN: 23BSDPV5529B1ZV व Udyam MSME पंजीकृत प्रतिष्ठान; पारदर्शी Zoho बिलिंग व स्पष्ट कर विवरण।"
+      },
+      {
+        title: "सुरक्षित HDFC बैंक / UPI सत्यापन",
+        desc: "हर ऑनलाइन ऑर्डर भुगतान सत्यापन (PAYMENT_REVIEW → VERIFIED) के बाद ही प्रसंस्करण व डिस्पैच के लिए आगे बढ़ता है।"
+      },
+      {
+        title: "Delhivery One कूरियर व 6 माह वारंटी",
+        desc: "नए वाद्य यंत्रों की सुरक्षित देशव्यापी कूरियर शिपिंग तथा कार्यशाला में 6 माह सीमित कारीगरी व सुर वारंटी।"
+      }
+    ];
+
+    var grid = document.createElement("div");
+    grid.className = "vm-trust-cards-grid";
+    cardsData.forEach(function (item) {
+      var card = document.createElement("div");
+      card.className = "vm-trust-small-card";
+      card.innerHTML = "<h3>" + item.title + "</h3><p>" + item.desc + "</p>";
+      grid.appendChild(card);
+    });
+    sec.appendChild(grid);
+
+    var rating = document.createElement("p");
+    rating.className = "vm-trust-rating-plain";
+    rating.textContent = "Google रेटिंग: 5.0 ★ (12+ सत्यापित ग्राहक समीक्षाएं)";
+    sec.appendChild(rating);
+
+    var btnRow = document.createElement("div");
+    btnRow.className = "vm-trust-bottom-cta-row";
+    btnRow.innerHTML =
+      "<a href='#catalog' class='btn vm-3d-btn'>लाइव कैटलॉग देखें (Live Catalog)</a>" +
+      "<a href='mailto:info@vishwakarmamusicals.in?subject=" + encodeURIComponent("कैटलॉग व ब्रोशर अनुरोध - विश्वकर्मा म्यूज़िकल्स") + "' class='btn vm-3d-btn'>कैटलॉग व ब्रोशर डाउनलोड करें</a>";
+    sec.appendChild(btnRow);
+
+    if (anchorParent) {
+      if (nextSibling && nextSibling.parentElement === anchorParent) {
+        anchorParent.insertBefore(sec, nextSibling);
+      } else {
+        anchorParent.appendChild(sec);
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    deleteAndRebuildTrustSection();
+    setTimeout(deleteAndRebuildTrustSection, 500);
+    setTimeout(deleteAndRebuildTrustSection, 1400);
+  });
+})();
+
+
+/* === VM UI v9.14 RUNTIME: ENFORCE 4 DARK TRUST CARDS & HIGH CONTRAST === */
+(function () {
+  function applyV914TrustContrast() {
+    var sec = document.getElementById("vm-trust-rebuilt-section") || Array.from(document.querySelectorAll("section")).find(function (s) {
+      return (s.textContent || "").indexOf("विश्वकर्मा म्यूज़िकल्स - ग्राहक भरोसा, गुणवत्ता व कार्यशाला प्रमाण") !== -1;
+    });
+    if (!sec) return;
+
+    sec.style.background = "transparent";
+    sec.style.backgroundColor = "transparent";
+    sec.style.border = "none";
+    sec.style.boxShadow = "none";
+
+    var h2 = sec.querySelector("h2");
+    if (h2) {
+      h2.style.color = "#6e4305";
+      h2.style.fontWeight = "800";
+    }
+
+    sec.querySelectorAll(".vm-trust-meta-line, .vm-trust-rating-plain").forEach(function (el) {
+      el.style.color = "#1c0d05";
+      el.style.background = "transparent";
+      el.style.border = "none";
+      el.style.boxShadow = "none";
+    });
+
+    var cards = sec.querySelectorAll(".vm-trust-small-card");
+    cards.forEach(function (card, idx) {
+      if (idx >= 4) {
+        card.remove();
+        return;
+      }
+      card.style.background = "#220f06";
+      card.style.backgroundColor = "#220f06";
+      card.style.color = "#fff8eb";
+      card.style.border = "1.5px solid #c9942c";
+      var title = card.querySelector("h3");
+      if (title) title.style.color = "#ffe08a";
+      var desc = card.querySelector("p");
+      if (desc) desc.style.color = "#fff8eb";
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    applyV914TrustContrast();
+    setTimeout(applyV914TrustContrast, 500);
+    setTimeout(applyV914TrustContrast, 1400);
+  });
+})();
+
+
+/* === VM UI v9.15 RUNTIME: CLEAR HOVER TRANSFORMS/SHADOWS ON TRANSPARENT CARDS === */
+(function () {
+  function clearTransparentCardHover() {
+    var selector = ".transparent-card, .card-transparent, [class*='transparent'][class*='card'], #vm-trust-rebuilt-section, #vm-customer-trust-hub, .vm-trust-section, [data-vm-trust-section]";
+    document.querySelectorAll(selector).forEach(function (el) {
+      el.style.transition = "none";
+      el.style.transform = "none";
+      el.addEventListener("mouseenter", function () {
+        el.style.transform = "none";
+        el.style.filter = "none";
+        if (el.id === "vm-trust-rebuilt-section" || el.classList.contains("vm-trust-section") || el.id === "vm-customer-trust-hub" || el.hasAttribute("data-vm-trust-section")) {
+          el.style.background = "transparent";
+          el.style.backgroundColor = "transparent";
+          el.style.border = "none";
+          el.style.boxShadow = "none";
+        }
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    clearTransparentCardHover();
+    setTimeout(clearTransparentCardHover, 500);
+    setTimeout(clearTransparentCardHover, 1400);
+  });
+})();
+
+
+/* === VM UI v9.16 RUNTIME: STRIP TRANSPARENT CARD BOXES & KEEP HOVER PER-CARD ONLY === */
+(function () {
+  function applyV916CardIsolation() {
+    document.querySelectorAll(".transparent-card, .card-transparent, [class*='transparent'][class*='card']").forEach(function (el) {
+      el.style.background = "transparent";
+      el.style.backgroundColor = "transparent";
+      el.style.border = "none";
+      el.style.boxShadow = "none";
+      el.style.transform = "none";
+      el.style.filter = "none";
+    });
+
+    document.querySelectorAll(".product-card, .instrument-card, .vm-trust-small-card, .card").forEach(function (card) {
+      card.style.position = "relative";
+      card.style.isolation = "isolate";
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    applyV916CardIsolation();
+    setTimeout(applyV916CardIsolation, 500);
+    setTimeout(applyV916CardIsolation, 1400);
+  });
+})();
