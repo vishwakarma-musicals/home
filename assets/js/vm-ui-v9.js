@@ -237,3 +237,109 @@
     placeMapUnderDirectContact();
   });
 })();
+
+
+/* === VM UI v9.3 RUNTIME: SINGLE HAMBURGER, TWO-LINE HI/EN NAMES, CALL CTA & MAP FOOTER === */
+(function () {
+  function keepSingleHamburger() {
+    var extraBtn = document.getElementById("vm-left-hamburger-btn");
+    var extraDrawer = document.getElementById("vm-left-nav-drawer");
+    var extraBackdrop = document.getElementById("vm-left-nav-backdrop");
+    var allMenuTriggers = Array.from(document.querySelectorAll("button, a")).filter(function (el) {
+      if (el === extraBtn) return false;
+      var txt = (el.textContent || "").trim();
+      var aria = (el.getAttribute("aria-label") || "").toLowerCase();
+      var cls = (el.className || "").toString().toLowerCase();
+      return txt === "☰" || aria.indexOf("menu") !== -1 || aria.indexOf("मेन्यू") !== -1 || cls.indexOf("hamburger") !== -1 || cls.indexOf("menu-toggle") !== -1 || cls.indexOf("nav-toggle") !== -1;
+    });
+    if (allMenuTriggers.length > 0) {
+      if (extraBtn) extraBtn.remove();
+      if (extraDrawer) extraDrawer.remove();
+      if (extraBackdrop) extraBackdrop.remove();
+    }
+  }
+
+  function splitTwoLinesHiEn() {
+    var targets = document.querySelectorAll(".product-title, .card-title-two-line, h3.item-title, .vm-two-line-title, [class*='product-title']");
+    targets.forEach(function (el) {
+      if (el.dataset.vmSplitV93 === "1") return;
+      var raw = (el.textContent || "").trim();
+      if (!raw) return;
+      var hi = raw;
+      var en = "";
+      var m = raw.match(/^([^(]+)\(([^)]+)\)(.*)$/);
+      if (m) {
+        hi = (m[1] + (m[3] || "")).trim();
+        en = "(" + m[2].trim() + ")";
+      } else {
+        var splitIdx = raw.search(/[A-Za-z]/);
+        if (splitIdx > 0) {
+          hi = raw.slice(0, splitIdx).trim();
+          en = raw.slice(splitIdx).trim();
+        }
+      }
+      if (hi && en) {
+        el.innerHTML = "<span class='vm-name-hi'>" + hi + "</span><span class='vm-name-en'>" + en + "</span>";
+        el.dataset.vmSplitV93 = "1";
+      }
+    });
+  }
+
+  function tuneStickyCallCta() {
+    var secondBtn = document.querySelector(".mobile-sticky-bar a:nth-child(2), .mobile-sticky-bar button:nth-child(2), .sticky-cta-bar a:nth-child(2), .sticky-cta-bar button:nth-child(2)");
+    if (secondBtn) {
+      if (secondBtn.tagName === "A") {
+        secondBtn.href = "tel:+919755088022";
+      }
+      secondBtn.textContent = "सीधे कॉल करें";
+    }
+  }
+
+  function placeMapBelowDirectContact() {
+    var mapIframe = document.querySelector("iframe[src*='maps.google.com'], iframe[src*='google.com/maps']");
+    if (!mapIframe) return;
+    var mapWrap = mapIframe.closest(".vm-map-frame-wrap") || mapIframe.parentElement || mapIframe;
+    var nodes = Array.from(document.querySelectorAll("h1, h2, h3, h4, section, div"));
+    var target = nodes.find(function (n) {
+      return (n.textContent || "").indexOf("सीधा संपर्क व पता") !== -1;
+    });
+    if (target) {
+      var host = target.closest("section") || target.parentElement;
+      if (host) {
+        if (!host.contains(mapWrap)) {
+          host.appendChild(mapWrap);
+        }
+        if (!host.querySelector(".vm-map-below-actions")) {
+          var infoBox = document.createElement("div");
+          infoBox.className = "vm-map-below-actions";
+          infoBox.innerHTML =
+            "<p style='margin:0 0 10px;color:#f5ede0;'>मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना, म.प्र. 488441 | GSTIN: 23BSDPV5529B1ZV</p>" +
+            "<div style='display:flex;gap:12px;justify-content:center;flex-wrap:wrap;'>" +
+            "<a href='tel:+919755088022' class='btn' style='padding:10px 18px;border-radius:8px;background:#e6b84d;color:#1f1107;font-weight:700;text-decoration:none;'>📞 +91 97550 88022</a>" +
+            "<a href='mailto:info@vishwakarmamusicals.in' class='btn' style='padding:10px 18px;border-radius:8px;background:#281409;color:#fcd777;border:1.5px solid #e6b84d;font-weight:700;text-decoration:none;'>✉️ info@vishwakarmamusicals.in</a>" +
+            "</div>";
+          host.appendChild(infoBox);
+        }
+      }
+    }
+  }
+
+  function matchTrustSectionStyle() {
+    var nodes = Array.from(document.querySelectorAll("section, div"));
+    var trustEl = nodes.find(function (n) {
+      var t = n.textContent || "";
+      return t.indexOf("ग्राहक भरोसा, गुणवत्ता व कार्यशाला प्रमाण") !== -1 && n.tagName === "SECTION";
+    });
+    if (trustEl) {
+      trustEl.classList.add("vm-trust-section");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    keepSingleHamburger();
+    splitTwoLinesHiEn();
+    tuneStickyCallCta();
+    placeMapBelowDirectContact();
+    matchTrustSectionStyle();
+  });
+})();
