@@ -288,136 +288,136 @@
   function tuneStickyCallCta() {
     var secondBtn = document.querySelector(".mobile-sticky-bar a:nth-child(2), .mobile-sticky-bar button:nth-child(2), .sticky-cta-bar a:nth-child(2), .sticky-cta-bar button:nth-child(2)");
     if (secondBtn) {
-// [disabled sticky WA v13.29]       if (secondBtn.tagName === "A") {
-// [disabled sticky WA v13.29]         secondBtn.href = "tel:+919755088022";
-// [disabled sticky WA v13.29]       }
-// [disabled sticky WA v13.29]       secondBtn.textContent = "सीधे कॉल करें";
-// [disabled sticky WA v13.29]     }
-// [disabled sticky WA v13.29]   }
-// [disabled sticky WA v13.29] 
-// [disabled sticky WA v13.29]   function placeMapBelowDirectContact() {
-// [disabled sticky WA v13.29]     var mapIframe = document.querySelector("iframe[src*='maps.google.com'], iframe[src*='google.com/maps']");
-// [disabled sticky WA v13.29]     if (!mapIframe) return;
-// [disabled sticky WA v13.29]     var mapWrap = mapIframe.closest(".vm-map-frame-wrap") || mapIframe.parentElement || mapIframe;
-// [disabled sticky WA v13.29]     var nodes = Array.from(document.querySelectorAll("h1, h2, h3, h4, section, div"));
-// [disabled sticky WA v13.29]     var target = nodes.find(function (n) {
-// [disabled sticky WA v13.29]       return (n.textContent || "").indexOf("सीधा संपर्क व पता") !== -1;
-// [disabled sticky WA v13.29]     });
-// [disabled sticky WA v13.29]     if (target) {
-// [disabled sticky WA v13.29]       var host = target.closest("section") || target.parentElement;
-// [disabled sticky WA v13.29]       if (host) {
-// [disabled sticky WA v13.29]         if (!host.contains(mapWrap)) {
-// [disabled sticky WA v13.29]           host.appendChild(mapWrap);
-// [disabled sticky WA v13.29]         }
-// [disabled sticky WA v13.29]         if (!host.querySelector(".vm-map-below-actions")) {
-// [disabled sticky WA v13.29]           var infoBox = document.createElement("div");
-// [disabled sticky WA v13.29]           infoBox.className = "vm-map-below-actions";
-// [disabled sticky WA v13.29]           infoBox.innerHTML =
-// [disabled sticky WA v13.29]             "<p style='margin:0 0 10px;color:#f5ede0;'>मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना, म.प्र. 488441 | GSTIN: 23BSDPV5529B1ZV</p>" +
-// [disabled sticky WA v13.29]             "<div style='display:flex;gap:12px;justify-content:center;flex-wrap:wrap;'>" +
-// [disabled sticky WA v13.29]             "<a href='tel:+919755088022' class='btn' style='padding:10px 18px;border-radius:8px;background:#e6b84d;color:#1f1107;font-weight:700;text-decoration:none;'>📞 +91 97550 88022</a>" +
-// [disabled sticky WA v13.29]             "<a href='mailto:info@vishwakarmamusicals.in' class='btn' style='padding:10px 18px;border-radius:8px;background:#281409;color:#fcd777;border:1.5px solid #e6b84d;font-weight:700;text-decoration:none;'>✉️ info@vishwakarmamusicals.in</a>" +
-// [disabled sticky WA v13.29]             "</div>";
-// [disabled sticky WA v13.29]           host.appendChild(infoBox);
-// [disabled sticky WA v13.29]         }
-// [disabled sticky WA v13.29]       }
-// [disabled sticky WA v13.29]     }
-// [disabled sticky WA v13.29]   }
-// [disabled sticky WA v13.29] 
-// [disabled sticky WA v13.29]   function matchTrustSectionStyle() {
-// [disabled sticky WA v13.29]     var nodes = Array.from(document.querySelectorAll("section, div"));
-// [disabled sticky WA v13.29]     var trustEl = nodes.find(function (n) {
-// [disabled sticky WA v13.29]       var t = n.textContent || "";
-// [disabled sticky WA v13.29]       return t.indexOf("ग्राहक भरोसा, गुणवत्ता व कार्यशाला प्रमाण") !== -1 && n.tagName === "SECTION";
-// [disabled sticky WA v13.29]     });
-// [disabled sticky WA v13.29]     if (trustEl) {
-// [disabled sticky WA v13.29]       trustEl.classList.add("vm-trust-section");
-// [disabled sticky WA v13.29]     }
-// [disabled sticky WA v13.29]   }
-// [disabled sticky WA v13.29] 
-// [disabled sticky WA v13.29]   document.addEventListener("DOMContentLoaded", function () {
-// [disabled sticky WA v13.29]     keepSingleHamburger();
-// [disabled sticky WA v13.29]     splitTwoLinesHiEn();
-// [disabled sticky WA v13.29]     tuneStickyCallCta();
-// [disabled sticky WA v13.29]     placeMapBelowDirectContact();
-// [disabled sticky WA v13.29]     matchTrustSectionStyle();
-// [disabled sticky WA v13.29]   });
-// [disabled sticky WA v13.29] })();
-// [disabled sticky WA v13.29] 
-// [disabled sticky WA v13.29] 
-// [disabled sticky WA v13.29] /* === VM UI v9.5 RUNTIME: MOBILE HERO TOP BADGE CLEARANCE + ALL V9.4 FIXES === */
-// [disabled sticky WA v13.29] (function () {
-// [disabled sticky WA v13.29]   var waUrl = "https://wa.me/919755088022?text=" + encodeURIComponent("नमस्ते विश्वकर्मा म्यूज़िकल्स, मुझे वाद्य यंत्र / कार्यशाला के बारे में पूछना है।");
-// [disabled sticky WA v13.29] 
-// [disabled sticky WA v13.29]   function fixMobileHeroBadgeOffset() {
-// [disabled sticky WA v13.29]     if (window.innerWidth > 768) return;
-// [disabled sticky WA v13.29]     var header = document.querySelector("header.site-header, header");
-// [disabled sticky WA v13.29]     var headerHeight = header ? Math.ceil(header.getBoundingClientRect().height) : 64;
-// [disabled sticky WA v13.29]     var firstSec = document.querySelector("main > section:first-of-type, .hero-section, .hero-banner");
-// [disabled sticky WA v13.29]     if (firstSec) {
-// [disabled sticky WA v13.29]       var neededTop = Math.max(headerHeight + 16, 76);
-// [disabled sticky WA v13.29]       firstSec.style.paddingTop = neededTop + "px";
-// [disabled sticky WA v13.29]     }
-// [disabled sticky WA v13.29]     var candidates = Array.from(document.querySelectorAll("main > section:first-of-type span, main > section:first-of-type div, .hero-section span, .hero-section div"));
-// [disabled sticky WA v13.29]     candidates.forEach(function (el) {
-// [disabled sticky WA v13.29]       var rect = el.getBoundingClientRect();
-// [disabled sticky WA v13.29]       if (rect.height > 0 && rect.height < 52 && rect.top < headerHeight + 10) {
-// [disabled sticky WA v13.29]         var txt = (el.textContent || "").trim();
-// [disabled sticky WA v13.29]         if (txt.length > 0 && txt.length < 70 && el.children.length === 0) {
-// [disabled sticky WA v13.29]           el.style.position = "relative";
-// [disabled sticky WA v13.29]           el.style.zIndex = "6";
-// [disabled sticky WA v13.29]           el.style.marginTop = "10px";
-// [disabled sticky WA v13.29]         }
-// [disabled sticky WA v13.29]       }
-// [disabled sticky WA v13.29]     });
-// [disabled sticky WA v13.29]   }
-// [disabled sticky WA v13.29] 
-// [disabled sticky WA v13.29]   function removeDuplicateHamburger() {
-// [disabled sticky WA v13.29]     var extraBtn = document.getElementById("vm-left-hamburger-btn");
-// [disabled sticky WA v13.29]     var extraDrawer = document.getElementById("vm-left-nav-drawer");
-// [disabled sticky WA v13.29]     var extraBackdrop = document.getElementById("vm-left-nav-backdrop");
-// [disabled sticky WA v13.29]     if (extraBtn) extraBtn.remove();
-// [disabled sticky WA v13.29]     if (extraDrawer) extraDrawer.remove();
-// [disabled sticky WA v13.29]     if (extraBackdrop) extraBackdrop.remove();
-// [disabled sticky WA v13.29]   }
-// [disabled sticky WA v13.29] 
-// [disabled sticky WA v13.29]   function forceTwoLineNames() {
-// [disabled sticky WA v13.29]     var nodes = document.querySelectorAll(".product-title, .card-title-two-line, h3.item-title, .vm-two-line-title, [class*='product-title']");
-// [disabled sticky WA v13.29]     nodes.forEach(function (el) {
-// [disabled sticky WA v13.29]       var raw = (el.dataset.vmRawTitle || el.textContent || "").replace(/\s+/g, " ").trim();
-// [disabled sticky WA v13.29]       if (!raw) return;
-// [disabled sticky WA v13.29]       el.dataset.vmRawTitle = raw;
-// [disabled sticky WA v13.29] 
-// [disabled sticky WA v13.29]       var hi = "";
-// [disabled sticky WA v13.29]       var en = "";
-// [disabled sticky WA v13.29]       var m = raw.match(/^([^(]+)\(([^)]+)\)(.*)$/);
-// [disabled sticky WA v13.29]       if (m) {
-// [disabled sticky WA v13.29]         hi = (m[1] + " " + (m[3] || "")).replace(/\s+/g, " ").trim();
-// [disabled sticky WA v13.29]         en = "(" + m[2].trim() + ")";
-// [disabled sticky WA v13.29]       } else {
-// [disabled sticky WA v13.29]         var idx = raw.search(/[A-Za-z]/);
-// [disabled sticky WA v13.29]         if (idx > 0) {
-// [disabled sticky WA v13.29]           hi = raw.slice(0, idx).replace(/[-–—|•]+$/g, "").trim();
-// [disabled sticky WA v13.29]           en = raw.slice(idx).trim();
-// [disabled sticky WA v13.29]         }
-// [disabled sticky WA v13.29]       }
-// [disabled sticky WA v13.29] 
-// [disabled sticky WA v13.29]       if (hi && en) {
-// [disabled sticky WA v13.29]         el.innerHTML = "<span class='vm-name-hi'>" + hi + "</span><span class='vm-name-en'>" + en + "</span>";
-// [disabled sticky WA v13.29]       }
-// [disabled sticky WA v13.29]     });
-// [disabled sticky WA v13.29]   }
-// [disabled sticky WA v13.29] 
-// [disabled sticky WA v13.29]   function setStickyWhatsappCta() {
-// [disabled sticky WA v13.29]     var secondBtn = document.querySelector(".mobile-sticky-bar a:nth-child(2), .mobile-sticky-bar button:nth-child(2), .sticky-cta-bar a:nth-child(2), .sticky-cta-bar button:nth-child(2)");
-// [disabled sticky WA v13.29]     if (secondBtn) {
-// [disabled sticky WA v13.29]       if (secondBtn.tagName === "A") {
-// [disabled sticky WA v13.29]         secondBtn.href = waUrl;
-// [disabled sticky WA v13.29]         secondBtn.target = "_blank";
-// [disabled sticky WA v13.29]         secondBtn.rel = "noopener noreferrer";
-// [disabled sticky WA v13.29]       }
-// [disabled sticky WA v13.29]       secondBtn.innerHTML = "💬 Whatsapp पर पूछें";
-// [disabled sticky WA v13.29]     }
+      if (secondBtn.tagName === "A") {
+        secondBtn.href = "tel:+919755088022";
+      }
+      secondBtn.textContent = "सीधे कॉल करें";
+    }
+  }
+
+  function placeMapBelowDirectContact() {
+    var mapIframe = document.querySelector("iframe[src*='maps.google.com'], iframe[src*='google.com/maps']");
+    if (!mapIframe) return;
+    var mapWrap = mapIframe.closest(".vm-map-frame-wrap") || mapIframe.parentElement || mapIframe;
+    var nodes = Array.from(document.querySelectorAll("h1, h2, h3, h4, section, div"));
+    var target = nodes.find(function (n) {
+      return (n.textContent || "").indexOf("सीधा संपर्क व पता") !== -1;
+    });
+    if (target) {
+      var host = target.closest("section") || target.parentElement;
+      if (host) {
+        if (!host.contains(mapWrap)) {
+          host.appendChild(mapWrap);
+        }
+        if (!host.querySelector(".vm-map-below-actions")) {
+          var infoBox = document.createElement("div");
+          infoBox.className = "vm-map-below-actions";
+          infoBox.innerHTML =
+            "<p style='margin:0 0 10px;color:#f5ede0;'>मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना, म.प्र. 488441 | GSTIN: 23BSDPV5529B1ZV</p>" +
+            "<div style='display:flex;gap:12px;justify-content:center;flex-wrap:wrap;'>" +
+            "<a href='tel:+919755088022' class='btn' style='padding:10px 18px;border-radius:8px;background:#e6b84d;color:#1f1107;font-weight:700;text-decoration:none;'>📞 +91 97550 88022</a>" +
+            "<a href='mailto:info@vishwakarmamusicals.in' class='btn' style='padding:10px 18px;border-radius:8px;background:#281409;color:#fcd777;border:1.5px solid #e6b84d;font-weight:700;text-decoration:none;'>✉️ info@vishwakarmamusicals.in</a>" +
+            "</div>";
+          host.appendChild(infoBox);
+        }
+      }
+    }
+  }
+
+  function matchTrustSectionStyle() {
+    var nodes = Array.from(document.querySelectorAll("section, div"));
+    var trustEl = nodes.find(function (n) {
+      var t = n.textContent || "";
+      return t.indexOf("ग्राहक भरोसा, गुणवत्ता व कार्यशाला प्रमाण") !== -1 && n.tagName === "SECTION";
+    });
+    if (trustEl) {
+      trustEl.classList.add("vm-trust-section");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    keepSingleHamburger();
+    splitTwoLinesHiEn();
+    tuneStickyCallCta();
+    placeMapBelowDirectContact();
+    matchTrustSectionStyle();
+  });
+})();
+
+
+/* === VM UI v9.5 RUNTIME: MOBILE HERO TOP BADGE CLEARANCE + ALL V9.4 FIXES === */
+(function () {
+  var waUrl = "https://wa.me/919755088022?text=" + encodeURIComponent("नमस्ते विश्वकर्मा म्यूज़िकल्स, मुझे वाद्य यंत्र / कार्यशाला के बारे में पूछना है।");
+
+  function fixMobileHeroBadgeOffset() {
+    if (window.innerWidth > 768) return;
+    var header = document.querySelector("header.site-header, header");
+    var headerHeight = header ? Math.ceil(header.getBoundingClientRect().height) : 64;
+    var firstSec = document.querySelector("main > section:first-of-type, .hero-section, .hero-banner");
+    if (firstSec) {
+      var neededTop = Math.max(headerHeight + 16, 76);
+      firstSec.style.paddingTop = neededTop + "px";
+    }
+    var candidates = Array.from(document.querySelectorAll("main > section:first-of-type span, main > section:first-of-type div, .hero-section span, .hero-section div"));
+    candidates.forEach(function (el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.height > 0 && rect.height < 52 && rect.top < headerHeight + 10) {
+        var txt = (el.textContent || "").trim();
+        if (txt.length > 0 && txt.length < 70 && el.children.length === 0) {
+          el.style.position = "relative";
+          el.style.zIndex = "6";
+          el.style.marginTop = "10px";
+        }
+      }
+    });
+  }
+
+  function removeDuplicateHamburger() {
+    var extraBtn = document.getElementById("vm-left-hamburger-btn");
+    var extraDrawer = document.getElementById("vm-left-nav-drawer");
+    var extraBackdrop = document.getElementById("vm-left-nav-backdrop");
+    if (extraBtn) extraBtn.remove();
+    if (extraDrawer) extraDrawer.remove();
+    if (extraBackdrop) extraBackdrop.remove();
+  }
+
+  function forceTwoLineNames() {
+    var nodes = document.querySelectorAll(".product-title, .card-title-two-line, h3.item-title, .vm-two-line-title, [class*='product-title']");
+    nodes.forEach(function (el) {
+      var raw = (el.dataset.vmRawTitle || el.textContent || "").replace(/\s+/g, " ").trim();
+      if (!raw) return;
+      el.dataset.vmRawTitle = raw;
+
+      var hi = "";
+      var en = "";
+      var m = raw.match(/^([^(]+)\(([^)]+)\)(.*)$/);
+      if (m) {
+        hi = (m[1] + " " + (m[3] || "")).replace(/\s+/g, " ").trim();
+        en = "(" + m[2].trim() + ")";
+      } else {
+        var idx = raw.search(/[A-Za-z]/);
+        if (idx > 0) {
+          hi = raw.slice(0, idx).replace(/[-–—|•]+$/g, "").trim();
+          en = raw.slice(idx).trim();
+        }
+      }
+
+      if (hi && en) {
+        el.innerHTML = "<span class='vm-name-hi'>" + hi + "</span><span class='vm-name-en'>" + en + "</span>";
+      }
+    });
+  }
+
+  function setStickyWhatsappCta() {
+    var secondBtn = document.querySelector(".mobile-sticky-bar a:nth-child(2), .mobile-sticky-bar button:nth-child(2), .sticky-cta-bar a:nth-child(2), .sticky-cta-bar button:nth-child(2)");
+    if (secondBtn) {
+      if (secondBtn.tagName === "A") {
+// [v13.29]         secondBtn.href = waUrl;
+        secondBtn.target = "_blank";
+        secondBtn.rel = "noopener noreferrer";
+      }
+      secondBtn.innerHTML = "💬 Whatsapp पर पूछें";
+    }
   }
 
   function formatDirectContactMapAndButtons() {
@@ -579,13 +579,13 @@
   function setStickyWhatsappCta() {
     var secondBtn = document.querySelector(".mobile-sticky-bar a:nth-child(2), .mobile-sticky-bar button:nth-child(2), .sticky-cta-bar a:nth-child(2), .sticky-cta-bar button:nth-child(2)");
     if (secondBtn) {
-// [disabled sticky WA v13.29]       if (secondBtn.tagName === "A") {
-// [disabled sticky WA v13.29]         secondBtn.href = waUrl;
-// [disabled sticky WA v13.29]         secondBtn.target = "_blank";
-// [disabled sticky WA v13.29]         secondBtn.rel = "noopener noreferrer";
-// [disabled sticky WA v13.29]       }
-// [disabled sticky WA v13.29]       secondBtn.innerHTML = "💬 Whatsapp पर पूछें";
-// [disabled sticky WA v13.29]     }
+      if (secondBtn.tagName === "A") {
+// [v13.29]         secondBtn.href = waUrl;
+        secondBtn.target = "_blank";
+        secondBtn.rel = "noopener noreferrer";
+      }
+      secondBtn.innerHTML = "💬 Whatsapp पर पूछें";
+    }
   }
 
   function formatDirectContactMapAndButtons() {
@@ -751,14 +751,14 @@
   function setStickyWhatsappCta() {
     var secondBtn = document.querySelector(".mobile-sticky-bar a:nth-child(2), .mobile-sticky-bar button:nth-child(2), .sticky-cta-bar a:nth-child(2), .sticky-cta-bar button:nth-child(2)");
     if (secondBtn) {
-// [disabled sticky WA v13.29]       if (secondBtn.tagName === "A") {
-// [disabled sticky WA v13.29]         secondBtn.href = waUrl;
-// [disabled sticky WA v13.29]         secondBtn.target = "_blank";
-// [disabled sticky WA v13.29]         secondBtn.rel = "noopener noreferrer";
-// [disabled sticky WA v13.29]       }
-// [disabled sticky WA v13.29]       secondBtn.classList.add("vm-3d-btn");
-// [disabled sticky WA v13.29]       secondBtn.innerHTML = "💬 Whatsapp पर पूछें";
-// [disabled sticky WA v13.29]     }
+      if (secondBtn.tagName === "A") {
+// [v13.29]         secondBtn.href = waUrl;
+        secondBtn.target = "_blank";
+        secondBtn.rel = "noopener noreferrer";
+      }
+      secondBtn.classList.add("vm-3d-btn");
+      secondBtn.innerHTML = "💬 Whatsapp पर पूछें";
+    }
   }
 
   function formatDirectContactMapAndButtons() {
