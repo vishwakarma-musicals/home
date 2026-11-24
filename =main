@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head> <link rel="icon" type="image/webp" href="assets/images/brand/favicon.webp"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>आधिकारिक वाद्य यंत्र एवं कार्यशाला सेवा कैटलॉग | विश्वकर्मा म्यूज़िकल्स अमानगंज</title> <meta name="description" content="विश्वकर्मा म्यूज़िकल्स, अमानगंज (पन्ना) का आधिकारिक वाद्य यंत्र एवं मरम्मत सेवा कैटलॉग। हारमोनियम, सफ़री हारमोनियम, ढोलक, तबला, झीका, मंजीरा, बांसुरी व कार्यशाला दरें।"> <link rel="canonical" href="https://vishwakarmamusicals.in/catalog.html"> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet"> <link rel="stylesheet" href="assets/css/main.css"> <style> .catalog-sheet { background: #ffffff; border: 2.5px solid var(--gold-border); border-radius: 20px; padding: clamp(20px, 4vw, 36px); box-shadow: var(--depth-shadow); color: var(--text-dark); }   .sheet-letterhead,
+  .sheet-letterhead * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  .sheet-letterhead::before,
+  .sheet-letterhead::after,
+  .catalog-sheet::before,
+  .catalog-sheet::after {
+    display: none !important;
+    content: none !important;
+  }
+  .sheet-letterhead {
+    background: transparent !important;
+    border-top: none !important;
+    box-shadow: none !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+  } .lh-left h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--maroon-title); } .lh-left p { color: var(--text-muted-dark); font-size: 0.94rem; font-weight: 600; } .lh-right { font-size: 0.9rem; color: var(--text-dark); background: #fbf7f0; padding: 12px 16px; border-radius: 12px; border: 1.5px solid var(--gold-border); line-height: 1.65; } .catalog-block-title { background: linear-gradient(90deg, #27140a 0%, #4b2511 100%); color: var(--gold-bright); padding: 12px 18px; border-radius: 10px; font-size: 1.25rem; margin: 26px 0 14px; border-left: 5px solid var(--gold-bright); } .table-wrap { width: 100%; overflow-x: auto; margin-bottom: 20px; } table.catalog-table { width: 100%; border-collapse: collapse; font-size: 0.94rem; } table.catalog-table th { background: #f4e9db; color: var(--maroon-title); font-weight: 800; text-align: left; padding: 12px 14px; border: 1.5px solid var(--gold-border); white-space: nowrap; } table.catalog-table td { padding: 12px 14px; border: 1px solid rgba(148, 101, 26, 0.35); vertical-align: top; color: var(--text-dark); } table.catalog-table tr:nth-child(even) td { background: #fffcf7; } .sku-pill { display: inline-block; background: #27140a; color: var(--gold-bright); font-weight: 700; font-size: 0.82rem; padding: 2px 10px; border-radius: 999px; white-space: nowrap; } .price-cell { font-weight: 800; color: var(--maroon-title); white-space: nowrap; font-size: 1rem; } .action-link { display: inline-block; color: #0b6b36; font-weight: 700; text-decoration: underline; white-space: nowrap; } .policy-notes-box { margin-top: 26px; background: #fbf7f0; border: 2px solid var(--gold-border); border-left: 6px solid var(--maroon-title); border-radius: 12px; padding: 18px 20px; } .policy-notes-box h3 { color: var(--maroon-title); margin-bottom: 10px; font-size: 1.18rem; } .policy-notes-box ul { list-style: none; } .policy-notes-box li { position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 0.93rem; color: var(--text-muted-dark); } .policy-notes-box li::before { content: "❖"; position: absolute; left: 0; color: var(--gold-deep); } @media print {
+  @page { size: A4 portrait; margin: 10mm 10mm 12mm 10mm; }
+  html, body {
+    zoom: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-family: 'Noto Sans Devanagari', 'Nirmala UI', 'Mangal', sans-serif !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  header,
+  nav,
+  aside,
+  footer,
+  .site-header,
+  .navbar,
+  .vm-mobile-menu-btn,
+  #vm-left-nav-drawer,
+  #vm-left-nav-backdrop,
+  .sec-head,
+  .btn,
+  .btn-wrap,
+  button,
+  .sec-footer-light-wrap,
+  .page-footer-nav-dark,
+  .mobile-sticky-bar,
+  .no-print,
+  #catalog-sync-note,
+  [class*="trust"],
+  [id*="trust"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  main,
+  .sec-light,
+  .container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    background: #ffffff !important;
+  }
+  .catalog-sheet {
+    display: block !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+    .sheet-letterhead,
+  .sheet-letterhead * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  .sheet-letterhead::before,
+  .sheet-letterhead::after,
+  .catalog-sheet::before,
+  .catalog-sheet::after {
+    display: none !important;
+    content: none !important;
+  }
+  .sheet-letterhead {
+    background: transparent !important;
+    border-top: none !important;
+    box-shadow: none !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+  }
+  .catalog-block-title {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+    margin: 14px 0 8px !important;
+    padding: 8px 12px !important;
+    font-size: 1.05rem !important;
+  }
+  .table-wrap {
+    overflow: visible !important;
+    width: 100% !important;
+    margin-bottom: 12px !important;
+  }
+  table.catalog-table {
+    width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    font-size: 8.8pt !important;
+    line-height: 1.4 !important;
+  }
+  table.catalog-table thead {
+    display: table-header-group !important;
+  }
+  table.catalog-table tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  table.catalog-table th,
+  table.catalog-table td {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    padding: 6px 7px !important;
+    vertical-align: top !important;
+  }
+  table.catalog-table th:nth-child(1),
+  table.catalog-table td:nth-child(1) {
+    width: 15% !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+  }
+  table.catalog-table th:nth-child(2),
+  table.catalog-table td:nth-child(2) { width: 24% !important; }
+  table.catalog-table th:nth-child(3),
+  table.catalog-table td:nth-child(3) { width: 45% !important; }
+  table.catalog-table th:nth-child(4),
+  table.catalog-table td:nth-child(4) {
+    width: 16% !important;
+    text-align: right !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+  }
+  .sku-pill {
+    font-size: 8pt !important;
+    padding: 2px 5px !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+  }
+  .policy-notes-box {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    font-size: 8.8pt !important;
+    padding: 10px 12px !important;
+  }
+
+  *, *::before, *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  .sheet-letterhead,
+  .sheet-letterhead * {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .sec-head,
+  .catalog-sheet > :first-child:not(.sheet-letterhead),
+  .catalog-sheet::before,
+  .sheet-letterhead::before,
+  .sheet-letterhead::after {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .sheet-letterhead {
+    background: #ffffff !important;
+    border: none !important;
+    border-top: none !important;
+    box-shadow: none !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+
+/* FINAL PRINT SAFETY: never print the screen card shadow or top glow */
+@media print {
+  html body .catalog-sheet,
+  html body .catalog-sheet *,
+  html body .sheet-letterhead,
+  html body .sheet-letterhead * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+  html body,
+  html body main,
+  html body main .sec-light,
+  html body main .container,
+  html body .catalog-sheet,
+  html body .sheet-letterhead {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+  }
+  html body .catalog-sheet::before,
+  html body .catalog-sheet::after,
+  html body .sheet-letterhead::before,
+  html body .sheet-letterhead::after {
+    content: none !important;
+    display: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+}
+</style>
+</head>
+<body> <header class="site-header" id="site-header"> <div class="container header-inner"> <a class="brand-logo" href="index.html"> <img src="assets/images/brand/logo.webp" alt="विश्वकर्मा म्यूज़िकल्स लोगो" onerror="if(!this.dataset.f1){this.dataset.f1='1';this.src='assets/images/brand/favicon.webp';}else{this.style.display='none';}"> <span class="brand-name">विश्वकर्मा म्यूज़िकल्स</span> </a> <nav class="main-nav" aria-label="मुख्य नेविगेशन"> <a href="index.html">होम</a> <a href="instruments.html">वाद्य यंत्र</a> <a href="workshop.html">वर्कशॉप व मरम्मत</a> <a href="downloads.html">डाउनलोड</a> <a href="about.html">हमारे बारे में</a> <a href="contact.html">संपर्क व दुकान</a> </nav> <div class="header-actions"> <a href="cart.html" class="cart-trigger-btn" id="header-cart-link" aria-label="कार्ट"> <span>🛒 कार्ट</span> <span class="cart-badge" id="header-cart-count">0</span> </a> </div> </div> </header>
+<main id="main-content"> <section class="sec-light"> <div class="container"> <div class="sec-head"> <span class="badge-tag">❖ स्था. 1990 • आधिकारिक मूल्य एवं सेवा सूची ❖</span> <h1>विश्वकर्मा म्यूज़िकल्स — संपूर्ण कैटलॉग</h1> <p>हस्तनिर्मित हारमोनियम, सफ़री हारमोनियम, शीशम ढोलक, तबला, झीका, मंजीरा, बांसुरी तथा अमानगंज कार्यशाला की मरम्मत सेवाओं की लाइव सूची।</p> <div class="btn-wrap no-print" style="margin-top:18px;"> <button type="button" class="btn btn-gold" onclick="window.print()">🖨️ कैटलॉग प्रिंट / PDF सेव करें</button> <a class="btn btn-outline" href="tel:+919755088022">📞 +91 97550 88022 पर कॉल करें</a> </div> </div> <div class="catalog-sheet"> <div class="sheet-letterhead"> <div class="lh-left"> <h2>विश्वकर्मा म्यूज़िकल्स (Vishwakarma Musicals)</h2> <p>हस्तनिर्मित शास्त्रीय व लोक वाद्य यंत्र निर्माण, ट्यूनिंग एवं मरम्मत कार्यशाला (स्था. 1990)</p> <p style="font-size:0.88rem;margin-top:4px;">मुख्य शिल्पकार: श्री तुलसी दास विश्वकर्मा | GSTIN: <strong>23BSDPV5529B1ZV</strong></p> </div> <div class="lh-right"> <div><strong>सीधा कॉल:</strong> +91 97550 88022</div> <div><strong>ईमेल:</strong> info@vishwakarmamusicals.in</div> <div><strong>वेबसाइट:</strong> www.vishwakarmamusicals.in</div> <div><strong>पता:</strong> म.नं. 109, शाला मोहल्ला, अमानगंज, पन्ना (म.प्र.) - 488441</div> </div> </div> <p id="catalog-sync-note" class="no-print" style="font-size:0.92rem;color:var(--maroon-title);font-weight:700;margin-bottom:10px;"> ⏳ मास्टर Google Sheet से आधिकारिक कैटलॉग लोड हो रहा है... </p> <h3 class="catalog-block-title">१. हस्तनिर्मित वाद्य यंत्र संग्रह (Musical Instruments)</h3> <div class="table-wrap"> <table class="catalog-table"> <thead> <tr> <th>कोड (SKU)</th> <th>वाद्य यंत्र का नाम</th> <th>श्रेणी व शिल्प विवरण</th> <th>अनुमानित मूल्य</th> <th class="no-print">विवरण</th> </tr> </thead> <tbody id="products-table-body"> <tr><td colspan="5" style="text-align:center;padding:22px;font-weight:700;">⏳ मास्टर Google Sheet से वाद्य यंत्रों की लाइव सूची लोड हो रही है...</td></tr> </tbody> </table> </div> <h3 class="catalog-block-title">२. कार्यशाला मरम्मत एवं सुर मिलान सेवाएँ (केवल अमानगंज कार्यशाला में उपलब्ध)</h3> <div class="table-wrap"> <table class="catalog-table"> <thead> <tr> <th>सेवा कोड</th> <th>मरम्मत / ट्यूनिंग सेवा का नाम</th> <th>कार्य विवरण</th> <th>सेवा शुल्क (GST सहित)</th> <th class="no-print">परामर्श</th> </tr> </thead> <tbody id="services-table-body"> <tr><td colspan="5" style="text-align:center;padding:22px;font-weight:700;">⏳ मास्टर Google Sheet से कार्यशाला सेवाओं की लाइव सूची लोड हो रही है...</td></tr> </tbody> </table> </div> <div class="policy-notes-box"> <h3>महत्वपूर्ण व्यावसायिक एवं कार्यशाला नियम</h3> <ul> <li><strong>सीधा संपर्क:</strong> किसी भी वाद्य यंत्र की उपलब्धता, कस्टम निर्माण या मरम्मत परामर्श के लिए सीधे <strong>+91 97550 88022</strong> पर वॉयस कॉल करें।</li> <li><strong>कूरियर शिपिंग नीति:</strong> Delhivery One कूरियर द्वारा देशव्यापी डिलीवरी <strong>केवल नए वाद्य यंत्रों की खरीद</strong> पर लागू है (कूरियर शुल्क पिनकोड व वजन के अनुसार अलग से देय होगा)।</li> <li><strong>कार्यशाला उपस्थिति नियम:</strong> सभी मरम्मत और ट्यूनिंग सेवाओं (तबला रिपेयरिंग VM-R20 सहित) के लिए ग्राहक का वाद्य यंत्र लेकर <strong>स्वयं अमानगंज कार्यशाला में आना अनिवार्य</strong> है।</li> <li><strong>अग्रिम भुगतान नीति:</strong> नए वाद्य यंत्रों के ऑर्डर की कार्यशाला तैयारी या डिस्पैच से पहले <strong>UPI अथवा HDFC Bank Transfer द्वारा अग्रिम/पूर्ण भुगतान</strong> (Zoho इनवॉइस के अनुसार) अनिवार्य है।</li> </ul> </div> </div> </div> </section> <div class="sec-footer-light-wrap"> </main> <footer class="page-footer-nav-dark">
+      <div class="pfn-links">
+        <a href="index.html">होम</a>
+        <a href="instruments.html">वाद्य यंत्र</a>
+        <a href="catalog.html">कैटलॉग</a>
+        <a href="cart.html">कार्ट</a>
+        <a href="checkout.html">चेकआउट</a>
+        <a href="workshop.html">वर्कशॉप व मरम्मत</a>
+        <a href="downloads.html">डाउनलोड</a>
+        <a href="about.html">हमारे बारे में</a>
+        <a href="contact.html">संपर्क व दुकान</a>
+        <a href="privacy-policy.html">गोपनीयता नीति</a>
+        <a href="terms-and-conditions.html">नियम व शर्तें</a>
+        <a href="disclaimer.html">अस्वीकरण</a>
+      </div>
+      <div class="social-links-footer" aria-label="सोशल मीडिया व व्हाट्सएप लिंक">
+        <a class="social-icon-btn" href="https://www.youtube.com/@vishwakarmamusicals" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a class="social-icon-btn" href="https://www.facebook.com/vishwakarmamusicalsamanganj/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        </a>
+        <a class="social-icon-btn" href="https://www.instagram.com/vishwakarmamusicals/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a class="social-icon-btn" href="https://wa.me/919755088022" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.82 14.02c-.24.68-1.4 1.3-1.92 1.38-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.61-2.91-1.26-4.81-4.19-4.96-4.38-.15-.19-1.18-1.57-1.18-3 0-1.43.75-2.13 1.01-2.42.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.24.57.82 2 .89 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.02 1.12 1 2.07 1.31 2.36 1.46.29.15.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.39-.24.65-.14.27.1 1.69.8 1.98.94.29.15.48.22.55.34.07.12.07.7-.17 1.38z"/></svg>
+        </a>
+      </div>
+      <p class="pfn-copy">
+        <span class="pfn-copy-main">© 2026 विश्वकर्मा म्यूज़िकल्स | फ़ोन: <a href="tel:+919755088022">+91 97550 88022</a> | ईमेल: <a href="mailto:info@vishwakarmamusicals.in">info@vishwakarmamusicals.in</a></span>
+        <span class="pfn-gst-line">GSTIN: 23BSDPV5529B1ZV</span>
+      </p>
+    </footer> </div> <div class="mobile-sticky-bar"> <a class="btn btn-gold" href="tel:+919755088022">📞 अभी कॉल करें</a> <a class="btn btn-outline" href="instruments.html">🎵 वाद्य संग्रह</a> </div> <script src="assets/js/config.js"></script> <script src="assets/js/cart.js"></script> <script src="assets/js/vm-ui-v9.js"></script> <script src="assets/js/catalog.js"></script> <script> (function () { function norm(s) { return String(s || "").replace(/^\uFEFF/, "").replace(/_/g, " ").replace(/\s+/g, " ").trim().toLowerCase(); } function esc(s) { var out = (typeof sanitizeVMText === "function") ? sanitizeVMText(s) : String(s || ""); return out.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); } function parseAllRows(rows) { if (!rows || rows.length < 2) return null; var hIdx = 0; for (var i = 0; i < Math.min(5, rows.length); i++) { if (rows[i].map(norm).some(function (h) { return h.indexOf("sku") !== -1 || h.indexOf("item name") !== -1; })) { hIdx = i; break; } } var headers = rows[hIdx].map(norm); function col(names) { for (var a = 0; a < names.length; a++) { var x = headers.indexOf(norm(names[a])); if (x !== -1) return x; } for (var b = 0; b < names.length; b++) { var y = headers.findIndex(function (h) { return h.indexOf(norm(names[b])) !== -1; }); if (y !== -1) return y; } return -1; } var m = { sku: col(["sku code", "sku", "item code"]), name: col(["item name", "product title", "name"]), cat: col(["category"]), price: col(["final customer price (₹)", "live price", "selling price", "price"]), status: col(["product status", "status"]), type: col(["item type", "type"]), desc: col(["short description", "short desc", "product subtitle"]), slug: col(["page slug", "slug"]) }; var products = [], services = []; for (var r = hIdx + 1; r < rows.length; r++) { var row = rows[r]; var sku = (m.sku !== -1 && row[m.sku] ? String(row[m.sku]) : "").trim().toUpperCase(); if (!sku || norm(sku) === "sku" || norm(sku) === "sku code") continue; var status = (m.status !== -1 && row[m.status] ? String(row[m.status]) : "").trim().toLowerCase(); if (["inactive", "disabled", "hidden", "no", "false", "0", "archived"].indexOf(status) !== -1) continue; var itemType = (m.type !== -1 && row[m.type] ? String(row[m.type]) : "").trim().toLowerCase(); if (itemType.indexOf("raw") !== -1 || itemType.indexOf("pack") !== -1 || sku.indexOf("VM-RM") === 0 || sku.indexOf("VM-PK") === 0) continue; var isSvc = itemType.indexOf("service") !== -1 || itemType.indexOf("repair") !== -1 || sku.indexOf("VM-S") === 0 || sku.indexOf("VM-R") === 0; var name = (m.name !== -1 && row[m.name] ? String(row[m.name]) : sku).trim(); var desc = (m.desc !== -1 && row[m.desc] ? String(row[m.desc]) : (m.cat !== -1 && row[m.cat] ? String(row[m.cat]) : "")).trim(); var price = Number((m.price !== -1 && row[m.price] ? String(row[m.price]) : "0").replace(/[^\d.]/g, "")) || 0; var slug = (m.slug !== -1 && row[m.slug] ? String(row[m.slug]) : sku).trim().toLowerCase(); var obj = { sku: sku, name: name, desc: desc, price: price, slug: slug }; if (isSvc) services.push(obj); else products.push(obj); } return (products.length || services.length) ? { products: products, services: services } : null; } function render(data) { var pb = document.getElementById("products-table-body"); var sb = document.getElementById("services-table-body"); var note = document.getElementById("catalog-sync-note"); if (!data) { if (note) { note.style.color = "#b91c1c"; note.textContent = "⚠️ अभी लाइव शीट लोड नहीं हो सकी। कृपया रीलोड करें या +91 97550 88022 पर कॉल करें।"; } return; } if (pb) { pb.innerHTML = data.products.map(function (p) { return '<tr><td><span class="sku-pill">' + esc(p.sku) + '</span></td><td><strong>' + esc(p.name) + '</strong></td><td>' + esc(p.desc || "हस्तनिर्मित प्रामाणिक वाद्य यंत्र") + '</td><td class="price-cell">' + (p.price > 0 ? "₹" + p.price.toLocaleString("en-IN") : "कॉल पर पुष्टि") + '</td><td class="no-print"><a class="action-link" href="product.html?slug=' + encodeURIComponent(p.slug) + '">देखें →</a></td></tr>'; }).join(""); } if (sb) { sb.innerHTML = data.services.map(function (s) { return '<tr><td><span class="sku-pill">' + esc(s.sku) + '</span></td><td><strong>' + esc(s.name) + '</strong></td><td>' + esc(s.desc || "अमानगंज कार्यशाला में विशेषज्ञ मरम्मत व ट्यूनिंग") + '</td><td class="price-cell">' + (s.price > 0 ? "₹" + s.price.toLocaleString("en-IN") : "जाँच के अनुसार") + '</td><td class="no-print"><a class="action-link" href="tel:+919755088022">कॉल करें</a></td></tr>'; }).join(""); } if (note) { note.style.color = "#0b6b36"; note.textContent = "✓ मास्टर Google Sheet से लाइव कैटलॉग सिंक हो चुका है (" + data.products.length + " वाद्य यंत्र एवं " + data.services.length + " कार्यशाला सेवाएँ)।"; } } document.addEventListener("DOMContentLoaded", async function () { var apiUrl = (typeof VM_CONFIG !== "undefined" && VM_CONFIG.orderApiUrl) ? VM_CONFIG.orderApiUrl : ""; var csvUrls = (typeof VM_CONFIG !== "undefined" && Array.isArray(VM_CONFIG.catalogCsvUrls)) ? VM_CONFIG.catalogCsvUrls : []; if (apiUrl) { try { var r1 = await fetch(apiUrl, { method: "GET", cache: "no-store" }); if (r1.ok) { var j = await r1.json(); if (j && Array.isArray(j.items) && j.items.length) { var h = Object.keys(j.items[0]); var rows = [h].concat(j.items.map(function (o) { return h.map(function (k) { return o[k] !== undefined ? String(o[k]) : ""; }); })); var d1 = parseAllRows(rows); if (d1) { render(d1); return; } } } } catch (e) {} } for (var i = 0; i < csvUrls.length; i++) { try { var r2 = await fetch(csvUrls[i], { cache: "no-store" }); if (!r2.ok) continue; var txt = await r2.text(); var d2 = parseAllRows(window.VMCsv.parse(txt)); if (d2) { render(d2); return; } } catch (e) {} } render(null); }); })(); </script>
+</body>
+</html> 
+
