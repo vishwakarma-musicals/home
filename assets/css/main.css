@@ -26,7 +26,6 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html {
   scroll-behavior: smooth;
-  zoom: 0.8;
 }
 body {
   font-family: 'Noto Sans Devanagari', system-ui, -apple-system, sans-serif;
@@ -1823,8 +1822,7 @@ footer,
 /* === VM UI v9.6: UNIFORM 100% ZOOM ON ALL PAGES + SCREENSHOT ALIGNMENT FIXES === */
 html,
 body {
-  zoom: 100% !important;
-  transform: none !important;
+transform: none !important;
   background-color: #160a04 !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -2016,8 +2014,7 @@ footer,
 /* === VM UI v9.7: UNIFORM 3D BUTTONS, TRUST TOP BADGE, SECTION LOOK & HOVER + 100% ZOOM === */
 html,
 body {
-  zoom: 100% !important;
-  transform: none !important;
+transform: none !important;
   background-color: #160a04 !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -2294,8 +2291,7 @@ footer,
 /* === VM UI v9.8: HIGH-CONTRAST THEME CATEGORY BADGES & SQUARE-CORNER NEW BUTTONS === */
 html,
 body {
-  zoom: 100% !important;
-  transform: none !important;
+transform: none !important;
   background-color: #160a04 !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -2341,8 +2337,7 @@ body {
 /* === VM UI v9.9: ROUNDED NEW BUTTONS & BADGES + READABLE LIGHT TRUST CARDS + 100% ZOOM === */
 html,
 body {
-  zoom: 100% !important;
-  transform: none !important;
+transform: none !important;
   background-color: #160a04 !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -2478,8 +2473,7 @@ body {
 /* === VM UI v9.11: ONLY 3 SMALL TRUST CARDS, HI/EN TWO ROWS, SINGLE-LINE SMALL EN NAME & DARK BADGE + WHITE TEXT === */
 html,
 body {
-  zoom: 100% !important;
-  transform: none !important;
+transform: none !important;
 }
 
 #vm-customer-trust-hub,
@@ -2582,8 +2576,7 @@ body {
 /* === VM UI v9.12: CLEAN ORDERED TRUST SECTION (BADGE -> HEADING -> INFO -> 4 SMALL CARDS -> RATING -> BUTTONS) === */
 html,
 body {
-  zoom: 100% !important;
-  transform: none !important;
+transform: none !important;
 }
 
 #vm-customer-trust-hub,
@@ -2677,8 +2670,7 @@ body {
 /* === VM UI v9.13: FRESH REBUILD OF TRUST SECTION AFTER FULL REMOVAL === */
 html,
 body {
-  zoom: 100% !important;
-  transform: none !important;
+transform: none !important;
 }
 
 #vm-trust-rebuilt-section {
@@ -2772,8 +2764,7 @@ body {
 /* === VM UI v9.14: 4 DARK TRUST CARDS, NO BACK CARD, 100% HIGH CONTRAST === */
 html,
 body {
-  zoom: 100% !important;
-  transform: none !important;
+transform: none !important;
 }
 
 #vm-trust-rebuilt-section,
@@ -2858,8 +2849,7 @@ body {
 /* === VM UI v9.15: REMOVE HOVER EFFECT ON TRANSPARENT CARDS === */
 html,
 body {
-  zoom: 100% !important;
-  transform: none !important;
+transform: none !important;
 }
 
 .transparent-card,
@@ -2905,8 +2895,7 @@ body {
 /* === VM UI v9.16: REMOVE UNWANTED TRANSPARENT CARD BOXES & ISOLATE PER-CARD HOVER === */
 html,
 body {
-  zoom: 100% !important;
-  transform: none !important;
+transform: none !important;
 }
 
 .transparent-card,
@@ -2951,8 +2940,7 @@ body {
 /* === VM UI v9.17: ZERO CARD HOVER MOVEMENT & DARK BROWN (#240e06) CATEGORY BADGE WITH BRIGHT CREAM/GOLD TEXT === */
 html,
 body {
-  zoom: 100% !important;
-  transform: none !important;
+transform: none !important;
 }
 
 #vm-trust-rebuilt-section .vm-trust-small-card,
@@ -2994,8 +2982,7 @@ body {
 /* === VM UI v9.19: STRICT SINGLE-CARD TRUST HOVER, #240e06 / #fff4cc INSTRUMENT BADGE & 100% ZOOM === */
 html,
 body {
-  zoom: 100% !important;
-  transform: none !important;
+transform: none !important;
 }
 
 #vm-trust-rebuilt-section,
@@ -3206,8 +3193,7 @@ body {
 /* === VM UI v9.23: SUBTLE INVERSE TEXT-SHADOW ON BUTTONS FOR CRISP LEGIBILITY === */
 html,
 body {
-  zoom: 100% !important;
-  transform: none !important;
+transform: none !important;
 }
 
 .btn,
@@ -3779,3 +3765,986 @@ main > div:empty,
   margin: 0 !important;
   padding: 0 !important;
 }
+
+
+
+
+
+/* === VM UI v12.1 LIGHT BADGE RESTORE: LIGHT CREME/GOLD BADGES & HOMEPAGE BADGE PRESERVATION === */
+.badge-tag,
+.vm-light-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%) !important;
+  background-color: #f9ebd0 !important;
+  color: #4a240c !important;
+  -webkit-text-fill-color: #4a240c !important;
+  border: 1.5px solid #d4a13a !important;
+  border-radius: 999px !important;
+  padding: 5px 15px !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+.vm-home-badges-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin: 12px auto 14px !important;
+}
+
+
+/* === VM UI v12.2 LIGHT HERO BADGES RESTORE: HOMEPAGE & ALL OTHER PAGES === */
+.hero .badge-tag,
+.hero-section .badge-tag,
+[class*="hero"] .badge-tag,
+section .badge-tag,
+.badge-tag,
+.vm-light-badge,
+.vm-home-badges-row .badge-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%) !important;
+  background-color: #f9ebd0 !important;
+  color: #4a240c !important;
+  -webkit-text-fill-color: #4a240c !important;
+  border: 1.5px solid #d4a13a !important;
+  border-radius: 999px !important;
+  padding: 5px 15px !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+.vm-home-badges-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin: 12px auto 14px !important;
+}
+
+
+/* === VM UI v12.6: HOMEPAGE HERO ORDER, LIGHT TEXT & PLAIN STATIC DARK HERO BADGES === */
+.vm-home-hero-order {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  text-align: center !important;
+  margin: 12px auto 16px !important;
+  max-width: 780px !important;
+}
+
+[data-vm-home-hero="1"] .vm-home-craft-line,
+[data-vm-home-hero="1"] .vm-craft-intro {
+  color: #fff7df !important;
+  -webkit-text-fill-color: #fff7df !important;
+  font-weight: 700 !important;
+  font-size: clamp(0.96rem, 2.2vw, 1.12rem) !important;
+  line-height: 1.45 !important;
+  margin: 2px 0 !important;
+  text-shadow: none !important;
+}
+
+[data-vm-home-hero="1"] .vm-home-address-line,
+[data-vm-home-hero="1"] .vm-full-address {
+  color: #f7ecd0 !important;
+  -webkit-text-fill-color: #f7ecd0 !important;
+  font-weight: 500 !important;
+  font-size: clamp(0.88rem, 2.0vw, 1.0rem) !important;
+  line-height: 1.55 !important;
+  margin: 2px 0 !important;
+  overflow-wrap: break-word !important;
+  text-shadow: none !important;
+}
+
+/* Plain, static dark hero badges for Homepage Hero */
+[data-vm-home-hero="1"] .badge-tag,
+[data-vm-home-hero="1"] .vm-home-dark-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  background-color: #160804 !important;
+  background-image: none !important;
+  color: #fff9e2 !important;
+  -webkit-text-fill-color: #fff9e2 !important;
+  border: 1.5px solid #e6b84d !important;
+  border-radius: 999px !important;
+  padding: 5px 16px !important;
+  font-weight: 700 !important;
+  font-size: clamp(0.82rem, 1.9vw, 0.94rem) !important;
+  line-height: 1.35 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  max-width: 100%;
+}
+
+/* Plain, static dark hero badges for Workshop Hero (distinct dark tone) */
+[data-vm-workshop-hero="1"] .badge-tag,
+[data-vm-workshop-hero="1"] .vm-workshop-dark-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  background-color: #1c0e05 !important;
+  background-image: none !important;
+  color: #fffdf2 !important;
+  -webkit-text-fill-color: #fffdf2 !important;
+  border: 1.5px solid #f0c259 !important;
+  border-radius: 999px !important;
+  padding: 5px 16px !important;
+  font-weight: 700 !important;
+  font-size: clamp(0.82rem, 1.9vw, 0.94rem) !important;
+  line-height: 1.35 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  max-width: 100%;
+}
+
+[data-vm-home-hero="1"] .badge-tag:hover,
+[data-vm-home-hero="1"] .badge-tag:focus,
+[data-vm-home-hero="1"] .badge-tag:focus-visible,
+[data-vm-home-hero="1"] .vm-home-dark-badge:hover,
+[data-vm-home-hero="1"] .vm-home-dark-badge:focus,
+[data-vm-home-hero="1"] .vm-home-dark-badge:focus-visible {
+  background-color: #160804 !important;
+  color: #fff9e2 !important;
+  -webkit-text-fill-color: #fff9e2 !important;
+  border-color: #e6b84d !important;
+  box-shadow: none !important;
+  transform: none !important;
+  outline: none !important;
+}
+
+[data-vm-workshop-hero="1"] .badge-tag:hover,
+[data-vm-workshop-hero="1"] .badge-tag:focus,
+[data-vm-workshop-hero="1"] .badge-tag:focus-visible,
+[data-vm-workshop-hero="1"] .vm-workshop-dark-badge:hover,
+[data-vm-workshop-hero="1"] .vm-workshop-dark-badge:focus,
+[data-vm-workshop-hero="1"] .vm-workshop-dark-badge:focus-visible {
+  background-color: #1c0e05 !important;
+  color: #fffdf2 !important;
+  -webkit-text-fill-color: #fffdf2 !important;
+  border-color: #f0c259 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  outline: none !important;
+}
+
+[data-vm-home-hero="1"] .badge-tag svg,
+[data-vm-home-hero="1"] .vm-home-dark-badge svg {
+  fill: #ffe48f !important;
+  color: #ffe48f !important;
+  flex-shrink: 0;
+}
+
+[data-vm-workshop-hero="1"] .badge-tag svg,
+[data-vm-workshop-hero="1"] .vm-workshop-dark-badge svg {
+  fill: #ffe699 !important;
+  color: #ffe699 !important;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  [data-vm-home-hero="1"] .badge-tag,
+  [data-vm-home-hero="1"] .vm-home-dark-badge,
+  [data-vm-workshop-hero="1"] .badge-tag,
+  [data-vm-workshop-hero="1"] .vm-workshop-dark-badge {
+    padding: 4px 13px !important;
+    font-size: clamp(0.76rem, 2.8vw, 0.88rem) !important;
+  }
+}
+
+
+/* === VM UI v12.7 FINAL DARK HERO BADGES (OVERRIDES LIGHT BADGES ON HOME & WORKSHOP HERO ONLY) === */
+[data-vm-home-hero="1"] .badge-tag,
+[data-vm-home-hero="1"] .vm-light-badge,
+[data-vm-home-hero="1"] .vm-home-dark-badge,
+[data-vm-home-hero="1"] .vm-home-badges-row .badge-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #1a0904 !important;
+  background-color: #1a0904 !important;
+  background-image: none !important;
+  color: #fff9e2 !important;
+  -webkit-text-fill-color: #fff9e2 !important;
+  border: 1.5px solid #e6b84d !important;
+  border-radius: 999px !important;
+  padding: 5px 16px !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+[data-vm-workshop-hero="1"] .badge-tag,
+[data-vm-workshop-hero="1"] .vm-light-badge,
+[data-vm-workshop-hero="1"] .vm-workshop-dark-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #211006 !important;
+  background-color: #211006 !important;
+  background-image: none !important;
+  color: #fffdf2 !important;
+  -webkit-text-fill-color: #fffdf2 !important;
+  border: 1.5px solid #f0c259 !important;
+  border-radius: 999px !important;
+  padding: 5px 16px !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+[data-vm-home-hero="1"] .vm-home-craft-line {
+  color: #fff7df !important;
+  -webkit-text-fill-color: #fff7df !important;
+  text-shadow: none !important;
+}
+
+[data-vm-home-hero="1"] .vm-home-address-line {
+  color: #f7ecd0 !important;
+  -webkit-text-fill-color: #f7ecd0 !important;
+  text-shadow: none !important;
+}
+
+
+/* === VM UI v12.8: FORCE DARK BADGES ON HOMEPAGE & WORKSHOP HERO ONLY === */
+[data-vm-home-hero="1"] .badge-tag,
+[data-vm-home-hero="1"] .vm-home-dark-badge,
+[data-vm-home-hero="1"] .vm-light-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #1a0904 !important;
+  background-color: #1a0904 !important;
+  background-image: none !important;
+  color: #fff9e2 !important;
+  -webkit-text-fill-color: #fff9e2 !important;
+  border: 1.5px solid #e6b84d !important;
+  border-radius: 999px !important;
+  padding: 5px 16px !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+[data-vm-workshop-hero="1"] .badge-tag,
+[data-vm-workshop-hero="1"] .vm-workshop-dark-badge,
+[data-vm-workshop-hero="1"] .vm-light-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #211006 !important;
+  background-color: #211006 !important;
+  background-image: none !important;
+  color: #fffdf2 !important;
+  -webkit-text-fill-color: #fffdf2 !important;
+  border: 1.5px solid #f0c259 !important;
+  border-radius: 999px !important;
+  padding: 5px 16px !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+[data-vm-home-hero="1"] .vm-home-craft-line {
+  color: #fff7df !important;
+  -webkit-text-fill-color: #fff7df !important;
+  text-shadow: none !important;
+}
+
+[data-vm-home-hero="1"] .vm-home-address-line {
+  color: #f7ecd0 !important;
+  -webkit-text-fill-color: #f7ecd0 !important;
+  text-shadow: none !important;
+}
+
+
+/* === VM UI v12.9: SCREENSHOT PILL BADGES ON HOME & WORKSHOP HERO + ORDER === */
+.vm-home-hero-order {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  text-align: center !important;
+  margin: 12px auto 16px !important;
+  max-width: 780px !important;
+}
+
+[data-vm-home-hero="1"] .vm-home-craft-line {
+  color: #fff3c4 !important;
+  -webkit-text-fill-color: #fff3c4 !important;
+  font-weight: 700 !important;
+  font-size: clamp(0.96rem, 2.2vw, 1.12rem) !important;
+  line-height: 1.45 !important;
+  margin: 2px 0 !important;
+  text-shadow: none !important;
+}
+
+[data-vm-home-hero="1"] .vm-home-address-line {
+  color: #f6e8c6 !important;
+  -webkit-text-fill-color: #f6e8c6 !important;
+  font-weight: 500 !important;
+  font-size: clamp(0.88rem, 2.0vw, 1.0rem) !important;
+  line-height: 1.55 !important;
+  margin: 2px 0 !important;
+  overflow-wrap: break-word !important;
+  text-shadow: none !important;
+}
+
+[data-vm-home-hero="1"] .badge-tag,
+[data-vm-home-hero="1"] .vm-home-dark-badge,
+[data-vm-workshop-hero="1"] .badge-tag,
+[data-vm-workshop-hero="1"] .vm-workshop-dark-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  background-color: #190803 !important;
+  background-image: none !important;
+  color: #fff3c4 !important;
+  -webkit-text-fill-color: #fff3c4 !important;
+  border: 1.5px solid #d8a63e !important;
+  border-radius: 999px !important;
+  padding: 6px 18px !important;
+  font-weight: 800 !important;
+  font-size: clamp(0.84rem, 1.9vw, 0.96rem) !important;
+  line-height: 1.35 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  [data-vm-home-hero="1"] .badge-tag,
+  [data-vm-home-hero="1"] .vm-home-dark-badge,
+  [data-vm-workshop-hero="1"] .badge-tag,
+  [data-vm-workshop-hero="1"] .vm-workshop-dark-badge {
+    padding: 5px 15px !important;
+    font-size: clamp(0.78rem, 2.8vw, 0.90rem) !important;
+  }
+}
+
+
+/* === VM UI v12.10 SUBPAGE HERO LIGHT BADGES RESTORE === */
+body:not([data-vm-home-page="1"]):not([data-vm-workshop-page="1"]) .hero .badge-tag,
+body:not([data-vm-home-page="1"]):not([data-vm-workshop-page="1"]) .hero-section .badge-tag,
+body:not([data-vm-home-page="1"]):not([data-vm-workshop-page="1"]) [class*="hero"] .badge-tag,
+body:not([data-vm-home-page="1"]):not([data-vm-workshop-page="1"]) .badge-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%) !important;
+  background-color: #f9ebd0 !important;
+  color: #4a240c !important;
+  -webkit-text-fill-color: #4a240c !important;
+  border: 1.5px solid #d4a13a !important;
+  border-radius: 999px !important;
+  padding: 5px 15px !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+
+/* === VM UI v13: CLEAN HOME & WORKSHOP HERO ORDER + DARK PILL BADGES === */
+.vm-home-hero-order {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  text-align: center !important;
+  margin: 10px auto 14px !important;
+  max-width: 780px !important;
+}
+
+[data-vm-home-hero="1"] .vm-home-craft-line {
+  color: #fff3c4 !important;
+  -webkit-text-fill-color: #fff3c4 !important;
+  font-weight: 700 !important;
+  font-size: clamp(0.96rem, 2.2vw, 1.12rem) !important;
+  line-height: 1.45 !important;
+  margin: 2px 0 !important;
+  text-shadow: none !important;
+}
+
+[data-vm-home-hero="1"] .vm-home-address-line {
+  color: #f6e8c6 !important;
+  -webkit-text-fill-color: #f6e8c6 !important;
+  font-weight: 500 !important;
+  font-size: clamp(0.88rem, 2.0vw, 1.0rem) !important;
+  line-height: 1.55 !important;
+  margin: 2px 0 !important;
+  overflow-wrap: break-word !important;
+  text-shadow: none !important;
+}
+
+[data-vm-home-hero="1"] .badge-tag,
+[data-vm-home-hero="1"] .vm-home-dark-badge,
+[data-vm-workshop-hero="1"] .badge-tag,
+[data-vm-workshop-hero="1"] .vm-workshop-dark-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  width: auto !important;
+  max-width: 100% !important;
+  background-color: #190803 !important;
+  background-image: none !important;
+  color: #fff3c4 !important;
+  -webkit-text-fill-color: #fff3c4 !important;
+  border: 1.5px solid #d8a63e !important;
+  border-radius: 999px !important;
+  padding: 6px 18px !important;
+  font-weight: 800 !important;
+  font-size: clamp(0.84rem, 1.9vw, 0.96rem) !important;
+  line-height: 1.35 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Prevent oversized light/dark card-like pill boxes wrapping hero headings/paragraphs on workshop */
+[data-vm-workshop-hero="1"] .sec-head {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+
+
+/* === VM UI v13.1: REMOVE OVERSIZED WORKSHOP HERO PILL BOX & LONG DARK BAR === */
+[data-vm-workshop-hero="1"] .sec-head,
+[data-vm-workshop-hero="1"] .hero-box,
+[data-vm-workshop-hero="1"] .hero-card,
+[data-vm-workshop-hero="1"] .hero-banner,
+[data-vm-workshop-hero="1"] .container > div[style*="border-radius"],
+[data-vm-workshop-hero="1"] div[class*="pill"],
+[data-vm-workshop-hero="1"] div[class*="badge"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 6px 0 !important;
+  max-width: 100% !important;
+}
+
+[data-vm-workshop-hero="1"] .badge-tag,
+[data-vm-workshop-hero="1"] .vm-workshop-dark-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  max-width: 92% !important;
+  background: #190803 !important;
+  background-color: #190803 !important;
+  background-image: none !important;
+  color: #fff3c4 !important;
+  -webkit-text-fill-color: #fff3c4 !important;
+  border: 1.5px solid #d8a63e !important;
+  border-radius: 999px !important;
+  padding: 5px 16px !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+
+
+/* === VM UI v13.5: LIGHT BACKGROUND ON WORKSHOP FIRST SECTION === */
+section#workshop-services,
+section#workshop-services.sec-light,
+section#workshop-services.workshop-section {
+  background: #fbf6ec !important;
+  background-color: #fbf6ec !important;
+  background-image: none !important;
+  color: #2b1205 !important;
+}
+
+section#workshop-services .sec-head h1 {
+  color: #2b1205 !important;
+  -webkit-text-fill-color: #2b1205 !important;
+  text-shadow: none !important;
+}
+
+section#workshop-services .sec-head p {
+  color: #4a240c !important;
+  -webkit-text-fill-color: #4a240c !important;
+  text-shadow: none !important;
+}
+
+section#workshop-services .sec-head .badge-tag {
+  background: #190803 !important;
+  background-color: #190803 !important;
+  color: #fff3c4 !important;
+  -webkit-text-fill-color: #fff3c4 !important;
+  border: 1.5px solid #d8a63e !important;
+}
+
+section#workshop-services .btn-outline {
+  color: #2b1205 !important;
+  -webkit-text-fill-color: #2b1205 !important;
+  border-color: #8c5811 !important;
+}
+ 100% ZOOM & SINGLE '❖ स्था. 1990 ❖' HERO BADGE ON INDEX === */
+html {
+}
+
+section#home.hero .hero-center-box > .badge-tag:first-of-type {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #190803 !important;
+  background-color: #190803 !important;
+  background-image: none !important;
+  color: #fff3c4 !important;
+  -webkit-text-fill-color: #fff3c4 !important;
+  border: 1.5px solid #d8a63e !important;
+  border-radius: 999px !important;
+  padding: 6px 18px !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+
+/* === VM UI v13.7: PERMANENT VISIBLE '❖ स्था. 1990 ❖' BELOW H1 === */
+#vm-home-est-wrap-v137,
+.vm-home-est-wrap {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 10px auto 12px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#vm-home-est-badge-v137,
+.vm-home-est-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  background: #190803 !important;
+  background-color: #190803 !important;
+  background-image: none !important;
+  color: #fff3c4 !important;
+  -webkit-text-fill-color: #fff3c4 !important;
+  border: 1.5px solid #d8a63e !important;
+  border-radius: 999px !important;
+  padding: 6px 18px !important;
+  font-weight: 800 !important;
+  font-size: clamp(0.86rem, 1.9vw, 0.98rem) !important;
+  line-height: 1.35 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+
+
+/* === VM UI v13.9: LOCK WORKSHOP BADGE COLOR WITHOUT FLICKER === */
+section#workshop-services .sec-head .badge-tag,
+body[data-vm-workshop-page="1"] section#workshop-services .sec-head .badge-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #190803 !important;
+  background-color: #190803 !important;
+  background-image: none !important;
+  color: #fff3c4 !important;
+  -webkit-text-fill-color: #fff3c4 !important;
+  border: 1.5px solid #d8a63e !important;
+  border-radius: 999px !important;
+  padding: 6px 18px !important;
+  font-weight: 800 !important;
+  transition: none !important;
+  animation: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+
+/* === VM UI v13.10: SINGLE FINAL LOCK ON WORKSHOP BADGE (ZERO COLOR SWITCH / FLICKER) === */
+section#workshop-services .sec-head .badge-tag,
+section#workshop-services .badge-tag,
+body[data-vm-workshop-page="1"] #workshop-services .badge-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #190803 !important;
+  background-color: #190803 !important;
+  background-image: none !important;
+  color: #fff3c4 !important;
+  -webkit-text-fill-color: #fff3c4 !important;
+  border: 1.5px solid #d8a63e !important;
+  border-radius: 999px !important;
+  padding: 6px 18px !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* === VM UI v13.11: SINGLE STATIC WORKSHOP BADGE STYLE (NO FLICKER) === */
+#workshop-services .sec-head .badge-tag,
+#workshop-services .badge-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #190803 !important;
+  background-color: #190803 !important;
+  background-image: none !important;
+  color: #fff3c4 !important;
+  -webkit-text-fill-color: #fff3c4 !important;
+  border: 1.5px solid #d8a63e !important;
+  border-radius: 999px !important;
+  padding: 6px 18px !important;
+  font-weight: 800 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* === VM UI v13.13: FORCE LIGHT BADGES ON ALL PAGES EXCEPT INDEX & WORKSHOP === */
+body:not([data-vm-home-page="1"]):not([data-vm-workshop-page="1"]) .badge-tag,
+body:not([data-vm-home-page="1"]):not([data-vm-workshop-page="1"]) .vm-light-badge,
+body:not([data-vm-home-page="1"]):not([data-vm-workshop-page="1"]) .vm-home-dark-badge,
+body:not([data-vm-home-page="1"]):not([data-vm-workshop-page="1"]) .vm-workshop-dark-badge,
+body:not([data-vm-home-page="1"]):not([data-vm-workshop-page="1"]) .vm-hc-instrument-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%) !important;
+  background-color: #f9ebd0 !important;
+  background-image: linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%) !important;
+  color: #4a240c !important;
+  -webkit-text-fill-color: #4a240c !important;
+  border: 1.5px solid #d4a13a !important;
+  border-radius: 999px !important;
+  padding: 5px 15px !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+/* === VM UI v13.14: REMOVE EXTRA DARK BADGES ACROSS ALL PAGES === */
+.vm-home-dark-badge,
+.vm-workshop-dark-badge,
+.vm-hc-instrument-badge,
+.vm-stacked-pill,
+.vm-stacked-badge-group {
+  display: none !important;
+}
+
+/* === VM UI v13.15: FRESH LIGHT WORKSHOP BADGE FROM START (WORKSHOP ONLY) === */
+#vm-ws-light-badge-v1315,
+#workshop-services .sec-head #vm-ws-light-badge-v1315,
+#workshop-services .sec-head .vm-ws-fresh-light-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%) !important;
+  background-color: #f9ebd0 !important;
+  background-image: linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%) !important;
+  color: #4a240c !important;
+  -webkit-text-fill-color: #4a240c !important;
+  border: 1.5px solid #d4a13a !important;
+  border-radius: 999px !important;
+  padding: 6px 18px !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* === VM UI v13.17: STEADY 100% ZOOM WITHOUT FLICKER (INCLUDING CONTACT PAGE) === */
+html,
+body,
+body#contact-page,
+[data-vm-contact-page="1"] {
+  zoom: 100% !important;
+}
+
+/* === VM UI v13.18: THEME-MATCHED ROSEWOOD & ANTIQUE BRASS STYLE FOR HOME 'स्था. 1990' BADGE === */
+#vm-home-est-wrap-v137 {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 10px auto 14px !important;
+}
+
+#vm-home-est-badge-v137,
+.vm-home-est-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding: 6px 20px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(180deg, #2d1207 0%, #170703 100%) !important;
+  background-color: #210c05 !important;
+  background-image: linear-gradient(180deg, #2d1207 0%, #170703 100%) !important;
+  color: #fff6dc !important;
+  -webkit-text-fill-color: #fff6dc !important;
+  border: 1.5px solid #e5b548 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 232, 163, 0.28) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6) !important;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+#vm-home-est-badge-v137:hover,
+.vm-home-est-badge:hover {
+  border-color: #ffd670 !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 240, 190, 0.4) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* === VM UI v13.20: FORCE DARK HIGH-CONTRAST TEXT (#1a0e04) ON .pcard-tag-gold === */
+.pcard-tag-gold,
+.pcard-tag-gold *,
+.pcard-dark-in-light .pcard-tag-gold,
+.pcard-dark-in-light .pcard-tag-gold * {
+  color: #1a0e04 !important;
+  -webkit-text-fill-color: #1a0e04 !important;
+  text-shadow: none !important;
+}
+
+/* === VM UI v13.22: MOBILE INSTRUMENT CARDS, BADGE CONTRAST & SMART TEXT WRAPPING === */
+.vm-nowrap {
+  display: inline-block !important;
+  white-space: nowrap !important;
+  max-width: 100% !important;
+}
+
+.pcard-tag-gold,
+.pcard-tag-gold *,
+.pcard-dark-in-light .pcard-tag-gold,
+.pcard-dark-in-light .pcard-tag-gold * {
+  background: linear-gradient(180deg, #fce09b 0%, #d89f31 100%) !important;
+  color: #1a0e04 !important;
+  -webkit-text-fill-color: #1a0e04 !important;
+  text-shadow: none !important;
+}
+
+.pcard-dark-in-light .pcard-title-light {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 4px !important;
+  max-width: 100% !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+}
+
+.pcard-dark-in-light .vm-card-hi-line {
+  display: block !important;
+  max-width: 100% !important;
+  color: #fffdf7 !important;
+  -webkit-text-fill-color: #fffdf7 !important;
+  font-size: clamp(0.95rem, 2.2vw, 1.12rem) !important;
+  line-height: 1.35 !important;
+  text-align: center !important;
+}
+
+.pcard-dark-in-light .vm-card-en-line {
+  display: block !important;
+  max-width: 100% !important;
+  color: #ffe38a !important;
+  -webkit-text-fill-color: #ffe38a !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  text-align: center !important;
+  white-space: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+@media (max-width: 768px) {
+  .inst-grid {
+    grid-template-columns: 1fr !important;
+    width: calc(100% - 36px) !important;
+    margin-left: 18px !important;
+    margin-right: 18px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    gap: 14px !important;
+  }
+
+  .pcard-dark-in-light .vm-card-hi-line {
+    font-size: 0.92rem !important;
+  }
+
+  .pcard-dark-in-light .vm-card-en-line {
+    font-size: clamp(0.68rem, 3.2vw, 0.84rem) !important;
+  }
+}
+
+/* === VM UI v13.23: BOTTOM-ONLY MOBILE STICKY BAR, FOOTER CLEARANCE & CONTACT MAP BUTTON CONTRAST === */
+#contact .vm-map-below-actions a,
+#contact .vm-map-below-actions button,
+.vm-map-below-actions a,
+.vm-map-below-actions button {
+  text-shadow: none !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+#contact .vm-map-below-actions .btn-gold,
+.vm-map-below-actions .btn-gold {
+  background: #f3c652 !important;
+  color: #1b0b04 !important;
+  -webkit-text-fill-color: #1b0b04 !important;
+  border: 1.5px solid #e0ad3b !important;
+  text-shadow: none !important;
+}
+
+#contact .vm-map-below-actions .btn-outline,
+.vm-map-below-actions .btn-outline {
+  background: #fffdf8 !important;
+  color: #1b0b04 !important;
+  -webkit-text-fill-color: #1b0b04 !important;
+  border: 1.5px solid #e0ad3b !important;
+  text-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+  footer.page-footer-nav-dark,
+  .sec-footer-light-wrap footer {
+    padding-bottom: 92px !important;
+    background-color: #140804 !important;
+  }
+
+  .mobile-sticky-bar,
+  .sticky-cta-bar {
+    position: fixed !important;
+    left: 10px !important;
+    right: 10px !important;
+    bottom: 10px !important;
+    z-index: 990 !important;
+    display: flex !important;
+    gap: 8px !important;
+    padding: 8px !important;
+    border-radius: 14px !important;
+    background: #1b0b04 !important;
+    border: 1.5px solid #e0ad3b !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45) !important;
+    transform: translateY(140%) !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: transform 0.25s ease, opacity 0.25s ease !important;
+  }
+
+  .mobile-sticky-bar.vm-sticky-visible,
+  .sticky-cta-bar.vm-sticky-visible {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .mobile-sticky-bar a,
+  .sticky-cta-bar a {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    font-size: 0.78rem !important;
+    padding: 9px 10px !important;
+    text-shadow: none !important;
+  }
+}
+
