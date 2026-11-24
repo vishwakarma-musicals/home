@@ -2638,42 +2638,31 @@
   setTimeout(cleanStickyBarV1328, 300);
 })();
 
-/* === VM UI v13.29 RUNTIME: SAFE NON-LOOPING STICKY CTA (CALL + COLLECTION/CART) === */
+/* === VM UI v13.29 RUNTIME: ONE-SHOT STICKY CTA WITHOUT LOOP === */
 (function () {
-  function enforceStickyCtaV1329() {
+  function applyStickyCtaOnceV1329() {
     var bars = document.querySelectorAll(".mobile-sticky-bar, .sticky-cta-bar");
     if (!bars || !bars.length) return;
     bars.forEach(function (bar) {
       var btns = bar.querySelectorAll("a, button");
       if (btns.length >= 1) {
-        if (btns[0].tagName === "A" && btns[0].href !== "tel:+919755088022") {
-          btns[0].href = "tel:+919755088022";
-        }
+        if (btns[0].tagName === "A") btns[0].href = "tel:+919755088022";
         btns[0].removeAttribute("target");
         btns[0].removeAttribute("rel");
-        if (btns[0].innerHTML !== "📞 अभी कॉल करें") {
-          btns[0].innerHTML = "📞 अभी कॉल करें";
-        }
+        btns[0].textContent = "📞 अभी कॉल करें";
       }
       if (btns.length >= 2) {
         var isInstruments = /instruments\.html/i.test(window.location.pathname || "");
-        var targetHref = isInstruments ? "cart.html" : "instruments.html";
-        var targetHtml = isInstruments ? "🛒 कार्ट देखें" : "🎵 वाद्य संग्रह";
-        if (btns[1].tagName === "A" && !(btns[1].getAttribute("href") || "").endsWith(targetHref)) {
-          btns[1].href = targetHref;
-        }
+        if (btns[1].tagName === "A") btns[1].href = isInstruments ? "cart.html" : "instruments.html";
         btns[1].removeAttribute("target");
         btns[1].removeAttribute("rel");
-        if (btns[1].innerHTML !== targetHtml) {
-          btns[1].innerHTML = targetHtml;
-        }
+        btns[1].textContent = isInstruments ? "🛒 कार्ट देखें" : "🎵 वाद्य संग्रह";
       }
     });
   }
-  enforceStickyCtaV1329();
-  document.addEventListener("DOMContentLoaded", function () {
-    enforceStickyCtaV1329();
-    setTimeout(enforceStickyCtaV1329, 300);
-    setTimeout(enforceStickyCtaV1329, 1200);
-  });
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", applyStickyCtaOnceV1329, { once: true });
+  } else {
+    applyStickyCtaOnceV1329();
+  }
 })();
