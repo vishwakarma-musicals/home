@@ -4787,3 +4787,23 @@ body#contact-page,
     text-overflow: ellipsis !important;
   }
 }
+/* === VM UI v13.25: MOBILE STICKY BAR RIGHT EDGE BREATHING ROOM === */
+@media (max-width: 768px) {
+  .mobile-sticky-bar,
+  .sticky-cta-bar {
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    max-width: calc(100% - 24px) !important;
+    padding: 6px 8px !important;
+    gap: 8px !important;
+  }
+
+  .mobile-sticky-bar a,
+  .mobile-sticky-bar button,
+  .sticky-cta-bar a,
+  .sticky-cta-bar button {
+    padding: 8px 6px !important;
+    font-size: clamp(0.72rem, 2.8vw, 0.82rem) !important;
+  }
+}
