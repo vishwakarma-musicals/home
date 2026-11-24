@@ -2638,7 +2638,7 @@
   setTimeout(cleanStickyBarV1328, 300);
 })();
 
-/* === VM UI v13.29 RUNTIME: PREVENT STICKY WHATSAPP OVERRIDE & KEEP CALL + COLLECTION/CART === */
+/* === VM UI v13.29 RUNTIME: SAFE NON-LOOPING STICKY CTA (CALL + COLLECTION/CART) === */
 (function () {
   function enforceStickyCtaV1329() {
     var bars = document.querySelectorAll(".mobile-sticky-bar, .sticky-cta-bar");
@@ -2646,17 +2646,27 @@
     bars.forEach(function (bar) {
       var btns = bar.querySelectorAll("a, button");
       if (btns.length >= 1) {
-        if (btns[0].tagName === "A") btns[0].href = "tel:+919755088022";
+        if (btns[0].tagName === "A" && btns[0].href !== "tel:+919755088022") {
+          btns[0].href = "tel:+919755088022";
+        }
         btns[0].removeAttribute("target");
         btns[0].removeAttribute("rel");
-        btns[0].innerHTML = "📞 अभी कॉल करें";
+        if (btns[0].innerHTML !== "📞 अभी कॉल करें") {
+          btns[0].innerHTML = "📞 अभी कॉल करें";
+        }
       }
       if (btns.length >= 2) {
         var isInstruments = /instruments\.html/i.test(window.location.pathname || "");
-        if (btns[1].tagName === "A") btns[1].href = isInstruments ? "cart.html" : "instruments.html";
+        var targetHref = isInstruments ? "cart.html" : "instruments.html";
+        var targetHtml = isInstruments ? "🛒 कार्ट देखें" : "🎵 वाद्य संग्रह";
+        if (btns[1].tagName === "A" && !(btns[1].getAttribute("href") || "").endsWith(targetHref)) {
+          btns[1].href = targetHref;
+        }
         btns[1].removeAttribute("target");
         btns[1].removeAttribute("rel");
-        btns[1].innerHTML = isInstruments ? "🛒 कार्ट देखें" : "🎵 वाद्य संग्रह";
+        if (btns[1].innerHTML !== targetHtml) {
+          btns[1].innerHTML = targetHtml;
+        }
       }
     });
   }
@@ -2665,11 +2675,5 @@
     enforceStickyCtaV1329();
     setTimeout(enforceStickyCtaV1329, 300);
     setTimeout(enforceStickyCtaV1329, 1200);
-    if (typeof MutationObserver !== "undefined" && document.body) {
-      var mo = new MutationObserver(function () {
-        enforceStickyCtaV1329();
-      });
-      mo.observe(document.body, { childList: true, subtree: true, characterData: true });
-    }
   });
 })();
