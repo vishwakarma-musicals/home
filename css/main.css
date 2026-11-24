@@ -4807,3 +4807,30 @@ body#contact-page,
     font-size: clamp(0.72rem, 2.8vw, 0.82rem) !important;
   }
 }
+
+/* === VM UI v13.26: MOBILE STICKY BAR INNER RIGHT BUTTON CLEARANCE === */
+@media (max-width: 768px) {
+  .mobile-sticky-bar,
+  .sticky-cta-bar {
+    left: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+    max-width: calc(100% - 20px) !important;
+    padding: 6px 10px 6px 8px !important;
+    gap: 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobile-sticky-bar a,
+  .mobile-sticky-bar button,
+  .sticky-cta-bar a,
+  .sticky-cta-bar button {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    padding: 8px 6px !important;
+    box-sizing: border-box !important;
+    font-size: clamp(0.7rem, 2.7vw, 0.8rem) !important;
+  }
+}
