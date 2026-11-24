@@ -4747,4 +4747,130 @@ body#contact-page,
     text-shadow: none !important;
   }
 }
+/* === VM UI v13.24: MOBILE STICKY BAR EXACT SCREEN FIT (NO RIGHT OVERFLOW) === */
+@media (max-width: 768px) {
+  .mobile-sticky-bar,
+  .sticky-cta-bar {
+    position: fixed !important;
+    left: 8px !important;
+    right: 8px !important;
+    bottom: calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+    width: auto !important;
+    max-width: calc(100vw - 16px) !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 6px !important;
+    gap: 8px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    overflow: hidden !important;
+  }
 
+  .mobile-sticky-bar a,
+  .mobile-sticky-bar button,
+  .sticky-cta-bar a,
+  .sticky-cta-bar button {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 50% !important;
+    min-height: 40px !important;
+    max-height: 44px !important;
+    margin: 0 !important;
+    padding: 8px 8px !important;
+    font-size: clamp(0.74rem, 3vw, 0.84rem) !important;
+    line-height: 1.15 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+}
+/* === VM UI v13.25: MOBILE STICKY BAR RIGHT EDGE BREATHING ROOM === */
+@media (max-width: 768px) {
+  .mobile-sticky-bar,
+  .sticky-cta-bar {
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    max-width: calc(100% - 24px) !important;
+    padding: 6px 8px !important;
+    gap: 8px !important;
+  }
+
+  .mobile-sticky-bar a,
+  .mobile-sticky-bar button,
+  .sticky-cta-bar a,
+  .sticky-cta-bar button {
+    padding: 8px 6px !important;
+    font-size: clamp(0.72rem, 2.8vw, 0.82rem) !important;
+  }
+}
+
+/* === VM UI v13.26: MOBILE STICKY BAR INNER RIGHT BUTTON CLEARANCE === */
+@media (max-width: 768px) {
+  .mobile-sticky-bar,
+  .sticky-cta-bar {
+    left: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+    max-width: calc(100% - 20px) !important;
+    padding: 6px 10px 6px 8px !important;
+    gap: 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobile-sticky-bar a,
+  .mobile-sticky-bar button,
+  .sticky-cta-bar a,
+  .sticky-cta-bar button {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    padding: 8px 6px !important;
+    box-sizing: border-box !important;
+    font-size: clamp(0.7rem, 2.7vw, 0.8rem) !important;
+  }
+}
+
+/* === VM UI v13.28: MOBILE STICKY BAR EXACT VIEWPORT & INNER BUTTON FIT === */
+@media (max-width: 768px) {
+  .mobile-sticky-bar,
+  .sticky-cta-bar {
+    position: fixed !important;
+    left: 12px !important;
+    right: 12px !important;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    width: auto !important;
+    max-width: calc(100vw - 24px) !important;
+    margin: 0 !important;
+    padding: 7px 10px !important;
+    gap: 8px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    overflow: hidden !important;
+  }
+
+  .mobile-sticky-bar a,
+  .mobile-sticky-bar button,
+  .sticky-cta-bar a,
+  .sticky-cta-bar button {
+    flex: 1 1 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: calc(50% - 4px) !important;
+    margin: 0 !important;
+    padding: 9px 8px !important;
+    box-sizing: border-box !important;
+    font-size: clamp(0.74rem, 2.9vw, 0.84rem) !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    text-align: center !important;
+  }
+}

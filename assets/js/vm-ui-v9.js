@@ -1197,9 +1197,9 @@
 
     var btnRow = document.createElement("div");
     btnRow.className = "vm-trust-bottom-cta-row";
-    btnRow.innerHTML =
-      "<a href='#catalog' class='btn vm-3d-btn'>लाइव कैटलॉग देखें (Live Catalog)</a>" +
-      "<a href='mailto:info@vishwakarmamusicals.in?subject=" + encodeURIComponent("कैटलॉग व ब्रोशर अनुरोध - विश्वकर्मा म्यूज़िकल्स") + "' class='btn vm-3d-btn'>कैटलॉग व ब्रोशर डाउनलोड करें</a>";
+        btnRow.innerHTML =
+      "<a href='catalog.html' class='btn vm-3d-btn'>लाइव कैटलॉग देखें (Live Catalog)</a>" +
+      "<a href='downloads.html' class='btn vm-3d-btn'>कैटलॉग व ब्रोशर डाउनलोड करें</a>";
     sec.appendChild(btnRow);
 
     if (anchorParent) {
@@ -2612,3 +2612,28 @@
 })();
 
 
+
+/* === VM UI v13.28 RUNTIME: RESTORE NON-WHATSAPP STICKY BAR & CLEAN INNER FIT === */
+(function () {
+  function cleanStickyBarV1328() {
+    var bar = document.querySelector(".mobile-sticky-bar, .sticky-cta-bar");
+    if (!bar) return;
+    var btns = bar.querySelectorAll("a, button");
+    if (btns.length >= 1) {
+      btns[0].href = "tel:+919755088022";
+      btns[0].removeAttribute("target");
+      btns[0].removeAttribute("rel");
+      btns[0].innerHTML = "📞 अभी कॉल करें";
+    }
+    if (btns.length >= 2) {
+      var isInstrumentsPage = /instruments\.html/i.test(window.location.pathname || "");
+      btns[1].href = isInstrumentsPage ? "cart.html" : "instruments.html";
+      btns[1].removeAttribute("target");
+      btns[1].removeAttribute("rel");
+      btns[1].innerHTML = isInstrumentsPage ? "🛒 कार्ट देखें" : "🎵 वाद्य संग्रह";
+    }
+  }
+  cleanStickyBarV1328();
+  document.addEventListener("DOMContentLoaded", cleanStickyBarV1328);
+  setTimeout(cleanStickyBarV1328, 300);
+})();
