@@ -511,10 +511,8 @@
   var waUrl = "https://wa.me/919755088022?text=" + encodeURIComponent("नमस्ते विश्वकर्मा म्यूज़िकल्स, मुझे वाद्य यंत्र / कार्यशाला के बारे में पूछना है।");
 
   function enforceHundredPercentZoom() {
-    document.documentElement.style.zoom = "100%";
     document.documentElement.style.transform = "none";
     if (document.body) {
-      document.body.style.zoom = "100%";
       document.body.style.transform = "none";
     }
   }
@@ -685,10 +683,8 @@
   var waUrl = "https://wa.me/919755088022?text=" + encodeURIComponent("नमस्ते विश्वकर्मा म्यूज़िकल्स, मुझे वाद्य यंत्र / कार्यशाला के बारे में पूछना है।");
 
   function enforceHundredPercentZoom() {
-    document.documentElement.style.zoom = "100%";
     document.documentElement.style.transform = "none";
     if (document.body) {
-      document.body.style.zoom = "100%";
       document.body.style.transform = "none";
     }
   }
@@ -1362,9 +1358,7 @@
 /* === VM UI v9.19 RUNTIME: ISOLATE SINGLE-CARD TRUST HOVER & ENFORCE #fff4cc BADGE TEXT === */
 (function () {
   function applyV919Rules() {
-    document.documentElement.style.setProperty("zoom", "100%", "important");
     if (document.body) {
-      document.body.style.setProperty("zoom", "100%", "important");
     }
 
     var trustCards = document.querySelectorAll("#vm-trust-rebuilt-section .vm-trust-small-card");
@@ -1573,17 +1567,39 @@
     var targets = document.querySelectorAll(".badge-tag, .vm-trust-meta-line, .pfn-copy, .meta-bar span, .sec-head p");
     targets.forEach(function (el) {
       if (el.getAttribute("data-vm-wrapped") === "1") return;
-      var html = el.innerHTML;
-      var changed = false;
-      phraseList.forEach(function (phrase) {
-        if (html.indexOf(phrase) !== -1 && html.indexOf('class="vm-nowrap">' + phrase) === -1) {
-          html = html.split(phrase).join('<span class="vm-nowrap">' + phrase + '</span>');
-          changed = true;
+      var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+      var textNodes = [];
+      var cur;
+      while ((cur = walker.nextNode())) {
+        if (cur.parentElement && cur.parentElement.closest("a, button, script, style, .vm-nowrap")) continue;
+        if (cur.nodeValue && cur.nodeValue.trim()) {
+          textNodes.push(cur);
+        }
+      }
+
+      textNodes.forEach(function (tn) {
+        var text = tn.nodeValue || "";
+        var matchedPhrase = phraseList.find(function (p) { return text.indexOf(p) !== -1; });
+        if (!matchedPhrase) return;
+
+        var parts = text.split(matchedPhrase);
+        var frag = document.createDocumentFragment();
+        parts.forEach(function (part, idx) {
+          if (part) {
+            frag.appendChild(document.createTextNode(part));
+          }
+          if (idx < parts.length - 1) {
+            var span = document.createElement("span");
+            span.className = "vm-nowrap";
+            span.textContent = matchedPhrase;
+            frag.appendChild(span);
+          }
+        });
+        if (tn.parentNode) {
+          tn.parentNode.replaceChild(frag, tn);
         }
       });
-      if (changed) {
-        el.innerHTML = html;
-      }
+
       el.setAttribute("data-vm-wrapped", "1");
     });
   }
@@ -1848,3 +1864,751 @@
     setTimeout(buildStackedHeritageBadges, 1400);
   });
 })();
+
+
+
+
+
+/* === VM UI v12.1 LIGHT BADGE RUNTIME: KEEP HOMEPAGE BADGES & RESTORE LIGHT BADGE TONE === */
+(function () {
+  function restoreLightBadgesV121() {
+    document.querySelectorAll(".vm-hc-instrument-badge").forEach(function (el) {
+      el.remove();
+    });
+
+    document.querySelectorAll(".badge-tag, .vm-light-badge").forEach(function (badge) {
+      badge.style.removeProperty("display");
+      badge.style.setProperty("background", "linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%)", "important");
+      badge.style.setProperty("color", "#4a240c", "important");
+      badge.style.setProperty("-webkit-text-fill-color", "#4a240c", "important");
+      badge.style.setProperty("border", "1.5px solid #d4a13a", "important");
+      badge.style.setProperty("text-shadow", "none", "important");
+      badge.style.setProperty("opacity", "1", "important");
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    restoreLightBadgesV121();
+    setTimeout(restoreLightBadgesV121, 500);
+    setTimeout(restoreLightBadgesV121, 1400);
+  });
+})();
+
+
+/* === VM UI v12.2 LIGHT HERO BADGES RUNTIME: RESTORE LIGHT BADGES ON ALL PAGES === */
+(function () {
+  function restoreAllHeroLightBadges() {
+    document.querySelectorAll(".badge-tag, .vm-light-badge, .hero .badge-tag, .hero-section .badge-tag, [class*='hero'] .badge-tag").forEach(function (badge) {
+      if (badge.closest("footer")) return;
+      badge.style.removeProperty("display");
+      badge.style.setProperty("display", "inline-flex", "important");
+      badge.style.setProperty("visibility", "visible", "important");
+      badge.style.setProperty("opacity", "1", "important");
+      badge.style.setProperty("background", "linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%)", "important");
+      badge.style.setProperty("background-color", "#f9ebd0", "important");
+      badge.style.setProperty("color", "#4a240c", "important");
+      badge.style.setProperty("-webkit-text-fill-color", "#4a240c", "important");
+      badge.style.setProperty("border", "1.5px solid #d4a13a", "important");
+      badge.style.setProperty("text-shadow", "none", "important");
+      badge.style.setProperty("filter", "none", "important");
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    restoreAllHeroLightBadges();
+    setTimeout(restoreAllHeroLightBadges, 400);
+    setTimeout(restoreAllHeroLightBadges, 1200);
+  });
+})();
+
+
+
+
+
+/* === VM UI v12.10 SUBPAGE HERO LIGHT BADGES RUNTIME === */
+(function () {
+  function restoreSubpageLightBadges() {
+    var path = (window.location.pathname || "").toLowerCase();
+    var isHome = path === "/" || path.endsWith("/index.html") || path === "index.html" || path === "";
+    var isWorkshop = path.endsWith("/workshop.html") || path === "workshop.html";
+
+    if (isHome) {
+      document.body.setAttribute("data-vm-home-page", "1");
+      return;
+    }
+    if (isWorkshop) {
+      document.body.setAttribute("data-vm-workshop-page", "1");
+      return;
+    }
+
+    document.querySelectorAll(".badge-tag, .hero .badge-tag, .hero-section .badge-tag, [class*='hero'] .badge-tag").forEach(function (badge) {
+      if (badge.closest("footer")) return;
+      badge.style.setProperty("display", "inline-flex", "important");
+      badge.style.setProperty("visibility", "visible", "important");
+      badge.style.setProperty("opacity", "1", "important");
+      badge.style.setProperty("background", "linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%)", "important");
+      badge.style.setProperty("background-color", "#f9ebd0", "important");
+      badge.style.setProperty("color", "#4a240c", "important");
+      badge.style.setProperty("-webkit-text-fill-color", "#4a240c", "important");
+      badge.style.setProperty("border", "1.5px solid #d4a13a", "important");
+      badge.style.setProperty("text-shadow", "none", "important");
+      badge.style.setProperty("filter", "none", "important");
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    restoreSubpageLightBadges();
+    setTimeout(restoreSubpageLightBadges, 400);
+    setTimeout(restoreSubpageLightBadges, 1200);
+  });
+})();
+
+
+/* === VM UI v13 RUNTIME: CLEAN DUPLICATES & STRAY HERO PILLS ON HOME & WORKSHOP === */
+(function () {
+  function cleanHomeAndWorkshopHeroV13() {
+    var path = (window.location.pathname || "").toLowerCase();
+    var isHome = path === "/" || path.endsWith("/index.html") || path === "index.html" || path === "";
+    var isWorkshop = path.endsWith("/workshop.html") || path === "workshop.html";
+
+    if (isHome) {
+      document.body.setAttribute("data-vm-home-page", "1");
+      var homeHero = document.querySelector("[data-vm-home-hero='1']") || document.querySelector("main > section:first-of-type");
+      if (homeHero) {
+        var h1 = homeHero.querySelector("h1");
+        var seenEst = false;
+        var seenCraft = false;
+        var seenAddr = false;
+        var seenGst = false;
+
+        homeHero.querySelectorAll(".badge-tag, .vm-home-dark-badge, .vm-light-badge, .vm-home-craft-line, .vm-home-address-line, span, p").forEach(function (el) {
+          if (el.closest("footer")) return;
+          if (el.querySelector("h1, h2, h3, p, a, button")) return;
+          var txt = (el.textContent || "").replace(/\s+/g, " ").trim();
+          if (!txt) return;
+
+          // Remove any extra pills/lines before H1
+          if (h1 && (h1.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_PRECEDING)) {
+            if (el.matches(".badge-tag, .vm-home-dark-badge, .vm-light-badge") || /स्था\.\s*1990|35\+|GSTIN\s*:/i.test(txt)) {
+              el.remove();
+              return;
+            }
+          }
+
+          if (/^[\s❖•✦-]*स्था\.\s*1990[\s❖•✦-]*$/i.test(txt)) {
+            if (seenEst) { el.remove(); return; }
+            seenEst = true;
+          } else if (/^35\+\s*वर्षों की पारंपरिक कारीगरी/i.test(txt) && txt.length < 50) {
+            if (seenCraft) { el.remove(); return; }
+            seenCraft = true;
+          } else if (/मकान नं\.\s*109.*488441/i.test(txt)) {
+            if (seenAddr) { el.remove(); return; }
+            seenAddr = true;
+          } else if (/^[\s❖•✦-]*GSTIN\s*:\s*23BSDPV5529B1ZV[\s❖•✦-]*$/i.test(txt)) {
+            if (seenGst) { el.remove(); return; }
+            seenGst = true;
+          }
+        });
+      }
+    }
+
+    if (isWorkshop) {
+      document.body.setAttribute("data-vm-workshop-page", "1");
+      var wsHero = document.querySelector("[data-vm-workshop-hero='1']") || document.querySelector("main > section:first-of-type");
+      if (wsHero) {
+        var seenWsEst = false;
+        wsHero.querySelectorAll(".badge-tag, .vm-workshop-dark-badge, .vm-light-badge, span, div, p").forEach(function (el) {
+          if (el.closest("footer")) return;
+          if (el.querySelector("h1, h2, h3, p, a, button")) return;
+          var txt = (el.textContent || "").replace(/\s+/g, " ").trim();
+          // Remove oversized dark pill box containing long workshop description
+          if (txt.length > 90 && (el.classList.contains("badge-tag") || el.classList.contains("vm-workshop-dark-badge") || el.classList.contains("vm-light-badge"))) {
+            el.remove();
+            return;
+          }
+          // Keep single clean "स्था. 1990" badge if duplicated
+          if (/^[\s❖•✦-]*स्था\.\s*1990[\s❖•✦-]*$/i.test(txt)) {
+            if (seenWsEst) { el.remove(); return; }
+            seenWsEst = true;
+          }
+        });
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    cleanHomeAndWorkshopHeroV13();
+    setTimeout(cleanHomeAndWorkshopHeroV13, 350);
+    setTimeout(cleanHomeAndWorkshopHeroV13, 1100);
+  });
+})();
+
+
+/* === VM UI v13.1 RUNTIME: STRIP OVERSIZED WORKSHOP HERO PILL & MERGED BAR === */
+(function () {
+  function fixWorkshopHeroV131() {
+    var path = (window.location.pathname || "").toLowerCase();
+    var isWorkshop = path.endsWith("/workshop.html") || path === "workshop.html";
+    if (!isWorkshop) return;
+
+    var wsHero = document.querySelector("[data-vm-workshop-hero='1']") || document.querySelector("main > section:first-of-type");
+    if (!wsHero) return;
+
+    wsHero.querySelectorAll("div, span, p, a").forEach(function (el) {
+      if (el.closest("footer")) return;
+      if (el.querySelector("h1, h2, h3, img")) return;
+      var txt = (el.textContent || "").replace(/\s+/g, " ").trim();
+      var rect = el.getBoundingClientRect ? el.getBoundingClientRect() : { height: 0, width: 0 };
+
+      // Remove oversized pill/box or merged long workshop bar
+      if ((rect.height > 75 && !el.matches("p")) || (txt.length > 85 && /मकान नं\.\s*109.*अमानगंज/i.test(txt))) {
+        el.remove();
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    fixWorkshopHeroV131();
+    setTimeout(fixWorkshopHeroV131, 350);
+    setTimeout(fixWorkshopHeroV131, 1100);
+  });
+})();
+
+
+/* === VM UI v13.3 RUNTIME: REMOVE DUPLICATE WORKSHOP ADDRESS BADGE === */
+(function () {
+  function removeDuplicateWorkshopAddressBadge() {
+    var path = (window.location.pathname || "").toLowerCase();
+    var isWorkshop = path.endsWith("/workshop.html") || path === "workshop.html";
+    if (!isWorkshop) return;
+
+    var wsHero = document.querySelector("[data-vm-workshop-hero='1']") || document.querySelector("main > section:first-of-type");
+    if (!wsHero) return;
+
+    wsHero.querySelectorAll(".badge-tag, .vm-workshop-dark-badge, span, div, p").forEach(function (el) {
+      if (el.closest("footer")) return;
+      if (el.querySelector("h1, h2, h3, p, a, button")) return;
+      var txt = (el.textContent || "").replace(/\s+/g, " ").trim();
+      if (/^[\s❖•✦-]*मकान\s*नं\.\s*109,\s*शाला\s*मोहल्ला,\s*अमानगंज[\s❖•✦-]*$/i.test(txt)) {
+        el.remove();
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    removeDuplicateWorkshopAddressBadge();
+    setTimeout(removeDuplicateWorkshopAddressBadge, 350);
+    setTimeout(removeDuplicateWorkshopAddressBadge, 1100);
+  });
+})();
+
+
+
+/* === VM UI v13.6 RUNTIME: SINGLE '❖ स्था. 1990 ❖' HERO BADGE & 100% ZOOM === */
+(function () {
+  function enforceIndexSingleEstBadge() {
+    var path = (window.location.pathname || "").toLowerCase();
+    var isHome = path === "/" || path.endsWith("/index.html") || path === "index.html" || path === "";
+    if (!isHome) return;
+
+    var homeHero = document.querySelector("section#home.hero") || document.querySelector("main > section:first-of-type");
+    if (!homeHero) return;
+
+    homeHero.querySelectorAll("[id^='vm-home-hero-ordered'], [id^='vm-home-badges'], .vm-home-dark-badge, .vm-light-badge").forEach(function (el) {
+      el.remove();
+    });
+
+    var badges = homeHero.querySelectorAll(".badge-tag");
+    badges.forEach(function (b, idx) {
+      if (idx === 0) {
+        b.textContent = "❖ स्था. 1990 ❖";
+        b.style.setProperty("display", "inline-flex", "important");
+        b.style.setProperty("visibility", "visible", "important");
+        b.style.setProperty("opacity", "1", "important");
+        b.style.setProperty("background", "#190803", "important");
+        b.style.setProperty("background-color", "#190803", "important");
+        b.style.setProperty("background-image", "none", "important");
+        b.style.setProperty("color", "#fff3c4", "important");
+        b.style.setProperty("-webkit-text-fill-color", "#fff3c4", "important");
+        b.style.setProperty("border", "1.5px solid #d8a63e", "important");
+      } else {
+        b.remove();
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    enforceIndexSingleEstBadge();
+    setTimeout(enforceIndexSingleEstBadge, 350);
+    setTimeout(enforceIndexSingleEstBadge, 1100);
+  });
+})();
+
+
+/* === VM UI v13.7 RUNTIME: KEEP '❖ स्था. 1990 ❖' BELOW H1 & PREVENT HIDING === */
+(function () {
+  function keepEst1990BelowH1() {
+    var path = (window.location.pathname || "").toLowerCase();
+    var isHome = path === "/" || path.endsWith("/index.html") || path === "index.html" || path === "";
+    if (!isHome) return;
+
+    var heroBox = document.querySelector("section#home.hero .hero-center-box") || document.querySelector("main > section:first-of-type");
+    if (!heroBox) return;
+    var h1 = heroBox.querySelector("h1.hero-title") || heroBox.querySelector("h1");
+    if (!h1) return;
+
+    var wrap = document.getElementById("vm-home-est-wrap-v137");
+    if (!wrap) {
+      wrap = document.createElement("div");
+      wrap.id = "vm-home-est-wrap-v137";
+      wrap.className = "vm-home-est-wrap";
+      wrap.innerHTML = '<span id="vm-home-est-badge-v137" class="vm-home-est-badge">❖ स्था. 1990 ❖</span>';
+    }
+
+    if (h1.nextElementSibling !== wrap) {
+      h1.insertAdjacentElement("afterend", wrap);
+    }
+
+    wrap.style.setProperty("display", "flex", "important");
+    wrap.style.setProperty("visibility", "visible", "important");
+    wrap.style.setProperty("opacity", "1", "important");
+
+    var badge = document.getElementById("vm-home-est-badge-v137");
+    if (badge) {
+      badge.textContent = "❖ स्था. 1990 ❖";
+      badge.style.setProperty("display", "inline-flex", "important");
+      badge.style.setProperty("visibility", "visible", "important");
+      badge.style.setProperty("opacity", "1", "important");
+      badge.style.setProperty("background", "#190803", "important");
+      badge.style.setProperty("background-color", "#190803", "important");
+      badge.style.setProperty("background-image", "none", "important");
+      badge.style.setProperty("color", "#fff3c4", "important");
+      badge.style.setProperty("-webkit-text-fill-color", "#fff3c4", "important");
+      badge.style.setProperty("border", "1.5px solid #d8a63e", "important");
+      badge.style.setProperty("border-radius", "999px", "important");
+      badge.style.setProperty("padding", "6px 18px", "important");
+      badge.style.setProperty("text-shadow", "none", "important");
+      badge.style.setProperty("box-shadow", "none", "important");
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    keepEst1990BelowH1();
+    setTimeout(keepEst1990BelowH1, 200);
+    setTimeout(keepEst1990BelowH1, 600);
+    setTimeout(keepEst1990BelowH1, 1400);
+    setTimeout(keepEst1990BelowH1, 2500);
+  });
+})();
+
+
+/* === VM UI v13.8 RUNTIME: NO HIDDEN OR DUPLICATE DARK BADGES ON WORKSHOP === */
+(function () {
+  function ensureCleanWorkshopSingleBadge() {
+    var path = (window.location.pathname || "").toLowerCase();
+    var isWorkshop = path.endsWith("/workshop.html") || path === "workshop.html" || path.endsWith("/workshop_2.html");
+    if (!isWorkshop) return;
+
+    var sec = document.getElementById("workshop-services") || document.querySelector("main > section:first-of-type");
+    if (!sec) return;
+
+    var foundMainBadge = false;
+    sec.querySelectorAll(".badge-tag, .vm-workshop-dark-badge, .vm-home-dark-badge, .vm-hc-instrument-badge, .vm-stacked-pill").forEach(function (el) {
+      if (el.closest("footer")) return;
+      var txt = (el.textContent || "").replace(/\s+/g, " ").trim();
+      var isTargetBadge = /स्था\.\s*1990.*मकान\s*नं\.\s*109,\s*शाला\s*मोहल्ला,\s*अमानगंज/i.test(txt);
+
+      if (isTargetBadge && !foundMainBadge) {
+        foundMainBadge = true;
+        el.style.setProperty("display", "inline-flex", "important");
+        el.style.setProperty("visibility", "visible", "important");
+        el.style.setProperty("opacity", "1", "important");
+      } else if (el.classList.contains("badge-tag") && !isTargetBadge) {
+        el.style.setProperty("display", "inline-flex", "important");
+        el.style.setProperty("visibility", "visible", "important");
+        el.style.setProperty("opacity", "1", "important");
+      } else if (isTargetBadge && foundMainBadge) {
+        el.remove();
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    ensureCleanWorkshopSingleBadge();
+    setTimeout(ensureCleanWorkshopSingleBadge, 400);
+  });
+})();
+
+/* === VM UI v13.11 RUNTIME: SINGLE LOCK WITHOUT COLOR FLIP ON WORKSHOP BADGE === */
+(function () {
+  function applySteadyWorkshopBadgeV1311() {
+    var path = (window.location.pathname || "").toLowerCase();
+    var isWorkshop = path.endsWith("/workshop.html") || path === "workshop.html" || path.endsWith("/workshop_2.html");
+    if (!isWorkshop) return;
+
+    var badge = document.querySelector("#workshop-services .sec-head .badge-tag") || document.querySelector("#workshop-services .badge-tag");
+    if (!badge) return;
+
+    badge.style.setProperty("display", "inline-flex", "important");
+    badge.style.setProperty("visibility", "visible", "important");
+    badge.style.setProperty("opacity", "1", "important");
+    badge.style.setProperty("background", "#190803", "important");
+    badge.style.setProperty("background-color", "#190803", "important");
+    badge.style.setProperty("background-image", "none", "important");
+    badge.style.setProperty("color", "#fff3c4", "important");
+    badge.style.setProperty("-webkit-text-fill-color", "#fff3c4", "important");
+    badge.style.setProperty("border", "1.5px solid #d8a63e", "important");
+    badge.style.setProperty("border-radius", "999px", "important");
+    badge.style.setProperty("padding", "6px 18px", "important");
+    badge.style.setProperty("transition", "none", "important");
+    badge.style.setProperty("animation", "none", "important");
+  }
+
+  applySteadyWorkshopBadgeV1311();
+  document.addEventListener("DOMContentLoaded", applySteadyWorkshopBadgeV1311);
+})();
+
+/* === VM UI v13.13 RUNTIME: CLEAN DARK BADGES ON NON-HOME & NON-WORKSHOP PAGES === */
+(function () {
+  function enforceOtherPagesLightBadgesV1313() {
+    var path = (window.location.pathname || "").toLowerCase();
+    var isHome = path === "/" || path.endsWith("/index.html") || path === "index.html" || path === "";
+    var isWorkshop = path.endsWith("/workshop.html") || path === "workshop.html" || path.endsWith("/workshop_2.html");
+
+    if (isHome) {
+      document.body.setAttribute("data-vm-home-page", "1");
+      return;
+    }
+    if (isWorkshop) {
+      document.body.setAttribute("data-vm-workshop-page", "1");
+      return;
+    }
+
+    document.querySelectorAll(".badge-tag, .vm-light-badge, .vm-home-dark-badge, .vm-workshop-dark-badge, .vm-hc-instrument-badge").forEach(function (el) {
+      if (el.closest("footer")) return;
+      el.classList.remove("vm-home-dark-badge", "vm-workshop-dark-badge", "vm-hc-instrument-badge");
+      el.style.setProperty("display", "inline-flex", "important");
+      el.style.setProperty("visibility", "visible", "important");
+      el.style.setProperty("opacity", "1", "important");
+      el.style.setProperty("background", "linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%)", "important");
+      el.style.setProperty("background-color", "#f9ebd0", "important");
+      el.style.setProperty("background-image", "linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%)", "important");
+      el.style.setProperty("color", "#4a240c", "important");
+      el.style.setProperty("-webkit-text-fill-color", "#4a240c", "important");
+      el.style.setProperty("border", "1.5px solid #d4a13a", "important");
+      el.style.setProperty("text-shadow", "none", "important");
+      el.style.setProperty("box-shadow", "none", "important");
+      el.style.setProperty("filter", "none", "important");
+      el.style.setProperty("transition", "none", "important");
+      el.style.setProperty("animation", "none", "important");
+    });
+  }
+
+  enforceOtherPagesLightBadgesV1313();
+  document.addEventListener("DOMContentLoaded", function () {
+    enforceOtherPagesLightBadgesV1313();
+    setTimeout(enforceOtherPagesLightBadgesV1313, 350);
+  });
+})();
+
+/* === VM UI v13.14 RUNTIME: DELETE EXTRA DARK BADGES ON ALL PAGES === */
+(function () {
+  function deleteExtraDarkBadgesV1314() {
+    document.querySelectorAll(".vm-home-dark-badge, .vm-workshop-dark-badge, .vm-hc-instrument-badge, .vm-stacked-pill, .vm-stacked-badge-group").forEach(function (el) {
+      if (el.closest("footer")) return;
+      el.remove();
+    });
+
+    var path = (window.location.pathname || "").toLowerCase();
+    var isHome = path === "/" || path.endsWith("/index.html") || path === "index.html" || path === "";
+    var isWorkshop = path.endsWith("/workshop.html") || path === "workshop.html" || path.endsWith("/workshop_2.html");
+
+    if (!isHome && !isWorkshop) {
+      document.querySelectorAll(".badge-tag").forEach(function (badge) {
+        if (badge.closest("footer")) return;
+        badge.classList.remove("vm-home-dark-badge", "vm-workshop-dark-badge", "vm-hc-instrument-badge", "vm-stacked-pill");
+        badge.style.setProperty("background", "linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%)", "important");
+        badge.style.setProperty("background-color", "#f9ebd0", "important");
+        badge.style.setProperty("background-image", "linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%)", "important");
+        badge.style.setProperty("color", "#4a240c", "important");
+        badge.style.setProperty("-webkit-text-fill-color", "#4a240c", "important");
+        badge.style.setProperty("border", "1.5px solid #d4a13a", "important");
+      });
+    }
+  }
+
+  deleteExtraDarkBadgesV1314();
+  document.addEventListener("DOMContentLoaded", function () {
+    deleteExtraDarkBadgesV1314();
+    setTimeout(deleteExtraDarkBadgesV1314, 350);
+  });
+})();
+
+/* === VM UI v13.15 RUNTIME: RECREATE FRESH LIGHT WORKSHOP BADGE WITHOUT DARK FLICKER === */
+(function () {
+  var path = (window.location.pathname || "").toLowerCase();
+  var isWorkshop = path.endsWith("/workshop.html") || path === "workshop.html" || path.endsWith("/workshop_2.html");
+  if (!isWorkshop) return;
+
+  function placeFreshLightWorkshopBadge() {
+    var secHead = document.querySelector("#workshop-services .sec-head");
+    if (!secHead) return;
+
+    secHead.querySelectorAll(".badge-tag, .vm-workshop-dark-badge, .vm-light-badge, .vm-ws-fresh-light-badge").forEach(function (el) {
+      el.remove();
+    });
+
+    var span = document.createElement("span");
+    span.id = "vm-ws-light-badge-v1315";
+    span.className = "badge-tag vm-ws-fresh-light-badge";
+    span.textContent = "❖ स्था. 1990 • मकान नं. 109, शाला मोहल्ला, अमानगंज ❖";
+    span.style.setProperty("display", "inline-flex", "important");
+    span.style.setProperty("visibility", "visible", "important");
+    span.style.setProperty("opacity", "1", "important");
+    span.style.setProperty("background", "linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%)", "important");
+    span.style.setProperty("background-color", "#f9ebd0", "important");
+    span.style.setProperty("background-image", "linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%)", "important");
+    span.style.setProperty("color", "#4a240c", "important");
+    span.style.setProperty("-webkit-text-fill-color", "#4a240c", "important");
+    span.style.setProperty("border", "1.5px solid #d4a13a", "important");
+    span.style.setProperty("border-radius", "999px", "important");
+    span.style.setProperty("padding", "6px 18px", "important");
+    span.style.setProperty("transition", "none", "important");
+    span.style.setProperty("animation", "none", "important");
+
+    secHead.insertBefore(span, secHead.firstChild);
+  }
+
+  placeFreshLightWorkshopBadge();
+  document.addEventListener("DOMContentLoaded", placeFreshLightWorkshopBadge);
+})();
+
+/* === VM UI v13.16 RUNTIME: CLEAR ZOOM OVERRIDES SO BROWSER ZOOM APPLIES NATURALLY === */
+(function () {
+  function clearZoomOverridesV1316() {
+    document.documentElement.style.removeProperty("zoom");
+    if (document.body) {
+      document.body.style.removeProperty("zoom");
+    }
+  }
+
+  clearZoomOverridesV1316();
+  document.addEventListener("DOMContentLoaded", clearZoomOverridesV1316);
+})();
+
+/* === VM UI v13.17 RUNTIME: STEADY 100% ZOOM WITHOUT RE-TRIGGER FLICKER === */
+(function () {
+  function applySteadyZoom100V1317() {
+    var path = (window.location.pathname || "").toLowerCase();
+    if (path.endsWith("/contact.html") || path === "contact.html") {
+      document.body.setAttribute("data-vm-contact-page", "1");
+    }
+    if (document.documentElement.style.zoom !== "100%") {
+      document.documentElement.style.setProperty("zoom", "100%", "important");
+    }
+    if (document.body && document.body.style.zoom !== "100%") {
+      document.body.style.setProperty("zoom", "100%", "important");
+    }
+  }
+
+  applySteadyZoom100V1317();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", applySteadyZoom100V1317, { once: true });
+  }
+})();
+
+/* === VM UI v13.18 RUNTIME: APPLY THEME-MATCHED STYLE TO HOME EST. BADGE === */
+(function () {
+  function applyHomeEstBadgeThemeV1318() {
+    var path = (window.location.pathname || "").toLowerCase();
+    var isHome = path === "/" || path.endsWith("/index.html") || path === "index.html" || path === "";
+    if (!isHome) return;
+
+    var badge = document.getElementById("vm-home-est-badge-v137") || document.querySelector(".vm-home-est-badge");
+    if (!badge) return;
+
+    badge.textContent = "❖ स्था. 1990 ❖";
+    badge.style.setProperty("display", "inline-flex", "important");
+    badge.style.setProperty("visibility", "visible", "important");
+    badge.style.setProperty("opacity", "1", "important");
+    badge.style.setProperty("background", "linear-gradient(180deg, #2d1207 0%, #170703 100%)", "important");
+    badge.style.setProperty("background-color", "#210c05", "important");
+    badge.style.setProperty("background-image", "linear-gradient(180deg, #2d1207 0%, #170703 100%)", "important");
+    badge.style.setProperty("color", "#fff6dc", "important");
+    badge.style.setProperty("-webkit-text-fill-color", "#fff6dc", "important");
+    badge.style.setProperty("border", "1.5px solid #e5b548", "important");
+    badge.style.setProperty("border-radius", "999px", "important");
+    badge.style.setProperty("padding", "6px 20px", "important");
+  }
+
+  applyHomeEstBadgeThemeV1318();
+  document.addEventListener("DOMContentLoaded", applyHomeEstBadgeThemeV1318);
+})();
+
+/* === VM UI v13.20 RUNTIME: LOCK DARK TEXT (#1a0e04) ON .pcard-tag-gold === */
+(function () {
+  function fixCategoryBadgeTextV1320() {
+    document.querySelectorAll(".pcard-tag-gold").forEach(function (el) {
+      el.style.setProperty("color", "#1a0e04", "important");
+      el.style.setProperty("-webkit-text-fill-color", "#1a0e04", "important");
+      el.style.setProperty("text-shadow", "none", "important");
+      el.querySelectorAll("*").forEach(function (child) {
+        child.style.setProperty("color", "#1a0e04", "important");
+        child.style.setProperty("-webkit-text-fill-color", "#1a0e04", "important");
+        child.style.setProperty("text-shadow", "none", "important");
+      });
+    });
+  }
+
+  fixCategoryBadgeTextV1320();
+  document.addEventListener("DOMContentLoaded", function () {
+    fixCategoryBadgeTextV1320();
+    setTimeout(fixCategoryBadgeTextV1320, 400);
+    setTimeout(fixCategoryBadgeTextV1320, 1200);
+  });
+})();
+
+/* === VM UI v13.22 RUNTIME: STACKED HI/EN CARD TITLES, AUTO FONT SCALE & BADGE CONTRAST === */
+(function () {
+  function applyCardAndWrapFixesV1322() {
+    document.querySelectorAll(".pcard-dark-in-light .pcard-title-light").forEach(function (titleEl) {
+      if (!titleEl.getAttribute("data-vm-stacked-v1322")) {
+        var raw = (titleEl.textContent || "").replace(/\s+/g, " ").trim();
+        var match = raw.match(/^(.*?)(\([A-Za-z0-9\s\-\/&.,]+\)|[A-Za-z][A-Za-z0-9\s\-\/&.,]{2,})$/);
+        if (match && match[1] && match[2]) {
+          var hiPart = match[1].trim();
+          var enPart = match[2].trim();
+          titleEl.innerHTML =
+            '<span class="vm-card-hi-line">' + hiPart + '</span>' +
+            '<span class="vm-card-en-line">' + enPart + '</span>';
+          titleEl.setAttribute("data-vm-stacked-v1322", "1");
+        }
+      }
+
+      var enEl = titleEl.querySelector(".vm-card-en-line");
+      if (enEl) {
+        var len = (enEl.textContent || "").trim().length;
+        var isMob = window.innerWidth <= 768;
+        var px = isMob
+          ? (len > 30 ? 10.5 : (len > 20 ? 11.5 : 12.5))
+          : (len > 30 ? 12.5 : (len > 20 ? 13.5 : 14.5));
+        enEl.style.setProperty("font-size", px + "px", "important");
+      }
+    });
+
+    document.querySelectorAll(".pcard-tag-gold").forEach(function (badge) {
+      badge.style.setProperty("color", "#1a0e04", "important");
+      badge.style.setProperty("-webkit-text-fill-color", "#1a0e04", "important");
+      badge.style.setProperty("text-shadow", "none", "important");
+      badge.querySelectorAll("*").forEach(function (child) {
+        child.style.setProperty("color", "#1a0e04", "important");
+        child.style.setProperty("-webkit-text-fill-color", "#1a0e04", "important");
+        child.style.setProperty("text-shadow", "none", "important");
+      });
+    });
+  }
+
+  applyCardAndWrapFixesV1322();
+  document.addEventListener("DOMContentLoaded", function () {
+    applyCardAndWrapFixesV1322();
+    setTimeout(applyCardAndWrapFixesV1322, 350);
+    setTimeout(applyCardAndWrapFixesV1322, 1100);
+  });
+  window.addEventListener("resize", applyCardAndWrapFixesV1322, { passive: true });
+})();
+
+/* === VM UI v13.23 RUNTIME: SHOW MOBILE STICKY BAR ONLY NEAR BOTTOM & KEEP MAP BUTTONS CRISP === */
+(function () {
+  var lastScrollY = window.scrollY || 0;
+
+  function syncBottomStickyBarV1323() {
+    var bars = Array.from(document.querySelectorAll(".mobile-sticky-bar, .sticky-cta-bar"));
+    if (!bars.length) return;
+    var primary = bars[0];
+    bars.slice(1).forEach(function (extra) {
+      extra.classList.remove("vm-sticky-visible");
+      extra.style.setProperty("display", "none", "important");
+    });
+
+    var currentY = window.scrollY || 0;
+    var scrollingDown = currentY >= lastScrollY;
+    lastScrollY = currentY;
+
+    if (window.innerWidth > 768) {
+      primary.classList.remove("vm-sticky-visible");
+      return;
+    }
+
+    var docHeight = Math.max(document.body.scrollHeight || 0, document.documentElement.scrollHeight || 0);
+    var distFromBottom = docHeight - (currentY + window.innerHeight);
+    var nearBottom = distFromBottom <= 260;
+
+    if (nearBottom && scrollingDown) {
+      primary.classList.add("vm-sticky-visible");
+    } else if (!nearBottom || !scrollingDown) {
+      primary.classList.remove("vm-sticky-visible");
+    }
+  }
+
+  function cleanContactMapButtonsV1323() {
+    document.querySelectorAll("#contact .vm-map-below-actions a, #contact .vm-map-below-actions button, .vm-map-below-actions a, .vm-map-below-actions button").forEach(function (btn) {
+      btn.style.setProperty("text-shadow", "none", "important");
+    });
+  }
+
+  syncBottomStickyBarV1323();
+  cleanContactMapButtonsV1323();
+  document.addEventListener("DOMContentLoaded", function () {
+    syncBottomStickyBarV1323();
+    cleanContactMapButtonsV1323();
+  });
+  window.addEventListener("scroll", syncBottomStickyBarV1323, { passive: true });
+  window.addEventListener("resize", syncBottomStickyBarV1323, { passive: true });
+})();
+
+/* === VM UI v13.27 RUNTIME: TARGETED CLEANUP FOR STRAY ">info@vishwakarmamusicals.in" === */
+(function () {
+  var strayRe = /"\s*>\s*info@vishwakarmamusicals\.in/gi;
+
+  function cleanNodeV1327(root) {
+    if (!root) return;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+    var removeList = [];
+    var n;
+    while ((n = walker.nextNode())) {
+      if (n.parentElement && n.parentElement.closest("script, style")) continue;
+      var txt = n.nodeValue || "";
+      if (strayRe.test(txt)) {
+        var nextTxt = txt.replace(strayRe, "").trim();
+        if (!nextTxt) {
+          removeList.push(n);
+        } else {
+          n.nodeValue = txt.replace(strayRe, "");
+        }
+      }
+    }
+    removeList.forEach(function (item) {
+      if (item.parentNode) item.parentNode.removeChild(item);
+    });
+  }
+
+  function runCleanupV1327() {
+    cleanNodeV1327(document.body || document.documentElement);
+  }
+
+  runCleanupV1327();
+  document.addEventListener("DOMContentLoaded", function () {
+    runCleanupV1327();
+    setTimeout(runCleanupV1327, 200);
+    setTimeout(runCleanupV1327, 800);
+    setTimeout(runCleanupV1327, 2000);
+    if (typeof MutationObserver !== "undefined" && document.body) {
+      var obs = new MutationObserver(function () {
+        runCleanupV1327();
+      });
+      obs.observe(document.body, { childList: true, subtree: true, characterData: true });
+    }
+  });
+})();
+
+
