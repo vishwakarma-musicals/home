@@ -1,6 +1,327 @@
 <!DOCTYPE html>
 <html lang="hi">
-<head> <link rel="icon" type="image/webp" href="assets/images/brand/favicon.webp"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>आधिकारिक वाद्य यंत्र एवं कार्यशाला सेवा कैटलॉग | विश्वकर्मा म्यूज़िकल्स अमानगंज</title> <meta name="description" content="विश्वकर्मा म्यूज़िकल्स, अमानगंज (पन्ना) का आधिकारिक वाद्य यंत्र एवं मरम्मत सेवा कैटलॉग। हारमोनियम, सफ़री हारमोनियम, ढोलक, तबला, झीका, मंजीरा, बांसुरी व कार्यशाला दरें।"> <link rel="canonical" href="https://vishwakarmamusicals.in/catalog.html"> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet"> <link rel="stylesheet" href="assets/css/main.css"> <style> .catalog-sheet { background: #ffffff; border: 2.5px solid var(--gold-border); border-radius: 20px; padding: clamp(20px, 4vw, 36px); box-shadow: var(--depth-shadow); color: var(--text-dark); } .sheet-letterhead { border-bottom: 2.5px solid var(--maroon-title); padding-bottom: 18px; margin-bottom: 22px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; } .lh-left h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--maroon-title); } .lh-left p { color: var(--text-muted-dark); font-size: 0.94rem; font-weight: 600; } .lh-right { font-size: 0.9rem; color: var(--text-dark); background: #fbf7f0; padding: 12px 16px; border-radius: 12px; border: 1.5px solid var(--gold-border); line-height: 1.65; } .catalog-block-title { background: linear-gradient(90deg, #27140a 0%, #4b2511 100%); color: var(--gold-bright); padding: 12px 18px; border-radius: 10px; font-size: 1.25rem; margin: 26px 0 14px; border-left: 5px solid var(--gold-bright); } .table-wrap { width: 100%; overflow-x: auto; margin-bottom: 20px; } table.catalog-table { width: 100%; border-collapse: collapse; font-size: 0.94rem; } table.catalog-table th { background: #f4e9db; color: var(--maroon-title); font-weight: 800; text-align: left; padding: 12px 14px; border: 1.5px solid var(--gold-border); white-space: nowrap; } table.catalog-table td { padding: 12px 14px; border: 1px solid rgba(148, 101, 26, 0.35); vertical-align: top; color: var(--text-dark); } table.catalog-table tr:nth-child(even) td { background: #fffcf7; } .sku-pill { display: inline-block; background: #27140a; color: var(--gold-bright); font-weight: 700; font-size: 0.82rem; padding: 2px 10px; border-radius: 999px; white-space: nowrap; } .price-cell { font-weight: 800; color: var(--maroon-title); white-space: nowrap; font-size: 1rem; } .action-link { display: inline-block; color: #0b6b36; font-weight: 700; text-decoration: underline; white-space: nowrap; } .policy-notes-box { margin-top: 26px; background: #fbf7f0; border: 2px solid var(--gold-border); border-left: 6px solid var(--maroon-title); border-radius: 12px; padding: 18px 20px; } .policy-notes-box h3 { color: var(--maroon-title); margin-bottom: 10px; font-size: 1.18rem; } .policy-notes-box ul { list-style: none; } .policy-notes-box li { position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 0.93rem; color: var(--text-muted-dark); } .policy-notes-box li::before { content: "❖"; position: absolute; left: 0; color: var(--gold-deep); } @media print { .site-header, .sec-footer-light-wrap, .page-footer-nav-dark, .mobile-sticky-bar, .no-print { display: none !important; } body { padding: 0 !important; background: #ffffff !important; } .catalog-sheet { border: none !important; box-shadow: none !important; padding: 0 !important; } } </style>
+<head> <link rel="icon" type="image/webp" href="assets/images/brand/favicon.webp"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>आधिकारिक वाद्य यंत्र एवं कार्यशाला सेवा कैटलॉग | विश्वकर्मा म्यूज़िकल्स अमानगंज</title> <meta name="description" content="विश्वकर्मा म्यूज़िकल्स, अमानगंज (पन्ना) का आधिकारिक वाद्य यंत्र एवं मरम्मत सेवा कैटलॉग। हारमोनियम, सफ़री हारमोनियम, ढोलक, तबला, झीका, मंजीरा, बांसुरी व कार्यशाला दरें।"> <link rel="canonical" href="https://vishwakarmamusicals.in/catalog.html"> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet"> <link rel="stylesheet" href="assets/css/main.css"> <style> .catalog-sheet { background: #ffffff; border: 2.5px solid var(--gold-border); border-radius: 20px; padding: clamp(20px, 4vw, 36px); box-shadow: var(--depth-shadow); color: var(--text-dark); }   .sheet-letterhead,
+  .sheet-letterhead * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  .sheet-letterhead::before,
+  .sheet-letterhead::after,
+  .catalog-sheet::before,
+  .catalog-sheet::after {
+    display: none !important;
+    content: none !important;
+  }
+  .sheet-letterhead {
+    background: transparent !important;
+    border-top: none !important;
+    box-shadow: none !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+  } .lh-left h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--maroon-title); } .lh-left p { color: var(--text-muted-dark); font-size: 0.94rem; font-weight: 600; } .lh-right { font-size: 0.9rem; color: var(--text-dark); background: #fbf7f0; padding: 12px 16px; border-radius: 12px; border: 1.5px solid var(--gold-border); line-height: 1.65; } .catalog-block-title { background: linear-gradient(90deg, #27140a 0%, #4b2511 100%); color: var(--gold-bright); padding: 12px 18px; border-radius: 10px; font-size: 1.25rem; margin: 26px 0 14px; border-left: 5px solid var(--gold-bright); } .table-wrap { width: 100%; overflow-x: auto; margin-bottom: 20px; } table.catalog-table { width: 100%; border-collapse: collapse; font-size: 0.94rem; } table.catalog-table th { background: #f4e9db; color: var(--maroon-title); font-weight: 800; text-align: left; padding: 12px 14px; border: 1.5px solid var(--gold-border); white-space: nowrap; } table.catalog-table td { padding: 12px 14px; border: 1px solid rgba(148, 101, 26, 0.35); vertical-align: top; color: var(--text-dark); } table.catalog-table tr:nth-child(even) td { background: #fffcf7; } .sku-pill { display: inline-block; background: #27140a; color: var(--gold-bright); font-weight: 700; font-size: 0.82rem; padding: 2px 10px; border-radius: 999px; white-space: nowrap; } .price-cell { font-weight: 800; color: var(--maroon-title); white-space: nowrap; font-size: 1rem; } .action-link { display: inline-block; color: #0b6b36; font-weight: 700; text-decoration: underline; white-space: nowrap; } .policy-notes-box { margin-top: 26px; background: #fbf7f0; border: 2px solid var(--gold-border); border-left: 6px solid var(--maroon-title); border-radius: 12px; padding: 18px 20px; } .policy-notes-box h3 { color: var(--maroon-title); margin-bottom: 10px; font-size: 1.18rem; } .policy-notes-box ul { list-style: none; } .policy-notes-box li { position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 0.93rem; color: var(--text-muted-dark); } .policy-notes-box li::before { content: "❖"; position: absolute; left: 0; color: var(--gold-deep); } @media print {
+  @page { size: A4 portrait; margin: 10mm 10mm 12mm 10mm; }
+  html, body {
+    zoom: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-family: 'Noto Sans Devanagari', 'Nirmala UI', 'Mangal', sans-serif !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  header,
+  nav,
+  aside,
+  footer,
+  .site-header,
+  .navbar,
+  .vm-mobile-menu-btn,
+  #vm-left-nav-drawer,
+  #vm-left-nav-backdrop,
+  .sec-head,
+  .btn,
+  .btn-wrap,
+  button,
+  .sec-footer-light-wrap,
+  .page-footer-nav-dark,
+  .mobile-sticky-bar,
+  .no-print,
+  #catalog-sync-note,
+  [class*="trust"],
+  [id*="trust"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  main,
+  .sec-light,
+  .container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    background: #ffffff !important;
+  }
+  .catalog-sheet {
+    display: block !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+    .sheet-letterhead,
+  .sheet-letterhead * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  .sheet-letterhead::before,
+  .sheet-letterhead::after,
+  .catalog-sheet::before,
+  .catalog-sheet::after {
+    display: none !important;
+    content: none !important;
+  }
+  .sheet-letterhead {
+    background: transparent !important;
+    border-top: none !important;
+    box-shadow: none !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+  }
+  .catalog-block-title {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+    margin: 14px 0 8px !important;
+    padding: 8px 12px !important;
+    font-size: 1.05rem !important;
+  }
+  .table-wrap {
+    overflow: visible !important;
+    width: 100% !important;
+    margin-bottom: 12px !important;
+  }
+  table.catalog-table {
+    width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    font-size: 8.8pt !important;
+    line-height: 1.4 !important;
+  }
+  table.catalog-table thead {
+    display: table-header-group !important;
+  }
+  table.catalog-table tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  table.catalog-table th,
+  table.catalog-table td {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    padding: 6px 7px !important;
+    vertical-align: top !important;
+  }
+  table.catalog-table th:nth-child(1),
+  table.catalog-table td:nth-child(1) {
+    width: 15% !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+  }
+  table.catalog-table th:nth-child(2),
+  table.catalog-table td:nth-child(2) { width: 24% !important; }
+  table.catalog-table th:nth-child(3),
+  table.catalog-table td:nth-child(3) { width: 45% !important; }
+  table.catalog-table th:nth-child(4),
+  table.catalog-table td:nth-child(4) {
+    width: 16% !important;
+    text-align: right !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+  }
+  .sku-pill {
+    font-size: 8pt !important;
+    padding: 2px 5px !important;
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+  }
+  .policy-notes-box {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    font-size: 8.8pt !important;
+    padding: 10px 12px !important;
+  }
+
+  *, *::before, *::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  .sheet-letterhead,
+  .sheet-letterhead * {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .sec-head,
+  .catalog-sheet > :first-child:not(.sheet-letterhead),
+  .catalog-sheet::before,
+  .sheet-letterhead::before,
+  .sheet-letterhead::after {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .sheet-letterhead {
+    background: #ffffff !important;
+    border: none !important;
+    border-top: none !important;
+    box-shadow: none !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+
+/* FINAL PRINT SAFETY: never print the screen card shadow or top glow */
+@media print {
+  html body .catalog-sheet,
+  html body .catalog-sheet *,
+  html body .sheet-letterhead,
+  html body .sheet-letterhead * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+  html body,
+  html body main,
+  html body main .sec-light,
+  html body main .container,
+  html body .catalog-sheet,
+  html body .sheet-letterhead {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    background-image: none !important;
+  }
+  html body .catalog-sheet::before,
+  html body .catalog-sheet::after,
+  html body .sheet-letterhead::before,
+  html body .sheet-letterhead::after {
+    content: none !important;
+    display: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+}
+</style>
+<style id="vm-catalog-print-fix">
+@media print {
+  @page { size: A4 portrait; margin: 10mm 9mm 11mm 9mm; }
+  html, body {
+    zoom: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-family: "Noto Sans Devanagari", "Tiro Devanagari Hindi", sans-serif !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .site-header,
+  .sec-footer-light-wrap,
+  .page-footer-nav-dark,
+  .mobile-sticky-bar,
+  .no-print,
+  #catalog-sync-note,
+  th.no-print,
+  td.no-print {
+    display: none !important;
+  }
+  main,
+  .sec-light,
+  .container,
+  .catalog-sheet,
+  .table-wrap {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    border: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+  .sheet-letterhead {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin: 0 0 8px 0 !important;
+    padding-bottom: 8px !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  .catalog-block-title {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+    margin: 10px 0 6px 0 !important;
+    padding: 7px 12px !important;
+    font-size: 1.02rem !important;
+  }
+  table.catalog-table {
+    width: 100% !important;
+    table-layout: auto !important;
+    border-collapse: collapse !important;
+    font-size: 8.6pt !important;
+    line-height: 1.38 !important;
+  }
+  table.catalog-table thead {
+    display: table-header-group !important;
+  }
+  table.catalog-table tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  table.catalog-table th,
+  table.catalog-table td {
+    padding: 5px 7px !important;
+    vertical-align: top !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+  }
+  table.catalog-table th:first-child,
+  table.catalog-table td:first-child {
+    white-space: nowrap !important;
+  }
+  table.catalog-table th:nth-last-child(2),
+  table.catalog-table td:nth-last-child(2) {
+    white-space: nowrap !important;
+    text-align: right !important;
+  }
+  .sku-pill {
+    display: inline-block !important;
+    font-size: 7.8pt !important;
+    padding: 1px 6px !important;
+    white-space: nowrap !important;
+  }
+  .policy-notes-box {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-top: 10px !important;
+    padding: 9px 12px !important;
+    font-size: 8.6pt !important;
+  }
+}
+</style>
 </head>
 <body> <header class="site-header" id="site-header"> <div class="container header-inner"> <a class="brand-logo" href="index.html"> <img src="assets/images/brand/logo.webp" alt="विश्वकर्मा म्यूज़िकल्स लोगो" onerror="if(!this.dataset.f1){this.dataset.f1='1';this.src='assets/images/brand/favicon.webp';}else{this.style.display='none';}"> <span class="brand-name">विश्वकर्मा म्यूज़िकल्स</span> </a> <nav class="main-nav" aria-label="मुख्य नेविगेशन"> <a href="index.html">होम</a> <a href="instruments.html">वाद्य यंत्र</a> <a href="workshop.html">वर्कशॉप व मरम्मत</a> <a href="downloads.html">डाउनलोड</a> <a href="about.html">हमारे बारे में</a> <a href="contact.html">संपर्क व दुकान</a> </nav> <div class="header-actions"> <a href="cart.html" class="cart-trigger-btn" id="header-cart-link" aria-label="कार्ट"> <span>🛒 कार्ट</span> <span class="cart-badge" id="header-cart-count">0</span> </a> </div> </div> </header>
 <main id="main-content"> <section class="sec-light"> <div class="container"> <div class="sec-head"> <span class="badge-tag">❖ स्था. 1990 • आधिकारिक मूल्य एवं सेवा सूची ❖</span> <h1>विश्वकर्मा म्यूज़िकल्स — संपूर्ण कैटलॉग</h1> <p>हस्तनिर्मित हारमोनियम, सफ़री हारमोनियम, शीशम ढोलक, तबला, झीका, मंजीरा, बांसुरी तथा अमानगंज कार्यशाला की मरम्मत सेवाओं की लाइव सूची।</p> <div class="btn-wrap no-print" style="margin-top:18px;"> <button type="button" class="btn btn-gold" onclick="window.print()">🖨️ कैटलॉग प्रिंट / PDF सेव करें</button> <a class="btn btn-outline" href="tel:+919755088022">📞 +91 97550 88022 पर कॉल करें</a> </div> </div> <div class="catalog-sheet"> <div class="sheet-letterhead"> <div class="lh-left"> <h2>विश्वकर्मा म्यूज़िकल्स (Vishwakarma Musicals)</h2> <p>हस्तनिर्मित शास्त्रीय व लोक वाद्य यंत्र निर्माण, ट्यूनिंग एवं मरम्मत कार्यशाला (स्था. 1990)</p> <p style="font-size:0.88rem;margin-top:4px;">मुख्य शिल्पकार: श्री तुलसी दास विश्वकर्मा | GSTIN: <strong>23BSDPV5529B1ZV</strong></p> </div> <div class="lh-right"> <div><strong>सीधा कॉल:</strong> +91 97550 88022</div> <div><strong>ईमेल:</strong> info@vishwakarmamusicals.in</div> <div><strong>वेबसाइट:</strong> www.vishwakarmamusicals.in</div> <div><strong>पता:</strong> म.नं. 109, शाला मोहल्ला, अमानगंज, पन्ना (म.प्र.) - 488441</div> </div> </div> <p id="catalog-sync-note" class="no-print" style="font-size:0.92rem;color:var(--maroon-title);font-weight:700;margin-bottom:10px;"> ⏳ मास्टर Google Sheet से आधिकारिक कैटलॉग लोड हो रहा है... </p> <h3 class="catalog-block-title">१. हस्तनिर्मित वाद्य यंत्र संग्रह (Musical Instruments)</h3> <div class="table-wrap"> <table class="catalog-table"> <thead> <tr> <th>कोड (SKU)</th> <th>वाद्य यंत्र का नाम</th> <th>श्रेणी व शिल्प विवरण</th> <th>अनुमानित मूल्य</th> <th class="no-print">विवरण</th> </tr> </thead> <tbody id="products-table-body"> <tr><td colspan="5" style="text-align:center;padding:22px;font-weight:700;">⏳ मास्टर Google Sheet से वाद्य यंत्रों की लाइव सूची लोड हो रही है...</td></tr> </tbody> </table> </div> <h3 class="catalog-block-title">२. कार्यशाला मरम्मत एवं सुर मिलान सेवाएँ (केवल अमानगंज कार्यशाला में उपलब्ध)</h3> <div class="table-wrap"> <table class="catalog-table"> <thead> <tr> <th>सेवा कोड</th> <th>मरम्मत / ट्यूनिंग सेवा का नाम</th> <th>कार्य विवरण</th> <th>सेवा शुल्क (GST सहित)</th> <th class="no-print">परामर्श</th> </tr> </thead> <tbody id="services-table-body"> <tr><td colspan="5" style="text-align:center;padding:22px;font-weight:700;">⏳ मास्टर Google Sheet से कार्यशाला सेवाओं की लाइव सूची लोड हो रही है...</td></tr> </tbody> </table> </div> <div class="policy-notes-box"> <h3>महत्वपूर्ण व्यावसायिक एवं कार्यशाला नियम</h3> <ul> <li><strong>सीधा संपर्क:</strong> किसी भी वाद्य यंत्र की उपलब्धता, कस्टम निर्माण या मरम्मत परामर्श के लिए सीधे <strong>+91 97550 88022</strong> पर वॉयस कॉल करें।</li> <li><strong>कूरियर शिपिंग नीति:</strong> Delhivery One कूरियर द्वारा देशव्यापी डिलीवरी <strong>केवल नए वाद्य यंत्रों की खरीद</strong> पर लागू है (कूरियर शुल्क पिनकोड व वजन के अनुसार अलग से देय होगा)।</li> <li><strong>कार्यशाला उपस्थिति नियम:</strong> सभी मरम्मत और ट्यूनिंग सेवाओं (तबला रिपेयरिंग VM-R20 सहित) के लिए ग्राहक का वाद्य यंत्र लेकर <strong>स्वयं अमानगंज कार्यशाला में आना अनिवार्य</strong> है।</li> <li><strong>अग्रिम भुगतान नीति:</strong> नए वाद्य यंत्रों के ऑर्डर की कार्यशाला तैयारी या डिस्पैच से पहले <strong>UPI अथवा HDFC Bank Transfer द्वारा अग्रिम/पूर्ण भुगतान</strong> (Zoho इनवॉइस के अनुसार) अनिवार्य है।</li> </ul> </div> </div> </div> </section> <div class="sec-footer-light-wrap"> </main> <footer class="page-footer-nav-dark">
