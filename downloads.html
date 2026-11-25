@@ -169,22 +169,7 @@
     justify-content: center !important;
     flex-wrap: wrap !important;
   }
-  .visiting-card-box #print-visiting-card-btn {
-    background: linear-gradient(135deg, #f6cf73 0%, #d49627 100%) !important;
-    color: #1c0c04 !important;
-    border: 1px solid #fce09b !important;
-    font-weight: 700 !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-  .visiting-card-box #download-visiting-card-btn {
-    background: rgba(255, 248, 231, 0.12) !important;
-    color: #fce09b !important;
-    border: 1.5px solid #e5b042 !important;
-    font-weight: 700 !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
+
   @media print {
     @page { size: A4 portrait; margin: 12mm; }
     html, body {
@@ -238,49 +223,49 @@
 </style>
 <!-- VM_PREMIUM_VCARD_END -->
 <style id="vm-3d-vcard-btns-style">
-.visiting-card-box .btn-wrap {
-margin-top: 18px;
-display: flex;
-gap: 12px 16px;
-justify-content: center;
-align-items: center;
-flex-wrap: wrap;
-}
-.visiting-card-box .btn.btn-gold {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 8px;
-min-height: 46px;
-padding: 10px 24px;
-border-radius: 999px;
-font-weight: 700;
-font-size: 0.95rem;
-background: linear-gradient(180deg, #fce09b 0%, #d89f31 55%, #b1791a 100%) !important;
-color: #1a0e04 !important;
--webkit-text-fill-color: #1a0e04 !important;
-border: 1px solid #734c0a !important;
-box-shadow: 0 5px 0 rgba(48,28,8,.55), 0 10px 18px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.6);
-cursor: pointer;
-}
-.visiting-card-box .btn.btn-gold:hover {
-transform: translateY(-3px);
-filter: brightness(1.04);
-box-shadow: 0 8px 0 rgba(48,28,8,.48), 0 16px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.68);
-}
-.visiting-card-box .btn.btn-gold:active {
-transform: translateY(3px);
-box-shadow: 0 2px 0 rgba(48,28,8,.55), 0 4px 8px rgba(0,0,0,.18);
-}
-@media print {
-.visiting-card-box .no-print,
-.visiting-card-box .btn-wrap,
-.visiting-card-box button,
-#print-visiting-card-btn,
-#download-visiting-card-btn {
-  display: none !important;
-}
-}
+  .visiting-card-box .btn-wrap {
+    margin-top: 18px;
+    display: flex;
+    gap: 12px 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .visiting-card-box .btn.btn-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: linear-gradient(180deg, #fce09b 0%, #d89f31 55%, #b1791a 100%) !important;
+    color: #1a0e04 !important;
+    -webkit-text-fill-color: #1a0e04 !important;
+    border: 1px solid #734c0a !important;
+    box-shadow: 0 5px 0 rgba(48,28,8,.55), 0 10px 18px rgba(0,0,0,.20), inset 0 1px 0 rgba(255,255,255,.6);
+    cursor: pointer;
+  }
+  .visiting-card-box .btn.btn-gold:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.04);
+    box-shadow: 0 8px 0 rgba(48,28,8,.48), 0 16px 24px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.68);
+  }
+  .visiting-card-box .btn.btn-gold:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 rgba(48,28,8,.55), 0 4px 8px rgba(0,0,0,.18);
+  }
+  @media print {
+    .visiting-card-box .no-print,
+    .visiting-card-box .btn-wrap,
+    .visiting-card-box button,
+    #print-visiting-card-btn,
+    #download-visiting-card-btn {
+      display: none !important;
+    }
+  }
 </style>
 </head>
 <body> <header class="site-header" id="site-header"> <div class="container header-inner"> <a class="brand-logo" href="index.html"> <img src="assets/images/brand/logo.webp" alt="विश्वकर्मा म्यूज़िकल्स लोगो" onerror="if(!this.dataset.f1){this.dataset.f1='1';this.src='assets/images/brand/favicon.webp';}else{this.style.display='none';}"> <span class="brand-name">विश्वकर्मा म्यूज़िकल्स</span> </a> <nav class="main-nav" aria-label="मुख्य नेविगेशन"> <a href="index.html">होम</a> <a href="instruments.html">वाद्य यंत्र</a> <a href="workshop.html">वर्कशॉप व मरम्मत</a> <a href="downloads.html">डाउनलोड</a> <a href="about.html">हमारे बारे में</a> <a href="contact.html">संपर्क व दुकान</a> </nav> <div class="header-actions"> <a href="cart.html" class="cart-trigger-btn" id="header-cart-link" aria-label="कार्ट"> <span>🛒 कार्ट</span> <span class="cart-badge" id="header-cart-count">0</span> </a> </div> </div> </header>
@@ -340,44 +325,44 @@ box-shadow: 0 2px 0 rgba(48,28,8,.55), 0 4px 8px rgba(0,0,0,.18);
       </p>
     </footer> </div> <div class="mobile-sticky-bar"> <a class="btn btn-gold" href="tel:+919755088022">📞 अभी कॉल करें</a> <a class="btn btn-outline" href="instruments.html">🎵 वाद्य संग्रह</a> </div> <script src="assets/js/config.js"></script> <script src="assets/js/cart.js"></script> <script src="assets/js/vm-ui-v9.js"></script> <script id="vm-vcard-actions-script">
 (function () {
-var printBtn = document.getElementById("print-visiting-card-btn");
-var dlBtn = document.getElementById("download-visiting-card-btn");
+  var printBtn = document.getElementById("print-visiting-card-btn");
+  var dlBtn = document.getElementById("download-visiting-card-btn");
 
-function clearVcardPrintMode() {
-document.body.classList.remove("printing-vcard-only");
-}
-window.addEventListener("afterprint", clearVcardPrintMode);
+  function clearVcardPrintMode() {
+    document.body.classList.remove("printing-vcard-only");
+  }
+  window.addEventListener("afterprint", clearVcardPrintMode);
 
-if (printBtn) {
-printBtn.addEventListener("click", function () {
-  document.body.classList.add("printing-vcard-only");
-  window.print();
-  setTimeout(clearVcardPrintMode, 1000);
-});
-}
+  if (printBtn) {
+    printBtn.addEventListener("click", function () {
+      document.body.classList.add("printing-vcard-only");
+      window.print();
+      setTimeout(clearVcardPrintMode, 1000);
+    });
+  }
 
-if (dlBtn) {
-dlBtn.addEventListener("click", function () {
-  var vc = document.querySelector(".visiting-card-box");
-  if (!vc) return;
-  var clone = vc.cloneNode(true);
-  clone.querySelectorAll(".no-print, .btn-wrap, button, #print-visiting-card-btn, #download-visiting-card-btn").forEach(function (el) {
-    el.remove();
-  });
-  var styleTag = document.getElementById("vm-premium-vcard-style");
-  var extraCss = styleTag ? styleTag.innerHTML : "";
-  var docHtml = '<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>विश्वकर्मा म्यूज़िकल्स — विज़िटिंग कार्ड</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet"><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:#f4ede0;font-family:"Noto Sans Devanagari","Tiro Devanagari Hindi",sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}.visiting-card-box{max-width:460px;width:100%;text-align:center}.vc-top span{color:#fce09b;font-weight:700}.vc-body strong{color:#fce09b}.no-print,.btn-wrap,button{display:none!important}' + extraCss + '@media print{body{background:#fff;padding:0;min-height:auto}.visiting-card-box{margin:12mm auto 0}.no-print,.btn-wrap,button{display:none!important}}</style></head><body>' + clone.outerHTML + '</body></html>';
-  var blob = new Blob([docHtml], { type: "text/html;charset=utf-8" });
-  var url = URL.createObjectURL(blob);
-  var a = document.createElement("a");
-  a.href = url;
-  a.download = "Vishwakarma_Musicals_Visiting_Card.html";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-});
-}
+  if (dlBtn) {
+    dlBtn.addEventListener("click", function () {
+      var vc = document.querySelector(".visiting-card-box");
+      if (!vc) return;
+      var clone = vc.cloneNode(true);
+      clone.querySelectorAll(".no-print, .btn-wrap, button, #print-visiting-card-btn, #download-visiting-card-btn").forEach(function (el) {
+        el.remove();
+      });
+      var styleTag = document.getElementById("vm-premium-vcard-style");
+      var extraCss = styleTag ? styleTag.innerHTML : "";
+      var docHtml = '<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>विश्वकर्मा म्यूज़िकल्स — विज़िटिंग कार्ड</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet"><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:#f4ede0;font-family:"Noto Sans Devanagari","Tiro Devanagari Hindi",sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}.visiting-card-box{max-width:460px;width:100%;text-align:center}.vc-top span{color:#fce09b;font-weight:700}.vc-body strong{color:#fce09b}.no-print,.btn-wrap,button{display:none!important}' + extraCss + '@media print{body{background:#fff;padding:0;min-height:auto}.visiting-card-box{margin:12mm auto 0}.no-print,.btn-wrap,button{display:none!important}}</style></head><body>' + clone.outerHTML + '</body></html>';
+      var blob = new Blob([docHtml], { type: "text/html;charset=utf-8" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url;
+      a.download = "Vishwakarma_Musicals_Visiting_Card.html";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    });
+  }
 })();
 </script>
 </body>
