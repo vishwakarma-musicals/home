@@ -241,45 +241,72 @@
   .visiting-card-box .btn-wrap {
     margin-top: 18px !important;
     display: flex !important;
-    gap: 12px !important;
+    gap: 14px !important;
     justify-content: center !important;
     flex-wrap: wrap !important;
   }
-  .visiting-card-box .btn {
-    border-radius: 10px !important;
-    padding: 10px 18px !important;
-    font-weight: 700 !important;
-    transform: translateY(0);
-    transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease !important;
-    cursor: pointer;
+  .visiting-card-box .btn,
+  .visiting-card-box .btn.btn-gold,
+  .visiting-card-box .btn.btn-outline {
+    border-radius: 999px !important;
+    padding: 11px 24px !important;
+    font-weight: 800 !important;
+    font-size: 0.96rem !important;
+    line-height: 1.25 !important;
+    border: 2px solid #4c2912 !important;
+    transform: translateY(0) !important;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease !important;
+    cursor: pointer !important;
   }
-  .visiting-card-box .btn-gold {
-    background: linear-gradient(180deg, #ffe299 0%, #e5b343 58%, #c58f22 100%) !important;
-    color: #2c1608 !important;
-    border: 1px solid #fff0be !important;
-    box-shadow: 0 5px 0 #7a5209, 0 9px 18px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.65) !important;
+  .visiting-card-box .btn.btn-gold {
+    background: linear-gradient(180deg, #f3cb69 0%, #dfab3b 52%, #c68e22 100%) !important;
+    color: #241206 !important;
+    box-shadow:
+      inset 0 2px 1px rgba(255, 245, 200, 0.75),
+      inset 0 -2px 2px rgba(122, 78, 10, 0.45),
+      0 5px 0 #7b6654,
+      0 9px 14px rgba(0, 0, 0, 0.35) !important;
   }
-  .visiting-card-box .btn-gold:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 0 #7a5209, 0 12px 22px rgba(0, 0, 0, 0.52), inset 0 1px 0 rgba(255, 255, 255, 0.75) !important;
+  .visiting-card-box .btn.btn-gold:hover {
+    transform: translateY(-1px) !important;
+    filter: brightness(1.03) !important;
+    box-shadow:
+      inset 0 2px 1px rgba(255, 248, 215, 0.85),
+      inset 0 -2px 2px rgba(122, 78, 10, 0.45),
+      0 6px 0 #7b6654,
+      0 11px 16px rgba(0, 0, 0, 0.4) !important;
   }
-  .visiting-card-box .btn-gold:active {
+  .visiting-card-box .btn.btn-gold:active {
     transform: translateY(4px) !important;
-    box-shadow: 0 1px 0 #7a5209, 0 3px 8px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    box-shadow:
+      inset 0 2px 4px rgba(60, 32, 6, 0.45),
+      0 1px 0 #7b6654,
+      0 3px 6px rgba(0, 0, 0, 0.3) !important;
   }
-  .visiting-card-box .btn-outline {
-    background: linear-gradient(180deg, #5d3017 0%, #3d1d0c 60%, #2a1307 100%) !important;
-    color: #fce09b !important;
-    border: 1px solid rgba(252, 215, 119, 0.75) !important;
-    box-shadow: 0 5px 0 #180903, 0 9px 18px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 232, 168, 0.3) !important;
+  .visiting-card-box .btn.btn-outline {
+    background: linear-gradient(180deg, #e7bc58 0%, #cf982b 55%, #b17c19 100%) !important;
+    color: #241206 !important;
+    box-shadow:
+      inset 0 2px 1px rgba(255, 245, 200, 0.7),
+      inset 0 -2px 2px rgba(112, 70, 8, 0.45),
+      0 5px 0 #7b6654,
+      0 9px 14px rgba(0, 0, 0, 0.35) !important;
   }
-  .visiting-card-box .btn-outline:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 0 #180903, 0 12px 22px rgba(0, 0, 0, 0.52), inset 0 1px 0 rgba(255, 232, 168, 0.42) !important;
+  .visiting-card-box .btn.btn-outline:hover {
+    transform: translateY(-1px) !important;
+    filter: brightness(1.03) !important;
+    box-shadow:
+      inset 0 2px 1px rgba(255, 248, 215, 0.82),
+      inset 0 -2px 2px rgba(112, 70, 8, 0.45),
+      0 6px 0 #7b6654,
+      0 11px 16px rgba(0, 0, 0, 0.4) !important;
   }
-  .visiting-card-box .btn-outline:active {
+  .visiting-card-box .btn.btn-outline:active {
     transform: translateY(4px) !important;
-    box-shadow: 0 1px 0 #180903, 0 3px 8px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 232, 168, 0.2) !important;
+    box-shadow:
+      inset 0 2px 4px rgba(60, 32, 6, 0.45),
+      0 1px 0 #7b6654,
+      0 3px 6px rgba(0, 0, 0, 0.3) !important;
   }
   @media print {
     .no-print,
@@ -380,7 +407,92 @@
       });
       var styleTag = document.getElementById("vm-premium-vcard-style");
       var extraCss = styleTag ? styleTag.innerHTML : "";
-      var docHtml = '<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>विश्वकर्मा म्यूज़िकल्स — विज़िटिंग कार्ड</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet"><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:#f4ede0;font-family:"Noto Sans Devanagari","Tiro Devanagari Hindi",sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}.visiting-card-box{max-width:460px;width:100%;text-align:center}.vc-top span{color:#fce09b;font-weight:700}.vc-body strong{color:#fce09b}.no-print,.btn-wrap,button{display:none!important}' + extraCss + '@media print{body{background:#fff;padding:0;min-height:auto}.visiting-card-box{margin:12mm auto 0}.no-print,.btn-wrap,button{display:none!important}}</style></head><body>' + clone.outerHTML + '</body></html>';
+      var docHtml = '<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>विश्वकर्मा म्यूज़िकल्स — विज़िटिंग कार्ड</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet"><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:#f4ede0;font-family:"Noto Sans Devanagari","Tiro Devanagari Hindi",sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}.visiting-card-box{max-width:460px;width:100%;text-align:center}.vc-top span{color:#fce09b;font-weight:700}.vc-body strong{color:#fce09b}.no-print,.btn-wrap,button{display:none!important}' + extraCss + '@media print{body{background:#fff;padding:0;min-height:auto}.visiting-card-box{margin:12mm auto 0}.no-print,.btn-wrap,button{display:none!important}}</style><style id="vm-3d-vcard-btns-style">
+  .visiting-card-box .btn-wrap {
+    margin-top: 18px !important;
+    display: flex !important;
+    gap: 14px !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+  .visiting-card-box .btn,
+  .visiting-card-box .btn.btn-gold,
+  .visiting-card-box .btn.btn-outline {
+    border-radius: 999px !important;
+    padding: 11px 24px !important;
+    font-weight: 800 !important;
+    font-size: 0.96rem !important;
+    line-height: 1.25 !important;
+    border: 2px solid #4c2912 !important;
+    transform: translateY(0) !important;
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease !important;
+    cursor: pointer !important;
+  }
+  .visiting-card-box .btn.btn-gold {
+    background: linear-gradient(180deg, #f3cb69 0%, #dfab3b 52%, #c68e22 100%) !important;
+    color: #241206 !important;
+    box-shadow:
+      inset 0 2px 1px rgba(255, 245, 200, 0.75),
+      inset 0 -2px 2px rgba(122, 78, 10, 0.45),
+      0 5px 0 #7b6654,
+      0 9px 14px rgba(0, 0, 0, 0.35) !important;
+  }
+  .visiting-card-box .btn.btn-gold:hover {
+    transform: translateY(-1px) !important;
+    filter: brightness(1.03) !important;
+    box-shadow:
+      inset 0 2px 1px rgba(255, 248, 215, 0.85),
+      inset 0 -2px 2px rgba(122, 78, 10, 0.45),
+      0 6px 0 #7b6654,
+      0 11px 16px rgba(0, 0, 0, 0.4) !important;
+  }
+  .visiting-card-box .btn.btn-gold:active {
+    transform: translateY(4px) !important;
+    box-shadow:
+      inset 0 2px 4px rgba(60, 32, 6, 0.45),
+      0 1px 0 #7b6654,
+      0 3px 6px rgba(0, 0, 0, 0.3) !important;
+  }
+  .visiting-card-box .btn.btn-outline {
+    background: linear-gradient(180deg, #e7bc58 0%, #cf982b 55%, #b17c19 100%) !important;
+    color: #241206 !important;
+    box-shadow:
+      inset 0 2px 1px rgba(255, 245, 200, 0.7),
+      inset 0 -2px 2px rgba(112, 70, 8, 0.45),
+      0 5px 0 #7b6654,
+      0 9px 14px rgba(0, 0, 0, 0.35) !important;
+  }
+  .visiting-card-box .btn.btn-outline:hover {
+    transform: translateY(-1px) !important;
+    filter: brightness(1.03) !important;
+    box-shadow:
+      inset 0 2px 1px rgba(255, 248, 215, 0.82),
+      inset 0 -2px 2px rgba(112, 70, 8, 0.45),
+      0 6px 0 #7b6654,
+      0 11px 16px rgba(0, 0, 0, 0.4) !important;
+  }
+  .visiting-card-box .btn.btn-outline:active {
+    transform: translateY(4px) !important;
+    box-shadow:
+      inset 0 2px 4px rgba(60, 32, 6, 0.45),
+      0 1px 0 #7b6654,
+      0 3px 6px rgba(0, 0, 0, 0.3) !important;
+  }
+  @media print {
+    .no-print,
+    .btn-wrap,
+    button,
+    #print-visiting-card-btn,
+    #download-visiting-card-btn {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      height: 0 !important;
+      overflow: hidden !important;
+    }
+  }
+</style>
+</head><body>' + clone.outerHTML + '</body></html>';
       var blob = new Blob([docHtml], { type: "text/html;charset=utf-8" });
       var url = URL.createObjectURL(blob);
       var a = document.createElement("a");
