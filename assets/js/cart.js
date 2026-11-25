@@ -11,14 +11,14 @@ function ensureVMToast() {
   toast.id = "vm-cart-toast";
   toast.setAttribute("role", "status");
   toast.setAttribute("aria-live", "polite");
-  toast.style.cssText = "position:fixed;top:50%;left:50%;z-index:260;background:#1a0e06;color:#ffffff;border:2px solid #e6b84d;border-radius:16px;padding:14px 18px;box-shadow:0 18px 40px rgba(0,0,0,0.65);display:flex;align-items:center;gap:12px;max-width:min(420px,calc(100vw - 32px));opacity:0;transform:translate(-50%,-50%) scale(0.96);pointer-events:none;transition:opacity 0.25s ease,transform 0.25s ease;";
+  toast.style.cssText = "position:fixed;top:50%;left:50%;z-index:260;background:#1a0e06;color:#ffffff;border:2px solid #e6b84d;border-radius:16px;padding:14px 18px;box-shadow:0 18px 40px rgba(0,0,0,0.65);display:flex;flex-direction:column;align-items:center;text-align:center;align-items:center;gap:12px;max-width:min(420px,calc(100vw - 32px));opacity:0;transform:translate(-50%,-50%) scale(0.96);pointer-events:none;transition:opacity 0.25s ease,transform 0.25s ease;";
   var msg = document.createElement("span");
   msg.id = "vm-cart-toast-msg";
   msg.style.cssText = "flex:1;font-size:0.9rem;line-height:1.45;";
   var link = document.createElement("a");
   link.href = (typeof VM_CONFIG !== "undefined" && VM_CONFIG.cartPageUrl) ? VM_CONFIG.cartPageUrl : "cart.html";
   link.textContent = "कार्ट देखें →";
-  link.style.cssText = "background:linear-gradient(180deg,#fce09b 0%,#d89f31 100%);color:#1a0e04;font-weight:800;font-size:0.84rem;padding:6px 12px;border-radius:999px;white-space:nowrap;border:1px solid #734c0a;text-decoration:none;";
+  link.style.cssText = "background:linear-gradient(180deg,#fce09b 0%,#d89f31 100%);color:#1a0e04;font-weight:800;font-size:0.84rem;padding:6px 12px;border-radius:999px;white-space:nowrap;border:1px solid #734c0a;text-decoration:none;align-self:center;margin-top:2px;";
   toast.appendChild(msg);
   toast.appendChild(link);
   document.body.appendChild(toast);
