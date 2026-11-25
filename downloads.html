@@ -239,18 +239,14 @@
 <!-- VM_PREMIUM_VCARD_END -->
 <style id="vm-3d-vcard-btns-style">
 .visiting-card-box .btn-wrap {
-margin-top: 18px !important;
-display: flex !important;
-gap: 12px !important;
-justify-content: center !important;
-flex-wrap: wrap !important;
+margin-top: 18px;
+display: flex;
+gap: 12px;
+justify-content: center;
+flex-wrap: wrap;
 }
-.visiting-card-box .btn {
-cursor: pointer !important;
-transition: transform 0.14s ease, box-shadow 0.14s ease, filter 0.14s ease !important;
-}
-.visiting-card-box .btn:active {
-transform: translateY(2px) !important;
+.visiting-card-box .btn.btn-gold {
+cursor: pointer;
 }
 @media print {
 .no-print,
@@ -284,8 +280,8 @@ button,
     <span style="display:block;width:100%;margin-top:2px;font-weight:600;color:#fbf4e6;font-size:0.88rem;">प्रतिदिन सुबह 9:00 से रात 9:00 बजे तक</span>
   </div>
   <div class="btn-wrap no-print" style="margin-top:16px;display:flex !important;gap:10px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2;opacity:1;visibility:visible;">
-    <button type="button" class="btn btn-gold" id="print-visiting-card-btn" style="display:inline-flex !important;align-items:center;justify-content:center;opacity:1;visibility:visible;">🖨️ कार्ड प्रिंट / PDF</button>
-    <button type="button" class="btn btn-outline" id="download-visiting-card-btn" style="display:inline-flex !important;align-items:center;justify-content:center;opacity:1;visibility:visible;">⬇️ कार्ड डाउनलोड करें</button>
+    <button type="button" class="btn btn-gold" id="print-visiting-card-btn">🖨️ कार्ड प्रिंट / PDF</button>
+    <button type="button" class="btn btn-gold" id="download-visiting-card-btn">⬇️ कार्ड डाउनलोड करें</button>
   </div>
 </aside> </div> </div> </section> <div class="sec-footer-light-wrap"> </main> <footer class="page-footer-nav-dark">
       <div class="pfn-links">
@@ -349,7 +345,30 @@ dlBtn.addEventListener("click", function () {
   });
   var styleTag = document.getElementById("vm-premium-vcard-style");
   var extraCss = styleTag ? styleTag.innerHTML : "";
-  var docHtml = '<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>विश्वकर्मा म्यूज़िकल्स — विज़िटिंग कार्ड</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet"><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:#f4ede0;font-family:"Noto Sans Devanagari","Tiro Devanagari Hindi",sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}.visiting-card-box{max-width:460px;width:100%;text-align:center}.vc-top span{color:#fce09b;font-weight:700}.vc-body strong{color:#fce09b}.no-print,.btn-wrap,button{display:none!important}' + extraCss + '@media print{body{background:#fff;padding:0;min-height:auto}.visiting-card-box{margin:12mm auto 0}.no-print,.btn-wrap,button{display:none!important}}</style></head><body>' + clone.outerHTML + '</body></html>';
+  var docHtml = '<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>विश्वकर्मा म्यूज़िकल्स — विज़िटिंग कार्ड</title><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet"><style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:#f4ede0;font-family:"Noto Sans Devanagari","Tiro Devanagari Hindi",sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}.visiting-card-box{max-width:460px;width:100%;text-align:center}.vc-top span{color:#fce09b;font-weight:700}.vc-body strong{color:#fce09b}.no-print,.btn-wrap,button{display:none!important}' + extraCss + '@media print{body{background:#fff;padding:0;min-height:auto}.visiting-card-box{margin:12mm auto 0}.no-print,.btn-wrap,button{display:none!important}}</style><style id="vm-3d-vcard-btns-style">
+.visiting-card-box .btn-wrap {
+margin-top: 18px;
+display: flex;
+gap: 12px;
+justify-content: center;
+flex-wrap: wrap;
+}
+.visiting-card-box .btn.btn-gold {
+cursor: pointer;
+}
+@media print {
+.no-print,
+.btn-wrap,
+button,
+#print-visiting-card-btn,
+#download-visiting-card-btn {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+}
+</style>
+</head><body>' + clone.outerHTML + '</body></html>';
   var blob = new Blob([docHtml], { type: "text/html;charset=utf-8" });
   var url = URL.createObjectURL(blob);
   var a = document.createElement("a");
