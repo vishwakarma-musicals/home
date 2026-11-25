@@ -152,6 +152,38 @@
     border-radius: 8px !important;
     color: #fce09b !important;
     font-weight: 700 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 4px !important;
+  }
+  .visiting-card-box .vc-footer > span {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+  .visiting-card-box .btn-wrap {
+    margin-top: 16px !important;
+    display: flex !important;
+    gap: 10px !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+  .visiting-card-box #print-visiting-card-btn {
+    background: linear-gradient(135deg, #f6cf73 0%, #d49627 100%) !important;
+    color: #1c0c04 !important;
+    border: 1px solid #fce09b !important;
+    font-weight: 700 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .visiting-card-box #download-visiting-card-btn {
+    background: rgba(255, 248, 231, 0.12) !important;
+    color: #fce09b !important;
+    border: 1.5px solid #e5b042 !important;
+    font-weight: 700 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
   @media print {
     @page { size: A4 portrait; margin: 12mm; }
