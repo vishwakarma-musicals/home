@@ -4783,3 +4783,45 @@ body#contact-page,
     flex-shrink: 0 !important;
   }
 }
+
+/* === VM PERMANENT TWO-LINE CARD TITLE RULE (HINDI TOP, ENGLISH SUB BELOW) === */
+.pcard-title-light,
+.vm-two-line-title {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  gap: 3px !important;
+  line-height: 1.25 !important;
+}
+
+.pcard-title-light .vm-name-hi,
+.vm-two-line-title .vm-name-hi {
+  display: block !important;
+  width: 100% !important;
+  font-weight: 800 !important;
+  line-height: 1.25 !important;
+}
+
+.pcard-title-light .vm-name-en,
+.vm-two-line-title .vm-name-en {
+  display: block !important;
+  width: 100% !important;
+  font-size: 0.76em !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+  text-overflow: clip !important;
+  overflow: visible !important;
+}
+
+@media (max-width: 768px) {
+  .pcard-title-light .vm-name-hi,
+  .vm-two-line-title .vm-name-hi {
+    font-size: 0.96em !important;
+  }
+  .pcard-title-light .vm-name-en,
+  .vm-two-line-title .vm-name-en {
+    font-size: 0.74em !important;
+  }
+}
