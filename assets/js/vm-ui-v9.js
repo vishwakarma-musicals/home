@@ -3106,3 +3106,87 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
 
 
 
+
+/* === VM WORKSHOP HARD-REFRESH (CTRL+F5) TWO-PILL SELF-HEAL GUARD === */
+(function () {
+  function vmHealWorkshopTwoPills() {
+    var isMob = (window.innerWidth || document.documentElement.clientWidth || 1200) <= 768;
+    var el = document.getElementById("vm-ws-light-badge-v1315");
+    if (!el) return;
+
+    if (!isMob) return;
+
+    var items = el.querySelectorAll(".vm-mob-badge-item");
+    var firstText = items.length >= 1 ? (items[0].textContent || "").replace(/\s+/g, " ").trim() : "";
+    var secondText = items.length >= 2 ? (items[1].textContent || "").replace(/\s+/g, " ").trim() : "";
+
+    var needHeal =
+      items.length < 2 ||
+      firstText.indexOf("स्था. 1990") === -1 ||
+      secondText.indexOf("मकान नं. 109") === -1;
+
+    el.setAttribute("data-vm-multi-mobile", "1");
+    el.style.setProperty("display", "flex", "important");
+    el.style.setProperty("flex-direction", "column", "important");
+    el.style.setProperty("align-items", "center", "important");
+    el.style.setProperty("justify-content", "center", "important");
+    el.style.setProperty("visibility", "visible", "important");
+    el.style.setProperty("opacity", "1", "important");
+    el.style.setProperty("background", "transparent", "important");
+    el.style.setProperty("background-color", "transparent", "important");
+    el.style.setProperty("background-image", "none", "important");
+    el.style.setProperty("border", "none", "important");
+    el.style.setProperty("box-shadow", "none", "important");
+    el.style.setProperty("padding", "0", "important");
+    el.style.setProperty("margin", "0 auto 12px", "important");
+
+    if (needHeal) {
+      el.innerHTML =
+        '<span class="vm-mob-badge-item">❖ स्था. 1990 ❖</span>' +
+        '<span class="vm-mob-badge-item">❖ मकान नं. 109, शाला मोहल्ला, अमानगंज ❖</span>';
+      el.dataset.vmMobReady = "1";
+      el.dataset.vmMobSplitDone = "1";
+    }
+
+    el.querySelectorAll(".vm-mob-badge-item").forEach(function (pill) {
+      pill.style.setProperty("display", "inline-flex", "important");
+      pill.style.setProperty("align-items", "center", "important");
+      pill.style.setProperty("justify-content", "center", "important");
+      pill.style.setProperty("white-space", "nowrap", "important");
+      pill.style.setProperty("word-break", "keep-all", "important");
+      pill.style.setProperty("overflow-wrap", "normal", "important");
+      pill.style.setProperty("visibility", "visible", "important");
+      pill.style.setProperty("opacity", "1", "important");
+      pill.style.setProperty("background", "linear-gradient(180deg, #fff5dc 0%, #f3d184 100%)", "important");
+      pill.style.setProperty("color", "#27140a", "important");
+      pill.style.setProperty("-webkit-text-fill-color", "#27140a", "important");
+      pill.style.setProperty("border", "1.5px solid #94651a", "important");
+      pill.style.setProperty("border-radius", "999px", "important");
+      pill.style.setProperty("padding", "5px 14px", "important");
+      pill.style.setProperty("font-size", "0.78rem", "important");
+      pill.style.setProperty("font-weight", "800", "important");
+      pill.style.setProperty("line-height", "1.3", "important");
+      pill.style.setProperty("box-shadow", "0 2px 6px rgba(39, 20, 10, 0.14)", "important");
+    });
+  }
+
+  vmHealWorkshopTwoPills();
+  document.addEventListener("DOMContentLoaded", vmHealWorkshopTwoPills);
+  window.addEventListener("load", vmHealWorkshopTwoPills);
+  window.addEventListener("pageshow", vmHealWorkshopTwoPills);
+  window.addEventListener("resize", vmHealWorkshopTwoPills, { passive: true });
+
+  [100, 300, 600, 1200, 2000].forEach(function (ms) {
+    setTimeout(vmHealWorkshopTwoPills, ms);
+  });
+
+  if (typeof MutationObserver !== "undefined") {
+    var obs = new MutationObserver(function () {
+      vmHealWorkshopTwoPills();
+    });
+    var targetRoot = document.getElementById("workshop-services") || document.body || document.documentElement;
+    if (targetRoot) {
+      obs.observe(targetRoot, { childList: true, subtree: true, characterData: true });
+    }
+  }
+})();
