@@ -2799,6 +2799,23 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
       if (el.dataset.vmOrigHtml === undefined) {
         el.dataset.vmOrigHtml = el.innerHTML;
       }
+      if (el.id === "vm-ws-light-badge-v1315") {
+        el.setAttribute("data-vm-multi-mobile", "1");
+        el.style.setProperty("background", "transparent", "important");
+        el.style.setProperty("background-color", "transparent", "important");
+        el.style.setProperty("background-image", "none", "important");
+        el.style.setProperty("border", "none", "important");
+        el.style.setProperty("box-shadow", "none", "important");
+        el.style.setProperty("padding", "0", "important");
+        el.style.setProperty("height", "auto", "important");
+        el.style.setProperty("border-radius", "0", "important");
+        el.innerHTML =
+          '<span class="vm-mob-badge-item">❖ स्था. 1990 ❖</span>' +
+          '<span class="vm-mob-badge-item">❖ मकान नं. 109, शाला मोहल्ला, अमानगंज ❖</span>';
+        el.dataset.vmMobReady = "1";
+        el.dataset.vmMobSplitDone = "1";
+        return;
+      }
 
       var raw = (el.textContent || "").replace(/\s+/g, " ").trim();
       var parts = [];
@@ -2868,6 +2885,23 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
 
       if (el.dataset.vmOrigHtml === undefined) {
         el.dataset.vmOrigHtml = el.innerHTML;
+      }
+      if (el.id === "vm-ws-light-badge-v1315") {
+        el.setAttribute("data-vm-multi-mobile", "1");
+        el.style.setProperty("background", "transparent", "important");
+        el.style.setProperty("background-color", "transparent", "important");
+        el.style.setProperty("background-image", "none", "important");
+        el.style.setProperty("border", "none", "important");
+        el.style.setProperty("box-shadow", "none", "important");
+        el.style.setProperty("padding", "0", "important");
+        el.style.setProperty("height", "auto", "important");
+        el.style.setProperty("border-radius", "0", "important");
+        el.innerHTML =
+          '<span class="vm-mob-badge-item">❖ स्था. 1990 ❖</span>' +
+          '<span class="vm-mob-badge-item">❖ मकान नं. 109, शाला मोहल्ला, अमानगंज ❖</span>';
+        el.dataset.vmMobReady = "1";
+        el.dataset.vmMobSplitDone = "1";
+        return;
       }
 
       var raw = (el.textContent || "").replace(/\s+/g, " ").trim();
@@ -2964,6 +2998,23 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
       if (el.dataset.vmOrigHtml === undefined) {
         el.dataset.vmOrigHtml = el.innerHTML;
       }
+      if (el.id === "vm-ws-light-badge-v1315") {
+        el.setAttribute("data-vm-multi-mobile", "1");
+        el.style.setProperty("background", "transparent", "important");
+        el.style.setProperty("background-color", "transparent", "important");
+        el.style.setProperty("background-image", "none", "important");
+        el.style.setProperty("border", "none", "important");
+        el.style.setProperty("box-shadow", "none", "important");
+        el.style.setProperty("padding", "0", "important");
+        el.style.setProperty("height", "auto", "important");
+        el.style.setProperty("border-radius", "0", "important");
+        el.innerHTML =
+          '<span class="vm-mob-badge-item">❖ स्था. 1990 ❖</span>' +
+          '<span class="vm-mob-badge-item">❖ मकान नं. 109, शाला मोहल्ला, अमानगंज ❖</span>';
+        el.dataset.vmMobReady = "1";
+        el.dataset.vmMobSplitDone = "1";
+        return;
+      }
 
       var raw = (el.textContent || "").replace(/\s+/g, " ").trim();
       var parts = [];
@@ -3048,6 +3099,7 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
   setTimeout(forceMobileParentBadgeTransparent, 600);
   setTimeout(forceMobileParentBadgeTransparent, 1500);
 })();
+
 
 
 
