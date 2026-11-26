@@ -1877,6 +1877,7 @@
     });
 
     document.querySelectorAll(".badge-tag, .vm-light-badge").forEach(function (badge) {
+      if (window.innerWidth <= 768 && badge.closest(".sec-head") && ((badge.textContent || "").indexOf("•") !== -1 || ((badge.textContent || "").match(/❖/g) || []).length >= 4)) return;
       badge.style.removeProperty("display");
       badge.style.setProperty("background", "linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%)", "important");
       badge.style.setProperty("color", "#4a240c", "important");
@@ -1900,6 +1901,7 @@
   function restoreAllHeroLightBadges() {
     document.querySelectorAll(".badge-tag, .vm-light-badge, .hero .badge-tag, .hero-section .badge-tag, [class*='hero'] .badge-tag").forEach(function (badge) {
       if (badge.closest("footer")) return;
+      if (window.innerWidth <= 768 && badge.closest(".sec-head") && ((badge.textContent || "").indexOf("•") !== -1 || ((badge.textContent || "").match(/❖/g) || []).length >= 4)) return;
       badge.style.removeProperty("display");
       badge.style.setProperty("display", "inline-flex", "important");
       badge.style.setProperty("visibility", "visible", "important");
@@ -1943,6 +1945,7 @@
 
     document.querySelectorAll(".badge-tag, .hero .badge-tag, .hero-section .badge-tag, [class*='hero'] .badge-tag").forEach(function (badge) {
       if (badge.closest("footer")) return;
+      if (window.innerWidth <= 768 && badge.closest(".sec-head") && ((badge.textContent || "").indexOf("•") !== -1 || ((badge.textContent || "").match(/❖/g) || []).length >= 4)) return;
       badge.style.setProperty("display", "inline-flex", "important");
       badge.style.setProperty("visibility", "visible", "important");
       badge.style.setProperty("opacity", "1", "important");
@@ -2286,6 +2289,7 @@
 
     document.querySelectorAll(".badge-tag, .vm-light-badge, .vm-home-dark-badge, .vm-workshop-dark-badge, .vm-hc-instrument-badge").forEach(function (el) {
       if (el.closest("footer")) return;
+      if (window.innerWidth <= 768 && el.closest(".sec-head") && ((el.textContent || "").indexOf("•") !== -1 || ((el.textContent || "").match(/❖/g) || []).length >= 4)) return;
       el.classList.remove("vm-home-dark-badge", "vm-workshop-dark-badge", "vm-hc-instrument-badge");
       el.style.setProperty("display", "inline-flex", "important");
       el.style.setProperty("visibility", "visible", "important");
@@ -2326,6 +2330,7 @@
     if (!isHome && !isWorkshop) {
       document.querySelectorAll(".badge-tag").forEach(function (badge) {
         if (badge.closest("footer")) return;
+        if (window.innerWidth <= 768 && badge.closest(".sec-head") && ((badge.textContent || "").indexOf("•") !== -1 || ((badge.textContent || "").match(/❖/g) || []).length >= 4)) return;
         badge.classList.remove("vm-home-dark-badge", "vm-workshop-dark-badge", "vm-hc-instrument-badge", "vm-stacked-pill");
         badge.style.setProperty("background", "linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%)", "important");
         badge.style.setProperty("background-color", "#f9ebd0", "important");
@@ -3003,3 +3008,4 @@
   setTimeout(forceMobileParentBadgeTransparent, 600);
   setTimeout(forceMobileParentBadgeTransparent, 1500);
 })();
+
