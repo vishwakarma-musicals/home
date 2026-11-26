@@ -144,43 +144,71 @@ window.VMCatalog = {
     try { localStorage.setItem(key, JSON.stringify(products)); } catch (e) {}
   },
   fetchLiveProducts: async function () {
-    var apiUrl = (typeof VM_CONFIG !== "undefined" && VM_CONFIG.orderApiUrl) ? VM_CONFIG.orderApiUrl : "";
-    var csvUrls = (typeof VM_CONFIG !== "undefined" && Array.isArray(VM_CONFIG.catalogCsvUrls)) ? VM_CONFIG.catalogCsvUrls : [];
+    if (this._inflightPromise) {
+      return this._inflightPromise;
+    }
 
-    if (apiUrl) {
-      try {
-        var resApi = await fetch(apiUrl, { method: "GET", cache: "no-store" });
-        if (resApi.ok) {
-          var json = await resApi.json();
-          if (json && Array.isArray(json.items) && json.items.length > 0) {
-            var headers = Object.keys(json.items[0]);
-            var rows = [headers].concat(json.items.map(function (obj) {
-              return headers.map(function (h) { return obj[h] !== undefined ? String(obj[h]) : ""; });
-            }));
-            var prodsApi = vmMapRows(rows);
-            if (prodsApi.length > 0) {
-              this.saveCachedProducts(prodsApi);
-              return prodsApi;
+    var self = this;
+    this._inflightPromise = (async function () {
+      var apiUrl = (typeof VM_CONFIG !== "undefined" && VM_CONFIG.orderApiUrl) ? VM_CONFIG.orderApiUrl : "";
+      var csvUrls = (typeof VM_CONFIG !== "undefined" && Array.isArray(VM_CONFIG.catalogCsvUrls)) ? VM_CONFIG.catalogCsvUrls : [];
+
+      async function fetchWithTimeout(targetUrl, ms) {
+        var controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+        var timer = controller ? setTimeout(function () { controller.abort(); }, ms || 4000) : null;
+        try {
+          return await fetch(targetUrl, {
+            method: "GET",
+            cache: "no-store",
+            signal: controller ? controller.signal : undefined
+          });
+        } finally {
+          if (timer) clearTimeout(timer);
+        }
+      }
+
+      if (apiUrl) {
+        try {
+          var resApi = await fetchWithTimeout(apiUrl, 4000);
+          if (resApi && resApi.ok) {
+            var json = await resApi.json();
+            if (json && Array.isArray(json.items) && json.items.length > 0) {
+              var headers = Object.keys(json.items[0]);
+              var rows = [headers].concat(json.items.map(function (obj) {
+                return headers.map(function (h) { return obj[h] !== undefined ? String(obj[h]) : ""; });
+              }));
+              var prodsApi = vmMapRows(rows);
+              if (prodsApi.length > 0) {
+                self.saveCachedProducts(prodsApi);
+                return prodsApi;
+              }
             }
           }
-        }
-      } catch (e) {}
-    }
+        } catch (e) {}
+      }
 
-    for (var i = 0; i < csvUrls.length; i++) {
-      try {
-        var resCsv = await fetch(csvUrls[i], { cache: "no-store" });
-        if (!resCsv.ok) continue;
-        var csvText = await resCsv.text();
-        var rowsCsv = window.VMCsv.parse(csvText);
-        var prodsCsv = vmMapRows(rowsCsv);
-        if (prodsCsv.length > 0) {
-          this.saveCachedProducts(prodsCsv);
-          return prodsCsv;
-        }
-      } catch (e) {}
-    }
+      for (var i = 0; i < csvUrls.length; i++) {
+        try {
+          var resCsv = await fetchWithTimeout(csvUrls[i], 4000);
+          if (!resCsv || !resCsv.ok) continue;
+          var csvText = await resCsv.text();
+          var rowsCsv = window.VMCsv.parse(csvText);
+          var prodsCsv = vmMapRows(rowsCsv);
+          if (prodsCsv.length > 0) {
+            self.saveCachedProducts(prodsCsv);
+            return prodsCsv;
+          }
+        } catch (e) {}
+      }
 
-    return null;
+      var cachedFallback = self.getCachedProducts();
+      return Array.isArray(cachedFallback) ? cachedFallback : [];
+    })();
+
+    try {
+      return await this._inflightPromise;
+    } finally {
+      self._inflightPromise = null;
+    }
   }
 };
