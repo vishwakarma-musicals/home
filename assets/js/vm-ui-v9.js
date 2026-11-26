@@ -2019,6 +2019,7 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
 
         homeHero.querySelectorAll(".badge-tag, .vm-home-dark-badge, .vm-light-badge, .vm-home-craft-line, .vm-home-address-line, span, p").forEach(function (el) {
           if (el.closest("footer")) return;
+      if (el.closest("#vm-ws-light-badge-v1315")) return;
           if (el.querySelector("h1, h2, h3, p, a, button")) return;
           var txt = (el.textContent || "").replace(/\s+/g, " ").trim();
           if (!txt) return;
@@ -2092,6 +2093,7 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
 
     wsHero.querySelectorAll("div, span, p, a").forEach(function (el) {
       if (el.closest("footer")) return;
+      if (el.closest("#vm-ws-light-badge-v1315")) return;
       if (el.querySelector("h1, h2, h3, img")) return;
       var txt = (el.textContent || "").replace(/\s+/g, " ").trim();
       var rect = el.getBoundingClientRect ? el.getBoundingClientRect() : { height: 0, width: 0 };
@@ -2123,6 +2125,7 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
 
     wsHero.querySelectorAll(".badge-tag, .vm-workshop-dark-badge, span, div, p").forEach(function (el) {
       if (el.closest("footer")) return;
+      if (el.closest("#vm-ws-light-badge-v1315")) return;
       if (el.querySelector("h1, h2, h3, p, a, button")) return;
       var txt = (el.textContent || "").replace(/\s+/g, " ").trim();
       if (/^[\s❖•✦-]*मकान\s*नं\.\s*109,\s*शाला\s*मोहल्ला,\s*अमानगंज[\s❖•✦-]*$/i.test(txt)) {
@@ -3045,6 +3048,7 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
   setTimeout(forceMobileParentBadgeTransparent, 600);
   setTimeout(forceMobileParentBadgeTransparent, 1500);
 })();
+
 
 
 
