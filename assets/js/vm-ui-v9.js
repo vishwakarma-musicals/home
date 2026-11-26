@@ -2958,3 +2958,24 @@
   }
   window.addEventListener("resize", runZeroFlickerBadges, { passive: true });
 })();
+
+/* === VM CART BADGE INSTANT SYNC ON LOAD & RESIZE === */
+(function () {
+  function syncCartAndPageBadgesNow() {
+    var isMob = (window.innerWidth || document.documentElement.clientWidth || 1200) <= 768;
+    document.querySelectorAll(".badge-tag, .vm-stacked-badge-group").forEach(function (el) {
+      if (!isMob) return;
+      el.style.setProperty("background", "transparent", "important");
+      el.style.setProperty("background-color", "transparent", "important");
+      el.style.setProperty("background-image", "none", "important");
+      el.style.setProperty("border", "none", "important");
+      el.style.setProperty("box-shadow", "none", "important");
+      el.style.setProperty("padding", "0", "important");
+    });
+  }
+  syncCartAndPageBadgesNow();
+  document.addEventListener("DOMContentLoaded", syncCartAndPageBadgesNow);
+  window.addEventListener("load", syncCartAndPageBadgesNow);
+  setTimeout(syncCartAndPageBadgesNow, 120);
+  setTimeout(syncCartAndPageBadgesNow, 500);
+})();
