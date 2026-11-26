@@ -2857,3 +2857,43 @@
     window.__vmMobSyncTimer = setTimeout(syncMobileBadges, 120);
   });
 })();
+
+/* === VM GLOBAL NO-HALF-LINE-BREAK & ATTACHED-SUFFIX CLEANER === */
+(function () {
+  function sanitizeButtonsAndNumbers() {
+    var controls = document.querySelectorAll("a.btn, button.btn, a[href^='tel:']");
+    controls.forEach(function (el) {
+      if (el.closest("#vm-left-nav-drawer, .vm-side-drawer, .cart-drawer")) return;
+      if (el.dataset.vmNoSplitDone === "1") return;
+
+      var html = el.innerHTML || "";
+      var txt  = (el.textContent || "").replace(/\s+/g, " ").trim();
+
+      // If a button has a trailing phone/parenthetical token that can wrap mid-number, keep the phone token intact or clean trailing parenthetical phone on narrow buttons
+      if (/\(\+?91[\s-]?\d{5}[\s-]?\d{5}\)/.test(txt) && el.offsetWidth > 0 && el.offsetWidth < 340) {
+        var cleaned = txt.replace(/\s*\(\+?91[\s-]?\d{5}[\s-]?\d{5}\)\s*$/, "").trim();
+        if (cleaned) {
+          el.textContent = cleaned;
+        }
+      } else if (/\+91\s*\d{5}\s*\d{5}/.test(html) && html.indexOf("vm-phone-nowrap") === -1) {
+        el.innerHTML = html.replace(/(\+91\s*\d{5}\s*\d{5})/g, '<span class="vm-phone-nowrap">$1</span>');
+      }
+
+      el.style.setProperty("word-break", "keep-all", "important");
+      el.style.setProperty("overflow-wrap", "normal", "important");
+      el.dataset.vmNoSplitDone = "1";
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", sanitizeButtonsAndNumbers);
+  } else {
+    sanitizeButtonsAndNumbers();
+  }
+  setTimeout(sanitizeButtonsAndNumbers, 500);
+  setTimeout(sanitizeButtonsAndNumbers, 1500);
+  window.addEventListener("resize", function () {
+    clearTimeout(window.__vmNoSplitResize);
+    window.__vmNoSplitResize = setTimeout(sanitizeButtonsAndNumbers, 150);
+  });
+})();
