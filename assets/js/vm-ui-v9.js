@@ -2897,3 +2897,64 @@
     window.__vmNoSplitResize = setTimeout(sanitizeButtonsAndNumbers, 150);
   });
 })();
+
+/* === VM ZERO-FLICKER MOBILE MULTI-BADGE SYNC === */
+(function () {
+  function runZeroFlickerBadges() {
+    var isMob = (window.innerWidth || document.documentElement.clientWidth || 1200) <= 768;
+    document.querySelectorAll(".badge-tag, .compliance-pill").forEach(function (el) {
+      if (!isMob) {
+        if (el.dataset.vmOrigHtml !== undefined && el.dataset.vmMobReady === "1") {
+          el.innerHTML = el.dataset.vmOrigHtml;
+          el.removeAttribute("data-vm-multi-mobile");
+          ["background", "background-color", "background-image", "border", "box-shadow", "padding", "height", "border-radius", "display", "flex-direction", "width"].forEach(function (p) {
+            el.style.removeProperty(p);
+          });
+          el.dataset.vmMobReady = "0";
+          el.dataset.vmMobSplitDone = "0";
+        }
+        return;
+      }
+
+      if (el.dataset.vmOrigHtml === undefined) {
+        el.dataset.vmOrigHtml = el.innerHTML;
+      }
+
+      var raw = (el.textContent || "").replace(/\s+/g, " ").trim();
+      var parts = [];
+      if (raw.indexOf("•") !== -1) {
+        parts = raw.split(/\s*•\s*/).map(function (p) {
+          return p.replace(/^❖\s*|\s*❖$/g, "").trim();
+        }).filter(Boolean);
+      } else if ((raw.match(/❖/g) || []).length >= 4) {
+        parts = raw.split(/❖/).map(function (p) { return p.trim(); }).filter(Boolean);
+      }
+
+      if (parts.length < 2) return;
+
+      el.setAttribute("data-vm-multi-mobile", "1");
+      el.style.setProperty("background", "transparent", "important");
+      el.style.setProperty("background-color", "transparent", "important");
+      el.style.setProperty("background-image", "none", "important");
+      el.style.setProperty("border", "none", "important");
+      el.style.setProperty("box-shadow", "none", "important");
+      el.style.setProperty("padding", "0", "important");
+      el.style.setProperty("height", "auto", "important");
+      el.style.setProperty("border-radius", "0", "important");
+
+      if (el.dataset.vmMobReady !== "1") {
+        el.innerHTML = parts.map(function (p) {
+          return '<span class="vm-mob-badge-item">❖ ' + p + ' ❖</span>';
+        }).join("");
+        el.dataset.vmMobReady = "1";
+        el.dataset.vmMobSplitDone = "1";
+      }
+    });
+  }
+
+  runZeroFlickerBadges();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", runZeroFlickerBadges);
+  }
+  window.addEventListener("resize", runZeroFlickerBadges, { passive: true });
+})();
