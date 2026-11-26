@@ -1,7 +1,12 @@
-/* === VM INTELLIGENT DEVICE LANGUAGE ENGINE, FREE WEB TRANSLATION CACHE & FORM NORMALIZER === */
+/* === VM LOOP-SAFE DEVICE LANGUAGE ENGINE, CACHE & FORM GUARD === */
 (function () {
+  if (window.__vmDeviceLangSafeLoaded) return;
+  window.__vmDeviceLangSafeLoaded = true;
+
   var LANG_KEY = "vm_active_device_lang_v2";
   var CACHE_KEY = "vm_smart_translations_v2";
+  var isApplying = false;
+  var pendingTimer = null;
 
   function detectRawDeviceLanguage() {
     var list = [];
@@ -131,7 +136,6 @@
         var enVal = toEnglishLatinForForm(field.value);
         if (enVal && enVal !== field.value) {
           field.value = enVal;
-          field.dispatchEvent(new Event("change", { bubbles: true }));
         }
       }
     });
@@ -146,17 +150,20 @@
       form.dataset.vmFormEnBound = "1";
     });
 
-    document.addEventListener("change", function (ev) {
-      var target = ev.target;
-      if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA")) {
-        if (target.type !== "password" && target.type !== "email") {
-          var nextVal = toEnglishLatinForForm(target.value);
-          if (nextVal && nextVal !== target.value) {
-            target.value = nextVal;
+    if (!document.body.dataset.vmFormChangeBound) {
+      document.addEventListener("change", function (ev) {
+        var target = ev.target;
+        if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA")) {
+          if (target.type !== "password" && target.type !== "email") {
+            var nextVal = toEnglishLatinForForm(target.value);
+            if (nextVal && nextVal !== target.value) {
+              target.value = nextVal;
+            }
           }
         }
-      }
-    }, true);
+      }, true);
+      document.body.dataset.vmFormChangeBound = "1";
+    }
   }
 
   function injectFormEnglishNotice() {
@@ -166,7 +173,7 @@
     fields.forEach(function (field) {
       var next = field.nextElementSibling;
       if (next && next.classList && next.classList.contains("vm-form-en-instruction")) {
-        next.textContent = noticeText;
+        if (next.textContent !== noticeText) next.textContent = noticeText;
         return;
       }
       var small = document.createElement("small");
@@ -208,18 +215,23 @@
         }
         primaryEnName = resolveEnglishNameForText(rawTitle);
 
+        var targetTitleText = rawTitle;
         if (lang === "hi") {
           var hiBase = rawTitle.replace(/\s*\([^)]*\)\s*/g, " ").trim();
-          primaryTitle.textContent = primaryEnName && primaryEnName !== hiBase
+          targetTitleText = primaryEnName && primaryEnName !== hiBase
             ? hiBase + " (" + primaryEnName + ")"
             : hiBase;
         } else if (lang === "en") {
-          primaryTitle.textContent = primaryEnName || rawTitle;
+          targetTitleText = primaryEnName || rawTitle;
         } else {
           var currentText = (primaryTitle.textContent || "").replace(/\s*\([^)]*\)\s*/g, " ").trim();
-          primaryTitle.textContent = primaryEnName && primaryEnName.toLowerCase() !== currentText.toLowerCase()
+          targetTitleText = primaryEnName && primaryEnName.toLowerCase() !== currentText.toLowerCase()
             ? currentText + " (" + primaryEnName + ")"
             : currentText;
+        }
+
+        if (primaryTitle.textContent !== targetTitleText) {
+          primaryTitle.textContent = targetTitleText;
         }
       }
 
@@ -253,8 +265,11 @@
     if (pendingFetchKeys[lockKey]) return;
     pendingFetchKeys[lockKey] = true;
 
+    var controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+    var timerId = controller ? setTimeout(function () { controller.abort(); }, 2500) : null;
+
     var url = "https://api.mymemory.translated.net/get?q=" + encodeURIComponent(text) + "&langpair=hi|" + encodeURIComponent(targetLang);
-    fetch(url)
+    fetch(url, controller ? { signal: controller.signal } : undefined)
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (data) {
         var translated = data && data.responseData && data.responseData.translatedText
@@ -271,6 +286,7 @@
       })
       .catch(function () {})
       .finally(function () {
+        if (timerId) clearTimeout(timerId);
         delete pendingFetchKeys[lockKey];
       });
   }
@@ -283,8 +299,10 @@
     var cache = readTranslationCache();
     var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
     var node;
+    var count = 0;
 
-    while ((node = walker.nextNode())) {
+    while ((node = walker.nextNode()) && count < 400) {
+      count++;
       var parent = node.parentElement;
       if (!parent) continue;
       if (parent.closest("script, style, noscript, textarea, input, .vm-form-en-instruction, .vm-mob-badge-item, .vm-stacked-pill")) continue;
@@ -297,55 +315,65 @@
         node.__vmOrigText = trimmed;
       }
       var sourceText = node.__vmOrigText;
+      var leading = (orig.match(/^\s*/) || [""])[0];
+      var trailing = (orig.match(/\s*$/) || [""])[0];
 
       if (lang === "en") {
         if (Object.prototype.hasOwnProperty.call(combinedEnMap, sourceText)) {
-          var leading = (orig.match(/^\s*/) || [""])[0];
-          var trailing = (orig.match(/\s*$/) || [""])[0];
-          node.nodeValue = leading + combinedEnMap[sourceText] + trailing;
+          var nextEn = leading + combinedEnMap[sourceText] + trailing;
+          if (node.nodeValue !== nextEn) node.nodeValue = nextEn;
         } else if (/[\u0900-\u097F]/.test(sourceText)) {
           if (cache.en && Object.prototype.hasOwnProperty.call(cache.en, sourceText)) {
-            var lEn = (orig.match(/^\s*/) || [""])[0];
-            var tEn = (orig.match(/\s*$/) || [""])[0];
-            node.nodeValue = lEn + cache.en[sourceText] + tEn;
+            var nextCachedEn = leading + cache.en[sourceText] + trailing;
+            if (node.nodeValue !== nextCachedEn) node.nodeValue = nextCachedEn;
           } else {
-            (function (targetNode, srcStr, rawStr) {
+            (function (targetNode, srcStr, lStr, tStr) {
               fetchFreeTranslation(srcStr, "en", function (enOut) {
-                var l = (rawStr.match(/^\s*/) || [""])[0];
-                var t = (rawStr.match(/\s*$/) || [""])[0];
-                targetNode.nodeValue = l + enOut + t;
+                var val = lStr + enOut + tStr;
+                if (targetNode.nodeValue !== val) targetNode.nodeValue = val;
               });
-            })(node, sourceText, orig);
+            })(node, sourceText, leading, trailing);
           }
         }
       } else {
         if (cache[lang] && Object.prototype.hasOwnProperty.call(cache[lang], sourceText)) {
-          var lOther = (orig.match(/^\s*/) || [""])[0];
-          var tOther = (orig.match(/\s*$/) || [""])[0];
-          node.nodeValue = lOther + cache[lang][sourceText] + tOther;
-        } else if (/[\u0900-\u097F]/.test(sourceText) && sourceText.length <= 240) {
-          (function (targetNode, srcStr, rawStr, targetLangCode) {
+          var nextCachedOther = leading + cache[lang][sourceText] + trailing;
+          if (node.nodeValue !== nextCachedOther) node.nodeValue = nextCachedOther;
+        } else if (/[\u0900-\u097F]/.test(sourceText) && sourceText.length <= 200) {
+          (function (targetNode, srcStr, lStr, tStr, targetLangCode) {
             fetchFreeTranslation(srcStr, targetLangCode, function (outStr) {
-              var l = (rawStr.match(/^\s*/) || [""])[0];
-              var t = (rawStr.match(/\s*$/) || [""])[0];
-              targetNode.nodeValue = l + outStr + t;
+              var val = lStr + outStr + tStr;
+              if (targetNode.nodeValue !== val) targetNode.nodeValue = val;
             });
-          })(node, sourceText, orig, lang);
+          })(node, sourceText, leading, trailing, lang);
         }
       }
     }
   }
 
   function runFullSmartSync() {
-    var lang = syncDeviceLangToCache();
-    document.documentElement.setAttribute("lang", lang);
-    if (document.body) {
-      document.body.setAttribute("data-vm-lang", lang);
+    if (isApplying || !document.body) return;
+    isApplying = true;
+    try {
+      var lang = syncDeviceLangToCache();
+      if (document.documentElement.getAttribute("lang") !== lang) {
+        document.documentElement.setAttribute("lang", lang);
+      }
+      if (document.body.getAttribute("data-vm-lang") !== lang) {
+        document.body.setAttribute("data-vm-lang", lang);
+      }
+      translateWholePageSmartly(lang);
+      applyCardNameAndParenthesesRule(lang);
+      injectFormEnglishNotice();
+      attachFormGuards();
+    } finally {
+      setTimeout(function () { isApplying = false; }, 120);
     }
-    translateWholePageSmartly(lang);
-    applyCardNameAndParenthesesRule(lang);
-    injectFormEnglishNotice();
-    attachFormGuards();
+  }
+
+  function scheduleSafeSync(delayMs) {
+    if (pendingTimer) clearTimeout(pendingTimer);
+    pendingTimer = setTimeout(runFullSmartSync, delayMs || 250);
   }
 
   window.VMDeviceLang = {
@@ -361,21 +389,11 @@
     normalizeFormsToEnglish: normalizeFormsToEnglish
   };
 
-  runFullSmartSync();
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", runFullSmartSync);
+    document.addEventListener("DOMContentLoaded", function () { scheduleSafeSync(50); });
+  } else {
+    scheduleSafeSync(50);
   }
-  window.addEventListener("languagechange", runFullSmartSync);
-  setTimeout(runFullSmartSync, 400);
-  setTimeout(runFullSmartSync, 1400);
-
-  if (typeof MutationObserver !== "undefined") {
-    var obs = new MutationObserver(function () {
-      runFullSmartSync();
-    });
-    var rootTarget = document.body || document.documentElement;
-    if (rootTarget) {
-      obs.observe(rootTarget, { childList: true, subtree: true });
-    }
-  }
+  window.addEventListener("load", function () { scheduleSafeSync(300); });
+  window.addEventListener("languagechange", function () { scheduleSafeSync(100); });
 })();
