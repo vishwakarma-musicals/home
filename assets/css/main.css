@@ -5121,3 +5121,32 @@ a[href^="tel:"],
     border-radius: 0 !important;
   }
 }
+
+/* === VM WORKSHOP MOBILE MULTI-PILL PARENT & CHILD VISIBILITY HARMONY === */
+@media (max-width: 768px) {
+  #workshop-services .sec-head > #vm-ws-light-badge-v1315[data-vm-multi-mobile="1"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    margin: 0 auto 12px !important;
+  }
+
+  #workshop-services .sec-head > #vm-ws-light-badge-v1315[data-vm-multi-mobile="1"] > .vm-mob-badge-item {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
