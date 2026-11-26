@@ -425,7 +425,8 @@
         '@media print{body{background:#fff;padding:0;min-height:auto}.visiting-card-box{margin:12mm auto 0}.no-print,.btn-wrap,button{display:none!important}}</style>',
         '</head><body>',
         clone.outerHTML,
-        '</body></html>'
+        '<script src="assets/js/vm-device-lang.js" defer></script>
+</body></html>'
       ];
       var blob = new Blob([parts.join("")], { type: "text/html;charset=utf-8" });
       var url = URL.createObjectURL(blob);
@@ -485,5 +486,7 @@
   }
 })();
 </script>
+<script src="assets/js/vm-device-lang.js" defer></script>
 </body>
 </html>
+
