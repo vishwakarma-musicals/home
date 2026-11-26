@@ -87,7 +87,21 @@
     "सभी मरम्मत व ट्यूनिंग कार्य अमानगंज कार्यशाला में स्वयं शिल्पकार तुलसी दास विश्वकर्मा द्वारा किए जाते हैं।": "All repair and tuning work is done at the Amanganj workshop by craftsman Tulsidas Vishwakarma.",
     "चुने गए वाद्य यंत्र": "Selected Instruments",
     "ऑर्डर पुष्टि व शिपिंग गणना के लिए आगे बढ़ने से पहले आइटम और मात्रा जांचें।": "Review items and quantities before proceeding to order confirmation and shipping calculation.",
-    "प्रतिदिन सुबह 9:00 बजे से रात 9:00 बजे तक": "Daily 9:00 AM to 9:00 PM"
+    "प्रतिदिन सुबह 9:00 बजे से रात 9:00 बजे तक": "Daily 9:00 AM to 9:00 PM",
+"प्रमुख वाद्य यंत्र संग्रह": "Featured Instruments",
+    "वाद्य चयन और रखरखाव मार्गदर्शक": "Instrument Selection & Care Guide",
+    "मरम्मत, ट्यूनिंग और रखरखाव": "Repair, Tuning & Maintenance",
+    "विश्वकर्मा म्यूज़िकल्स से जुड़ें": "Connect with Vishwakarma Musicals",
+    "हारमोनियम व सफ़री हारमोनियम": "Harmonium & Safri Harmonium",
+    "ढोलक, तबला व पुड़ों की देखभाल": "Dholak, Tabla & Pudda Care",
+    "बांसुरी, झीका व लकड़ी का डमरू": "Bansuri, Jheeka & Wooden Damru",
+    "सफ़री हारमोनियम": "Safri Harmonium",
+    "आम की लकड़ी की ढोलक": "Mango Wood Dholak",
+    "शीशम की ढोलक": "Sheesham Nut-Bolt Dholak",
+    "पारंपरिक लकड़ी का डमरू": "Traditional Wooden Damru",
+    "धोंकनी": "Dhonkni",
+    "झीका": "Jheeka",
+    "सभी वाद्य यंत्र देखें →": "View All Instruments →"
   };
 
   var combinedEnMap = {};
@@ -301,7 +315,7 @@
     var node;
     var count = 0;
 
-    while ((node = walker.nextNode()) && count < 400) {
+    while ((node = walker.nextNode()) && count < 1500) {
       count++;
       var parent = node.parentElement;
       if (!parent) continue;
@@ -397,3 +411,5 @@
   window.addEventListener("load", function () { scheduleSafeSync(300); });
   window.addEventListener("languagechange", function () { scheduleSafeSync(100); });
 })();
+
+
