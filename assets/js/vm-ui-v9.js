@@ -1864,6 +1864,7 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
     if (window.innerWidth <= 768) return;
     var targets = ["❖ स्था. 1990", "35+ वर्षों की पारंपरिक कारीगरी", "35+ वर्षों का अनुभव", "GSTIN: 23BSDPV5529B1ZV"];
     document.querySelectorAll(".badge-tag").forEach(function (badge) {
+      if (badge.closest("#workshop-services")) return;
       if (badge.getAttribute("data-vm-stacked-done") === "1") return;
       var rawText = (badge.textContent || "").replace(/^\s*❖\s*|\s*❖\s*$/g, "").trim();
       var parts = rawText.split("•").map(function (s) { return s.trim(); }).filter(Boolean);
@@ -1908,7 +1909,7 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
     document.querySelectorAll(".badge-tag, .vm-light-badge").forEach(function (badge) {
       if (vmKeepMobileMultiBadgeParentTransparent(badge)) return;
       if (window.innerWidth <= 768 && badge.closest(".sec-head") && ((badge.textContent || "").indexOf("•") !== -1 || ((badge.textContent || "").match(/❖/g) || []).length >= 4)) return;
-      badge.style.removeProperty("display");
+      if (window.innerWidth <= 768) { badge.style.setProperty("display", "inline-flex", "important"); } else { badge.style.removeProperty("display"); }
       badge.style.setProperty("background", "linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%)", "important");
       badge.style.setProperty("color", "#4a240c", "important");
       badge.style.setProperty("-webkit-text-fill-color", "#4a240c", "important");
@@ -1933,7 +1934,7 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
       if (badge.closest("footer")) return;
       if (vmKeepMobileMultiBadgeParentTransparent(badge)) return;
       if (window.innerWidth <= 768 && badge.closest(".sec-head") && ((badge.textContent || "").indexOf("•") !== -1 || ((badge.textContent || "").match(/❖/g) || []).length >= 4)) return;
-      badge.style.removeProperty("display");
+      if (window.innerWidth <= 768) { badge.style.setProperty("display", "inline-flex", "important"); } else { badge.style.removeProperty("display"); }
       badge.style.setProperty("display", "inline-flex", "important");
       badge.style.setProperty("visibility", "visible", "important");
       badge.style.setProperty("opacity", "1", "important");
@@ -3044,6 +3045,8 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
   setTimeout(forceMobileParentBadgeTransparent, 600);
   setTimeout(forceMobileParentBadgeTransparent, 1500);
 })();
+
+
 
 
 
