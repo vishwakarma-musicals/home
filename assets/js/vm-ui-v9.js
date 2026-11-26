@@ -2693,3 +2693,44 @@
     startTitleEnforcer();
   }
 })();
+
+/* === VM UNIVERSAL BADGE LINE-BREAK ENFORCER (NO MID-TOKEN SPLIT) === */
+(function () {
+  function formatAllBadges() {
+    var badges = document.querySelectorAll(".badge-tag, .compliance-pill");
+    badges.forEach(function (el) {
+      if (el.dataset.vmBadgeFormatted === "1") return;
+      if (el.querySelector("span")) {
+        el.dataset.vmBadgeFormatted = "1";
+        return;
+      }
+      var raw = (el.textContent || "").trim();
+      if (raw.indexOf("•") === -1) return;
+      var parts = raw.split(/\s*•\s*/).map(function (p) { return p.trim(); }).filter(Boolean);
+      if (parts.length < 2) return;
+
+      el.style.display = "inline-flex";
+      el.style.flexDirection = "column";
+      el.style.alignItems = "center";
+      el.style.justifyContent = "center";
+      el.style.gap = "4px";
+      el.style.maxWidth = "100%";
+      el.style.height = "auto";
+      el.style.borderRadius = "16px";
+      el.style.padding = "8px 14px";
+
+      el.innerHTML = parts.map(function (part, idx) {
+        var txt = (idx > 0 && part.indexOf("•") !== 0) ? ("• " + part) : part;
+        return '<span style="display:block;white-space:nowrap;word-break:keep-all;overflow-wrap:normal;">' + txt + '</span>';
+      }).join("");
+      el.dataset.vmBadgeFormatted = "1";
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", formatAllBadges);
+  } else {
+    formatAllBadges();
+  }
+  setTimeout(formatAllBadges, 600);
+})();
