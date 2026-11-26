@@ -4966,3 +4966,20 @@ a[href^="tel:"],
   word-break: keep-all !important;
   overflow-wrap: normal !important;
 }
+
+/* === VM MOBILE CART/PAGE BADGE PARENT BOX KILLER (NO CREAM BOX BEHIND BADGES) === */
+@media (max-width: 768px) {
+  #cart-section .sec-head > .badge-tag,
+  #cart-section .sec-head > .vm-stacked-badge-group,
+  .sec-head > .badge-tag[data-vm-multi-mobile="1"],
+  .sec-head > .vm-stacked-badge-group {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+    padding: 0 !important;
+  }
+}
