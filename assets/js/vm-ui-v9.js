@@ -2783,3 +2783,77 @@
     window.__vmBadgeResizeTimer = setTimeout(applyMobileIndividualBadges, 150);
   });
 })();
+
+/* === VM MOBILE PARENT CLEAR + MULTI-ITEM SPLITTER (BULLET OR DIAMOND) === */
+(function () {
+  function clearParentBox(el) {
+    el.style.setProperty("background", "transparent", "important");
+    el.style.setProperty("background-color", "transparent", "important");
+    el.style.setProperty("background-image", "none", "important");
+    el.style.setProperty("border", "none", "important");
+    el.style.setProperty("box-shadow", "none", "important");
+    el.style.setProperty("padding", "0", "important");
+    el.style.setProperty("height", "auto", "important");
+    el.style.setProperty("border-radius", "0", "important");
+  }
+
+  function resetParentBox(el) {
+    ["background", "background-color", "background-image", "border", "box-shadow", "padding", "height", "border-radius"].forEach(function (prop) {
+      el.style.removeProperty(prop);
+    });
+  }
+
+  function syncMobileBadges() {
+    var isMobile = window.innerWidth <= 768;
+    document.querySelectorAll(".badge-tag, .compliance-pill").forEach(function (el) {
+      if (!isMobile) {
+        if (el.dataset.vmOrigHtml !== undefined && el.dataset.vmMobSplitDone === "1") {
+          el.innerHTML = el.dataset.vmOrigHtml;
+          el.removeAttribute("data-vm-multi-mobile");
+          resetParentBox(el);
+          el.dataset.vmMobSplitDone = "0";
+        }
+        return;
+      }
+
+      if (el.dataset.vmMobSplitDone === "1") {
+        clearParentBox(el);
+        return;
+      }
+
+      if (el.dataset.vmOrigHtml === undefined) {
+        el.dataset.vmOrigHtml = el.innerHTML;
+      }
+
+      var raw = (el.textContent || "").replace(/\s+/g, " ").trim();
+      var parts = [];
+      if (raw.indexOf("•") !== -1) {
+        parts = raw.split(/\s*•\s*/).map(function (p) {
+          return p.replace(/^❖\s*|\s*❖$/g, "").trim();
+        }).filter(Boolean);
+      } else if ((raw.match(/❖/g) || []).length >= 4) {
+        parts = raw.split(/❖/).map(function (p) { return p.trim(); }).filter(Boolean);
+      }
+
+      if (parts.length < 2) return;
+
+      el.setAttribute("data-vm-multi-mobile", "1");
+      clearParentBox(el);
+      el.innerHTML = parts.map(function (p) {
+        return '<span class="vm-mob-badge-item">❖ ' + p + ' ❖</span>';
+      }).join("");
+      el.dataset.vmMobSplitDone = "1";
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", syncMobileBadges);
+  } else {
+    syncMobileBadges();
+  }
+  setTimeout(syncMobileBadges, 400);
+  window.addEventListener("resize", function () {
+    clearTimeout(window.__vmMobSyncTimer);
+    window.__vmMobSyncTimer = setTimeout(syncMobileBadges, 120);
+  });
+})();
