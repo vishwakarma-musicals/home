@@ -5029,3 +5029,29 @@ a[href^="tel:"],
     box-shadow: 0 2px 6px rgba(39, 20, 10, 0.14) !important;
   }
 }
+
+/* === VM MOBILE PARENT BADGE COMPLETE TRANSPARENCY (ALL SUBPAGES & CART) === */
+@media (max-width: 768px) {
+  .sec-head > .badge-tag,
+  .sec-head > .compliance-pill,
+  .sec-head > .vm-stacked-badge-group,
+  #cart-section .sec-head .badge-tag,
+  #cart-section .sec-head .vm-stacked-badge-group,
+  body .sec-head > .badge-tag {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  .sec-head > .badge-tag::before,
+  .sec-head > .badge-tag::after,
+  .sec-head > .vm-stacked-badge-group::before,
+  .sec-head > .vm-stacked-badge-group::after {
+    display: none !important;
+    content: none !important;
+  }
+}
