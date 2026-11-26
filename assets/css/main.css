@@ -5055,3 +5055,28 @@ a[href^="tel:"],
     content: none !important;
   }
 }
+
+/* === VM MOBILE MULTI-PART BADGE PARENT TRANSPARENCY (ALL PAGES INCLUDING ABOUT & WORKSHOP) === */
+@media (max-width: 768px) {
+  html body #main-content .badge-tag:has(> span:nth-child(2)),
+  html body #main-content .badge-tag[data-vm-multi-mobile="1"],
+  html body #main-content #workshop-services .sec-head .badge-tag {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  html body #main-content .badge-tag:has(> span:nth-child(2))::before,
+  html body #main-content .badge-tag:has(> span:nth-child(2))::after,
+  html body #main-content .badge-tag[data-vm-multi-mobile="1"]::before,
+  html body #main-content .badge-tag[data-vm-multi-mobile="1"]::after {
+    content: none !important;
+    display: none !important;
+  }
+}
