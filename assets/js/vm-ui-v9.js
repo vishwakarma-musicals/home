@@ -2637,3 +2637,59 @@
   });
   window.addEventListener("resize", vmLockLeftMenu, { passive: true });
 })();
+
+/* === VM PERMANENT TWO-LINE TITLE ENFORCER (HINDI TOP, SMALL LOWERCASE ENGLISH BELOW) === */
+(function () {
+  function buildTwoLineHtml(text) {
+    var clean = String(text || "").replace(/\s+/g, " ").trim();
+    var m = clean.match(/^([^(]+?)\s*\(([^)]+)\)\s*$/);
+    if (!m) return null;
+    var hi = m[1].trim();
+    var en = "(" + m[2].trim().toLowerCase() + ")";
+    return '<span class="vm-name-hi">' + hi + '</span><span class="vm-name-en">' + en + '</span>';
+  }
+
+  function enforceTwoLineCardTitles() {
+    var nodes = document.querySelectorAll(".pcard-title-light, .vm-two-line-title, .product-title, .card-title");
+    nodes.forEach(function (el) {
+      if (el.closest(".cart-drawer, .vm-side-drawer, #vm-left-nav-drawer, modal, [role='dialog']")) return;
+      var hiEl = el.querySelector(".vm-name-hi");
+      var enEl = el.querySelector(".vm-name-en");
+      if (hiEl && enEl) {
+        var currentEn = (enEl.textContent || "").trim();
+        var lowerEn = currentEn.toLowerCase();
+        if (currentEn !== lowerEn) {
+          enEl.textContent = lowerEn;
+        }
+        return;
+      }
+      var raw = (el.textContent || "").trim();
+      var html = buildTwoLineHtml(raw);
+      if (html && el.innerHTML !== html) {
+        el.innerHTML = html;
+      }
+    });
+  }
+
+  function startTitleEnforcer() {
+    enforceTwoLineCardTitles();
+    setTimeout(enforceTwoLineCardTitles, 400);
+    setTimeout(enforceTwoLineCardTitles, 1200);
+    setTimeout(enforceTwoLineCardTitles, 2500);
+
+    if (typeof MutationObserver !== "undefined" && document.body) {
+      var timer = null;
+      var obs = new MutationObserver(function () {
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(enforceTwoLineCardTitles, 120);
+      });
+      obs.observe(document.body, { childList: true, subtree: true });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startTitleEnforcer);
+  } else {
+    startTitleEnforcer();
+  }
+})();
