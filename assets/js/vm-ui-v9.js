@@ -1831,8 +1831,37 @@
 
 
 /* === VM UI v10.6 ALL-DEVICES RUNTIME: STACKED CENTERED BADGES & CONSISTENT UI POLISH === */
+function vmKeepMobileMultiBadgeParentTransparent(el) {
+  if (!el || window.innerWidth > 768 || !el.matches(".badge-tag, .vm-light-badge")) {
+    return false;
+  }
+  var text = (el.textContent || "").replace(/\s+/g, " ").trim();
+  var isMultiPart =
+    el.children.length > 1 ||
+    el.hasAttribute("data-vm-multi-mobile") ||
+    text.indexOf("•") !== -1;
+  if (!isMultiPart) return false;
+  el.style.setProperty("display", "flex", "important");
+  el.style.setProperty("flex-direction", "column", "important");
+  el.style.setProperty("align-items", "center", "important");
+  el.style.setProperty("justify-content", "center", "important");
+  el.style.setProperty("visibility", "visible", "important");
+  el.style.setProperty("opacity", "1", "important");
+  el.style.setProperty("background", "transparent", "important");
+  el.style.setProperty("background-color", "transparent", "important");
+  el.style.setProperty("background-image", "none", "important");
+  el.style.setProperty("border", "none", "important");
+  el.style.setProperty("border-color", "transparent", "important");
+  el.style.setProperty("box-shadow", "none", "important");
+  el.style.setProperty("outline", "none", "important");
+  el.style.setProperty("padding", "0", "important");
+  el.style.setProperty("border-radius", "0", "important");
+  return true;
+}
+
 (function () {
   function buildStackedHeritageBadges() {
+    if (window.innerWidth <= 768) return;
     var targets = ["❖ स्था. 1990", "35+ वर्षों की पारंपरिक कारीगरी", "35+ वर्षों का अनुभव", "GSTIN: 23BSDPV5529B1ZV"];
     document.querySelectorAll(".badge-tag").forEach(function (badge) {
       if (badge.getAttribute("data-vm-stacked-done") === "1") return;
@@ -1877,6 +1906,7 @@
     });
 
     document.querySelectorAll(".badge-tag, .vm-light-badge").forEach(function (badge) {
+      if (vmKeepMobileMultiBadgeParentTransparent(badge)) return;
       if (window.innerWidth <= 768 && badge.closest(".sec-head") && ((badge.textContent || "").indexOf("•") !== -1 || ((badge.textContent || "").match(/❖/g) || []).length >= 4)) return;
       badge.style.removeProperty("display");
       badge.style.setProperty("background", "linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%)", "important");
@@ -1901,6 +1931,7 @@
   function restoreAllHeroLightBadges() {
     document.querySelectorAll(".badge-tag, .vm-light-badge, .hero .badge-tag, .hero-section .badge-tag, [class*='hero'] .badge-tag").forEach(function (badge) {
       if (badge.closest("footer")) return;
+      if (vmKeepMobileMultiBadgeParentTransparent(badge)) return;
       if (window.innerWidth <= 768 && badge.closest(".sec-head") && ((badge.textContent || "").indexOf("•") !== -1 || ((badge.textContent || "").match(/❖/g) || []).length >= 4)) return;
       badge.style.removeProperty("display");
       badge.style.setProperty("display", "inline-flex", "important");
@@ -1945,6 +1976,7 @@
 
     document.querySelectorAll(".badge-tag, .hero .badge-tag, .hero-section .badge-tag, [class*='hero'] .badge-tag").forEach(function (badge) {
       if (badge.closest("footer")) return;
+      if (vmKeepMobileMultiBadgeParentTransparent(badge)) return;
       if (window.innerWidth <= 768 && badge.closest(".sec-head") && ((badge.textContent || "").indexOf("•") !== -1 || ((badge.textContent || "").match(/❖/g) || []).length >= 4)) return;
       badge.style.setProperty("display", "inline-flex", "important");
       badge.style.setProperty("visibility", "visible", "important");
@@ -2251,6 +2283,7 @@
 
     var badge = document.querySelector("#workshop-services .sec-head .badge-tag") || document.querySelector("#workshop-services .badge-tag");
     if (!badge) return;
+    if (vmKeepMobileMultiBadgeParentTransparent(badge)) return;
 
     badge.style.setProperty("display", "inline-flex", "important");
     badge.style.setProperty("visibility", "visible", "important");
@@ -2289,6 +2322,7 @@
 
     document.querySelectorAll(".badge-tag, .vm-light-badge, .vm-home-dark-badge, .vm-workshop-dark-badge, .vm-hc-instrument-badge").forEach(function (el) {
       if (el.closest("footer")) return;
+      if (vmKeepMobileMultiBadgeParentTransparent(el)) return;
       if (window.innerWidth <= 768 && el.closest(".sec-head") && ((el.textContent || "").indexOf("•") !== -1 || ((el.textContent || "").match(/❖/g) || []).length >= 4)) return;
       el.classList.remove("vm-home-dark-badge", "vm-workshop-dark-badge", "vm-hc-instrument-badge");
       el.style.setProperty("display", "inline-flex", "important");
@@ -2330,6 +2364,7 @@
     if (!isHome && !isWorkshop) {
       document.querySelectorAll(".badge-tag").forEach(function (badge) {
         if (badge.closest("footer")) return;
+        if (vmKeepMobileMultiBadgeParentTransparent(badge)) return;
         if (window.innerWidth <= 768 && badge.closest(".sec-head") && ((badge.textContent || "").indexOf("•") !== -1 || ((badge.textContent || "").match(/❖/g) || []).length >= 4)) return;
         badge.classList.remove("vm-home-dark-badge", "vm-workshop-dark-badge", "vm-hc-instrument-badge", "vm-stacked-pill");
         badge.style.setProperty("background", "linear-gradient(180deg, #fff8e6 0%, #f5dfb0 100%)", "important");
@@ -2356,6 +2391,7 @@
   if (!isWorkshop) return;
 
   function placeFreshLightWorkshopBadge() {
+    if (window.innerWidth <= 768) return;
     var secHead = document.querySelector("#workshop-services .sec-head");
     if (!secHead) return;
 
@@ -3008,4 +3044,6 @@
   setTimeout(forceMobileParentBadgeTransparent, 600);
   setTimeout(forceMobileParentBadgeTransparent, 1500);
 })();
+
+
 
