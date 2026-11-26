@@ -2734,3 +2734,52 @@
   }
   setTimeout(formatAllBadges, 600);
 })();
+
+/* === VM MOBILE-ONLY INDIVIDUAL BADGE LINE SPLITTER === */
+(function () {
+  function applyMobileIndividualBadges() {
+    var isMobile = window.innerWidth <= 768;
+    var nodes = document.querySelectorAll(".badge-tag, .compliance-pill");
+    nodes.forEach(function (el) {
+      if (!isMobile) {
+        if (el.dataset.vmOrigHtml !== undefined && el.dataset.vmMobSplitDone === "1") {
+          el.innerHTML = el.dataset.vmOrigHtml;
+          el.removeAttribute("data-vm-multi-mobile");
+          el.dataset.vmMobSplitDone = "0";
+        }
+        return;
+      }
+
+      if (el.dataset.vmMobSplitDone === "1") return;
+      if (el.dataset.vmOrigHtml === undefined) {
+        el.dataset.vmOrigHtml = el.innerHTML;
+      }
+
+      var raw = (el.textContent || "").replace(/\s+/g, " ").trim();
+      var parts = [];
+      if (raw.indexOf("•") !== -1) {
+        parts = raw.split(/\s*•\s*/).map(function (p) {
+          return p.replace(/^❖\s*|\s*❖$/g, "").trim();
+        }).filter(Boolean);
+      }
+
+      if (parts.length < 2) return;
+
+      el.setAttribute("data-vm-multi-mobile", "1");
+      el.innerHTML = parts.map(function (p) {
+        return '<span class="vm-mob-badge-item">❖ ' + p + ' ❖</span>';
+      }).join("");
+      el.dataset.vmMobSplitDone = "1";
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", applyMobileIndividualBadges);
+  } else {
+    applyMobileIndividualBadges();
+  }
+  window.addEventListener("resize", function () {
+    clearTimeout(window.__vmBadgeResizeTimer);
+    window.__vmBadgeResizeTimer = setTimeout(applyMobileIndividualBadges, 150);
+  });
+})();
