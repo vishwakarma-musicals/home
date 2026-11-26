@@ -4862,3 +4862,40 @@ body#contact-page,
     box-shadow: 0 2px 6px rgba(39, 20, 10, 0.14) !important;
   }
 }
+
+/* === VM MOBILE PARENT BADGE TRANSPARENT OVERRIDE (NO PARENT BOX BEHIND SPLIT BADGES) === */
+@media (max-width: 768px) {
+  .badge-tag[data-vm-multi-mobile="1"],
+  .compliance-pill[data-vm-multi-mobile="1"],
+  .sec-light .badge-tag[data-vm-multi-mobile="1"],
+  .sec-dark .badge-tag[data-vm-multi-mobile="1"],
+  .hero .badge-tag[data-vm-multi-mobile="1"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    outline: none !important;
+    padding: 2px 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+    border-radius: 0 !important;
+  }
+  .badge-tag[data-vm-multi-mobile="1"]::before,
+  .badge-tag[data-vm-multi-mobile="1"]::after,
+  .compliance-pill[data-vm-multi-mobile="1"]::before,
+  .compliance-pill[data-vm-multi-mobile="1"]::after {
+    display: none !important;
+    content: none !important;
+  }
+}
