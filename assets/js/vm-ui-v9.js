@@ -2979,3 +2979,27 @@
   setTimeout(syncCartAndPageBadgesNow, 120);
   setTimeout(syncCartAndPageBadgesNow, 500);
 })();
+
+/* === VM MOBILE PARENT BADGE FORCE-TRANSPARENT GUARD === */
+(function () {
+  function forceMobileParentBadgeTransparent() {
+    var isMob = (window.innerWidth || document.documentElement.clientWidth || 1200) <= 768;
+    if (!isMob) return;
+    document.querySelectorAll(".sec-head > .badge-tag, .sec-head > .compliance-pill, .sec-head > .vm-stacked-badge-group").forEach(function (el) {
+      el.style.setProperty("background", "transparent", "important");
+      el.style.setProperty("background-color", "transparent", "important");
+      el.style.setProperty("background-image", "none", "important");
+      el.style.setProperty("border", "none", "important");
+      el.style.setProperty("box-shadow", "none", "important");
+      el.style.setProperty("outline", "none", "important");
+    });
+  }
+  forceMobileParentBadgeTransparent();
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", forceMobileParentBadgeTransparent);
+  }
+  window.addEventListener("load", forceMobileParentBadgeTransparent);
+  setTimeout(forceMobileParentBadgeTransparent, 150);
+  setTimeout(forceMobileParentBadgeTransparent, 600);
+  setTimeout(forceMobileParentBadgeTransparent, 1500);
+})();
