@@ -2648,10 +2648,17 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
     setTimeout(runCleanupV1327, 800);
     setTimeout(runCleanupV1327, 2000);
     if (typeof MutationObserver !== "undefined" && document.body) {
+      var cleanupTimer = null;
+      var cleanupBusy = false;
       var obs = new MutationObserver(function () {
-        runCleanupV1327();
+        if (cleanupBusy) return;
+        if (cleanupTimer) clearTimeout(cleanupTimer);
+        cleanupTimer = setTimeout(function () {
+          cleanupBusy = true;
+          try { runCleanupV1327(); } finally { setTimeout(function () { cleanupBusy = false; }, 150); }
+        }, 200);
       });
-      obs.observe(document.body, { childList: true, subtree: true, characterData: true });
+      obs.observe(document.body, { childList: true, subtree: true });
     }
   });
 })();
@@ -2724,9 +2731,14 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
 
     if (typeof MutationObserver !== "undefined" && document.body) {
       var timer = null;
+      var titleBusy = false;
       var obs = new MutationObserver(function () {
+        if (titleBusy) return;
         if (timer) clearTimeout(timer);
-        timer = setTimeout(enforceTwoLineCardTitles, 120);
+        timer = setTimeout(function () {
+          titleBusy = true;
+          try { enforceTwoLineCardTitles(); } finally { setTimeout(function () { titleBusy = false; }, 150); }
+        }, 200);
       });
       obs.observe(document.body, { childList: true, subtree: true });
     }
@@ -3181,12 +3193,20 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
   });
 
   if (typeof MutationObserver !== "undefined") {
+    var wsHealTimer = null;
+    var wsHealBusy = false;
     var obs = new MutationObserver(function () {
-      vmHealWorkshopTwoPills();
+      if (wsHealBusy) return;
+      if (wsHealTimer) clearTimeout(wsHealTimer);
+      wsHealTimer = setTimeout(function () {
+        wsHealBusy = true;
+        try { vmHealWorkshopTwoPills(); } finally { setTimeout(function () { wsHealBusy = false; }, 150); }
+      }, 200);
     });
     var targetRoot = document.getElementById("workshop-services") || document.body || document.documentElement;
     if (targetRoot) {
-      obs.observe(targetRoot, { childList: true, subtree: true, characterData: true });
+      obs.observe(targetRoot, { childList: true, subtree: true });
     }
   }
 })();
+
