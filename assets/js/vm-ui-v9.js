@@ -412,7 +412,7 @@
     var secondBtn = document.querySelector(".mobile-sticky-bar a:nth-child(2), .mobile-sticky-bar button:nth-child(2), .sticky-cta-bar a:nth-child(2), .sticky-cta-bar button:nth-child(2)");
     if (secondBtn) {
       if (secondBtn.tagName === "A") {
-// [v13.29]         secondBtn.href = waUrl;
+        secondBtn.href = waUrl;
         secondBtn.target = "_blank";
         secondBtn.rel = "noopener noreferrer";
       }
@@ -580,7 +580,7 @@
     var secondBtn = document.querySelector(".mobile-sticky-bar a:nth-child(2), .mobile-sticky-bar button:nth-child(2), .sticky-cta-bar a:nth-child(2), .sticky-cta-bar button:nth-child(2)");
     if (secondBtn) {
       if (secondBtn.tagName === "A") {
-// [v13.29]         secondBtn.href = waUrl;
+        secondBtn.href = waUrl;
         secondBtn.target = "_blank";
         secondBtn.rel = "noopener noreferrer";
       }
@@ -752,7 +752,7 @@
     var secondBtn = document.querySelector(".mobile-sticky-bar a:nth-child(2), .mobile-sticky-bar button:nth-child(2), .sticky-cta-bar a:nth-child(2), .sticky-cta-bar button:nth-child(2)");
     if (secondBtn) {
       if (secondBtn.tagName === "A") {
-// [v13.29]         secondBtn.href = waUrl;
+        secondBtn.href = waUrl;
         secondBtn.target = "_blank";
         secondBtn.rel = "noopener noreferrer";
       }
@@ -2613,56 +2613,27 @@
 
 
 
-/* === VM UI v13.28 RUNTIME: RESTORE NON-WHATSAPP STICKY BAR & CLEAN INNER FIT === */
+/* VM UI v13.28 RUNTIME: LEFT HAMBURGER ON MOBILE */
 (function () {
-  function cleanStickyBarV1328() {
-    var bar = document.querySelector(".mobile-sticky-bar, .sticky-cta-bar");
-    if (!bar) return;
-    var btns = bar.querySelectorAll("a, button");
-    if (btns.length >= 1) {
-      btns[0].href = "tel:+919755088022";
-      btns[0].removeAttribute("target");
-      btns[0].removeAttribute("rel");
-      btns[0].innerHTML = "📞 अभी कॉल करें";
-    }
-    if (btns.length >= 2) {
-      var isInstrumentsPage = /instruments\.html/i.test(window.location.pathname || "");
-      btns[1].href = isInstrumentsPage ? "cart.html" : "instruments.html";
-      btns[1].removeAttribute("target");
-      btns[1].removeAttribute("rel");
-      btns[1].innerHTML = isInstrumentsPage ? "🛒 कार्ट देखें" : "🎵 वाद्य संग्रह";
+  function vmLockLeftMenu() {
+    if (window.innerWidth > 900) return;
+    var h = document.querySelector("header.site-header, header");
+    if (!h) return;
+    var c = h.querySelector("#vm-mobile-single-row-bar, .header-inner") || h;
+    var b = c.querySelector(".vm-mobile-menu-btn, #vm-left-hamburger-btn") || h.querySelector(".vm-mobile-menu-btn, #vm-left-hamburger-btn");
+    if (!b) return;
+    b.style.setProperty("order", "-1", "important");
+    b.style.setProperty("margin-left", "0", "important");
+    b.style.setProperty("margin-right", "auto", "important");
+    if (b.parentElement === c && c.firstElementChild !== b) {
+      c.insertBefore(b, c.firstElementChild);
     }
   }
-  cleanStickyBarV1328();
-  document.addEventListener("DOMContentLoaded", cleanStickyBarV1328);
-  setTimeout(cleanStickyBarV1328, 300);
-})();
-
-/* === VM UI v13.29 RUNTIME: ONE-SHOT STICKY CTA WITHOUT LOOP === */
-(function () {
-  function applyStickyCtaOnceV1329() {
-    var bars = document.querySelectorAll(".mobile-sticky-bar, .sticky-cta-bar");
-    if (!bars || !bars.length) return;
-    bars.forEach(function (bar) {
-      var btns = bar.querySelectorAll("a, button");
-      if (btns.length >= 1) {
-        if (btns[0].tagName === "A") btns[0].href = "tel:+919755088022";
-        btns[0].removeAttribute("target");
-        btns[0].removeAttribute("rel");
-        btns[0].textContent = "📞 अभी कॉल करें";
-      }
-      if (btns.length >= 2) {
-        var isInstruments = /instruments\.html/i.test(window.location.pathname || "");
-        if (btns[1].tagName === "A") btns[1].href = isInstruments ? "cart.html" : "instruments.html";
-        btns[1].removeAttribute("target");
-        btns[1].removeAttribute("rel");
-        btns[1].textContent = isInstruments ? "🛒 कार्ट देखें" : "🎵 वाद्य संग्रह";
-      }
-    });
-  }
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", applyStickyCtaOnceV1329, { once: true });
-  } else {
-    applyStickyCtaOnceV1329();
-  }
+  vmLockLeftMenu();
+  document.addEventListener("DOMContentLoaded", function () {
+    vmLockLeftMenu();
+    setTimeout(vmLockLeftMenu, 300);
+    setTimeout(vmLockLeftMenu, 1000);
+  });
+  window.addEventListener("resize", vmLockLeftMenu, { passive: true });
 })();
