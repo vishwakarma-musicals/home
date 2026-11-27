@@ -1,8 +1,10 @@
+window.__VM_DISABLE_LEGACY_TITLE_FORMATTERS = true;
 (function() {
   if (window.__VM_UI_V9_LOADED__) return;
   window.__VM_UI_V9_LOADED__ = true;
 
   function formatTwoLineName(rawName) {
+    if (window.__VM_DISABLE_LEGACY_TITLE_FORMATTERS) return String(rawName || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     var txt = String(rawName || "").trim();
     var match = txt.match(/^([^(]+?)\s*(\([^)]+\))\s*$/);
     if (match) {
@@ -105,6 +107,7 @@
   }
 
   function applyTwoLineTitlesInDom() {
+    if (window.__VM_DISABLE_LEGACY_TITLE_FORMATTERS) return;
     var headings = document.querySelectorAll(".product-title, .card-title, h3.item-name, [data-role='product-title']");
     headings.forEach(function(el) {
       if (el.dataset.vmTwoLineDone === "1") return;
@@ -203,6 +206,7 @@
   }
 
   function formatTwoLineNames() {
+    if (window.__VM_DISABLE_LEGACY_TITLE_FORMATTERS) return;
     document.querySelectorAll(".product-title, .card-title-two-line, h3.item-title").forEach(function (el) {
       el.classList.add("vm-two-line-title");
       var raw = (el.textContent || "").trim();
@@ -260,6 +264,7 @@
   }
 
   function splitTwoLinesHiEn() {
+    if (window.__VM_DISABLE_LEGACY_TITLE_FORMATTERS) return;
     var targets = document.querySelectorAll(".product-title, .card-title-two-line, h3.item-title, .vm-two-line-title, [class*='product-title']");
     targets.forEach(function (el) {
       if (el.dataset.vmSplitV93 === "1") return;
@@ -347,7 +352,6 @@
 
 /* === VM UI v9.5 RUNTIME: MOBILE HERO TOP BADGE CLEARANCE + ALL V9.4 FIXES === */
 (function () {
-  var waUrl = "https://wa.me/919755088022?text=" + encodeURIComponent("नमस्ते विश्वकर्मा म्यूज़िकल्स, मुझे वाद्य यंत्र / कार्यशाला के बारे में पूछना है।");
 
   function fixMobileHeroBadgeOffset() {
     if (window.innerWidth > 768) return;
@@ -382,6 +386,7 @@
   }
 
   function forceTwoLineNames() {
+    if (window.__VM_DISABLE_LEGACY_TITLE_FORMATTERS) return;
     var nodes = document.querySelectorAll(".product-title, .card-title-two-line, h3.item-title, .vm-two-line-title, [class*='product-title']");
     nodes.forEach(function (el) {
       var raw = (el.dataset.vmRawTitle || el.textContent || "").replace(/\s+/g, " ").trim();
@@ -408,17 +413,7 @@
     });
   }
 
-  function setStickyWhatsappCta() {
-    var secondBtn = document.querySelector(".mobile-sticky-bar a:nth-child(2), .mobile-sticky-bar button:nth-child(2), .sticky-cta-bar a:nth-child(2), .sticky-cta-bar button:nth-child(2)");
-    if (secondBtn) {
-      if (secondBtn.tagName === "A") {
-        secondBtn.href = waUrl;
-        secondBtn.target = "_blank";
-        secondBtn.rel = "noopener noreferrer";
-      }
-      secondBtn.innerHTML = "💬 Whatsapp पर पूछें";
-    }
-  }
+  function setStickyWhatsappCta() { /* preserve the page’s existing non-WhatsApp sticky action */ }
 
   function formatDirectContactMapAndButtons() {
     var mapIframe = document.querySelector("iframe[src*='maps.google.com'], iframe[src*='google.com/maps']");
@@ -447,7 +442,6 @@
       "<p style='margin:0 0 6px;color:#f5ede0;'>मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना, म.प्र. 488441 | GSTIN: 23BSDPV5529B1ZV</p>" +
       "<div class='vm-map-top-row'>" +
         "<a href='tel:+919755088022' class='btn' style='padding:10px 18px;border-radius:8px;background:#e6b84d;color:#1f1107;font-weight:700;text-decoration:none;'>📞 +91 97550 88022</a>" +
-        "<a href='" + waUrl + "' target='_blank' rel='noopener noreferrer' class='btn' style='padding:10px 18px;border-radius:8px;background:#1f5c36;color:#ffffff;border:1.5px solid #5ad488;font-weight:700;text-decoration:none;'>💬 Whatsapp पर पूछें</a>" +
       "</div>" +
       "<div class='vm-map-bottom-row'>" +
         "<a href='mailto:info@vishwakarmamusicals.in' class='btn' style='padding:10px 20px;border-radius:8px;background:#281409;color:#fcd777;border:1.5px solid #e6b84d;font-weight:700;text-decoration:none;'>✉️ info@vishwakarmamusicals.in</a>" +
@@ -476,7 +470,7 @@
       titleEl.style.fontWeight = "700";
     }
 
-    var btns = Array.from(trustSec.querySelectorAll("a.btn, button.btn, a[href^='tel:'], a[href^='https://wa.me/']"));
+    var btns = Array.from(trustSec.querySelectorAll("a.btn, button.btn, a[href^='tel:']"));
     if (btns.length >= 2 && !trustSec.querySelector(".vm-trust-bottom-cta-row")) {
       var row = document.createElement("div");
       row.className = "vm-trust-bottom-cta-row";
@@ -508,7 +502,6 @@
 
 /* === VM UI v9.6 RUNTIME: ENFORCE 100% ZOOM + ALL V9.5 FIXES === */
 (function () {
-  var waUrl = "https://wa.me/919755088022?text=" + encodeURIComponent("नमस्ते विश्वकर्मा म्यूज़िकल्स, मुझे वाद्य यंत्र / कार्यशाला के बारे में पूछना है।");
 
   function enforceHundredPercentZoom() {
     document.documentElement.style.transform = "none";
@@ -550,6 +543,7 @@
   }
 
   function forceTwoLineNames() {
+    if (window.__VM_DISABLE_LEGACY_TITLE_FORMATTERS) return;
     var nodes = document.querySelectorAll(".product-title, .card-title-two-line, h3.item-title, .vm-two-line-title, [class*='product-title']");
     nodes.forEach(function (el) {
       var raw = (el.dataset.vmRawTitle || el.textContent || "").replace(/\s+/g, " ").trim();
@@ -576,17 +570,7 @@
     });
   }
 
-  function setStickyWhatsappCta() {
-    var secondBtn = document.querySelector(".mobile-sticky-bar a:nth-child(2), .mobile-sticky-bar button:nth-child(2), .sticky-cta-bar a:nth-child(2), .sticky-cta-bar button:nth-child(2)");
-    if (secondBtn) {
-      if (secondBtn.tagName === "A") {
-        secondBtn.href = waUrl;
-        secondBtn.target = "_blank";
-        secondBtn.rel = "noopener noreferrer";
-      }
-      secondBtn.innerHTML = "💬 Whatsapp पर पूछें";
-    }
-  }
+  function setStickyWhatsappCta() { /* preserve the page’s existing non-WhatsApp sticky action */ }
 
   function formatDirectContactMapAndButtons() {
     var mapIframe = document.querySelector("iframe[src*='maps.google.com'], iframe[src*='google.com/maps']");
@@ -615,7 +599,6 @@
       "<p style='margin:0 0 6px;color:#f5ede0;'>मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना, म.प्र. 488441 | GSTIN: 23BSDPV5529B1ZV</p>" +
       "<div class='vm-map-top-row'>" +
         "<a href='tel:+919755088022' class='btn' style='padding:10px 18px;border-radius:8px;background:#e6b84d;color:#1f1107;font-weight:700;text-decoration:none;'>📞 +91 97550 88022</a>" +
-        "<a href='" + waUrl + "' target='_blank' rel='noopener noreferrer' class='btn' style='padding:10px 18px;border-radius:8px;background:#1f5c36;color:#ffffff;border:1.5px solid #5ad488;font-weight:700;text-decoration:none;'>💬 Whatsapp पर पूछें</a>" +
       "</div>" +
       "<div class='vm-map-bottom-row'>" +
         "<a href='mailto:info@vishwakarmamusicals.in' class='btn' style='padding:10px 20px;border-radius:8px;background:#281409;color:#fcd777;border:1.5px solid #e6b84d;font-weight:700;text-decoration:none;'>✉️ info@vishwakarmamusicals.in</a>" +
@@ -644,7 +627,7 @@
       titleEl.style.fontWeight = "700";
     }
 
-    var btns = Array.from(trustSec.querySelectorAll("a.btn, button.btn, a[href^='tel:'], a[href^='https://wa.me/']"));
+    var btns = Array.from(trustSec.querySelectorAll("a.btn, button.btn, a[href^='tel:']"));
     if (btns.length >= 2 && !trustSec.querySelector(".vm-trust-bottom-cta-row")) {
       var row = document.createElement("div");
       row.className = "vm-trust-bottom-cta-row";
@@ -680,7 +663,6 @@
 
 /* === VM UI v9.7 RUNTIME: 3D BUTTONS, TRUST TOP BADGE & UNIFORM SECTION LOOK === */
 (function () {
-  var waUrl = "https://wa.me/919755088022?text=" + encodeURIComponent("नमस्ते विश्वकर्मा म्यूज़िकल्स, मुझे वाद्य यंत्र / कार्यशाला के बारे में पूछना है।");
 
   function enforceHundredPercentZoom() {
     document.documentElement.style.transform = "none";
@@ -722,6 +704,7 @@
   }
 
   function forceTwoLineNames() {
+    if (window.__VM_DISABLE_LEGACY_TITLE_FORMATTERS) return;
     var nodes = document.querySelectorAll(".product-title, .card-title-two-line, h3.item-title, .vm-two-line-title, [class*='product-title']");
     nodes.forEach(function (el) {
       var raw = (el.dataset.vmRawTitle || el.textContent || "").replace(/\s+/g, " ").trim();
@@ -748,18 +731,7 @@
     });
   }
 
-  function setStickyWhatsappCta() {
-    var secondBtn = document.querySelector(".mobile-sticky-bar a:nth-child(2), .mobile-sticky-bar button:nth-child(2), .sticky-cta-bar a:nth-child(2), .sticky-cta-bar button:nth-child(2)");
-    if (secondBtn) {
-      if (secondBtn.tagName === "A") {
-        secondBtn.href = waUrl;
-        secondBtn.target = "_blank";
-        secondBtn.rel = "noopener noreferrer";
-      }
-      secondBtn.classList.add("vm-3d-btn");
-      secondBtn.innerHTML = "💬 Whatsapp पर पूछें";
-    }
-  }
+  function setStickyWhatsappCta() { /* preserve the page’s existing non-WhatsApp sticky action */ }
 
   function formatDirectContactMapAndButtons() {
     var mapIframe = document.querySelector("iframe[src*='maps.google.com'], iframe[src*='google.com/maps']");
@@ -788,7 +760,6 @@
       "<p style='margin:0 0 6px;color:#fff8ee;'>मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना, म.प्र. 488441 | GSTIN: 23BSDPV5529B1ZV</p>" +
       "<div class='vm-map-top-row'>" +
         "<a href='tel:+919755088022' class='btn vm-3d-btn'>📞 +91 97550 88022</a>" +
-        "<a href='" + waUrl + "' target='_blank' rel='noopener noreferrer' class='btn vm-3d-btn'>💬 Whatsapp पर पूछें</a>" +
       "</div>" +
       "<div class='vm-map-bottom-row'>" +
         "<a href='mailto:info@vishwakarmamusicals.in' class='btn vm-3d-btn'>✉️ info@vishwakarmamusicals.in</a>" +
@@ -824,7 +795,7 @@
       titleEl.style.fontWeight = "700";
     }
 
-    var btns = Array.from(trustSec.querySelectorAll("a.btn, button.btn, a[href^='tel:'], a[href^='https://wa.me/']"));
+    var btns = Array.from(trustSec.querySelectorAll("a.btn, button.btn, a[href^='tel:']"));
     btns.forEach(function (b) {
       b.classList.add("vm-3d-btn");
     });
@@ -2516,6 +2487,7 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
 /* === VM UI v13.22 RUNTIME: STACKED HI/EN CARD TITLES, AUTO FONT SCALE & BADGE CONTRAST === */
 (function () {
   function applyCardAndWrapFixesV1322() {
+    if (!window.__VM_DISABLE_LEGACY_TITLE_FORMATTERS) {
     document.querySelectorAll(".pcard-dark-in-light .pcard-title-light").forEach(function (titleEl) {
       if (!titleEl.getAttribute("data-vm-stacked-v1322")) {
         var raw = (titleEl.textContent || "").replace(/\s+/g, " ").trim();
@@ -2540,6 +2512,8 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
         enEl.style.setProperty("font-size", px + "px", "important");
       }
     });
+
+    }
 
     document.querySelectorAll(".pcard-tag-gold").forEach(function (badge) {
       badge.style.setProperty("color", "#1a0e04", "important");
@@ -2701,7 +2675,7 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
     return '<span class="vm-name-hi">' + hi + '</span><span class="vm-name-en">' + en + '</span>';
   }
 
-  function enforceTwoLineCardTitles() { if (document.documentElement.getAttribute("lang") === "en" || document.body.getAttribute("data-vm-lang") === "en") return;
+  function enforceTwoLineCardTitles() { if (window.__VM_DISABLE_LEGACY_TITLE_FORMATTERS) return;
     var nodes = document.querySelectorAll(".pcard-title-light, .vm-two-line-title, .product-title, .card-title");
     nodes.forEach(function (el) {
       if (el.closest(".cart-drawer, .vm-side-drawer, #vm-left-nav-drawer, modal, [role='dialog']")) return;
