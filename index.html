@@ -356,7 +356,8 @@
         .replace(/\bsafari\b/gi, "Safri")
         .replace(/झीका/g, "झीका")
         .replace(/लकड़ी का डमरू/g, "लकड़ी का डमरू");
-      return (typeof sanitizeVMText === "function") ? sanitizeVMText(out) : out;
+      var clean = (typeof sanitizeVMText === "function") ? sanitizeVMText(out) : out;
+      return escapeVMHtml(clean);
     }
 
     function renderHomeProducts(products) {
@@ -373,12 +374,14 @@
       if (loader) loader.style.display = "none";
       grid.innerHTML = list.map(function (p) {
         var priceText = p.price > 0 ? "₹" + Number(p.price).toLocaleString("en-IN") : "संपर्क करें";
-        var imgHtml = p.mainImage
-          ? '<img src="' + p.mainImage.replace(/"/g, "&quot;") + '" alt="' + p.nameFull.replace(/"/g, "&quot;") + '" loading="lazy" onerror="this.style.display=\'none\'">'
+        var imageUrl = safeVMImageUrl(p.mainImage);
+        var imgHtml = imageUrl
+          ? '<img src="' + escapeVMHtml(imageUrl) + '" alt="' + sanitizeIndexText(p.nameFull) + '" loading="lazy" onerror="this.style.display=\'none\'">'
           : "";
         var specsHtml = (p.features || []).map(function (f) {
           return "<li>" + sanitizeIndexText(f) + "</li>";
         }).join("");
+        var addHandler = "window.VMCartUI && window.VMCartUI.addItem(" + JSON.stringify(String(p.sku || "")) + "," + JSON.stringify(String(p.nameFull || "")) + "," + Number(p.price || 0) + ")";
         return (
           '<article class="pcard-dark-in-light" onclick="location.href=\'product.html?slug=' + encodeURIComponent(p.slug) + '\'">' +
             '<div class="pcard-img-box-white">' +
@@ -392,7 +395,7 @@
               '<p class="pcard-desc-light">' + sanitizeIndexText(p.shortDesc) + '</p>' +
               '<ul class="pcard-specs-dark">' + specsHtml + '</ul>' +
               '<div class="pcard-act" onclick="event.stopPropagation();">' +
-                '<button type="button" class="btn btn-gold" onclick="window.VMCartUI && window.VMCartUI.addItem(\'' + p.sku.replace(/'/g, "\\'") + '\', \'' + p.nameFull.replace(/'/g, "\\'") + '\', ' + Number(p.price || 0) + ')">कार्ट में जोड़ें</button>' +
+                '<button type="button" class="btn btn-gold" onclick="' + escapeVMHtml(addHandler) + '">कार्ट में जोड़ें</button>' +
               '</div>' +
             '</div>' +
           '</article>'
