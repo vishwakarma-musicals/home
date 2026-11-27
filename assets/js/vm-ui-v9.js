@@ -313,7 +313,7 @@
           var infoBox = document.createElement("div");
           infoBox.className = "vm-map-below-actions";
           infoBox.innerHTML =
-            "<p style='margin:0 0 10px;color:#f5ede0;'>मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना, म.प्र. 488441 | GSTIN: 23BSDPV5529B1ZV</p>" +
+            "<p style='margin:0 0 10px;color:#f5ede0;'>मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के पास, शाला मोहल्ला, अमानगंज, जिला पन्ना, म.प्र. 488441 | GSTIN: 23BSDPV5529B1ZV</p>" +
             "<div style='display:flex;gap:12px;justify-content:center;flex-wrap:wrap;'>" +
             "<a href='tel:+919755088022' class='btn' style='padding:10px 18px;border-radius:8px;background:#e6b84d;color:#1f1107;font-weight:700;text-decoration:none;'>📞 +91 97550 88022</a>" +
             "<a href='mailto:info@vishwakarmamusicals.in' class='btn' style='padding:10px 18px;border-radius:8px;background:#281409;color:#fcd777;border:1.5px solid #e6b84d;font-weight:700;text-decoration:none;'>✉️ info@vishwakarmamusicals.in</a>" +
@@ -409,15 +409,7 @@
   }
 
   function setStickyWhatsappCta() {
-    var secondBtn = document.querySelector(".mobile-sticky-bar a:nth-child(2), .mobile-sticky-bar button:nth-child(2), .sticky-cta-bar a:nth-child(2), .sticky-cta-bar button:nth-child(2)");
-    if (secondBtn) {
-      if (secondBtn.tagName === "A") {
-        secondBtn.href = waUrl;
-        secondBtn.target = "_blank";
-        secondBtn.rel = "noopener noreferrer";
-      }
-      secondBtn.innerHTML = "💬 Whatsapp पर पूछें";
-    }
+    /* Footer-only WhatsApp rule: do not override sticky CTA with WhatsApp */
   }
 
   function formatDirectContactMapAndButtons() {
@@ -444,10 +436,9 @@
     var infoBox = document.createElement("div");
     infoBox.className = "vm-map-below-actions";
     infoBox.innerHTML =
-      "<p style='margin:0 0 6px;color:#f5ede0;'>मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना, म.प्र. 488441 | GSTIN: 23BSDPV5529B1ZV</p>" +
+      "<p style='margin:0 0 6px;color:#f5ede0;'>मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के पास, शाला मोहल्ला, अमानगंज, जिला पन्ना, म.प्र. 488441 | GSTIN: 23BSDPV5529B1ZV</p>" +
       "<div class='vm-map-top-row'>" +
         "<a href='tel:+919755088022' class='btn' style='padding:10px 18px;border-radius:8px;background:#e6b84d;color:#1f1107;font-weight:700;text-decoration:none;'>📞 +91 97550 88022</a>" +
-        "<a href='" + waUrl + "' target='_blank' rel='noopener noreferrer' class='btn' style='padding:10px 18px;border-radius:8px;background:#1f5c36;color:#ffffff;border:1.5px solid #5ad488;font-weight:700;text-decoration:none;'>💬 Whatsapp पर पूछें</a>" +
       "</div>" +
       "<div class='vm-map-bottom-row'>" +
         "<a href='mailto:info@vishwakarmamusicals.in' class='btn' style='padding:10px 20px;border-radius:8px;background:#281409;color:#fcd777;border:1.5px solid #e6b84d;font-weight:700;text-decoration:none;'>✉️ info@vishwakarmamusicals.in</a>" +
@@ -577,15 +568,7 @@
   }
 
   function setStickyWhatsappCta() {
-    var secondBtn = document.querySelector(".mobile-sticky-bar a:nth-child(2), .mobile-sticky-bar button:nth-child(2), .sticky-cta-bar a:nth-child(2), .sticky-cta-bar button:nth-child(2)");
-    if (secondBtn) {
-      if (secondBtn.tagName === "A") {
-        secondBtn.href = waUrl;
-        secondBtn.target = "_blank";
-        secondBtn.rel = "noopener noreferrer";
-      }
-      secondBtn.innerHTML = "💬 Whatsapp पर पूछें";
-    }
+    /* Footer-only WhatsApp rule: do not override sticky CTA with WhatsApp */
   }
 
   function formatDirectContactMapAndButtons() {
@@ -612,10 +595,9 @@
     var infoBox = document.createElement("div");
     infoBox.className = "vm-map-below-actions";
     infoBox.innerHTML =
-      "<p style='margin:0 0 6px;color:#f5ede0;'>मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना, म.प्र. 488441 | GSTIN: 23BSDPV5529B1ZV</p>" +
+      "<p style='margin:0 0 6px;color:#f5ede0;'>मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के पास, शाला मोहल्ला, अमानगंज, जिला पन्ना, म.प्र. 488441 | GSTIN: 23BSDPV5529B1ZV</p>" +
       "<div class='vm-map-top-row'>" +
         "<a href='tel:+919755088022' class='btn' style='padding:10px 18px;border-radius:8px;background:#e6b84d;color:#1f1107;font-weight:700;text-decoration:none;'>📞 +91 97550 88022</a>" +
-        "<a href='" + waUrl + "' target='_blank' rel='noopener noreferrer' class='btn' style='padding:10px 18px;border-radius:8px;background:#1f5c36;color:#ffffff;border:1.5px solid #5ad488;font-weight:700;text-decoration:none;'>💬 Whatsapp पर पूछें</a>" +
       "</div>" +
       "<div class='vm-map-bottom-row'>" +
         "<a href='mailto:info@vishwakarmamusicals.in' class='btn' style='padding:10px 20px;border-radius:8px;background:#281409;color:#fcd777;border:1.5px solid #e6b84d;font-weight:700;text-decoration:none;'>✉️ info@vishwakarmamusicals.in</a>" +
@@ -657,7 +639,7 @@
   }
 
   function runAll() {
-    enforceHundredPercentZoom();
+    /* NATURAL_ZOOM: enforceHundredPercentZoom(); */
     fixMobileHeroBadgeOffset();
     removeDuplicateHamburger();
     forceTwoLineNames();
@@ -672,7 +654,7 @@
     setTimeout(runAll, 1500);
   });
   window.addEventListener("resize", function () {
-    enforceHundredPercentZoom();
+    /* NATURAL_ZOOM: enforceHundredPercentZoom(); */
     fixMobileHeroBadgeOffset();
   });
 })();
@@ -749,16 +731,7 @@
   }
 
   function setStickyWhatsappCta() {
-    var secondBtn = document.querySelector(".mobile-sticky-bar a:nth-child(2), .mobile-sticky-bar button:nth-child(2), .sticky-cta-bar a:nth-child(2), .sticky-cta-bar button:nth-child(2)");
-    if (secondBtn) {
-      if (secondBtn.tagName === "A") {
-        secondBtn.href = waUrl;
-        secondBtn.target = "_blank";
-        secondBtn.rel = "noopener noreferrer";
-      }
-      secondBtn.classList.add("vm-3d-btn");
-      secondBtn.innerHTML = "💬 Whatsapp पर पूछें";
-    }
+    /* Footer-only WhatsApp rule: do not override sticky CTA with WhatsApp */
   }
 
   function formatDirectContactMapAndButtons() {
@@ -785,10 +758,9 @@
     var infoBox = document.createElement("div");
     infoBox.className = "vm-map-below-actions";
     infoBox.innerHTML =
-      "<p style='margin:0 0 6px;color:#fff8ee;'>मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना, म.प्र. 488441 | GSTIN: 23BSDPV5529B1ZV</p>" +
+      "<p style='margin:0 0 6px;color:#fff8ee;'>मकान नं. 109, वार्ड नं. 10, हरदौल मंदिर के पास, शाला मोहल्ला, अमानगंज, जिला पन्ना, म.प्र. 488441 | GSTIN: 23BSDPV5529B1ZV</p>" +
       "<div class='vm-map-top-row'>" +
         "<a href='tel:+919755088022' class='btn vm-3d-btn'>📞 +91 97550 88022</a>" +
-        "<a href='" + waUrl + "' target='_blank' rel='noopener noreferrer' class='btn vm-3d-btn'>💬 Whatsapp पर पूछें</a>" +
       "</div>" +
       "<div class='vm-map-bottom-row'>" +
         "<a href='mailto:info@vishwakarmamusicals.in' class='btn vm-3d-btn'>✉️ info@vishwakarmamusicals.in</a>" +
@@ -841,7 +813,7 @@
   }
 
   function runAll() {
-    enforceHundredPercentZoom();
+    /* NATURAL_ZOOM: enforceHundredPercentZoom(); */
     fixMobileHeroBadgeOffset();
     removeDuplicateHamburger();
     forceTwoLineNames();
@@ -856,7 +828,7 @@
     setTimeout(runAll, 1500);
   });
   window.addEventListener("resize", function () {
-    enforceHundredPercentZoom();
+    /* NATURAL_ZOOM: enforceHundredPercentZoom(); */
     fixMobileHeroBadgeOffset();
   });
 })();
@@ -2411,9 +2383,9 @@
     }
   }
 
-  applySteadyZoom100V1317();
+  /* NATURAL_ZOOM: applySteadyZoom100V1317(); */
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", applySteadyZoom100V1317, { once: true });
+    /* NATURAL_ZOOM: document.addEventListener("DOMContentLoaded", applySteadyZoom100V1317, { once: true }); */
   }
 })();
 
@@ -2610,5 +2582,4 @@
     }
   });
 })();
-
 
