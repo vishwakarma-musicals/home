@@ -3,52 +3,6 @@
   if (window.__vmDeviceLangSafeLoaded) return;
   window.__vmDeviceLangSafeLoaded = true;
 
-  var LANG_KEY = "vm_active_device_lang_v2";
-  var CACHE_KEY = "vm_smart_translations_v2";
-  var isApplying = false;
-  var pendingTimer = null;
-
-  function detectRawDeviceLanguage() {
-    var list = [];
-    if (Array.isArray(navigator.languages) && navigator.languages.length) {
-      list = navigator.languages;
-    } else if (navigator.language) {
-      list = [navigator.language];
-    }
-    var raw = String(list[0] || "hi").toLowerCase().trim();
-    if (!raw) return "hi";
-    if (raw.indexOf("hi") === 0) return "hi";
-    if (raw.indexOf("en") === 0) return "en";
-    return raw.split("-")[0];
-  }
-
-  function syncDeviceLangToCache() {
-    var lang = detectRawDeviceLanguage();
-    try {
-      if (window.localStorage) {
-        window.localStorage.setItem(LANG_KEY, lang);
-      }
-    } catch (e) {}
-    return lang;
-  }
-
-  function readTranslationCache() {
-    try {
-      var raw = window.localStorage && window.localStorage.getItem(CACHE_KEY);
-      return raw ? JSON.parse(raw) : {};
-    } catch (e) {
-      return {};
-    }
-  }
-
-  function writeTranslationCache(obj) {
-    try {
-      if (window.localStorage) {
-        window.localStorage.setItem(CACHE_KEY, JSON.stringify(obj));
-      }
-    } catch (e) {}
-  }
-
   var instrumentEnglishMap = {
     "हारमोनियम": "Harmonium",
     "सफ़री हारमोनियम": "Safri Harmonium",
@@ -225,7 +179,6 @@
     "अस्वीकरण": "Disclaimer",
     "© 2026 विश्वकर्मा म्यूज़िकल्स | फ़ोन:": "© 2026 Vishwakarma Musicals | Phone:",
     "📞 अभी कॉल करें": "📞 Call Now",
-    "💬 Whatsapp पर पूछें": "💬 Ask on WhatsApp",
     "होम (Home)": "Home",
     "वाद्ययंत्र (Instruments)": "Instruments",
     "लाइव कैटलॉग (Live Catalog)": "Live Catalog",
@@ -243,309 +196,677 @@
   Object.keys(uiEnglishMap).forEach(function (k) { combinedEnMap[k] = uiEnglishMap[k]; });
   Object.keys(instrumentEnglishMap).forEach(function (k) { combinedEnMap[k] = instrumentEnglishMap[k]; });
 
-  var devanagariToLatin = {
-    "अ": "a", "आ": "aa", "इ": "i", "ई": "ee", "उ": "u", "ऊ": "oo",
-    "ऋ": "ri", "ए": "e", "ऐ": "ai", "ओ": "o", "औ": "au",
-    "क": "ka", "ख": "kha", "ग": "ga", "घ": "gha", "ङ": "nga",
-    "च": "cha", "छ": "chha", "ज": "ja", "झ": "jha", "ञ": "nya",
-    "ट": "ta", "ठ": "tha", "ड": "da", "ढ": "dha", "ण": "na",
-    "त": "ta", "थ": "tha", "द": "da", "ध": "dha", "न": "na",
-    "प": "pa", "फ": "pha", "ब": "ba", "भ": "bha", "म": "ma",
-    "य": "ya", "र": "ra", "ल": "la", "व": "va",
-    "श": "sha", "ष": "shha", "स": "sa", "ह": "ha",
-    "क्ष": "ksha", "त्र": "tra", "ज्ञ": "gya", "श्र": "shra",
-    "ा": "a", "ि": "i", "ी": "ee", "ु": "u", "ू": "oo",
-    "ृ": "ri", "े": "e", "ै": "ai", "ो": "o", "ौ": "au",
-    "ं": "n", "ः": "h", "ँ": "n", "़": "", "्": "",
-    "०": "0", "१": "1", "२": "2", "३": "3", "४": "4",
-    "५": "5", "६": "6", "७": "7", "८": "8", "९": "9",
-    "।": ".", "॥": "."
-  };
 
-  function toEnglishLatinForForm(val) {
-    var text = String(val || "").replace(/\s+/g, " ").trim();
-    if (!text) return "";
-    if (Object.prototype.hasOwnProperty.call(combinedEnMap, text)) {
-      return combinedEnMap[text];
-    }
-    var out = "";
-    for (var i = 0; i < text.length; i++) {
-      var ch = text.charAt(i);
-      out += Object.prototype.hasOwnProperty.call(devanagariToLatin, ch) ? devanagariToLatin[ch] : ch;
-    }
-    return out.replace(/\s+/g, " ").trim();
+  var combinedHiMap = {};
+  Object.keys(combinedEnMap).forEach(function (hindi) {
+    var english = combinedEnMap[hindi];
+    if (english && !Object.prototype.hasOwnProperty.call(combinedHiMap, english)) combinedHiMap[english] = hindi;
+  });
+  var LANG_KEY = "vm_active_device_lang_v3";
+  var MANUAL_LANG_KEY = "vm_manual_device_lang_v1";
+  var CACHE_KEY = "vm_smart_translations_v3";
+  var HELP_HI = "कृपया इसमें जो कुछ भी भरें, वह अंग्रेजी के अक्षरों में भरें। स्वतः भरा गया पाठ भी जमा करने से पहले अंग्रेजी (लैटिन) अक्षरों में बदला जाएगा; ईमेल, पासवर्ड और संख्या वाले फ़ील्ड अपने मूल प्रारूप में रहेंगे।";
+  var HELP_EN = "Enter names, addresses, and written details using English (Latin) letters. Autofilled text is converted before submission; email, password, and numeric fields remain unchanged.";
+  var HELP_TA = "பெயர், முகவரி மற்றும் உரை விவரங்களை ஆங்கில (லத்தீன்) எழுத்துகளில் உள்ளிடவும். தானாக நிரப்பப்பட்ட உரையும் சமர்ப்பிக்கும் முன் மாற்றப்படும்; மின்னஞ்சல், கடவுச்சொல் மற்றும் எண் புலங்கள் மாற்றப்படாது.";
+  var RTL_LANGS = { ar: 1, fa: 1, he: 1, ur: 1, ps: 1, sd: 1 };
+  var currentLang = "hi";
+  var manualLang = "";
+  var cache = readCache();
+  var cacheWriteTimer = 0;
+  var queue = [];
+  var pending = Object.create(null);
+  var activeRequests = 0;
+  var maxConcurrent = 3;
+  var textState = new WeakMap();
+  var attrState = new WeakMap();
+  var titleState = new WeakMap();
+  var observer = null;
+  var scanTimer = 0;
+  var scanBusy = false;
+  var ownMutations = false;
+  var helpSource = HELP_HI;
+
+  var protectedTerms = [
+    ["पारंपरिक लकड़ी का डमरू", "Traditional Wooden Damru"],
+    ["सफ़री हारमोनियम", "Safri Harmonium"],
+    ["Safri Harmonium", "Safri Harmonium"],
+    ["Safri", "Safri"],
+    ["धोंकनी", "Dhonkni"],
+    ["Dhonkni", "Dhonkni"],
+    ["झीका", "Jheeka"],
+    ["Jheeka", "Jheeka"]
+  ];
+
+  function normalizeLang(value) {
+    var match = String(value || "").toLowerCase().trim().match(/^([a-z]{2,3})(?:[-_].*)?$/);
+    return match ? match[1] : "";
   }
 
-  function normalizeFormsToEnglish(rootEl) {
-    var scope = rootEl || document;
-    var fields = scope.querySelectorAll("input[type='text'], input[type='search'], input[type='tel'], input:not([type]), textarea");
-    fields.forEach(function (field) {
-      if (field.type === "password" || field.type === "hidden" || field.type === "email" || field.type === "number") return;
-      if (typeof field.value === "string" && field.value.trim()) {
-        var enVal = toEnglishLatinForForm(field.value);
-        if (enVal && enVal !== field.value) {
-          field.value = enVal;
-        }
+  function detectDeviceLanguage() {
+    if (manualLang) return manualLang;
+    try {
+      var savedManual = normalizeLang(localStorage.getItem(MANUAL_LANG_KEY));
+      if (savedManual) {
+        manualLang = savedManual;
+        return savedManual;
       }
-    });
-  }
-
-  function attachFormGuards() {
-    document.querySelectorAll("form").forEach(function (form) {
-      if (form.dataset.vmFormEnBound === "1") return;
-      form.addEventListener("submit", function () {
-        normalizeFormsToEnglish(form);
-      }, true);
-      form.dataset.vmFormEnBound = "1";
-    });
-
-    if (!document.body.dataset.vmFormChangeBound) {
-      document.addEventListener("change", function (ev) {
-        var target = ev.target;
-        if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA")) {
-          if (target.type !== "password" && target.type !== "email") {
-            var nextVal = toEnglishLatinForForm(target.value);
-            if (nextVal && nextVal !== target.value) {
-              target.value = nextVal;
-            }
-          }
-        }
-      }, true);
-      document.body.dataset.vmFormChangeBound = "1";
+    } catch (e) {}
+    var list = Array.isArray(navigator.languages) ? navigator.languages : [];
+    var detected = normalizeLang(list[0] || navigator.language || "");
+    if (!detected) {
+      try { detected = normalizeLang(localStorage.getItem(LANG_KEY)); } catch (e) {}
     }
+    return detected || "hi";
   }
 
-  function injectFormEnglishNotice() {
-    if (!document.body) return;
-    var noticeText = "कृपया इसमें जो कुछ भी भरें, वह अंग्रेजी के अक्षरों में भरें।";
-    var fields = document.querySelectorAll("form input:not([type='hidden']):not([type='checkbox']):not([type='radio']):not([type='submit']):not([type='button']), form textarea, form select");
-    fields.forEach(function (field) {
-      var next = field.nextElementSibling;
-      if (next && next.classList && next.classList.contains("vm-form-en-instruction")) {
-        if (next.textContent !== noticeText) next.textContent = noticeText;
+  function setDocumentLanguage(lang) {
+    currentLang = normalizeLang(lang) || "hi";
+    if (document.documentElement) {
+      if (document.documentElement.lang !== currentLang) document.documentElement.lang = currentLang;
+      var direction = RTL_LANGS[currentLang] ? "rtl" : "ltr";
+      if (document.documentElement.dir !== direction) document.documentElement.dir = direction;
+    }
+    if (document.body && document.body.dataset.vmLang !== currentLang) {
+      document.body.dataset.vmLang = currentLang;
+    }
+    try { if (localStorage.getItem(LANG_KEY) !== currentLang) localStorage.setItem(LANG_KEY, currentLang); } catch (e) {}
+  }
+
+  function readCache() {
+    try {
+      var raw = localStorage.getItem(CACHE_KEY);
+      if (!raw || raw.length > 900000) return {};
+      var parsed = JSON.parse(raw);
+      if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
+      var clean = {};
+      Object.keys(parsed).slice(0, 20).forEach(function (lang) {
+        var entries = parsed[lang];
+        if (!entries || typeof entries !== "object" || Array.isArray(entries)) return;
+        clean[lang] = {};
+        Object.keys(entries).slice(-700).forEach(function (key) {
+          if (typeof entries[key] === "string" && key.length <= 2000 && entries[key].length <= 4000) clean[lang][key] = entries[key];
+        });
+      });
+      return clean;
+    } catch (e) { return {}; }
+  }
+
+  function scheduleCacheWrite() {
+    if (cacheWriteTimer) clearTimeout(cacheWriteTimer);
+    cacheWriteTimer = setTimeout(function () {
+      cacheWriteTimer = 0;
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify(cache)); } catch (e) {}
+    }, 500);
+  }
+
+  function cacheTranslation(lang, source, translated) {
+    if (!cache[lang]) cache[lang] = {};
+    cache[lang][source] = translated;
+    var keys = Object.keys(cache[lang]);
+    while (keys.length > 700) delete cache[lang][keys.shift()];
+    scheduleCacheWrite();
+  }
+
+  function normalizeForCompare(value) {
+    return String(value || "").replace(/\s+/g, " ").trim();
+  }
+
+  function sourceLanguage(text) {
+    if (/[\u0900-\u097f]/.test(text)) return "hi";
+    if (/[\u0b80-\u0bff]/.test(text)) return "ta";
+    if (/[\u0980-\u09ff]/.test(text)) return "bn";
+    if (/[\u0a00-\u0a7f]/.test(text)) return "pa";
+    if (/[\u0a80-\u0aff]/.test(text)) return "gu";
+    if (/[\u0b00-\u0b7f]/.test(text)) return "or";
+    if (/[\u0c00-\u0c7f]/.test(text)) return "te";
+    if (/[\u0c80-\u0cff]/.test(text)) return "kn";
+    if (/[\u0d00-\u0d7f]/.test(text)) return "ml";
+    return "en";
+  }
+
+  function protectTranslationTokens(text) {
+    var tokens = [];
+    var value = String(text || "");
+    function hold(match, replacement) {
+      var marker = "VMZXQ" + tokens.length + "QXZ";
+      tokens.push({ marker: marker, value: replacement || match });
+      return marker;
+    }
+    var literalTerms = protectedTerms.slice().sort(function (a, b) { return b[0].length - a[0].length; });
+    literalTerms.forEach(function (pair) {
+      var escaped = pair[0].replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      var flags = /[A-Za-z]/.test(pair[0]) ? "gi" : "g";
+      value = value.replace(new RegExp(escaped, flags), function (m) { return hold(m, pair[1]); });
+    });
+    value = value.replace(/https?:\/\/[^\s<>]+/gi, function (m) { return hold(m); });
+    value = value.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, function (m) { return hold(m); });
+    value = value.replace(/\+?91[\s-]?[0-9]{5}[\s-]?[0-9]{5}\b/g, function (m) { return hold(m); });
+    value = value.replace(/\b[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z][0-9]Z[A-Z0-9]\b/gi, function (m) { return hold(m); });
+    value = value.replace(/\b(?:VM-[A-Z0-9-]+|PAYMENT_REVIEW|VERIFIED|GSTIN|MSME|Udyam|HDFC|UPI|Delhivery One|Zoho|Google Sheets)\b/gi, function (m) { return hold(m); });
+    value = value.replace(/\b\d+(?:\.\d+)?\s?(?:Hz|kHz|kg|g|mm|cm|inch|inches|keys|octaves?)\b/gi, function (m) { return hold(m); });
+    value = value.replace(/₹\s?[\d,]+(?:\.\d{1,2})?/g, function (m) { return hold(m); });
+    return { text: value, tokens: tokens };
+  }
+
+  function restoreTranslationTokens(text, tokens) {
+    var output = String(text || "");
+    tokens.forEach(function (token) {
+      output = output.replace(new RegExp(token.marker, "gi"), token.value);
+    });
+    return output;
+  }
+
+  function translateRequest(source, target) {
+    return new Promise(function (resolve, reject) {
+      var key = target + "\u0000" + source;
+      if (Object.prototype.hasOwnProperty.call(pending, key)) {
+        pending[key].waiters.push({ resolve: resolve, reject: reject });
         return;
       }
-      var small = document.createElement("small");
-      small.className = "vm-form-en-instruction";
-      small.textContent = noticeText;
-      small.style.cssText = "display:block;margin-top:5px;font-size:0.78rem;line-height:1.35;color:#ffd369;font-weight:600;max-width:100%;box-sizing:border-box;";
-      if (field.parentNode) {
-        field.parentNode.insertBefore(small, field.nextSibling);
-      }
+      if (queue.length >= 500) { reject(new Error("translation-queue-limit")); return; }
+      pending[key] = { source: source, target: target, waiters: [{ resolve: resolve, reject: reject }], attempts: 0 };
+      queue.push(key);
+      pumpQueue();
     });
   }
 
-  function resolveEnglishNameForText(text) {
-    var clean = String(text || "").replace(/\s+/g, " ").trim();
-    if (!clean) return "";
-    if (Object.prototype.hasOwnProperty.call(combinedEnMap, clean)) {
-      return combinedEnMap[clean];
-    }
-    var basePart = clean.replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
-    if (Object.prototype.hasOwnProperty.call(combinedEnMap, basePart)) {
-      return combinedEnMap[basePart];
-    }
-    return basePart.replace(/\bsafari\b/gi, "Safri").replace(/\bjhakora\b/gi, "Jheeka");
-  }
-
-  function applyCardNameAndParenthesesRule(lang) {
-    if (!document.body) return;
-    var cards = document.querySelectorAll(".pcard, .card, [class*='card']");
-    cards.forEach(function (card) {
-      if (card.closest("footer")) return;
-      var titleEls = card.querySelectorAll("h1, h2, h3, h4, .pcard-title, .card-title, [class*='title']");
-      var primaryTitle = titleEls.length ? titleEls[0] : null;
-      var primaryEnName = "";
-
-      if (primaryTitle) {
-        var rawTitle = (primaryTitle.dataset.vmOrigText || primaryTitle.textContent || "").replace(/\s+/g, " ").trim();
-        if (!primaryTitle.dataset.vmOrigText) {
-          primaryTitle.dataset.vmOrigText = rawTitle;
-        }
-        primaryEnName = resolveEnglishNameForText(rawTitle);
-
-        var targetTitleText = rawTitle;
-        if (lang === "hi") {
-          var hiBase = rawTitle.replace(/\s*\([^)]*\)\s*/g, " ").trim();
-          targetTitleText = primaryEnName && primaryEnName !== hiBase
-            ? hiBase + " (" + primaryEnName + ")"
-            : hiBase;
-        } else if (lang === "en") { var enClean = (primaryEnName || rawTitle).replace(/\s*\([^)]*\)\s*/g, " ").trim(); targetTitleText = enClean; } else {
-          var currentText = (primaryTitle.textContent || "").replace(/\s*\([^)]*\)\s*/g, " ").trim();
-          targetTitleText = primaryEnName && primaryEnName.toLowerCase() !== currentText.toLowerCase()
-            ? currentText + " (" + primaryEnName + ")"
-            : currentText;
-        }
-
-        if (primaryTitle.textContent !== targetTitleText) {
-          primaryTitle.textContent = targetTitleText;
-        }
+  function splitLongText(value) {
+    if (value.length <= 430) return [value];
+    var words = value.split(/(\s+)/);
+    var pieces = [];
+    var chunk = "";
+    words.forEach(function (word) {
+      if (chunk.length && chunk.length + word.length > 430) {
+        pieces.push(chunk);
+        chunk = "";
       }
-
-      card.querySelectorAll("p, span, small, div").forEach(function (sub) {
-        if (sub === primaryTitle || sub.querySelector("h1, h2, h3, h4, a, button, input, select, textarea")) return;
-        var st = (sub.textContent || "").replace(/\s+/g, " ").trim();
-        if (!st) return;
-
-        if (lang === "en") {
-          if (/^\([^)]*\)$/.test(st) || (primaryEnName && st.toLowerCase() === primaryEnName.toLowerCase())) {
-            sub.style.setProperty("display", "none", "important");
-          }
-        } else {
-          sub.style.removeProperty("display");
-        }
-      });
+      chunk += word;
     });
+    if (chunk) pieces.push(chunk);
+    return pieces;
   }
 
-  var pendingFetchKeys = {};
-
-  function fetchFreeTranslation(text, targetLang, onDone) {
-    if (!text || targetLang === "hi") return;
-    var cache = readTranslationCache();
-    if (cache[targetLang] && Object.prototype.hasOwnProperty.call(cache[targetLang], text)) {
-      onDone(cache[targetLang][text]);
-      return;
+  function translateText(source, target) {
+    var value = String(source || "");
+    if (!value) return Promise.resolve(value);
+    if (target === "hi") {
+      if (sourceLanguage(value) === "hi") return Promise.resolve(value);
+      if (Object.prototype.hasOwnProperty.call(combinedHiMap, value)) {
+        return Promise.resolve(combinedHiMap[value]);
+      }
     }
+    if (target === "en" && Object.prototype.hasOwnProperty.call(combinedEnMap, value)) {
+      return Promise.resolve(combinedEnMap[value]);
+    }
+    if (cache[target] && Object.prototype.hasOwnProperty.call(cache[target], value)) {
+      return Promise.resolve(cache[target][value]);
+    }
+    if (value.length > 430) {
+      var chunks = splitLongText(value);
+      return Promise.all(chunks.map(function (chunk) { return translateText(chunk, target); }))
+        .then(function (translated) {
+          var joined = translated.join("");
+          cacheTranslation(target, value, joined);
+          return joined;
+        });
+    }
+    return translateRequest(value, target).then(function (translated) {
+      cacheTranslation(target, value, translated);
+      return translated;
+    }).catch(function () { return value; });
+  }
 
-    var lockKey = targetLang + "::" + text;
-    if (pendingFetchKeys[lockKey]) return;
-    pendingFetchKeys[lockKey] = true;
+  function pumpQueue() {
+    while (activeRequests < maxConcurrent && queue.length) {
+      var key = queue.shift();
+      var job = pending[key];
+      if (!job) continue;
+      activeRequests++;
+      runJob(key, job);
+    }
+  }
 
+  function runJob(key, job) {
+    job.attempts++;
+    var protectedValue = protectTranslationTokens(job.source);
+    var fromLang = sourceLanguage(job.source);
+    var url = "https://api.mymemory.translated.net/get?q=" + encodeURIComponent(protectedValue.text) + "&langpair=" + encodeURIComponent(fromLang + "|" + job.target);
     var controller = typeof AbortController !== "undefined" ? new AbortController() : null;
-    var timerId = controller ? setTimeout(function () { controller.abort(); }, 2500) : null;
-
-    var url = "https://api.mymemory.translated.net/get?q=" + encodeURIComponent(text) + "&langpair=hi|" + encodeURIComponent(targetLang);
-    fetch(url, controller ? { signal: controller.signal } : undefined)
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (data) {
-        var translated = data && data.responseData && data.responseData.translatedText
-          ? String(data.responseData.translatedText).trim()
-          : "";
-        if (translated && translated.toUpperCase().indexOf("MYMEMORY WARNING") === -1) {
-          translated = translated.replace(/\bsafari\b/gi, "Safri").replace(/\bjhakora\b/gi, "Jheeka");
-          var latest = readTranslationCache();
-          if (!latest[targetLang]) latest[targetLang] = {};
-          latest[targetLang][text] = translated;
-          writeTranslationCache(latest);
-          onDone(translated);
+    var timer = 0;
+    var timeoutPromise = new Promise(function (_, reject) {
+      timer = setTimeout(function () {
+        if (controller) controller.abort();
+        reject(new Error("translation-timeout"));
+      }, 4500);
+    });
+    Promise.race([
+      fetch(url, { method: "GET", cache: "no-store", signal: controller ? controller.signal : undefined }).then(function (response) {
+        if (!response.ok) throw new Error("translation-http-" + response.status);
+        return response.text();
+      }),
+      timeoutPromise
+    ]).then(function (body) {
+        var data = JSON.parse(body);
+        var text = data && data.responseData && data.responseData.translatedText ? String(data.responseData.translatedText).trim() : "";
+        if (!text || /MYMEMORY WARNING/i.test(text) || (data.responseStatus && data.responseStatus !== 200)) throw new Error("translation-empty");
+        return restoreTranslationTokens(text, protectedValue.tokens);
+      })
+      .then(function (result) { finishJob(key, null, result); })
+      .catch(function (error) {
+        if (job.attempts < 2 && error && error.name !== "AbortError" && !/quota|warning/i.test(String(error.message || ""))) {
+          setTimeout(function () { activeRequests = Math.max(0, activeRequests - 1); queue.push(key); pumpQueue(); }, 650);
+        } else {
+          finishJob(key, error || new Error("translation-failed"), job.source);
         }
       })
-      .catch(function () {})
-      .finally(function () {
-        if (timerId) clearTimeout(timerId);
-        delete pendingFetchKeys[lockKey];
-      });
+      .finally(function () { clearTimeout(timer); });
   }
 
-  function translateWholePageSmartly(lang) {
-    if (!document.body || lang === "hi") {
+  function finishJob(key, error, result) {
+    var job = pending[key];
+    if (job) {
+      delete pending[key];
+      job.waiters.forEach(function (waiter) {
+        if (error) waiter.reject(error);
+        else waiter.resolve(result);
+      });
+    }
+    activeRequests = Math.max(0, activeRequests - 1);
+    pumpQueue();
+  }
+
+  function shouldSkipText(node) {
+    var parent = node && node.parentElement;
+    if (!parent) return true;
+    return !!parent.closest("script,style,noscript,template,textarea,input,select,option,[contenteditable='true'],.vm-form-language-instruction,.vm-form-language-error,.vm-mob-badge-item,.vm-stacked-pill,[data-vm-i18n-ignore]");
+  }
+
+  function processTextNode(node) {
+    if (!node || shouldSkipText(node)) return;
+    var state = textState.get(node);
+    var current = node.nodeValue || "";
+    var normalized = normalizeForCompare(current);
+    if (!normalized) return;
+    if (!state) {
+      state = { source: current, last: null, lang: "" };
+      textState.set(node, state);
+    } else if (state.last !== null && current !== state.last) {
+      state.source = current;
+      state.last = null;
+    }
+    if (state.lang === currentLang && state.last === current) return;
+    var sourceText = state.source;
+    if (sourceLanguage(sourceText) === currentLang) {
+      state.lang = currentLang;
+      state.last = sourceText;
+      if (node.nodeValue !== sourceText) {
+        ownMutations = true;
+        node.nodeValue = sourceText;
+        ownMutations = false;
+      }
       return;
     }
-
-    var cache = readTranslationCache();
-    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
-    var node;
-    var count = 0;
-
-    while ((node = walker.nextNode()) && count < 1500) {
-      count++;
-      var parent = node.parentElement;
-      if (!parent) continue;
-      if (parent.closest("script, style, noscript, textarea, input, .vm-form-en-instruction, .vm-mob-badge-item, .vm-stacked-pill")) continue;
-
-      var orig = node.nodeValue || "";
-      var trimmed = orig.replace(/\s+/g, " ").trim();
-      if (!trimmed) continue;
-
-      if (!node.__vmOrigText) {
-        node.__vmOrigText = trimmed;
+    var leading = (sourceText.match(/^\s*/) || [""])[0];
+    var trailing = (sourceText.match(/\s*$/) || [""])[0];
+    var requestedLang = currentLang;
+    translateText(normalizeForCompare(sourceText), currentLang).then(function (translated) {
+      if (!node.isConnected || state.source !== sourceText || currentLang !== requestedLang) return;
+      var output = leading + translated + trailing;
+      if (node.nodeValue !== output) {
+        ownMutations = true;
+        state.last = output;
+        state.lang = currentLang;
+        node.nodeValue = output;
+        ownMutations = false;
       }
-      var sourceText = node.__vmOrigText;
-      var leading = (orig.match(/^\s*/) || [""])[0];
-      var trailing = (orig.match(/\s*$/) || [""])[0];
+    });
+  }
 
-      if (lang === "en") {
-        if (Object.prototype.hasOwnProperty.call(combinedEnMap, sourceText)) {
-          var nextEn = leading + combinedEnMap[sourceText] + trailing;
-          if (node.nodeValue !== nextEn) node.nodeValue = nextEn;
-        } else if (/[\u0900-\u097F]/.test(sourceText)) {
-          if (cache.en && Object.prototype.hasOwnProperty.call(cache.en, sourceText)) {
-            var nextCachedEn = leading + cache.en[sourceText] + trailing;
-            if (node.nodeValue !== nextCachedEn) node.nodeValue = nextCachedEn;
-          } else {
-            (function (targetNode, srcStr, lStr, tStr) {
-              fetchFreeTranslation(srcStr, "en", function (enOut) {
-                var val = lStr + enOut + tStr;
-                if (targetNode.nodeValue !== val) targetNode.nodeValue = val;
-              });
-            })(node, sourceText, leading, trailing);
-          }
+  var translatedAttributes = ["placeholder", "title", "aria-label", "aria-description", "alt", "data-tooltip", "value"];
+  function processAttribute(element, attr) {
+    if (!element || !element.hasAttribute(attr)) return;
+    if (attr === "value" && !(element.tagName === "INPUT" && /^(submit|button|reset)$/i.test(element.type || ""))) return;
+    if (attr === "placeholder" && /^(email|password|number|date|time|hidden)$/i.test(element.type || "")) return;
+    var value = element.getAttribute(attr) || "";
+    if (!normalizeForCompare(value) || value.length > 430) return;
+    var states = attrState.get(element);
+    if (!states) { states = {}; attrState.set(element, states); }
+    var state = states[attr];
+    if (!state) { state = states[attr] = { source: value, last: null, lang: "" }; }
+    else if (state.last !== null && value !== state.last) { state.source = value; state.last = null; }
+    if (state.lang === currentLang && value === state.last) return;
+    if (sourceLanguage(state.source) === currentLang) {
+      state.lang = currentLang;
+      state.last = state.source;
+      if (value !== state.source) element.setAttribute(attr, state.source);
+      return;
+    }
+    var original = state.source;
+    var requestedLang = currentLang;
+    translateText(normalizeForCompare(original), currentLang).then(function (translated) {
+      if (!element.isConnected || state.source !== original || currentLang !== requestedLang) return;
+      if (element.getAttribute(attr) === value || element.getAttribute(attr) === state.last) {
+        state.last = translated;
+        state.lang = currentLang;
+        if (translated !== value) element.setAttribute(attr, translated);
+      }
+    });
+  }
+
+  function titleSelector() {
+    return ".pcard-title-light,.pcard-title,.product-title,.card-title,.card-title-two-line,.product-detail-card h1,.product-detail-card h2,.product-detail-card h3,.product-detail-card h4,h3.item-title,[data-role='product-title'],[data-vm-card-title]";
+  }
+
+  function splitName(raw) {
+    var value = normalizeForCompare(raw);
+    var match = value.match(/^(.*?)\s*\(([^()]+)\)\s*$/);
+    if (match && /[A-Za-z]/.test(match[2])) return { primary: match[1].trim(), english: match[2].trim().replace(/^\(|\)$/g, "") };
+    if (Object.prototype.hasOwnProperty.call(combinedEnMap, value)) return { primary: value, english: combinedEnMap[value] };
+    return { primary: value, english: "" };
+  }
+
+  function renderTitle(title, state, language, translatedName, englishName) {
+    if (!title.isConnected) return;
+    var primary = translatedName || state.primary;
+    var renderedText;
+    if (language === "en") renderedText = englishName || translatedName || state.primary;
+    else renderedText = primary + (englishName ? " (" + englishName.toLowerCase() + ")" : "");
+    if (normalizeForCompare(title.textContent) === normalizeForCompare(renderedText) && title.dataset.vmDeviceTitleLang === language) return;
+    var primarySpan = document.createElement("span");
+    primarySpan.className = "vm-device-title-primary";
+    primarySpan.textContent = primary;
+    title.replaceChildren(primarySpan);
+    if (language !== "en" && englishName) {
+      var secondarySpan = document.createElement("span");
+      secondarySpan.className = "vm-device-title-secondary";
+      secondarySpan.textContent = "(" + englishName.toLowerCase() + ")";
+      title.appendChild(secondarySpan);
+    }
+    title.dataset.vmDeviceTitleLang = language;
+    title.dataset.vmDeviceTitleRendered = normalizeForCompare(renderedText);
+    var tState = titleState.get(title);
+    if (tState) tState.last = normalizeForCompare(title.textContent);
+  }
+
+  function processTitle(title) {
+    if (!title || title.closest("footer") || title.closest(".cart-drawer,.vm-side-drawer,#vm-left-nav-drawer,[role='dialog']")) return;
+    var state = titleState.get(title);
+    var visibleText = normalizeForCompare(title.textContent);
+    if (!state) {
+      var source = title.dataset.vmDeviceTitleSource || title.dataset.vmOrigText || visibleText;
+      var parsed = splitName(source);
+      state = { source: source, primary: parsed.primary, english: parsed.english, last: null, lang: "" };
+      titleState.set(title, state);
+      title.dataset.vmDeviceTitleSource = source;
+    } else if (state.last !== null && visibleText !== state.last && visibleText !== state.source) {
+      var parsedNew = splitName(visibleText);
+      state.source = visibleText;
+      state.primary = parsedNew.primary;
+      state.english = parsedNew.english;
+      title.dataset.vmDeviceTitleSource = visibleText;
+    }
+    if (state.lang === currentLang && title.dataset.vmDeviceTitleLang === currentLang && visibleText === title.dataset.vmDeviceTitleRendered) return;
+    state.lang = currentLang;
+    var englishPromise = state.english ? Promise.resolve(state.english) : translateText(state.primary, "en");
+    if (currentLang === "hi") {
+      var hindiPromise = sourceLanguage(state.primary) === "hi" ? Promise.resolve(state.primary) : translateText(state.primary, "hi");
+      Promise.all([hindiPromise, englishPromise]).then(function (values) {
+        if (state.lang === currentLang) renderTitle(title, state, "hi", values[0], values[1]);
+      });
+    } else if (currentLang === "en") {
+      englishPromise.then(function (enName) { renderTitle(title, state, "en", enName, enName); });
+    } else {
+      Promise.all([translateText(state.primary, currentLang), englishPromise]).then(function (values) {
+        if (state.lang === currentLang) renderTitle(title, state, currentLang, values[0], values[1]);
+      });
+    }
+  }
+
+  function isEditableTextField(field) {
+    if (!field || field.disabled || field.readOnly) return false;
+    if (field.tagName === "TEXTAREA") return true;
+    if (field.tagName !== "INPUT") return false;
+    return /^(text|search|tel|url|)$/.test(String(field.type || "").toLowerCase());
+  }
+
+  var indicCharMap = {
+    "अ":"a","आ":"aa","इ":"i","ई":"i","उ":"u","ऊ":"u","ऋ":"ri","ए":"e","ऐ":"ai","ओ":"o","औ":"au",
+    "क":"k","ख":"kh","ग":"g","घ":"gh","ङ":"ng","च":"ch","छ":"chh","ज":"j","झ":"jh","ञ":"ny","ट":"t","ठ":"th","ड":"d","ढ":"dh","ण":"n","त":"t","थ":"th","द":"d","ध":"dh","न":"n","प":"p","फ":"ph","ब":"b","भ":"bh","म":"m","य":"y","र":"r","ल":"l","व":"v","श":"sh","ष":"sh","स":"s","ह":"h","ळ":"l",
+    "ा":"a","ि":"i","ी":"i","ु":"u","ू":"u","ृ":"ri","े":"e","ै":"ai","ो":"o","ौ":"au","ं":"n","ँ":"n","ः":"h","़":"","्":"","।":".","॥":".",
+    "அ":"a","ஆ":"aa","இ":"i","ஈ":"i","உ":"u","ஊ":"u","எ":"e","ஏ":"e","ஐ":"ai","ஒ":"o","ஓ":"o","ஔ":"au","க":"k","ங":"ng","ச":"ch","ஜ":"j","ஞ":"ny","ட":"t","ண":"n","த":"th","ந":"n","ப":"p","ம":"m","ய":"y","ர":"r","ல":"l","வ":"v","ழ":"zh","ள":"l","ற":"r","ன":"n","ா":"a","ி":"i","ீ":"i","ு":"u","ூ":"u","ெ":"e","ே":"e","ை":"ai","ொ":"o","ோ":"o","ௌ":"au","்":"","ஂ":"m",
+    "০":"0","১":"1","২":"2","৩":"3","৪":"4","৫":"5","৬":"6","৭":"7","৮":"8","৯":"9","૦":"0","૧":"1","૨":"2","૩":"3","૪":"4","૫":"5","૬":"6","૭":"7","૮":"8","૯":"9","०":"0","१":"1","२":"2","३":"3","४":"4","५":"5","६":"6","७":"7","८":"8","९":"9"
+  };
+  function addIndicEntries(entries) {
+    entries.split(";").forEach(function (entry) {
+      var pair = entry.split("=");
+      if (pair.length === 2) indicCharMap[pair[0]] = pair[1];
+    });
+  }
+  addIndicEntries("অ=o;আ=aa;ই=i;ঈ=ii;উ=u;ঊ=uu;ঋ=ri;এ=e;ঐ=oi;ও=o;ঔ=ou;ক=k;খ=kh;গ=g;ঘ=gh;ঙ=ng;চ=ch;ছ=chh;জ=j;ঝ=jh;ঞ=ny;ট=t;ঠ=th;ড=d;ঢ=dh;ণ=n;ত=t;থ=th;দ=d;ধ=dh;ন=n;প=p;ফ=ph;ব=b;ভ=bh;ম=m;য=j;র=r;ল=l;শ=sh;ষ=sh;স=s;হ=h;য়=y;ড়=rh;ঢ়=rh;া=a;ি=i;ী=i;ু=u;ূ=u;ৃ=ri;ে=e;ৈ=oi;ো=o;ৌ=ou;ং=n;ঁ=n;ঃ=h;্=;়=");
+  addIndicEntries("ਅ=a;ਆ=aa;ਇ=i;ਈ=ii;ਉ=u;ਊ=uu;ਏ=e;ਐ=ai;ਓ=o;ਔ=au;ਕ=k;ਖ=kh;ਗ=g;ਘ=gh;ਙ=ng;ਚ=ch;ਛ=chh;ਜ=j;ਝ=jh;ਞ=ny;ਟ=t;ਠ=th;ਡ=d;ਢ=dh;ਣ=n;ਤ=t;ਥ=th;ਦ=d;ਧ=dh;ਨ=n;ਪ=p;ਫ=ph;ਬ=b;ਭ=bh;ਮ=m;ਯ=y;ਰ=r;ਲ=l;ਵ=v;ਸ=s;ਹ=h;ਾ=a;ਿ=i;ੀ=i;ੁ=u;ੂ=u;ੇ=e;ੈ=ai;ੋ=o;ੌ=au;ਂ=n;ੱ=;੍=;਼=");
+  addIndicEntries("અ=a;આ=aa;ઇ=i;ઈ=ii;ઉ=u;ઊ=uu;ઋ=ri;એ=e;ઐ=ai;ઓ=o;ઔ=au;ક=k;ખ=kh;ગ=g;ઘ=gh;ઙ=ng;ચ=ch;છ=chh;જ=j;ઝ=jh;ઞ=ny;ટ=t;ઠ=th;ડ=d;ઢ=dh;ણ=n;ત=t;થ=th;દ=d;ધ=dh;ન=n;પ=p;ફ=ph;બ=b;ભ=bh;મ=m;ય=y;ર=r;લ=l;વ=v;શ=sh;ષ=sh;સ=s;હ=h;ા=a;િ=i;ી=i;ુ=u;ૂ=u;ૃ=ri;ે=e;ૈ=ai;ો=o;ૌ=au;ં=n;ઃ=h;્=;઼=");
+  addIndicEntries("ଅ=a;ଆ=aa;ଇ=i;ଈ=ii;ଉ=u;ଊ=uu;ଋ=ri;ଏ=e;ଐ=ai;ଓ=o;ଔ=au;କ=k;ଖ=kh;ଗ=g;ଘ=gh;ଙ=ng;ଚ=ch;ଛ=chh;ଜ=j;ଝ=jh;ଞ=ny;ଟ=t;ଠ=th;ଡ=d;ଢ=dh;ଣ=n;ତ=t;ଥ=th;ଦ=d;ଧ=dh;ନ=n;ପ=p;ଫ=ph;ବ=b;ଭ=bh;ମ=m;ଯ=y;ର=r;ଲ=l;ୱ=w;ଶ=sh;ଷ=sh;ସ=s;ହ=h;ା=a;ି=i;ୀ=i;ୁ=u;ୂ=uu;ୃ=ri;େ=e;ୈ=ai;ୋ=o;ୌ=au;ଂ=n;ଃ=h;୍=");
+  addIndicEntries("అ=a;ఆ=aa;ఇ=i;ఈ=ii;ఉ=u;ఊ=uu;ఋ=ri;ఎ=e;ఏ=ee;ఐ=ai;ఒ=o;ఓ=oo;ఔ=au;క=k;ఖ=kh;గ=g;ఘ=gh;ఙ=ng;చ=ch;ఛ=chh;జ=j;ఝ=jh;ఞ=ny;ట=t;ఠ=th;డ=d;ఢ=dh;ణ=n;త=t;థ=th;ద=d;ధ=dh;న=n;ప=p;ఫ=ph;బ=b;భ=bh;మ=m;య=y;ర=r;ల=l;వ=v;శ=sh;ష=sh;స=s;హ=h;ా=a;ి=i;ీ=ii;ు=u;ూ=uu;ృ=ri;ె=e;ే=ee;ై=ai;ొ=o;ో=oo;ౌ=au;ం=n;ః=h;్=");
+  addIndicEntries("ಅ=a;ಆ=aa;ಇ=i;ಈ=ii;ಉ=u;ಊ=uu;ಋ=ri;ಎ=e;ಏ=ee;ಐ=ai;ಒ=o;ಓ=oo;ಔ=au;ಕ=k;ಖ=kh;ಗ=g;ಘ=gh;ಙ=ng;ಚ=ch;ಛ=chh;ಜ=j;ಝ=jh;ಞ=ny;ಟ=t;ಠ=th;ಡ=d;ಢ=dh;ಣ=n;ತ=t;ಥ=th;ದ=d;ಧ=dh;ನ=n;ಪ=p;ಫ=ph;ಬ=b;ಭ=bh;ಮ=m;ಯ=y;ರ=r;ಲ=l;ವ=v;ಶ=sh;ಷ=sh;ಸ=s;ಹ=h;ಾ=aa;ಿ=i;ೀ=ii;ು=u;ೂ=uu;ೃ=ri;ೆ=e;ೇ=ee;ೈ=ai;ೊ=o;ೋ=oo;ೌ=au;ಂ=n;ಃ=h;್=");
+  addIndicEntries("അ=a;ആ=aa;ഇ=i;ഈ=ii;ഉ=u;ഊ=uu;ഋ=ri;എ=e;ഏ=ee;ഐ=ai;ഒ=o;ഓ=oo;ഔ=au;ക=k;ഖ=kh;ഗ=g;ഘ=gh;ങ=ng;ച=ch;ഛ=chh;ജ=j;ഝ=jh;ഞ=ny;ട=t;ഠ=th;ഡ=d;ഢ=dh;ണ=n;ത=t;ഥ=th;ദ=d;ധ=dh;ന=n;പ=p;ഫ=ph;ബ=b;ഭ=bh;മ=m;യ=y;ര=r;ല=l;വ=v;ശ=sh;ഷ=sh;സ=s;ഹ=h;ാ=aa;ി=i;ീ=ii;ു=u;ൂ=uu;ൃ=ri;െ=e;േ=ee;ൈ=ai;ൊ=o;ോ=oo;ൌ=au;ം=m;ഃ=h;്=");
+  addIndicEntries("্=;୍=;੍=;્=;్=;್=;്=");
+  addIndicEntries("ള=l;ഴ=zh;റ=r");
+  addIndicEntries("০=0;১=1;২=2;৩=3;৪=4;৫=5;৬=6;৭=7;৮=8;৯=9;੦=0;੧=1;੨=2;੩=3;੪=4;੫=5;੬=6;੭=7;੮=8;੯=9;૦=0;૧=1;૨=2;૩=3;૪=4;૫=5;૬=6;૭=7;૮=8;૯=9;୦=0;୧=1;୨=2;୩=3;୪=4;୫=5;୬=6;୭=7;୮=8;୯=9;౦=0;౧=1;౨=2;౩=3;౪=4;౫=5;౬=6;౭=7;౮=8;౯=9;೦=0;೧=1;೨=2;೩=3;೪=4;೫=5;೬=6;೭=7;೮=8;೯=9;൦=0;൧=1;൨=2;൩=3;൪=4;൫=5;൬=6;൭=7;൮=8;൯=9");
+  var indicConsonants = "कखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसहळஙசஜஞடணதநபமயரலவழளறனকখগঘঙচছজঝঞটঠডঢণতথদধনপফবভমযরলশষসহড়ঢ়ਕਖਗਘਙਚਛਜਝਞਟਠਡਢਣਤਥਦਧਨਪਫਬਭਮਯਰਲਵਸਹકખગઘઙચછજઝઞટઠડઢણતથદધનપફબભમયરલવશષસહକଖଗଘଙଚଛଜଝଞଟଠଡଢଣତଥଦଧନପଫବଭମଯରଲୱଶଷସହకఖగఘఙచఛజఝఞటఠడఢణతథదధనపఫబభమయరలవశషసహಕಖಗಘಙಚಛಜಝಞಟಠಡಢಣತಥದಧನಪಫಬಭಮಯರಲವಶಷಸಹകഖഗഘങചഛജഝഞടഠഡഢണതഥദധനപഫബഭമയരലവശഷസഹ";
+  var indicVowelMarks = { "ा":1,"ि":1,"ी":1,"ु":1,"ू":1,"ृ":1,"े":1,"ै":1,"ो":1,"ौ":1,"்":1,"াি":1,"া":1,"ি":1,"ী":1,"ু":1,"ূ":1,"ৃ":1,"ে":1,"ৈ":1,"ো":1,"ৌ":1,"্":1,"ਾ":1,"ਿ":1,"ੀ":1,"ੁ":1,"ੂ":1,"ੇ":1,"ੈ":1,"ੋ":1,"ੌ":1,"੍":1,"િ":1,"ુ":1,"ૂ":1,"ૃ":1,"ે":1,"ૈ":1,"ૌ":1,"્":1,"ା":1,"ୀ":1,"ୂ":1,"ୃ":1,"େ":1,"ୈ":1,"ୌ":1,"୍":1,"ా":1,"ి":1,"ీ":1,"ు":1,"ూ":1,"ృ":1,"ె":1,"ే":1,"ై":1,"ొ":1,"ో":1,"ౌ":1,"్":1,"ಾ":1,"ಿ":1,"ೀ":1,"ು":1,"ೂ":1,"ೃ":1,"ೆ":1,"ೇ":1,"ೈ":1,"ೊ":1,"ೋ":1,"ೌ":1,"್":1,"ാ":1,"ി":1,"ീ":1,"ു":1,"ൂ":1,"ൃ":1,"െ":1,"േ":1,"ൈ":1,"ൊ":1,"ോ":1,"ൌ":1,"്":1 };
+
+  function transliterateIndic(value) {
+    var text = String(value || "").normalize ? String(value || "").normalize("NFKC") : String(value || "");
+    var chars = Array.from(text);
+    var output = "";
+    for (var i = 0; i < chars.length; i++) {
+      var ch = chars[i];
+      if (Object.prototype.hasOwnProperty.call(indicCharMap, ch)) {
+        var mapped = indicCharMap[ch];
+        if (indicConsonants.indexOf(ch) !== -1 || "ളഴറ".indexOf(ch) !== -1) {
+          var next = chars[i + 1] || "";
+          if (!indicVowelMarks[next]) mapped += "a";
         }
+        output += mapped;
+      } else if (/\p{M}/u.test(ch)) {
+        continue;
       } else {
-        if (cache[lang] && Object.prototype.hasOwnProperty.call(cache[lang], sourceText)) {
-          var nextCachedOther = leading + cache[lang][sourceText] + trailing;
-          if (node.nodeValue !== nextCachedOther) node.nodeValue = nextCachedOther;
-        } else if (/[\u0900-\u097F]/.test(sourceText) && sourceText.length <= 200) {
-          (function (targetNode, srcStr, lStr, tStr, targetLangCode) {
-            fetchFreeTranslation(srcStr, targetLangCode, function (outStr) {
-              var val = lStr + outStr + tStr;
-              if (targetNode.nodeValue !== val) targetNode.nodeValue = val;
-            });
-          })(node, sourceText, leading, trailing, lang);
+        output += ch;
+      }
+    }
+    return output.normalize ? output.normalize("NFKD").replace(/\p{M}/gu, "") : output;
+  }
+
+  function normalizeFormValue(value) {
+    var text = transliterateIndic(String(value || "")).replace(/[\u200B-\u200D\uFEFF]/g, "").replace(/\s+/g, " ").trim();
+    return { value: text, latinOnly: !/[^\x00-\x7F]/.test(text) };
+  }
+
+  function setFieldError(field, message) {
+    field.setAttribute("aria-invalid", "true");
+    var node = field.parentNode && field.parentNode.querySelector(".vm-form-language-error[data-for='" + field.id + "']");
+    if (!node) {
+      node = document.createElement("small");
+      node.className = "vm-form-language-error";
+      node.setAttribute("role", "alert");
+      node.setAttribute("data-for", field.id || "");
+      if (field.parentNode) field.parentNode.appendChild(node);
+    }
+    node.textContent = message;
+  }
+
+  function clearFieldError(field) {
+    field.removeAttribute("aria-invalid");
+    var node = field.parentNode && field.parentNode.querySelector(".vm-form-language-error[data-for='" + field.id + "']");
+    if (node) node.remove();
+  }
+
+  function errorMessage(lang) {
+    if (lang === "hi") return "कृपया इस मान को अंग्रेज़ी (लैटिन) अक्षरों में लिखें।";
+    if (lang === "ta") return "இந்த விவரத்தை ஆங்கில (லத்தீன்) எழுத்துகளில் உள்ளிடவும்.";
+    return "Please enter this value using English (Latin) letters.";
+  }
+
+  function normalizeField(field) {
+    if (!isEditableTextField(field) || !field.value) return true;
+    var normalized = normalizeFormValue(field.value);
+    if (!normalized.latinOnly) {
+      setFieldError(field, errorMessage(currentLang));
+      return false;
+    }
+    if (field.value !== normalized.value) field.value = normalized.value;
+    clearFieldError(field);
+    return true;
+  }
+
+  function helpText(lang) {
+    if (lang === "hi") return Promise.resolve(HELP_HI);
+    if (lang === "en") return Promise.resolve(HELP_EN);
+    if (lang === "ta") return Promise.resolve(HELP_TA);
+    return translateText(helpSource, lang).then(function (value) { return value && value !== helpSource ? value : HELP_EN; });
+  }
+
+  function ensureFieldInstructions() {
+    if (!document.body) return;
+    var fields = document.querySelectorAll("input:not([type='hidden']):not([type='submit']):not([type='button']):not([type='reset']):not([type='checkbox']):not([type='radio']):not([type='file']),textarea,select");
+    fields.forEach(function (field) {
+      if (field.closest("[data-vm-i18n-ignore]")) return;
+      var help = field.parentNode && field.parentNode.querySelector(":scope > .vm-form-language-instruction");
+      if (!help) {
+        help = document.createElement("small");
+        help.className = "vm-form-language-instruction";
+        help.style.cssText = "display:block;margin-top:5px;font-size:.78rem;line-height:1.4;color:#ffd369;font-weight:600;max-width:100%;box-sizing:border-box";
+        help.setAttribute("data-vm-i18n-ignore", "1");
+        if (field.parentNode) field.parentNode.insertBefore(help, field.nextSibling);
+      }
+      if (help.dataset.vmHelpLang === currentLang && help.textContent) return;
+      var requestedLang = currentLang;
+      helpText(requestedLang).then(function (text) {
+        if (help.isConnected && currentLang === requestedLang) {
+          help.textContent = text;
+          help.dataset.vmHelpLang = requestedLang;
         }
-      }
+      });
+    });
+  }
+
+  function onChange(event) {
+    var field = event.target;
+    if (isEditableTextField(field)) normalizeField(field);
+  }
+
+  function onSubmit(event) {
+    var form = event.target;
+    if (!form || form.tagName !== "FORM") return;
+    var fields = form.querySelectorAll("input[type='text'],input[type='search'],input[type='tel'],input[type='url'],input:not([type]),textarea");
+    var valid = true;
+    fields.forEach(function (field) { if (!normalizeField(field)) valid = false; });
+    if (!valid) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      var first = form.querySelector("[aria-invalid='true']");
+      if (first && typeof first.focus === "function") first.focus();
     }
   }
 
-  function runFullSmartSync() {
-    if (isApplying || !document.body) return;
-    isApplying = true;
+  function processElement(element) {
+    if (!element || element.nodeType !== 1) return;
+    translatedAttributes.forEach(function (attr) { processAttribute(element, attr); });
+    if (element.matches && element.matches(titleSelector())) processTitle(element);
+    if (element.querySelectorAll) {
+      element.querySelectorAll(titleSelector()).forEach(processTitle);
+      element.querySelectorAll("*").forEach(function (child) {
+        translatedAttributes.forEach(function (attr) { processAttribute(child, attr); });
+      });
+    }
+  }
+
+  function scanDocument() {
+    if (!document.body || scanBusy) return;
+    scanBusy = true;
     try {
-      var lang = syncDeviceLangToCache();
-      if (document.documentElement.getAttribute("lang") !== lang) {
-        document.documentElement.setAttribute("lang", lang);
+      setDocumentLanguage(manualLang || detectDeviceLanguage());
+      processElement(document.body);
+      var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      var node;
+      while ((node = walker.nextNode())) {
+        if (node.parentElement && node.parentElement.matches(titleSelector())) continue;
+        if (node.parentElement && node.parentElement.closest(titleSelector())) continue;
+        processTextNode(node);
       }
-      if (document.body.getAttribute("data-vm-lang") !== lang) {
-        document.body.setAttribute("data-vm-lang", lang);
-      }
-      translateWholePageSmartly(lang);
-      applyCardNameAndParenthesesRule(lang);
-      injectFormEnglishNotice();
-      attachFormGuards();
-    } finally {
-      setTimeout(function () { isApplying = false; }, 120);
-    }
+      ensureFieldInstructions();
+    } finally { scanBusy = false; }
   }
 
-  function scheduleSafeSync(delayMs) {
-    if (pendingTimer) clearTimeout(pendingTimer);
-    pendingTimer = setTimeout(runFullSmartSync, delayMs || 250);
+  function scheduleScan(delay) {
+    if (scanTimer) clearTimeout(scanTimer);
+    scanTimer = setTimeout(function () { scanTimer = 0; scanDocument(); }, delay == null ? 120 : delay);
   }
 
+  function installObserver() {
+    if (observer || !document.body || typeof MutationObserver === "undefined") return;
+    observer = new MutationObserver(function (records) {
+      if (ownMutations) return;
+      var shouldScan = false;
+      records.forEach(function (record) {
+        if (record.type === "characterData") {
+          processTextNode(record.target);
+          return;
+        }
+        if (record.type === "attributes") {
+          if (record.attributeName === "data-vm-lang") return;
+          processAttribute(record.target, record.attributeName);
+          return;
+        }
+        if (record.addedNodes && record.addedNodes.length) {
+          record.addedNodes.forEach(function (node) {
+            if (node.nodeType === 3) processTextNode(node);
+            else if (node.nodeType === 1) processElement(node);
+          });
+          shouldScan = true;
+        }
+      });
+      if (shouldScan) scheduleScan(140);
+    });
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: translatedAttributes });
+  }
+
+  function start() {
+    setDocumentLanguage(manualLang || detectDeviceLanguage());
+    installObserver();
+    scanDocument();
+  }
+
+  document.addEventListener("change", onChange, true);
+  document.addEventListener("submit", onSubmit, true);
   window.VMDeviceLang = {
-    getLang: syncDeviceLangToCache,
-    setLang: function (nextLang) {
-      if (!nextLang) return;
-      try {
-        window.localStorage && window.localStorage.setItem(LANG_KEY, String(nextLang).toLowerCase());
-      } catch (e) {}
-      runFullSmartSync();
+    getLang: function () { return currentLang; },
+    setLang: function (next) {
+      manualLang = normalizeLang(next);
+      if (!manualLang) return;
+      try { localStorage.setItem(MANUAL_LANG_KEY, manualLang); } catch (e) {}
+      setDocumentLanguage(manualLang);
+      scheduleScan(0);
     },
-    convertToEnglish: toEnglishLatinForForm,
-    normalizeFormsToEnglish: normalizeFormsToEnglish
+    convertToEnglish: function (value) { return normalizeFormValue(value).value; },
+    normalizeFormsToEnglish: function (root) {
+      var scope = root || document;
+      var formFields = scope.querySelectorAll("input[type='text'],input[type='search'],input[type='tel'],input[type='url'],input:not([type]),textarea");
+      var ok = true;
+      formFields.forEach(function (field) { if (!normalizeField(field)) ok = false; });
+      return ok;
+    },
+    translate: translateText,
+    rescan: function () { scheduleScan(0); }
   };
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function () { scheduleSafeSync(50); });
-  } else {
-    scheduleSafeSync(50);
-  }
-  window.addEventListener("load", function () { scheduleSafeSync(300); });
-  window.addEventListener("languagechange", function () { scheduleSafeSync(100); });
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start, { once: true });
+  else start();
+  window.addEventListener("load", function () { installObserver(); scheduleScan(0); }, { once: true });
+  window.addEventListener("languagechange", function () {
+    manualLang = "";
+    try { localStorage.removeItem(MANUAL_LANG_KEY); } catch (e) {}
+    setDocumentLanguage(detectDeviceLanguage());
+    scheduleScan(0);
+  });
 })();
-
-
-
-
-
