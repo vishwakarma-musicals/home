@@ -1,3 +1,21 @@
+function escapeVMHtml(value) {
+  return String(value == null ? "" : value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function safeVMImageUrl(value) {
+  var raw = String(value || "").trim();
+  if (!raw) return "";
+  try {
+    var parsed = new URL(raw, window.location.href);
+    return parsed.protocol === "https:" || parsed.protocol === "http:" ? parsed.href : "";
+  } catch (e) { return ""; }
+}
+
 function sanitizeVMText(str) {
   var value = String(str || "");
   value = value.replace(/\bsafari\b/gi, "Safri");
@@ -26,11 +44,13 @@ function ensureVMToast() {
 }
 
 var vmToastTimer = null;
-function showVMToast(itemName) {
+function showVMToast(itemName, isError) {
   var toast = ensureVMToast();
   var msg = document.getElementById("vm-cart-toast-msg");
   if (!msg) return;
-  msg.textContent = "✓ " + sanitizeVMText(itemName) + " कार्ट में जोड़ा गया।";
+  msg.textContent = isError
+    ? "कार्ट इस ब्राउज़र में सुरक्षित नहीं हो सका। ब्राउज़र स्टोरेज अनुमति जांचें या +91 97550 88022 पर कॉल करें।"
+    : "✓ " + sanitizeVMText(itemName) + " कार्ट में जोड़ा गया।";
   toast.style.opacity = "1";
   toast.style.transform = "translate(-50%,-50%) scale(1)";
   toast.style.pointerEvents = "auto";
@@ -87,9 +107,15 @@ window.VMCartUI = {
         weightGrams: cleanSku === "VM-H02" ? 6500 : (cleanSku.indexOf("VM-H") === 0 ? 9500 : ((cleanSku.indexOf("VM-D") === 0 || cleanSku.indexOf("VM-T") === 0 || cleanSku === "VM-O04") ? 5500 : 800))
       });
     }
-    try { localStorage.setItem(this.storageKey, JSON.stringify(items)); } catch (e) {}
+    try {
+      localStorage.setItem(this.storageKey, JSON.stringify(items));
+    } catch (e) {
+      showVMToast("", true);
+      return false;
+    }
     this.syncBadge();
-    showVMToast(cleanName);
+    showVMToast(cleanName, false);
+    return true;
   },
   syncBadge: function () {
     var summary = this.summarize(this.readCart());
