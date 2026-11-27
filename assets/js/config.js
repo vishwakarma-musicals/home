@@ -6,7 +6,6 @@ const VM_CONFIG = {
   phoneDisplay: "+91 97550 88022",
   phoneHref: "tel:+919755088022",
   email: "info@vishwakarmamusicals.in",
-  whatsappUrl: "https://wa.me/919755088022",
   siteUrl: "https://vishwakarmamusicals.in/",
   addressFull: "मकान नं. 109, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना (म.प्र.) - 488441",
   hoursText: "प्रतिदिन सुबह 9:00 बजे से रात 9:00 बजे तक",
