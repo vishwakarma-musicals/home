@@ -132,7 +132,7 @@ function vmMapRows(rows) {
 
 window.VMCatalog = {
   getCachedProducts: function () {
-    var key = (typeof VM_CONFIG !== "undefined" && VM_CONFIG.catalogCacheKey) ? VM_CONFIG.catalogCacheKey : "vm_dynamic_products_v19";
+    var key = (typeof VM_CONFIG !== "undefined" && VM_CONFIG.catalogCacheKey) ? VM_CONFIG.catalogCacheKey : "vm_dynamic_products_v20";
     try {
       var raw = localStorage.getItem(key);
       var parsed = raw ? JSON.parse(raw) : [];
@@ -140,7 +140,7 @@ window.VMCatalog = {
     } catch (e) { return []; }
   },
   saveCachedProducts: function (products) {
-    var key = (typeof VM_CONFIG !== "undefined" && VM_CONFIG.catalogCacheKey) ? VM_CONFIG.catalogCacheKey : "vm_dynamic_products_v19";
+    var key = (typeof VM_CONFIG !== "undefined" && VM_CONFIG.catalogCacheKey) ? VM_CONFIG.catalogCacheKey : "vm_dynamic_products_v20";
     try { localStorage.setItem(key, JSON.stringify(products)); } catch (e) {}
   },
   fetchLiveProducts: async function () {
@@ -153,25 +153,44 @@ window.VMCatalog = {
       var apiUrl = (typeof VM_CONFIG !== "undefined" && VM_CONFIG.orderApiUrl) ? VM_CONFIG.orderApiUrl : "";
       var csvUrls = (typeof VM_CONFIG !== "undefined" && Array.isArray(VM_CONFIG.catalogCsvUrls)) ? VM_CONFIG.catalogCsvUrls : [];
 
-      async function fetchWithTimeout(targetUrl, ms) {
+      var catalogDeadline = Date.now() + 10000;
+
+      async function fetchWithTimeout(targetUrl, ms, consumeResponse) {
         var controller = typeof AbortController !== "undefined" ? new AbortController() : null;
-        var timer = controller ? setTimeout(function () { controller.abort(); }, ms || 4000) : null;
-        try {
-          return await fetch(targetUrl, {
+        var timer = 0;
+        var timeoutPromise = new Promise(function (_, reject) {
+          timer = setTimeout(function () {
+            if (controller) controller.abort();
+            reject(new Error("catalog-timeout"));
+          }, ms);
+        });
+        var requestPromise = (async function () {
+          var response = await fetch(targetUrl, {
             method: "GET",
             cache: "no-store",
             signal: controller ? controller.signal : undefined
           });
+          if (!response || !response.ok) return null;
+          return await consumeResponse(response);
+        })();
+        try {
+          return await Promise.race([requestPromise, timeoutPromise]);
         } finally {
-          if (timer) clearTimeout(timer);
+          clearTimeout(timer);
         }
       }
 
-      if (apiUrl) {
+      function remainingRequestTime() {
+        return Math.max(0, Math.min(4000, catalogDeadline - Date.now()));
+      }
+
+      if (apiUrl && remainingRequestTime() > 0) {
         try {
-          var resApi = await fetchWithTimeout(apiUrl, 4000);
-          if (resApi && resApi.ok) {
-            var json = await resApi.json();
+          var apiPayload = await fetchWithTimeout(apiUrl, remainingRequestTime(), function (response) {
+            return response.json();
+          });
+          if (apiPayload) {
+            var json = apiPayload;
             if (json && Array.isArray(json.items) && json.items.length > 0) {
               var headers = Object.keys(json.items[0]);
               var rows = [headers].concat(json.items.map(function (obj) {
@@ -187,11 +206,12 @@ window.VMCatalog = {
         } catch (e) {}
       }
 
-      for (var i = 0; i < csvUrls.length; i++) {
+      for (var i = 0; i < csvUrls.length && remainingRequestTime() > 0; i++) {
         try {
-          var resCsv = await fetchWithTimeout(csvUrls[i], 4000);
-          if (!resCsv || !resCsv.ok) continue;
-          var csvText = await resCsv.text();
+          var csvText = await fetchWithTimeout(csvUrls[i], remainingRequestTime(), function (response) {
+            return response.text();
+          });
+          if (typeof csvText !== "string" || !csvText) continue;
           var rowsCsv = window.VMCsv.parse(csvText);
           var prodsCsv = vmMapRows(rowsCsv);
           if (prodsCsv.length > 0) {
