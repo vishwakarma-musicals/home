@@ -109,6 +109,43 @@
     "संपर्क व दुकान का पता": "Contact & Shop Address",
     "अमानगंज, जिला पन्ना, मध्य प्रदेश": "Amanganj, District Panna, Madhya Pradesh",
     "शीशम": "Sheesham",
+"मकान नं. 109, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना (म.प्र.) - 488441": "House No. 109, Next to Hardaul Temple, Shala Mohalla, Amanganj, Dist. Panna (M.P.) - 488441",
+    "📞 विशेषज्ञ से सीधे संपर्क करें (": "📞 Contact Specialist Directly (",
+    "🎵 वाद्य संग्रह देखें →": "🎵 Explore Instruments →",
+    "1990 से निरंतर कार्यशाला": "Continuous Workshop Since 1990",
+    "440Hz मानक स्वर ट्यूनिंग": "440Hz Standard Pitch Tuning",
+    "पूरे भारत में सुरक्षित पार्सल शिपिंग": "Safe Parcel Shipping Across India",
+    "हमारी विरासत जानें →": "Discover Our Heritage →",
+    "शीशम, सागौन, आम व चीड़ की सूखी लकड़ी और प्राकृतिक पुड़ों से तैयार वाद्य यंत्रों का लाइव संग्रह।": "Live collection of instruments crafted from seasoned Sheesham, Teak, Mango, and Pine wood with natural puddas.",
+    "लाइव वाद्य सूची लोड हो रही है...": "Loading live instrument list...",
+    "Google Sheet से ताज़ा वाद्य विवरण व मूल्य प्राप्त किए जा रहे हैं।": "Fetching fresh instrument details and prices from Google Sheet.",
+    "बेस-मेल कॉन्सर्ट हारमोनियम (Bass-Male Concert Harmonium)": "Bass-Male Concert Harmonium",
+    "चीड़, देवदार या सागौन की सूखी लकड़ी से निर्मित, 39 चाबियां, सुगम टच और निरंतर वायु प्रवाह वाला कॉन्सर्ट हारमोनियम।": "Concert harmonium crafted from seasoned Pine, Deodar, or Teak wood with 39 keys, smooth touch, and steady airflow.",
+    "39 चाबियां (3¼ सप्तक)": "39 Keys (3¼ Octave)",
+    "2-लाइन प्रीमियम ब्रास रीड्स (Bass/Male)": "2-Line Premium Brass Reeds (Bass/Male)",
+    "डबल फोल्ड एयरटाइट धोंकनी": "Double-Fold Airtight Dhonkni",
+    "कार्ट में जोड़ें": "Add to Cart",
+    "सफ़री पोर्टेबल मिनी हारमोनियम (Safri Portable Harmonium)": "Safri Portable Harmonium",
+    "यात्रा करने वाले साधकों, कथावाचकों व प्रभात फेरी के लिए हल्का और सुगम कॉम्पैक्ट मॉडल।": "Lightweight and convenient compact model for travelling sadhaks, kathavachaks, and prabhat pheri.",
+    "वज़न: लगभग 6.5 किग्रा": "Weight: Approx. 6.5 kg",
+    "2-लाइन ब्रास रीड्स": "2-Line Brass Reeds",
+    "मजबूत ब्रास कॉर्नर व लॉक फिटिंग्स": "Sturdy Brass Corners & Lock Fittings",
+    "सूटकेस फोल्डिंग हारमोनियम (Suitcase Folding Harmonium)": "Suitcase Folding Harmonium",
+    "यात्रा के समय पूरा हारमोनियम लकड़ी के बक्से में सुरक्षित बैठ जाता है। स्टेज कलाकारों की पहली पसंद।": "During travel, the entire harmonium folds safely inside a wooden case. Top choice for stage artists.",
+    "इंटीग्रेटेड सूटकेस फोल्डिंग सिस्टम": "Integrated Suitcase Folding System",
+    "7-फोल्ड धोंकनी विथ ऑटो स्प्रिंग टेंशन": "7-Fold Dhonkni with Auto Spring Tension",
+    "धूल-रोधी व शॉक-प्रूफ कवरिंग": "Dust-Resistant & Shock-Proof Covering",
+    "पारंपरिक पैरदान हारमोनियम (Foot-Pedal Harmonium)": "Foot-Pedal Harmonium",
+    "पैर के पैडल से धोंकनी पंपिंग जिससे दोनों हाथ कीबोर्ड पर स्वतंत्र रहते हैं। अखंड संकीर्तन विशेष।": "Foot-pedal Dhonkni pumping leaving both hands free on the keyboard. Special for Akhand Sankirtan.",
+    "फुट पैडल मैकेनिकल लिंकेज": "Foot-Pedal Mechanical Linkage",
+    "बड़ा एयर रिज़र्वायर - सतत नाद": "Large Air Reservoir - Sustained Resonance",
+    "सागौन/चीड़ का भारी व टिकाऊ फ्रेम": "Heavy & Durable Teak/Pine Frame",
+    "स्केल-चेंजर कॉन्सर्ट हारमोनियम (Scale Changer Harmonium)": "Scale Changer Harmonium",
+    "सुगम पैमानों में सरकने वाला मास्टरपीस स्लाइडर, 3-लाइन प्रीमियम रीड्स और ऑर्गन कपलर से युक्त कॉन्सर्ट मॉडल।": "Concert model featuring a smooth multi-scale slider, 3-line premium reeds, and organ coupler.",
+    "स्मूथ मल्टी-स्केल स्लाइडर": "Smooth Multi-Scale Slider",
+    "3-लाइन रीड्स (Bass + Male + Female)": "3-Line Reeds (Bass + Male + Female)",
+    "राइट-हैंड ऑटोमैटिक ऑर्गन कपलर": "Right-Hand Automatic Organ Coupler",
+    "नट-बोल्ट पक्की शीशम ढोलक (Nut-Bolt Sheesham Dholak)": "Nut-Bolt Sheesham Dholak",
     "सागौन": "Teak",
     "आम की लकड़ी": "Mango Wood",
     "चीड़": "Pine"
@@ -419,6 +456,7 @@
   window.addEventListener("load", function () { scheduleSafeSync(300); });
   window.addEventListener("languagechange", function () { scheduleSafeSync(100); });
 })();
+
 
 
 
