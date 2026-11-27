@@ -101,7 +101,17 @@
     "पारंपरिक लकड़ी का डमरू": "Traditional Wooden Damru",
     "धोंकनी": "Dhonkni",
     "झीका": "Jheeka",
-    "सभी वाद्य यंत्र देखें →": "View All Instruments →"
+    "सभी वाद्य यंत्र देखें →": "View All Instruments →",
+"वाद्य चयन और रखरखाव मार्गदर्शन": "Instrument Selection & Care Guide",
+    "कार्ट में जोड़ें": "Add to Cart",
+    "विवरण देखें": "View Details",
+    "प्रमुख वाद्य यंत्र": "Featured Instruments",
+    "संपर्क व दुकान का पता": "Contact & Shop Address",
+    "अमानगंज, जिला पन्ना, मध्य प्रदेश": "Amanganj, District Panna, Madhya Pradesh",
+    "शीशम": "Sheesham",
+    "सागौन": "Teak",
+    "आम की लकड़ी": "Mango Wood",
+    "चीड़": "Pine"
   };
 
   var combinedEnMap = {};
@@ -235,9 +245,7 @@
           targetTitleText = primaryEnName && primaryEnName !== hiBase
             ? hiBase + " (" + primaryEnName + ")"
             : hiBase;
-        } else if (lang === "en") {
-          targetTitleText = primaryEnName || rawTitle;
-        } else {
+        } else if (lang === "en") { var enClean = (primaryEnName || rawTitle).replace(/\s*\([^)]*\)\s*/g, " ").trim(); targetTitleText = enClean; } else {
           var currentText = (primaryTitle.textContent || "").replace(/\s*\([^)]*\)\s*/g, " ").trim();
           targetTitleText = primaryEnName && primaryEnName.toLowerCase() !== currentText.toLowerCase()
             ? currentText + " (" + primaryEnName + ")"
@@ -411,5 +419,6 @@
   window.addEventListener("load", function () { scheduleSafeSync(300); });
   window.addEventListener("languagechange", function () { scheduleSafeSync(100); });
 })();
+
 
 
