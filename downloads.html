@@ -417,7 +417,7 @@
       var styleTag = document.getElementById("vm-premium-vcard-style");
       var extraCss = styleTag ? styleTag.innerHTML : "";
       var parts = [
-        '<!DOCTYPE html><html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">',
+        '<!DOCTYPE html><html lang="' + (document.documentElement.lang || "hi") + '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">',
         '<title>विश्वकर्मा म्यूज़िकल्स — विज़िटिंग कार्ड</title>',
         '<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">',
         '<style>*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:#f4ede0;font-family:"Noto Sans Devanagari","Tiro Devanagari Hindi",sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}.visiting-card-box{max-width:460px;width:100%;text-align:center}.vc-top span{color:#fce09b;font-weight:700}.vc-body strong{color:#fce09b}.no-print,.btn-wrap,button{display:none!important}',
@@ -425,8 +425,7 @@
         '@media print{body{background:#fff;padding:0;min-height:auto}.visiting-card-box{margin:12mm auto 0}.no-print,.btn-wrap,button{display:none!important}}</style>',
         '</head><body>',
         clone.outerHTML,
-        '<script src="assets/js/vm-device-lang.js" defer></script>
-</body></html>'
+        '</body></html>'
       ];
       var blob = new Blob([parts.join("")], { type: "text/html;charset=utf-8" });
       var url = URL.createObjectURL(blob);
