@@ -8,7 +8,7 @@ const VM_CONFIG = {
   email: "info@vishwakarmamusicals.in",
   whatsappUrl: "https://wa.me/919755088022",
   siteUrl: "https://vishwakarmamusicals.in/",
-  addressFull: "मकान नं. 109, हरदौल मंदिर के बगल में, शाला मोहल्ला, अमानगंज, जिला पन्ना (म.प्र.) - 488441",
+  addressFull: "मकान नं. 109, हरदौल मंदिर के पास, शाला मोहल्ला, अमानगंज, जिला पन्ना (म.प्र.) - 488441",
   hoursText: "प्रतिदिन सुबह 9:00 बजे से रात 9:00 बजे तक",
   pickupPincode: "488441",
   cartStorageKey: "vm_cart_items_v1",
