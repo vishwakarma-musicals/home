@@ -2701,7 +2701,7 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
     return '<span class="vm-name-hi">' + hi + '</span><span class="vm-name-en">' + en + '</span>';
   }
 
-  function enforceTwoLineCardTitles() {
+  function enforceTwoLineCardTitles() { if (document.documentElement.getAttribute("lang") === "en" || document.body.getAttribute("data-vm-lang") === "en") return;
     var nodes = document.querySelectorAll(".pcard-title-light, .vm-two-line-title, .product-title, .card-title");
     nodes.forEach(function (el) {
       if (el.closest(".cart-drawer, .vm-side-drawer, #vm-left-nav-drawer, modal, [role='dialog']")) return;
@@ -3209,4 +3209,5 @@ function vmKeepMobileMultiBadgeParentTransparent(el) {
     }
   }
 })();
+
 
